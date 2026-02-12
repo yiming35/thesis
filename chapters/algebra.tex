@@ -1,4 +1,17 @@
-\section{Coalgebras}
-Algebras are familiar mathematical objects.
+\section{(Co)algebras}
+In this chapter we 
+\subsection{Algebras} In a first course in ring theory, one encounters, given a base ring $R$, the polynomials $R[x]$. They come with an addition and multiplication that are essentially determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a ring $A$ that is also an $R$-module, in such a way that the module action is compatible with ring multiplication of $A$. That is, for all $r \in R$ and $x,y \in A$:
+\[r \cdot (xy) = (r\cdot x)y = x(r\cdot y).\]
+
+One important class of algebras are group rings. For a fixed ring $R$ and a group $G$, the \emph{group ring of $G$ over $R$}, denoted $R[G]$, has elements finite formal linear combinations of elements in $G$ with coefficients in $R$, with addition and multiplication given by
+\[(\sum_{g \in G} r_g g)+ (\sum_{g \in G}s_g g) = \sum_{g \in G}(r_g+s_g)g,\quad (\sum_{g \in G} r_g g)(\sum_{g \in G}s_g g) = \sum_{g \in G}\sum_{g_1g_2=g} (r_{g_1}s_{g_2})g.\]
+Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$ the structure of an $R$-algebra. One should think of $R[G]$ as a free module over $R$ with basis $G$. 
+
+Group rings abound in the representation theory of groups, where any representation $\rho: G\to \GL(V)$ of a group $G$ over a $k$-vector space $V$ corresponds to a module over the group ring $k[G]$.
 
 
+Occuring far less in nature are coalgebras. 
+
+free 
+tensor coalgebra
+cdga
