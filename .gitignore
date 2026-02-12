@@ -16,9 +16,6 @@
 *.fls
 *.fdb_latexmk
 
-# Compiled output
-*.pdf
-
 # Editor junk
 .vscode/
 .DS_Store
