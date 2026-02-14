@@ -1,5 +1,5 @@
-\section{(Co)algebras and the cobar construction}
-In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude with some recent refinements of Adams' theorem. The primary reference for the background material is \cite{Loday2012}.
+\section{Adams' theorem and refinements}
+In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The primary reference for the background material is \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude with some recent refinements of Adams' theorem. 
 
 \subsection{Algebras} In a first course in ring theory, one encounters, given a base ring $R$, the ring of polynomials $R[x]$. They come with an addition and multiplication determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a (possibly non-unital) ring $A$ that is also an $R$-module, such that the ring product is $R$-bilinear. That is, for all $r \in R$ and $x,y \in A$:
 \[r \cdot (xy) = (r\cdot x)y = x(r\cdot y).\]
@@ -8,7 +8,7 @@ In this chapter we give a brief overview of the important algebraic construction
 \end{rem}
 If $A$ is unital, then the algebra $A$ is called \emph{unital}. A \emph{morphism} of associative $R$-algebras $f: A\to B$ is a map respecting both the $R$-module structure and ring structure, i.e. for $r\in R$ and $a, b \in A$, we require 
 \[r\cdot f(ab) = f(r\cdot ab) = r\cdot f(a)f(b).\]
- An algebra morphism from $R$-algebra $A$ to $R$ itself is called an \textit{augmentation}. In this case we say $A$ is \emph{augmented}.
+ An algebra morphism from $R$-algebra $A$ to $R$ itself is called an \textit{augmentation}. In this case we say $A$ is \emph{augmented}. The simplest example of an $R$-algebra is $R$ itself. Other examples include the aforementioned ring of polynomials $R[x]$ or square matrices of size $n$ with entries in $R$.
 
 \subsubsection{Group rings} One important class of algebras are group rings. For a fixed ring $R$ and a group $G$, the \emph{group ring of $G$ over $R$}, denoted $R[G]$, has elements finite formal linear combinations of elements in $G$ with coefficients in $R$, with addition and multiplication given by
 \[(\sum_{g \in G} r_g g)+ (\sum_{g \in G}s_g g) = \sum_{g \in G}(r_g+s_g)g,\quad (\sum_{g \in G} r_g g)(\sum_{g \in G}s_g g) = \sum_{g \in G}\sum_{g_1g_2=g} (r_{g_1}s_{g_2})g.\]
@@ -16,9 +16,7 @@ Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$
 
 As an algebra, $R[G]$ comes with a natural augmentation, given by the map
 \[\varepsilon: R[G]\to R,\quad \varepsilon(\sum_{g\in G}r_gg) = \sum_{g\in G}r_g.\]
-We call its kernel the \emph{augmentation ideal}, and it has generating set 
-\[\{g-1: g\in G\}\]
-where $g-1$ is the group ring element $1_Rg - 1_R1_G$. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
+We call its kernel the \emph{augmentation ideal}. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
 \begin{prop}
     Let $\mathcal{I}$ be the augmentation ideal of the integral group ring $\Z[G]$. Then $\mathcal{I}/\mathcal{I}^2\cong G^\mathrm{ab}$, the abelianzation of $G$.
     \begin{proof}
@@ -54,16 +52,17 @@ This universal property guarantees that two manifestations of the free associati
 \[T(A) := R\oplus A \oplus A^{\tensor 2} \oplus \cdots\]
 and the product $T(A)\tensor T(A)\to T(A)$ is given by concatenation. On homogenous tensors $a \in A^{\tensor p}$ and $b \in A^{\tensor q}$, we have 
 \[(a_1\cdots a_p)\tensor (b_1 \cdots b_q) \mapsto (a_1 \cdots a_p b_1 \cdots b_q) \in A^{\tensor p+q}.\]
-This is a unital and associative $R$-algebra, with augmentation given by 
+This is a unital and associative $R$-algebra, with augmentation given by the identity on $R \subset T(A)$ and zero on higher tensor powers. The augmentation ideal, also called the \emph{reduced tensor algebra} is denoted 
+\[\overline{A} = A\tensor A^{\tensor 2}\tensor \cdots\]
+and is a nonunital associative $R$-algebra.
+The grading on $T(A)$ is given by tensor \emph{length}, so a homogenous element $x \in A^{\tensor n}$ is said to have length $n$. Later in this thesis, we will be working with $A$ a dg algebra, so the notions of grading can get confusing. But that is a problem for later. 
 \begin{prop}
     $T(A)$ is the free associative algebra over $A$.
-    \begin{proof}
-        
+    \begin{proof}  
+        Let $i: A\to T(A)$ be the inclusion into the second factor. Let $f: A\to B$ be an $R$-algebra morphism. Then $\tilde{f}: T(A)\to B$ can be defined by $\tilde{f}(1) = 1$ on $R\subset T(A)$, $\tilde{f}(x) = x$ for $x \in A\subset T(A)$, and $\tilde{f}(x_1 \cdots x_n) = f(x_1) \cdots f(x_n)$. Then $\tilde{f}$ extends $f$ and is uniquely determined by $f$. We leave it to the reader to check that $\tilde{f}$ is an $R$-algebra morphism.
     \end{proof}
 \end{prop}
 
-\subsection{Coalgebras} Occuring less in nature are coalgebras. 
+\subsection{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects. 
 
-free 
-tensor coalgebra
-cdga
+\subsection{The cobar construction}

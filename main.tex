@@ -14,11 +14,8 @@
 \usepackage{tikz}
 \usepackage{quiver}
 \usepackage{anyfontsize}
-% \usepackage{endfloat}
 \usepackage{epigraph}
-
 \setlength\epigraphrule{0pt}
-
 
 \usetikzlibrary{decorations.pathreplacing, calc}
 \tikzcdset{
@@ -247,16 +244,19 @@
 \date{\today}
 
 \begin{document}
-\setcounter{tocdepth}{1}
+
+
 
 \begin{abstract}
 
 \end{abstract}
 
 \maketitle
+\setcounter{tocdepth}{2}
 \tableofcontents
-\input{chapters/0introduction.tex}
-\input{chapters/1algebra.tex}
+\input{chapters/1introduction.tex}
+\input{chapters/2algebra.tex}
+\input{chapters/3cosimplicial.tex}
 
 
 \phantom{citation so no error; \cite{Looijenga2025}}
