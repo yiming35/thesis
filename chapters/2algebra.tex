@@ -1,12 +1,14 @@
-\section{Adams' theorem and refinements}
-In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The primary reference for the background material is \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude with some recent refinements of Adams' theorem. 
+\section{Towards Adams' theorem}
 
-\subsection{Algebras} In a first course in ring theory, one encounters, given a base ring $R$, the ring of polynomials $R[x]$. They come with an addition and multiplication determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a (possibly non-unital) ring $A$ that is also an $R$-module, such that the ring product is $R$-bilinear. That is, for all $r \in R$ and $x,y \in A$:
+In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The main reference for the background material is from the first two chapters of \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of Looijenga's theorem.
+
+\subsection{Algebras} 
+In a first course in ring theory, one encounters, given a base ring $R$, the ring of polynomials $R[x]$. They come with an addition and multiplication determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a (possibly non-unital) ring $A$ that is also an $R$-module, such that the ring product is $R$-bilinear. That is, for all $r \in R$ and $x,y \in A$:
 \[r \cdot (xy) = (r\cdot x)y = x(r\cdot y).\]
 \begin{rem}
     In much literature, the ring product $A\times A \to A$ of an $R$-algebra $A$ is instead written as a map $A\tensor_{R} A\to A$. By the universal property of tensor products these presentations are equivalent.
 \end{rem}
-If $A$ is unital, then the algebra $A$ is called \emph{unital}. A \emph{morphism} of associative $R$-algebras $f: A\to B$ is a map respecting both the $R$-module structure and ring structure, i.e. for $r\in R$ and $a, b \in A$, we require 
+If $A$ is unital, then the algebra $A$ is also said to be \emph{unital}. A \emph{morphism of associative $R$-algebras} $f: A\to B$ is a map respecting both the $R$-module structure and ring structure, i.e. for $r\in R$ and $a, b \in A$, we require 
 \[r\cdot f(ab) = f(r\cdot ab) = r\cdot f(a)f(b).\]
  An algebra morphism from $R$-algebra $A$ to $R$ itself is called an \textit{augmentation}. In this case we say $A$ is \emph{augmented}. The simplest example of an $R$-algebra is $R$ itself. Other examples include the aforementioned ring of polynomials $R[x]$ or square matrices of size $n$ with entries in $R$.
 
@@ -16,7 +18,7 @@ Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$
 
 As an algebra, $R[G]$ comes with a natural augmentation, given by the map
 \[\varepsilon: R[G]\to R,\quad \varepsilon(\sum_{g\in G}r_gg) = \sum_{g\in G}r_g.\]
-We call its kernel the \emph{augmentation ideal}. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
+We call its kernel the \emph{augmentation ideal}. Clearly we have a splitting $R[G] \cong \ker \varepsilon \oplus R$. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
 \begin{prop}
     Let $\mathcal{I}$ be the augmentation ideal of the integral group ring $\Z[G]$. Then $\mathcal{I}/\mathcal{I}^2\cong G^\mathrm{ab}$, the abelianzation of $G$.
     \begin{proof}
@@ -63,6 +65,42 @@ The grading on $T(A)$ is given by tensor \emph{length}, so a homogenous element 
     \end{proof}
 \end{prop}
 
-\subsection{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects. 
+\subsection{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.
 
-\subsection{The cobar construction}
+Let us begin. A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an $R$-linear map $\Delta: C\to C\tensor C$, called the \textit{coproduct} which is coassociative, i.e. the following diagram commutes:
+\[\begin{tikzcd}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJDIl0sWzEsMCwiQ1xcdGVuc29yIEMiXSxbMCwxLCJDXFx0ZW5zb3IgQyJdLFsxLDEsIkNcXHRlbnNvciBDXFx0ZW5zb3IgQyJdLFswLDEsIlxcRGVsdGEiXSxbMCwyLCJcXERlbHRhIiwyXSxbMSwzLCJcXGlkIFxcdGVuc29yIFxcRGVsdGEiXSxbMiwzLCJcXERlbHRhXFx0ZW5zb3IgXFxpZCIsMl1d
+	C & {C\tensor C} \\
+	{C\tensor C} & {C\tensor C\tensor C}
+	\arrow["\Delta", from=1-1, to=1-2]
+	\arrow["\Delta"', from=1-1, to=2-1]
+	\arrow["{\id \tensor \Delta}", from=1-2, to=2-2]
+	\arrow["{\Delta\tensor \id}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+A \textit{morphism of coassociative coalgebras} $f: C\to D$ is an $R$-linear map commuting with the coproduct, i.e. 
+\[(f\tensor f)\circ \Delta_C = \Delta_D \circ f.\]
+Earlier, we could have defined a unital algebra to be one with a morphism from $R$. Dually, we say a coassociative $R$-coalgebra $C$ is \textit{counital} if there is a morphism $\epsilon: C\to R$ such that the following diagram commutes:
+
+\[\begin{tikzcd}[cramped]
+    % https://q.uiver.app/#q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiQ1xcdGVuc29yIEMiXSxbMCwxLCJSXFx0ZW5zb3IgQyJdLFsyLDEsIkNcXHRlbnNvciBSIl0sWzAsMSwiXFxEZWx0YSJdLFswLDIsIlxcY29uZyIsMl0sWzAsMywiXFxjb25nIl0sWzEsMiwiXFxlcHNpbG9uXFx0ZW5zb3IgXFxpZCJdLFsxLDMsIlxcaWRcXHRlbnNvciBcXGVwc2lsb24iLDJdXQ==
+	& C \\
+	{R\tensor C} & {C\tensor C} & {C\tensor R}
+	\arrow["\cong"', from=1-2, to=2-1]
+	\arrow["\Delta", from=1-2, to=2-2]
+	\arrow["\cong", from=1-2, to=2-3]
+	\arrow["{\epsilon\tensor \id}", from=2-2, to=2-1]
+	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
+\end{tikzcd}.\]
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$.
+
+- iterated coproducts
+
+\subsubsection{Conilpotency, cofreeness, and the tensor coalgebra}
+
+\subsubsection{Differential graded coalgebras}
+\subsubsection{Singular chains}
+Singular chains $C_\bullet(X)$ on a topological space $X$ also admit the structure of a $\Z$-coalgebra (and enough things are compatible so this makes them into a \textit{bialgebra}, but we don't need that).
+
+\subsection{Adams' theorem} 
+\subsubsection{Cobar as a bicomplex}
+\subsubsection{Refinements}
