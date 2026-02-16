@@ -39,7 +39,7 @@ Cosimplicial spaces provide a useful model for based path and loop spaces. The p
 
 Given a cosimplicial space $X^\bullet: \mathbf{\Delta}\to \catname{Top}$, define the \emph{totalization} of $X^\bullet$ to be the space of maps from the cosimplicial simplices to $X^\bullet$:
 \[\tot(X^\bullet) := \Hom_{\catname{csTop}}(\Delta^\bullet, X^\bullet),\]
-i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. 
+i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. Just as the degenerate simplicies get 
 
 Now for an important example which will feature in later proof. Let $X$ be a topological space with $a,b \in X$. Define the cosimplicial space $F_{a,b}^\bullet X$ whose cosimplicies are 
 \[F_{a,b}^0 X = \{*\}, \quad F_{a,b}^nX = X^n \text{ for $n\geq 1$.}\]
@@ -51,7 +51,19 @@ The coface maps $d^j: F_{a,b}^{n-1}X\to F_{a,b}^{n}$ are given by
 \end{cases}\]
 The codegeneracy maps $s^j: F_{a,b}^{n+1}X \to F_{a,b}^{n}X$ are given by
 \[s^j(x_1, ..., x_{n+1}) =(x_1, ...,\widehat{x_{j+1}}, ... x_{n+1}), \quad j \in \{0, ..., n\}\]
-where the $\widehat{\phantom{-}}$ denotes omission. Before we compute the totalization let us try to give some intuition.
+where the $\widehat{\phantom{-}}$ denotes omission. What seems to be happening here is that by iterating the face maps, we are creating finer and finer piecewise subdivisons of paths whose endpoints are at $a$ and $b$. Indeed, 
+\begin{prop}
+  $\tot(P_{a,b}^\bullet X)$ is homeomorphic to the path space $\Omega_{a,b}X$ of paths in $X$ beginning at $a$ and ending at $b$.
+  \begin{proof}
+    A point of $\tot(P_{a,b}^\bullet X) = \hom_{\catname{csTop}}(\Delta^\bullet, P_{a,b}^\bullet X)$, i.e. continuous maps $f_0, f_1, ...$ satisfying 
+    \[d^i\circ f_n = f_{n+1}\circ d^i,\quad s^j\circ f_{n+1} = f_n\circ s^j\]
+    for all $i,j$. In this case it will easier to work with the following presentation of the simplices:
+    \[\Delta^n \cong \{u \in [0,1]^n: 0\leq u_1 \leq \cdots \leq u_n \leq 1\}\]
+    in which case the degeneracy map $s^j: \Delta^{n+1} \to \Delta^{n}$ given by summing the $j$th and $j+1$th coordinate corresponds to the omission of a coordinate, i.e. 
+    \[s^j(u_1, ..., u_n) = (u_1, ..., \widehat{u_j}, )\]
+  \end{proof}
+  JUST USE THIS AS THE PRESENTATION OF THE SIMPLICIES !!!!
+\end{prop}
 
 
 \subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. This subchapter will be devoted to understanding this comment.

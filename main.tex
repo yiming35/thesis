@@ -27,7 +27,7 @@
     lineto code={
       \path (\tikzinputsegmentfirst); \pgfgetlastxy{\xstart}{\ystart}
       \path (\tikzinputsegmentlast); \pgfgetlastxy{\xend}{\yend}
-      \path ($(0,0)!2pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
+      \path ($(0,0)!3pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
       \foreach \n[evaluate=\n as \k using .5*#1-\n+.5] in {1,...,#1}{
         \ifodd\n{\draw[->, shorten <=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}
         \else{\draw[<-, shorten >=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}\fi
@@ -42,7 +42,7 @@
     lineto code={
       \path (\tikzinputsegmentfirst); \pgfgetlastxy{\xstart}{\ystart}
       \path (\tikzinputsegmentlast); \pgfgetlastxy{\xend}{\yend}
-      \path ($(0,0)!2pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
+      \path ($(0,0)!3pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
       \foreach \n[evaluate=\n as \k using .5*#1-\n+.5] in {1,...,#1}{
         \ifodd\n{\draw[<-, shorten >=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}
         \else{\draw[->, shorten <=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}\fi
