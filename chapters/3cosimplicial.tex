@@ -1,7 +1,7 @@
 \section{Cosimplicial objects}
 \epigraph{\textit{A cosimplicial object of a category $\mathcal{C}$ could be defined simply as a simplicial object of the opposite category $\mathcal{C}^\mathrm{op}$. This is not really how the human brain works...}}{---Stacks Project, 14.5 \cite{stacks-project}}
 
-In this chapter we define cosimplicial objects, the totalization of a cosimplicial space, and some examples. We assume some familiarity with simplicial objects, for they are ubiquitous throughout algebraic topology. 
+In this chapter we define cosimplicial objects, the totalization of a cosimplicial space, and provide some examples. We assume some familiarity with simplicial objects, for they are ubiquitous throughout algebraic topology. 
 
 \subsection{Definitions} The \emph{simplex category}, denoted $\mathbf{\Delta}$, is the category with
 \begin{enumerate}
@@ -26,22 +26,23 @@ X^0\arrow[r, COSIMPLICIALaltstackar=3] \&
 X^1\arrow[r, COSIMPLICIALaltstackar=5] \&
 X^2\arrow[r, COSIMPLICIALaltstackar=7] \&\cdots
 \end{tikzcd}\]
-where the rightward pointing arrows are the coface maps and the leftward pointing arrows are the codegeneracy maps. As will become clear in the following examples, we should think of the coface maps as ``inserting a basepoint'' and the codegeneracy maps as ``forgetting a coordinate.''
+where the rightward pointing arrows are the coface maps and the leftward pointing arrows are the codegeneracy maps. 
 
 Our first example of a cosimplicial space will be the topological simplicies, $\Delta^\bullet: \mathbf{\Delta} \to \catname{Top}$. For each $n$, let $\Delta^n$ be the topological $n$-simplex
-\[\Delta^n:= \{(x_0, ..., x_n) \in \R^{n+1} | \sum_{i=0}^n x_i = 1, x_i \geq 0\}.\]
+\[\Delta^n:= \{(x_1, ..., x_n) \in \R^{n}:  0\leq x_1 \leq \cdots \leq x_n \leq 1\}.\]
 Then the coface maps $\Delta^{n-1}\to \Delta^n$ are the inclusions of faces, where $d^j$ is the inclusion of the face opposite the $j$th vertex. The codegeneracy map $s^j$ collapses the line joining the $j$th and $j$th vertex. In coordinates, we have
-\[d^j(x_0, ..., x_{n-1}) = (x_0, ..., x_{j-1}, 0, x_j, ..., x_{n-1}),\]
-\[s^j(x_0, ..., x_{n}) = (x_0, ..., x_j +x_{j+1}, ..., x_n).\]
+\[d^j(x_1, ..., x_n) = (x_1, ..., x_j, x_j, ..., x_{n-1}),\]
+\[s^j(x_1, ..., x_{n}) = (x_1, ..., \widehat{x_j}, ..., x_n)\]
+where $\widehat{\phantom{-}}$ indicates omission. This example is illustrative; in general it helps to think of the coface maps as ``duplicating a coordinate'' and the codegeneracy maps as ``forgetting a coordinate.'' We will see this again in this following subchapter.
 
 \subsection{Totalization and path spaces} 
-Cosimplicial spaces provide a useful model for based path and loop spaces. The process whereby this is done is \emph{totalization}, which is dual to the geometric realization of a simplicial set. 
+Cosimplicial spaces provide a useful model for based path and loop spaces. This is done via \emph{totalization}, which is dual to the geometric realization of a simplicial set. 
 
 Given a cosimplicial space $X^\bullet: \mathbf{\Delta}\to \catname{Top}$, define the \emph{totalization} of $X^\bullet$ to be the space of maps from the cosimplicial simplices to $X^\bullet$:
 \[\tot(X^\bullet) := \Hom_{\catname{csTop}}(\Delta^\bullet, X^\bullet),\]
-i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. Just as the degenerate simplicies get 
+i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. 
 
-Now for an important example which will feature in later proof. Let $X$ be a topological space with $a,b \in X$. Define the cosimplicial space $F_{a,b}^\bullet X$ whose cosimplicies are 
+Now for an important example which will feature later. Let $X$ be a topological space with $a,b \in X$. Define the cosimplicial space $F_{a,b}^\bullet X$ whose cosimplicies are 
 \[F_{a,b}^0 X = \{*\}, \quad F_{a,b}^nX = X^n \text{ for $n\geq 1$.}\]
 The coface maps $d^j: F_{a,b}^{n-1}X\to F_{a,b}^{n}$ are given by
 \[d^j(x_1, ..., x_{n-1}) = \begin{cases}
@@ -55,12 +56,26 @@ where the $\widehat{\phantom{-}}$ denotes omission. What seems to be happening h
 \begin{prop}
   $\tot(P_{a,b}^\bullet X)$ is homeomorphic to the path space $\Omega_{a,b}X$ of paths in $X$ beginning at $a$ and ending at $b$.
   \begin{proof}
-    A point of $\tot(P_{a,b}^\bullet X) = \hom_{\catname{csTop}}(\Delta^\bullet, P_{a,b}^\bullet X)$, i.e. continuous maps $f_0, f_1, ...$ satisfying 
-    \[d^i\circ f_n = f_{n+1}\circ d^i,\quad s^j\circ f_{n+1} = f_n\circ s^j\]
-    for all $i,j$. 
+    A point of $\tot(P_{a,b}^\bullet X) = \hom_{\catname{csTop}}(\Delta^\bullet, P_{a,b}^\bullet X)$ us a sequence of continuous maps 
+    \[f= \{f_i: \Delta^i \to X^i\}_{i \geq 0}\]
+    commuting with the coface and codegeneracy maps. Fix $n\geq 2$ and $k \in \{1, ..., n\}$. Consider the following composition of codegeneracy maps
+    \[\alpha_{n,k} =  \underbrace{s^{n-1} \circ s^{n-2} \circ \cdots \circ s^{k-2} \circ s^k\circ \cdots \circ s^0}_{\text{$n-1$ maps}}\]
+    where we compose all the degeneracies except for $s^{k-1}$. This gives us a map $\Delta^n\to \Delta^1$ and likewise for $X^n\to X^1$. Then for $f  = \{f_0, f_1, ...\} \in \tot(P_{a,b}^\bullet X)$, we have by commutativity that 
+    \[f_1 \circ \alpha_{n,k}  = \alpha_{n+1,k}\circ f_n.\]
+    But now the right hand side is just picking out the $k$th coordinate of $f_n$. So we have shown that $f_n$ for $n\geq 2$ is completely determined by $f_1$, so that the projection $\Phi: \tot(P_{a,b}^\bullet X)\to \Map(\Delta^1, X)$ given by $\{f_i\}_{i\geq 0} \mapsto f_1$ is injective.
+
+    We claim next that $\Phi$ is actually a map into $\Omega_{a,b}X\subset \Map(\Delta^1, X)$. To see this, the cosimplicial relations imply
+    \[f_1\circ d^0 = d^0 \circ f_0 = \const_a, \quad f_1 \circ d^1 = d^1\circ f_0 = \const_b\]
+    so $f_1(0) = a$ and $f_1(1) = b$ as desired. 
+    
+    Lastly we define an inverse to $\Phi: \tot(P^\bullet_{a,b}X) \to \Omega_{a,b}X$. For a given path $\gamma \in \Omega_{a,b}X$ consider the family of maps $\{f_i: \Delta^i \to X^i\}_{i\geq 0}$ given as follows. We let $f^0$ be the constant map, $f^1 = \gamma$, and for $n \geq 2$ define
+    \[f_n(x_1, ..., x_n) = (\gamma(x_1), \gamma(x_1+x_2), ..., \gamma(x_1 + \cdots + x_n)).\]
+    Clearly this is an inverse to $\Phi$. We leave it to the reader to check that the family of maps $\{f_i\}$ commutes with the coface and codegeneracies, and that $\Phi$ and its inverse are continuous maps. 
   \end{proof}
-  JUST USE THIS AS THE PRESENTATION OF THE SIMPLICIES !!!!
 \end{prop}
+
+We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$. When $a=b$ we get a cosimplicial model for the based loop space of $X$.
+
 
 
 \subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. This subchapter will be devoted to understanding this comment.
