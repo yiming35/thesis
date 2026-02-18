@@ -83,6 +83,33 @@ What seems to be happening here is that by iterating the face maps, we are creat
 \end{prop}
 We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$. When $a=b$ we get a cosimplicial model for the based loop space of $X$. It turns out that the cosimplicial space $P_{x,x}^\bullet X$ is in some sense the underlying cosimplicial set of the cobar construction of $C_\bullet(X)$, as we will see in the course of this thesis.
 
-\subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. In this subchapter we will try to understand this comment by examining the cosimplicial Dold--Kan correspondence applied to our cosimplicial path space $P^\bullet_{a,b}X$. 
+\subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. In this subchapter we will try to understand this comment. Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. Although these are duals, there is once again some asymmetry, as suggested by the quote.
+\begin{defn}
+  Let $A$ be a simplicial abelian group. Its \emph{normalized chain complex} $(NA_\bullet, \partial)$ has
+  \[NA_n = \bigcap_{i=1}^{n} \ker(d^i),\quad \partial = d_0: NA_n \to NA_{n-1}\]
+  and its \emph{Moore complex} $(MA_\bullet, \partial')$ has 
+  \[MA_n = A_n, \quad \partial' = \sum_{i=0}^n (-1)^i d_i: A_n\to A_{n-1}.\]
+\end{defn}
 
-Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll state the functors inducing this equivalence, then dualize to obtain the cosimplicial Dold--Kan correspondence:
+The following two results and their proofs can be found in \cite{Goerss2009}, Chapter III.2:
+\begin{thm}[Dold--Kan correspondence] The functor $N: \catname{sAb} \to \catname{Ch_+(Ab)}$ is an equivalence of categories between simplicial abelian groups and non-negative chain complexes of abelian groups.
+\end{thm}
+\begin{thm}
+The inclusion of chain complexes $NA\hookrightarrow MA$ is a chain homotopy equivalence, natural in $A$.
+\end{thm}
+
+Now we dualize. Recall that for simplicial objects, the face maps $d_i$ lower degree. For cosimplicial objects, the face maps $d^i$ raise degree, so we should get an equivalence between cosimplicial abelian groups and cochain complexes of abelian groups. This is indeed what happens.
+\begin{defn}
+  Let $C^\bullet$ be a cosimplicial abelian group. Its normalized cochain complex $(NC^\bullet, \partial)$ has 
+  \[NC^n = \coker\bigoplus_{i=1}^{n} d^i, \quad \partial = d^0: NC^n \to NC^{n+1}\]
+  and its Moore complex has 
+  \[MC^n = C^n, \quad \partial' = \sum_{i=0}^n (-1)^i d^i: C^n\to C^{n+1}.\]
+\end{defn}
+And analogously we obtain the following two theorems:
+\begin{thm}[Dold--Kan correspondence, dual] The functor $N: \catname{csAb} \to \catname{coCh_+(Ab)}$ is an equivalence of categories between cosimplicial abelian groups and non-negative cochain complexes of abelian groups.
+\end{thm}
+\begin{thm}
+The inclusion of cochain complexes $NC\hookrightarrow MC$ is a cochain homotopy equivalence, natural in $C$.
+\end{thm}
+
+
