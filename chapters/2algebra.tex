@@ -1,73 +1,75 @@
-\section{Towards Adams' theorem}
+% \section{Coalgebras and Adams' theorem}
 
-In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The main reference for the background material is from the first two chapters of \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of Looijenga's theorem.
+% In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The main reference for the background material is from the first two chapters of \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of Looijenga's theorem.
 
-\subsection{Algebras} 
-In a first course in ring theory, one encounters, given a base ring $R$, the ring of polynomials $R[x]$. They come with an addition and multiplication determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a (possibly non-unital) ring $A$ that is also an $R$-module, such that the ring product is $R$-bilinear. That is, for all $r \in R$ and $x,y \in A$:
-\[r \cdot (xy) = (r\cdot x)y = x(r\cdot y).\]
-\begin{rem}
-    In much literature, the ring product $A\times A \to A$ of an $R$-algebra $A$ is instead written as a map $A\tensor_{R} A\to A$. By the universal property of tensor products these presentations are equivalent.
-\end{rem}
-If $A$ is unital, then the algebra $A$ is also said to be \emph{unital}. A \emph{morphism of associative $R$-algebras} $f: A\to B$ is a map respecting both the $R$-module structure and ring structure, i.e. for $r\in R$ and $a, b \in A$, we require 
-\[r\cdot f(ab) = f(r\cdot ab) = r\cdot f(a)f(b).\]
- An algebra morphism from $R$-algebra $A$ to $R$ itself is called an \textit{augmentation}. In this case we say $A$ is \emph{augmented}. The simplest example of an $R$-algebra is $R$ itself. Other examples include the aforementioned ring of polynomials $R[x]$ or square matrices of size $n$ with entries in $R$.
+% \subsection{Algebras} 
+% In a first course in ring theory, one encounters, given a base ring $R$, the ring of polynomials $R[x]$. They come with an addition and multiplication determined by the ring operations of $R$. In other words, $R[x]$ is an \emph{algebra} over $R$. In general, an \emph{associative $R$-algebra} is a (possibly non-unital) ring $A$ that is also an $R$-module, such that the ring product is $R$-bilinear. That is, for all $r \in R$ and $x,y \in A$:
+% \[r \cdot (xy) = (r\cdot x)y = x(r\cdot y).\]
+% \begin{rem}
+%     In much literature, the ring product $A\times A \to A$ of an $R$-algebra $A$ is instead written as a map $A\tensor_{R} A\to A$. By the universal property of tensor products these presentations are equivalent.
+% \end{rem}
+% If $A$ is unital, then the algebra $A$ is also said to be \emph{unital}. A \emph{morphism of associative $R$-algebras} $f: A\to B$ is a map respecting both the $R$-module structure and ring structure, i.e. for $r\in R$ and $a, b \in A$, we require 
+% \[r\cdot f(ab) = f(r\cdot ab) = r\cdot f(a)f(b).\]
+%  An algebra morphism from $R$-algebra $A$ to $R$ itself is called an \textit{augmentation}. In this case we say $A$ is \emph{augmented}. The simplest example of an $R$-algebra is $R$ itself. Other examples include the aforementioned ring of polynomials $R[x]$ or square matrices of size $n$ with entries in $R$.
 
-\subsubsection{Group rings} One important class of algebras are group rings. For a fixed ring $R$ and a group $G$, the \emph{group ring of $G$ over $R$}, denoted $R[G]$, has elements finite formal linear combinations of elements in $G$ with coefficients in $R$, with addition and multiplication given by
-\[(\sum_{g \in G} r_g g)+ (\sum_{g \in G}s_g g) = \sum_{g \in G}(r_g+s_g)g,\quad (\sum_{g \in G} r_g g)(\sum_{g \in G}s_g g) = \sum_{g \in G}\sum_{g_1g_2=g} (r_{g_1}s_{g_2})g.\]
-Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$ the structure of an $R$-algebra. One should think of $R[G]$ as some sort of free module over $R$ with basis $G$. Group rings abound in the representation theory of groups, where any representation $\rho: G\to \GL(V)$ of a group $G$ over a $k$-vector space $V$ corresponds to a module over the group ring $k[G]$. In this thesis, however, we do not need to take this perspective (unless we could?)
+% \subsubsection{Group rings} One important class of algebras are group rings. For a fixed ring $R$ and a group $G$, the \emph{group ring of $G$ over $R$}, denoted $R[G]$, has elements finite formal linear combinations of elements in $G$ with coefficients in $R$, with addition and multiplication given by
+% \[(\sum_{g \in G} r_g g)+ (\sum_{g \in G}s_g g) = \sum_{g \in G}(r_g+s_g)g,\quad (\sum_{g \in G} r_g g)(\sum_{g \in G}s_g g) = \sum_{g \in G}\sum_{g_1g_2=g} (r_{g_1}s_{g_2})g.\]
+% Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$ the structure of an $R$-algebra. One should think of $R[G]$ as some sort of free module over $R$ with basis $G$. Group rings abound in the representation theory of groups, where any representation $\rho: G\to \GL(V)$ of a group $G$ over a $k$-vector space $V$ corresponds to a module over the group ring $k[G]$. In this thesis, however, we do not need to take this perspective (unless we could?)
 
-As an algebra, $R[G]$ comes with a natural augmentation, given by the map
-\[\varepsilon: R[G]\to R,\quad \varepsilon(\sum_{g\in G}r_gg) = \sum_{g\in G}r_g.\]
-We call its kernel the \emph{augmentation ideal}. Clearly we have a splitting $R[G] \cong \ker \varepsilon \oplus R$. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
-\begin{prop}
-    Let $\mathcal{I}$ be the augmentation ideal of the integral group ring $\Z[G]$. Then $\mathcal{I}/\mathcal{I}^2\cong G^\mathrm{ab}$, the abelianzation of $G$.
-    \begin{proof}
-        The proof relies on the following two facts. First, that $\{g-1: g\in G\}$ is a generating set of $\mathcal{I}$. Second, that the abelianzation of $G$ is the quotient of $G$ by its commutator subgroup $[G,G]$, which is generated by group elements of the form $g^{-1}h^{-1}gh$. Then we can define an explicit homomorphism
-        \[\mathcal{I}/\mathcal{I}^2 \to G^\mathrm{ab} = G/[G,G], \quad [g-1] \mapsto [g]\]
-        and extending linearly to all of $\mathcal{I}/\mathcal{I}^2$. Then the inverse map is $[g] \to [g-1]$.
-    \end{proof}
-\end{prop}
-Given a path connected, based topological space with $(X,x)$, consider its integral fundamental group ring $\Z\pi_1(X,x)$ and corresponding augmentation ideal $\mathcal{I}$. The previous proposition implies that 
-\[\mathcal{I}/\mathcal{I}^2 \cong \pi_1(X,x)^\mathrm{ab} \cong H_1(X; \Z).\]
-This is the simplest case of the main theorem we are trying to prove. It hints at the fact that we can gain information about the fundamental group of the space by examining its homology.
+% As an algebra, $R[G]$ comes with a natural augmentation, given by the map
+% \[\varepsilon: R[G]\to R,\quad \varepsilon(\sum_{g\in G}r_gg) = \sum_{g\in G}r_g.\]
+% We call its kernel the \emph{augmentation ideal}. Clearly we have a splitting $R[G] \cong \ker \varepsilon \oplus R$. The augmentation ideal is an interesting object of study. For example, we have the following observation: 
+% \begin{prop}
+%     Let $\mathcal{I}$ be the augmentation ideal of the integral group ring $\Z[G]$. Then $\mathcal{I}/\mathcal{I}^2\cong G^\mathrm{ab}$, the abelianzation of $G$.
+%     \begin{proof}
+%         The proof relies on the following two facts. First, that $\{g-1: g\in G\}$ is a generating set of $\mathcal{I}$. Second, that the abelianzation of $G$ is the quotient of $G$ by its commutator subgroup $[G,G]$, which is generated by group elements of the form $g^{-1}h^{-1}gh$. Then we can define an explicit homomorphism
+%         \[\mathcal{I}/\mathcal{I}^2 \to G^\mathrm{ab} = G/[G,G], \quad [g-1] \mapsto [g]\]
+%         and extending linearly to all of $\mathcal{I}/\mathcal{I}^2$. Then the inverse map is $[g] \to [g-1]$.
+%     \end{proof}
+% \end{prop}
+% Given a path connected, based topological space with $(X,x)$, consider its integral fundamental group ring $\Z\pi_1(X,x)$ and corresponding augmentation ideal $\mathcal{I}$. The previous proposition implies that 
+% \[\mathcal{I}/\mathcal{I}^2 \cong \pi_1(X,x)^\mathrm{ab} \cong H_1(X; \Z).\]
+% This is the simplest case of the main theorem we are trying to prove. It hints at the fact that we can gain information about the fundamental group of the space by examining its homology.
 
-\subsubsection{Differential graded algebras} We begin with an example. Consider the singular chains $C_\bullet(X)$ on a topological space $X$. They are $\N$-graded, where each $C_n(X)$ is the free abelian group on the set of $n$-simplicies of $X$:
-\[C_n(X) = \Z\{\text{continuous maps $\Delta^n\to X$}\}.\]
-Another name given to $\Z$-modules is ``abelian group,'' and indeed 
-\[C_\bullet = \bigoplus_{n\in\N}C_n(X)\]
-is an abelian group. Next, we have a product 
-\[C_p(X)\times C_q(X)\to C_{p+q}(X)\]
-given by the decomposition of the geometric $(p+q)$-simplex into a sum of $p$-simplices and $q$-simplicies (see []) for a reference. These maps assemble to a product 
-\[\times: C_\bullet(X)\times C_\bullet(X) \to C_\bullet(X).\]
-One can check that this product is compatible with the $\Z$-module structure on $C_\bullet(X)$, making it into a \emph{graded $\Z$-algebra}. As icing on the cake, we also have a singular boundary map $\partial: C_n(X)\to C_{n-1}(X)$ satisfying $\partial^2=0$ and the graded Leibniz rule: for $\sigma \in C_p(X)$ and $\tau \in C_q(X)$, 
-\[\partial(\sigma\times \tau)= (\partial\sigma)\times \tau + (-1)^p \sigma \times (\partial\tau).\]
-Thus $C_\bullet(X)$ has the structure of a \emph{differential graded $\Z$-algebra}. In general, a \emph{differential graded $R$-algebra}, often abbreviated as a \emph{dg algebra}, is a graded $R$-algebra $A_\bullet$ with a differential satisfying the graded Leibniz rule. If the differential lowers degree, we say $A_\bullet$ is \emph{homologically graded}; if it raises degree, we say $A_\bullet$ is \emph{cohomologically graded}. We can think of dg algebras as (co)chain complexes with a product, or algebras with a chain structure. 
+% \subsubsection{Differential graded algebras} We begin with an example. Consider the singular chains $C_\bullet(X)$ on a topological space $X$. They are $\N$-graded, where each $C_n(X)$ is the free abelian group on the set of $n$-simplicies of $X$:
+% \[C_n(X) = \Z\{\text{continuous maps $\Delta^n\to X$}\}.\]
+% Another name given to $\Z$-modules is ``abelian group,'' and indeed 
+% \[C_\bullet = \bigoplus_{n\in\N}C_n(X)\]
+% is an abelian group. Next, we have a product 
+% \[C_p(X)\times C_q(X)\to C_{p+q}(X)\]
+% given by the decomposition of the geometric $(p+q)$-simplex into a sum of $p$-simplices and $q$-simplicies (see []) for a reference. These maps assemble to a product 
+% \[\times: C_\bullet(X)\times C_\bullet(X) \to C_\bullet(X).\]
+% One can check that this product is compatible with the $\Z$-module structure on $C_\bullet(X)$, making it into a \emph{graded $\Z$-algebra}. As icing on the cake, we also have a singular boundary map $\partial: C_n(X)\to C_{n-1}(X)$ satisfying $\partial^2=0$ and the graded Leibniz rule: for $\sigma \in C_p(X)$ and $\tau \in C_q(X)$, 
+% \[\partial(\sigma\times \tau)= (\partial\sigma)\times \tau + (-1)^p \sigma \times (\partial\tau).\]
+% Thus $C_\bullet(X)$ has the structure of a \emph{differential graded $\Z$-algebra}. In general, a \emph{differential graded $R$-algebra}, often abbreviated as a \emph{dg algebra}, is a graded $R$-algebra $A_\bullet$ with a differential satisfying the graded Leibniz rule. If the differential lowers degree, we say $A_\bullet$ is \emph{homologically graded}; if it raises degree, we say $A_\bullet$ is \emph{cohomologically graded}. We can think of dg algebras as (co)chain complexes with a product, or algebras with a chain structure. 
 
-\subsubsection{Freeness and the tensor algebra}
-Just as we can construct a free group from a set, we can also construct a free $R$-algebra given any $R$-module $A$. Before we given an explicit construction, we give a description of the \emph{free associative algebra over $A$}, denoted $\mathcal{F}A$, in terms of its \emph{universal property}:
-\begin{quote}
-    \textit{There is an $R$-linear map $i: A\hookrightarrow \mathcal{F}A$ such that any $R$-algebra morphism $f: A\to B$ extends into a unique morphism $\tilde{f}: \mathcal{F}A\to B$ with $\tilde{f}\circ i = f$.}
-\end{quote}
-This is entirely analogous to universal property of a free group. Sending an $R$-module $A$ to the free associative algebra over $A$ gives us a functor from the category of $R$-modules (supposing $R$ is commutative), $\catname{Mod}_R$ to the category of associative $R$-algebras, denoted $\catname{Alg}_R$. Conversely, we have a forgetful functor sending a $R$-algebra to its underlying module. In this language, the universal property tells us that these two functors are \emph{adjoint}, i.e. there is a natural isomorphism
-\[\hom_{\catname{Alg}_R}(\mathcal{F}A, B) \cong \hom_{\catname{Mod}_R}(A, \catname{forget}(B)).\]
-This universal property guarantees that two manifestations of the free associative algebra are isomorphic via a unique isomorphism. With this in mind, let us now define the \emph{tensor algebra} over an $R$-module $A$. Denoted $T(A)$, its underlying $R$-module is given by
-\[T(A) := R\oplus A \oplus A^{\tensor 2} \oplus \cdots\]
-and the product $T(A)\tensor T(A)\to T(A)$ is given by concatenation. On homogenous tensors $a \in A^{\tensor p}$ and $b \in A^{\tensor q}$, we have 
-\[(a_1\cdots a_p)\tensor (b_1 \cdots b_q) \mapsto (a_1 \cdots a_p b_1 \cdots b_q) \in A^{\tensor p+q}.\]
-This is a unital and associative $R$-algebra, with augmentation given by the identity on $R \subset T(A)$ and zero on higher tensor powers. The augmentation ideal, also called the \emph{reduced tensor algebra} is denoted 
-\[\overline{A} = A\tensor A^{\tensor 2}\tensor \cdots\]
-and is a nonunital associative $R$-algebra.
-The grading on $T(A)$ is given by tensor \emph{length}, so a homogenous element $x \in A^{\tensor n}$ is said to have length $n$. Later in this thesis, we will be working with $A$ a dg algebra, so the notions of grading can get confusing. But that is a problem for later. 
-\begin{prop}
-    $T(A)$ is the free associative algebra over $A$.
-    \begin{proof}  
-        Let $i: A\to T(A)$ be the inclusion into the second factor. Let $f: A\to B$ be an $R$-algebra morphism. Then $\tilde{f}: T(A)\to B$ can be defined by $\tilde{f}(1) = 1$ on $R\subset T(A)$, $\tilde{f}(x) = x$ for $x \in A\subset T(A)$, and $\tilde{f}(x_1 \cdots x_n) = f(x_1) \cdots f(x_n)$. Then $\tilde{f}$ extends $f$ and is uniquely determined by $f$. We leave it to the reader to check that $\tilde{f}$ is an $R$-algebra morphism.
-    \end{proof}
-\end{prop}
+% \subsubsection{Freeness and the tensor algebra}
+% Just as we can construct a free group from a set, we can also construct a free $R$-algebra given any $R$-module $A$. Before we given an explicit construction, we give a description of the \emph{free associative algebra over $A$}, denoted $\mathcal{F}A$, in terms of its \emph{universal property}:
+% \begin{quote}
+%     \textit{There is an $R$-linear map $i: A\hookrightarrow \mathcal{F}A$ such that any $R$-algebra morphism $f: A\to B$ extends into a unique morphism $\tilde{f}: \mathcal{F}A\to B$ with $\tilde{f}\circ i = f$.}
+% \end{quote}
+% This is entirely analogous to universal property of a free group. Sending an $R$-module $A$ to the free associative algebra over $A$ gives us a functor from the category of $R$-modules (supposing $R$ is commutative), $\catname{Mod}_R$ to the category of associative $R$-algebras, denoted $\catname{Alg}_R$. Conversely, we have a forgetful functor sending a $R$-algebra to its underlying module. In this language, the universal property tells us that these two functors are \emph{adjoint}, i.e. there is a natural isomorphism
+% \[\hom_{\catname{Alg}_R}(\mathcal{F}A, B) \cong \hom_{\catname{Mod}_R}(A, \catname{forget}(B)).\]
+% This universal property guarantees that two manifestations of the free associative algebra are isomorphic via a unique isomorphism. With this in mind, let us now define the \emph{tensor algebra} over an $R$-module $A$. Denoted $T(A)$, its underlying $R$-module is given by
+% \[T(A) := R\oplus A \oplus A^{\tensor 2} \oplus \cdots\]
+% and the product $T(A)\tensor T(A)\to T(A)$ is given by concatenation. On homogenous tensors $a \in A^{\tensor p}$ and $b \in A^{\tensor q}$, we have 
+% \[(a_1\cdots a_p)\tensor (b_1 \cdots b_q) \mapsto (a_1 \cdots a_p b_1 \cdots b_q) \in A^{\tensor p+q}.\]
+% This is a unital and associative $R$-algebra, with augmentation given by the identity on $R \subset T(A)$ and zero on higher tensor powers. The augmentation ideal, also called the \emph{reduced tensor algebra} is denoted 
+% \[\overline{A} = A\tensor A^{\tensor 2}\tensor \cdots\]
+% and is a nonunital associative $R$-algebra.
+% The grading on $T(A)$ is given by tensor \emph{length}, so a homogenous element $x \in A^{\tensor n}$ is said to have length $n$. Later in this thesis, we will be working with $A$ a dg algebra, so the notions of grading can get confusing. But that is a problem for later. 
+% \begin{prop}
+%     $T(A)$ is the free associative algebra over $A$.
+%     \begin{proof}  
+%         Let $i: A\to T(A)$ be the inclusion into the second factor. Let $f: A\to B$ be an $R$-algebra morphism. Then $\tilde{f}: T(A)\to B$ can be defined by $\tilde{f}(1) = 1$ on $R\subset T(A)$, $\tilde{f}(x) = x$ for $x \in A\subset T(A)$, and $\tilde{f}(x_1 \cdots x_n) = f(x_1) \cdots f(x_n)$. Then $\tilde{f}$ extends $f$ and is uniquely determined by $f$. We leave it to the reader to check that $\tilde{f}$ is an $R$-algebra morphism.
+%     \end{proof}
+% \end{prop}
 
-\subsection{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.
+\section{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.  The reader should feel free to skip this chapter if they are familiar with the theory of (co)associative (co)algebras.
+\subsection{First definitions} Let $R$ be a commutative ring.
 
-Let us begin. A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an $R$-linear map $\Delta: C\to C\tensor C$, called the \textit{coproduct} which is coassociative, i.e. the following diagram commutes:
+\begin{defn}
+    A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an $R$-linear map $\Delta: C\to C\tensor C$, called the \emph{coproduct} (or \emph{diagonalization}), such that the following diagram commutes:
 \[\begin{tikzcd}
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJDIl0sWzEsMCwiQ1xcdGVuc29yIEMiXSxbMCwxLCJDXFx0ZW5zb3IgQyJdLFsxLDEsIkNcXHRlbnNvciBDXFx0ZW5zb3IgQyJdLFswLDEsIlxcRGVsdGEiXSxbMCwyLCJcXERlbHRhIiwyXSxbMSwzLCJcXGlkIFxcdGVuc29yIFxcRGVsdGEiXSxbMiwzLCJcXERlbHRhXFx0ZW5zb3IgXFxpZCIsMl1d
 	C & {C\tensor C} \\
@@ -77,11 +79,22 @@ Let us begin. A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an 
 	\arrow["{\id \tensor \Delta}", from=1-2, to=2-2]
 	\arrow["{\Delta\tensor \id}"', from=2-1, to=2-2]
 \end{tikzcd}\]
+\end{defn}
+One way to think about the coproduct is that it tells one how to decompose a given element in the module. Consider the following example:
+\begin{exmp}[\cite{Joni1979}, \S 2]
+    Let $C= R[x]$, the ring of polynomials over $R$. Define a coproduct on a basis element $x^n$ via 
+    \[\Delta(x^n) = \sum_{k=0}^n {n \choose k} x^k \tensor x^{n-k}.\]
+    Then...
+\end{exmp}
+
+
+Given an associative algebra $A$ it is intuitive how to compose the product to obtain a map $A^{\tensor n} \to A$. With a coassociative coalgebra $(C,\Delta)$ there is an analogous notion. Define the \emph{iterated coproduct} $\Delta^n: C\to C^{\tensor n+1}$ inductively with $\Delta^0 = \id, \Delta^1 = \Delta$, and 
+\[\Delta^n = \underbrace{\Delta \tensor \id \tensor \cdots \tensor \id}_{\text{$n$ operations}} \circ \Delta^{n-1}.\]
+Coassociativity tells us that we could have inserted the coproduct anywhere within the above tensor product.
 A \textit{morphism of coassociative coalgebras} $f: C\to D$ is an $R$-linear map commuting with the coproduct, i.e. 
 \[(f\tensor f)\circ \Delta_C = \Delta_D \circ f.\]
-Earlier, we could have defined a unital algebra to be one with a morphism from $R$. Dually, we say a coassociative $R$-coalgebra $C$ is \textit{counital} if there is a morphism $\epsilon: C\to R$ such that the following diagram commutes:
-
-\[\begin{tikzcd}[cramped]
+Just as a unital associative $R$-algebra $A$ is one admitting a unital morphism $R\to A$, we say dually that a coassociative $R$-coalgebra $C$ is \textit{counital} if there is a morphism $\epsilon: C\to R$ such that the following diagram commutes:
+\[\begin{tikzcd}
     % https://q.uiver.app/#q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiQ1xcdGVuc29yIEMiXSxbMCwxLCJSXFx0ZW5zb3IgQyJdLFsyLDEsIkNcXHRlbnNvciBSIl0sWzAsMSwiXFxEZWx0YSJdLFswLDIsIlxcY29uZyIsMl0sWzAsMywiXFxjb25nIl0sWzEsMiwiXFxlcHNpbG9uXFx0ZW5zb3IgXFxpZCJdLFsxLDMsIlxcaWRcXHRlbnNvciBcXGVwc2lsb24iLDJdXQ==
 	& C \\
 	{R\tensor C} & {C\tensor C} & {C\tensor R}
@@ -91,16 +104,52 @@ Earlier, we could have defined a unital algebra to be one with a morphism from $
 	\arrow["{\epsilon\tensor \id}", from=2-2, to=2-1]
 	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
 \end{tikzcd}.\]
-The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$.
 
-- iterated coproducts
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. 
 
-\subsubsection{Conilpotency, cofreeness, and the tensor coalgebra}
 
-\subsubsection{Differential graded coalgebras}
-\subsubsection{Singular chains}
-Singular chains $C_\bullet(X)$ on a topological space $X$ also admit the structure of a $\Z$-coalgebra (and enough things are compatible so this makes them into a \textit{bialgebra}, but we don't need that).
+\subsection{Conilpotency, cofreeness, and the tensor coalgebra}
+Let $(C,\Delta)$ be a coaugmented coalgebra. Define the \emph{coradical} (sometimes also called \emph{canonical}) filtration on $C$ as follows: 
+\[F_0C = R,\quad F_rC = \{x\in \overline{C}: \bar{\Delta}^n(x) = 0\text{ for $n\geq r$}\}\text{ for $r\geq 1$}.\]
+Then we say $C$ is \emph{conilpotent} or \emph{connected} if this filtration is exhaustive. Conilpotency is important is in the following definition. 
 
-\subsection{Adams' theorem} 
-\subsubsection{Cobar as a bicomplex}
-\subsubsection{Refinements}
+\begin{defn}
+The \emph{cofree} coassociative $R$-coalgebra over a $R$-module $M$ is a conilpotent coassociative coalgebra $\mathcal{F}^cM$ equipped with an $R$-linear map $s: \mathcal{F}^cM\to M$ sending $1$ to $0$ and satisfying the following universal property: 
+\quote{Given any $R$-linear map $f: B\to M$ factors through $\mathcal{F}^cM$, i.e. there exists a unique map $\tilde{f}: B \to \mathcal{F}^cM$ such that $s\circ \tilde{f} = f$.}
+\end{defn}
+As with other objects defined via universal properties, the cofree coalgebra is unique up to unique isomorphism. In the categorial language we want this functor 
+\[\mathcal{F}^c: \catname{Mod}_R\to \catname{conilCoalg}_R\]
+to be right adjoint to the forgetful function sending a conilpotent coalgebra to its underlying module. The reason we restrict ourselves to conilpotent coalgebras here is that the cofree objects are familiar, as we will soon see. In the general category of coalgebras they are large and unwieldy. 
+\begin{defn} 
+    Let $M$ be an $R$-module. The \emph{tensor coalgebra over} $M$, denoted $T^cM$, is the coalgebra whose underlying module is 
+    \[T^cM := R\oplus M \oplus M^{\tensor 2} \oplus \cdots\]
+    and whose coproduct $T^cM \to T^cM\tensor T^cM$ is given by
+    \[1\mapsto 1\tensor 1\text{\quad and \quad} x_1\tensor \cdots \tensor x_n \mapsto \sum_{i=0}^n (x_1 \tensor \cdots \tensor x_i)\tensor (x_{i+1}\tensor \cdots \tensor x_n).\]
+\end{defn}
+For example, $x \in M$ gets mapped to $1\tensor x + x\tensor 1$.
+
+\begin{prop}
+    $T^cM$ is coassociative, counital, and conilpotent.
+    \begin{proof}
+        Coassociativity...
+        The counit is given by the map $T^cM \to R$ which is the identity on $R$ and zero on the higher summands.
+        Conilpotency...
+    \end{proof}
+\end{prop}
+
+
+\begin{rem}
+For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\oplus \cdots$ also has an algebra structure given by tensor multiplication. We denote it by $TM$ rather than $T^cM$ to discern between the two structures. With this product it becomes the free associative $R$-algebra over $M$. In fact, the product and coproducts are compatible, making $TM$ into an \emph{bialgebra}, and in fact a \emph{Hopf algebra}.
+\end{rem}
+
+\begin{prop}
+    $T^cM$ is the cofree conilpotent coalgebra over $M$.
+    \begin{proof}
+        Let $x \in T^cM$.
+    \end{proof}
+\end{prop}
+
+\subsection{Differential graded coalgebras}
+\begin{exmp}
+Singular chains on a space and the Alexander--Whitney product
+\end{exmp}
