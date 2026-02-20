@@ -86,7 +86,7 @@ We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$.
 \subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. In this subchapter we will try to understand this comment. Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. Although these are duals, there is once again some asymmetry, as suggested by the quote.
 \begin{defn}
   Let $A$ be a simplicial abelian group. Its \emph{normalized chain complex} $(NA_\bullet, \partial)$ has
-  \[NA_n = \bigcap_{i=1}^{n} \ker(d^i),\quad \partial = d_0: NA_n \to NA_{n-1}\]
+  \[NA_n = \bigcap_{i=1}^{n} \ker(d^i: A_n \to A_{n-1}),\quad \partial = d_0: NA_n \to NA_{n-1}\]
   and its \emph{Moore complex} $(MA_\bullet, \partial')$ has 
   \[MA_n = A_n, \quad \partial' = \sum_{i=0}^n (-1)^i d_i: A_n\to A_{n-1}.\]
 \end{defn}
@@ -101,15 +101,41 @@ The inclusion of chain complexes $NA\hookrightarrow MA$ is a chain homotopy equi
 Now we dualize. Recall that for simplicial objects, the face maps $d_i$ lower degree. For cosimplicial objects, the face maps $d^i$ raise degree, so we should get an equivalence between cosimplicial abelian groups and cochain complexes of abelian groups. This is indeed what happens.
 \begin{defn}
   Let $C^\bullet$ be a cosimplicial abelian group. Its normalized cochain complex $(NC^\bullet, \partial)$ has 
-  \[NC^n = \coker\bigoplus_{i=1}^{n} d^i, \quad \partial = d^0: NC^n \to NC^{n+1}\]
+  \[NC^n = \coker\bigoplus_{i=1}^{n} (d^i: C^{n-1}\to C^n), \quad \partial = d^0: NC^n \to NC^{n+1}\]
   and its Moore complex has 
-  \[MC^n = C^n, \quad \partial' = \sum_{i=0}^n (-1)^i d^i: C^n\to C^{n+1}.\]
+  \[MC^n = C^n, \quad \partial' = \sum_{i=0}^{n+1} (-1)^i d^i: C^n\to C^{n+1}.\]
 \end{defn}
 And analogously we obtain the following two theorems:
 \begin{thm}[Dold--Kan correspondence, dual] The functor $N: \catname{csAb} \to \catname{coCh_+(Ab)}$ is an equivalence of categories between cosimplicial abelian groups and non-negative cochain complexes of abelian groups.
 \end{thm}
 \begin{thm}
-The inclusion of cochain complexes $NC\hookrightarrow MC$ is a cochain homotopy equivalence, natural in $C$.
+The quotient of cochain complexes $MC \rightarrow NC$ is a cochain homotopy equivalence, natural in $C$.
 \end{thm}
-
-
+Really we could have stated the previous four theorems for simplicial objects in any abelian category. In the following discussion, we replace ``abelian group'' with ``$R$-module'' for some commutative ring $R$. Consider the free $R$-module functor $R[-]:\catname{Set} \to \catname{Mod}_R$. Then given any cosimplicial set $X^\bullet: \mathbf{\Delta} \to \catname{Set}$ the composition of functors $R[X^\bullet]$ yields a cosimplicial $R$-module. 
+\begin{prop}
+  Under the Dold--Kan correspondence, $R[X^\bullet]$ has zero cohomology in positive degree.
+  \begin{proof}
+    Is this true???
+  \end{proof}
+\end{prop}
+\begin{prop}
+  Let $P_{a,b}^\bullet X$ be the cosimplicial path space. For fixed $p\geq 0$, define the cosimplicial abelian group $C_p(F^\bullet_{a,b}X)$ with 
+  \[C_p(F^q_{a,b}X) := \Z[\Map(\Delta^p, P_{a,b}^qX)]\]
+  i.e. take singular $p$-chains on the $q$th cosimplex of $P_{a,b}^\bullet X$. Under the cosimplicial Dold--Kan correspondence, the associated cochain complex has cohomology 
+  \[H^* = \begin{cases}
+    \Z & *=0, a=b\\
+    0 & \text{otherwise}
+  \end{cases}\]
+  \begin{proof}
+    We have the following order of operations. We begin with our cosimplicial space $P_{a,b}^\bullet X$. Then we build the cosimplicial set 
+    \[[q]\mapsto \Map(\Delta^p,  P_{a,b}^qX) = \Map(\Delta^p, X^q)\]
+    Then passing to the free abelian group and applying the Moore complex functor, we obtain the cochain complex (which we choose to write here in terms of the free abelian groups rather than using the reduced notation $C_p(X^q)$):
+    \[\Z\Map(\Delta^p, *)\xrightarrow{\partial_0} \Z\Map(\Delta^p, X) \xrightarrow{\partial_1} \Z\Map(\Delta^p, X^2) \to \cdots \]
+    where $\partial_i$ is the map defined on the basis via
+    \[\Z\Map(\Delta^p, X^q) \to \Z\Map(\Delta^p, X^{q+1}), \quad f \mapsto \sum_{i=0}^q (-1)^i d^i \circ f.\] 
+    Consider the following family of maps:
+    \[h_q: \Z\Map(\Delta^p, X^q) \to \Z\Map(\Delta^p, X^{q-1}),\quad f \mapsto \begin{cases}
+      s^0 \circ f
+    \end{cases}\]
+  \end{proof}
+\end{prop}
