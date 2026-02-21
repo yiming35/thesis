@@ -1,7 +1,7 @@
-\section{Cosimplicial objects}
-\epigraph{\textit{A cosimplicial object of a category $\mathcal{C}$ could be defined simply as a simplicial object of the opposite category $\mathcal{C}^\mathrm{op}$. This is not really how the human brain works...}}{---Stacks Project, 14.5 \cite{stacks-project}}
+\section{(Co)simplicial objects}
+\epigraph{\textit{A cosimplicial object of a category $\mathcal{C}$ could be defined simply as a simplicial object of the opposite category $\mathcal{C}^\mathrm{op}$. This is not really how the human brain works...}}{---Stacks Project, \cite[\href{https://stacks.math.columbia.edu/tag/016I}{Tag 016I}]{stacks-project}}
 
-In this chapter we define cosimplicial objects, the totalization of a cosimplicial space, and provide some examples. We assume some familiarity with simplicial objects, for they are ubiquitous throughout algebraic topology. 
+In this chapter we define cosimplicial objects, the totalization of a cosimplicial space, and provide some examples. We will state the Dold--Kan correspondence and use it to prove a useful statement for later on. Finally we conclude with an exposition of the Alexander--Whitney map, which couldn't find a home in any other chapter. We assume some familiarity with simplicial objects.
 
 \subsection{Definitions} The \emph{simplex category}, denoted $\mathbf{\Delta}$, is the category with
 \begin{enumerate}
@@ -49,7 +49,7 @@ The codegeneracy maps $s^j: P_{a,b}^{n+1}X \to P_{a,b}^{n}X$ are given by
 \[s^j(x_1, ..., x_{n+1}) =(x_1, ...,\widehat{x_{j+1}}, ... x_{n+1}), \quad j \in \{0, ..., n\}\]
 where the $\widehat{\phantom{-}}$ denotes omission.
 \end{exmp}
-We leave it to the reader to verify that the maps in both examples satisfy the cosimplicial identities. Why we refer to Example \ref{example:cosimplicial_path_space} by \textit{path spaces} will become evident in the next section.
+We leave it to the reader to verify that the maps in both examples satisfy the cosimplicial identities. Why we refer to Example \ref{example:cosimplicial_path_space} by \textit{path spaces} will become evident in the next section. 
 
 \subsection{Totalization} 
 Cosimplicial spaces provide a useful model for many types of topological spaces, including the based path and loop spaces. This is done via \emph{totalization}, which is dual to the notion of geometric realization of a simplicial set. 
@@ -57,8 +57,6 @@ Cosimplicial spaces provide a useful model for many types of topological spaces,
 Given a cosimplicial space $X^\bullet: \mathbf{\Delta}\to \catname{Top}$, define the \emph{totalization} of $X^\bullet$ to be the space of maps from the cosimplicial simplices to $X^\bullet$:
 \[\tot(X^\bullet) := \Hom_{\catname{csTop}}(\Delta^\bullet, X^\bullet),\]
 i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. 
-
-
 
 What seems to be happening here is that by iterating the face maps, we are creating finer and finer piecewise subdivisons of paths whose endpoints are at $a$ and $b$. Indeed, 
 \begin{prop}
@@ -83,7 +81,7 @@ What seems to be happening here is that by iterating the face maps, we are creat
 \end{prop}
 We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$. When $a=b$ we get a cosimplicial model for the based loop space of $X$. It turns out that the cosimplicial space $P_{x,x}^\bullet X$ is in some sense the underlying cosimplicial set of the cobar construction of $C_\bullet(X)$, as we will see in the course of this thesis.
 
-\subsection{Dold--Kan and homotopy} ``... there is no interesting homotopy theory of cosimplicial sets!'' concludes a  MathOverflow answer \cite{Goodwillie} of Tom Goodwillie. In this subchapter we will try to understand this comment. Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. Although these are duals, there is once again some asymmetry, as suggested by the quote.
+\subsection{Dold--Kan} Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. Although these are duals, there is once again some asymmetry, as suggested by the quote.
 \begin{defn}
   Let $A$ be a simplicial abelian group. Its \emph{normalized chain complex} $(NA_\bullet, \partial)$ has
   \[NA_n = \bigcap_{i=1}^{n} \ker(d^i: A_n \to A_{n-1}),\quad \partial = d_0: NA_n \to NA_{n-1}\]
@@ -91,12 +89,15 @@ We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$.
   \[MA_n = A_n, \quad \partial' = \sum_{i=0}^n (-1)^i d_i: A_n\to A_{n-1}.\]
 \end{defn}
 
-The following two results and their proofs can be found in \cite{Goerss2009}, Chapter III.2:
-\begin{thm}[Dold--Kan correspondence] The functor $N: \catname{sAb} \to \catname{Ch_+(Ab)}$ is an equivalence of categories between simplicial abelian groups and non-negative chain complexes of abelian groups.
+The following results and their proofs can be found in \cite{Goerss2009}, Chapter III.2:
+\begin{thm}[Dold--Kan correspondence] Let $A$ be a simplicial abelian group. Then:
+  \begin{enumerate}
+  \item The functor $N: \catname{sAb} \to \catname{Ch_+(Ab)}$ is an equivalence of categories between simplicial abelian groups and non-negative chain complexes of abelian groups.
+  \item The inclusion of chain complexes $NA\hookrightarrow MA$ is a chain homotopy equivalence, natural in $A$.
+  \item There is a functorial direct sum decomposition $MA = NA \oplus DA$, where $DA$ is the subcomplex generated by the images of all the degeneracy maps. Consequently, $DA$ is acyclic.
+  \end{enumerate}
 \end{thm}
-\begin{thm}
-The inclusion of chain complexes $NA\hookrightarrow MA$ is a chain homotopy equivalence, natural in $A$.
-\end{thm}
+
 
 Now we dualize. Recall that for simplicial objects, the face maps $d_i$ lower degree. For cosimplicial objects, the face maps $d^i$ raise degree, so we should get an equivalence between cosimplicial abelian groups and cochain complexes of abelian groups. This is indeed what happens.
 \begin{defn}
@@ -105,37 +106,83 @@ Now we dualize. Recall that for simplicial objects, the face maps $d_i$ lower de
   and its Moore complex has 
   \[MC^n = C^n, \quad \partial' = \sum_{i=0}^{n+1} (-1)^i d^i: C^n\to C^{n+1}.\]
 \end{defn}
-And analogously we obtain the following two theorems:
-\begin{thm}[Dold--Kan correspondence, dual] The functor $N: \catname{csAb} \to \catname{coCh_+(Ab)}$ is an equivalence of categories between cosimplicial abelian groups and non-negative cochain complexes of abelian groups.
+Analogously we obtain the following statements:
+\begin{thm}[Dold--Kan correspondence, dual] Let $C$ be a cosimplicial abelian group.
+  \begin{enumerate}
+    \item The functor $N: \catname{csAb} \to \catname{coCh_+(Ab)}$ is an equivalence of categories between cosimplicial abelian groups and non-negative cochain complexes of abelian groups.
+    \item The quotient of cochain complexes $MC \rightarrow NC$ is a cochain homotopy equivalence, natural in $C$.
+    \item There is a functorial direct sum decomposition $MC = NC \oplus DC$, where $DC$ is the subcomplex generated by the images of all the coface maps. Consequently, $DC$ is acyclic.
+  \end{enumerate}
 \end{thm}
-\begin{thm}
-The quotient of cochain complexes $MC \rightarrow NC$ is a cochain homotopy equivalence, natural in $C$.
-\end{thm}
-Really we could have stated the previous four theorems for simplicial objects in any abelian category. In the following discussion, we replace ``abelian group'' with ``$R$-module'' for some commutative ring $R$. Consider the free $R$-module functor $R[-]:\catname{Set} \to \catname{Mod}_R$. Then given any cosimplicial set $X^\bullet: \mathbf{\Delta} \to \catname{Set}$ the composition of functors $R[X^\bullet]$ yields a cosimplicial $R$-module. 
+Really we could have stated the previous four theorems for simplicial objects in any abelian category. 
+In the following discussion, we replace ``abelian group'' with ``$R$-module'' for some commutative ring $R$. Consider the free $R$-module functor $R[-]:\catname{Set} \to \catname{Mod}_R$. Then given any cosimplicial set $X^\bullet: \mathbf{\Delta} \to \catname{Set}$ the composition of functors $R[X^\bullet]$ yields a cosimplicial $R$-module. We first state a useful lemma. The author first encountered it in a MathOverflow comment of Tom Goodwillie, and here we supply the proof:
+\begin{lem}[Goodwillie's lemma]\label{lem:goodwillie}
+    Let $n>0$ and choose $x,y \in X^n$. If $x,y$ are not in the image of any coface maps $d^j: X^{n-1}\to X^n$, then $d^ix = d^jy$ implies $i=j$ and $x=y$.
+    \begin{proof}
+      First suppose $i<j$. Then $d^ix = d^jy$ implies 
+      \[d^i s^{j-1}x = s^jd^ix = s^jd^jy = y\]
+      so that $y$ is in the image of a coface map, a contradiction. The same argument for $j<i$ leaves only the possibility $i=j$. But $s^id^i =\id$, implying that $d^i$ is injective, so $x=y$.
+    \end{proof} 
+\end{lem}
 \begin{prop}
-  Under the Dold--Kan correspondence, $R[X^\bullet]$ has zero cohomology in positive degree.
+  Under the Dold--Kan correspondence, $C^\bullet:=R[X^\bullet]$ has zero cohomology in positive degree.
   \begin{proof}
-    Is this true???
+      
   \end{proof}
 \end{prop}
-\begin{prop}
-  Let $P_{a,b}^\bullet X$ be the cosimplicial path space. For fixed $p\geq 0$, define the cosimplicial abelian group $C_p(F^\bullet_{a,b}X)$ with 
-  \[C_p(F^q_{a,b}X) := \Z[\Map(\Delta^p, P_{a,b}^qX)]\]
-  i.e. take singular $p$-chains on the $q$th cosimplex of $P_{a,b}^\bullet X$. Under the cosimplicial Dold--Kan correspondence, the associated cochain complex has cohomology 
-  \[H^* = \begin{cases}
-    \Z & *=0, a=b\\
-    0 & \text{otherwise}
-  \end{cases}\]
-  \begin{proof}
-    We have the following order of operations. We begin with our cosimplicial space $P_{a,b}^\bullet X$. Then we build the cosimplicial set 
-    \[[q]\mapsto \Map(\Delta^p,  P_{a,b}^qX) = \Map(\Delta^p, X^q)\]
-    Then passing to the free abelian group and applying the Moore complex functor, we obtain the cochain complex (which we choose to write here in terms of the free abelian groups rather than using the reduced notation $C_p(X^q)$):
-    \[\Z\Map(\Delta^p, *)\xrightarrow{\partial_0} \Z\Map(\Delta^p, X) \xrightarrow{\partial_1} \Z\Map(\Delta^p, X^2) \to \cdots \]
-    where $\partial_i$ is the map defined on the basis via
-    \[\Z\Map(\Delta^p, X^q) \to \Z\Map(\Delta^p, X^{q+1}), \quad f \mapsto \sum_{i=0}^q (-1)^i d^i \circ f.\] 
-    Consider the following family of maps:
-    \[h_q: \Z\Map(\Delta^p, X^q) \to \Z\Map(\Delta^p, X^{q-1}),\quad f \mapsto \begin{cases}
-      s^0 \circ f
-    \end{cases}\]
-  \end{proof}
+
+
+\subsection{Alexander--Whitney}
+In the proof of Looijenga's theorem there is a step where we roughly need to move from singular chains on a product space to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map. We will present it in generality before specializing to our case.
+
+In some sense, the Alexander--Whitney map is a way of moving between the category of simplicial abelian groups and the category of chain complexes of abelian groups that preserves their respective monoidal structure. Let us recall these structures. The monoidal product on $\catname{sAb}$ is given levelwise: for $A, B\in\catname{sAb}$, we have 
+\[(A\tensor B)_n = A_n\tensor B_n\]
+and the face and degeneracy maps are inherited naturally. The monoidal product on the category of chain complexes is given as follows: for $X,Y \in \catname{Ch}_+(\catname{Ab})$, define 
+\[(X\tensor Y)_n = \bigoplus_{p+q = n} X_p\tensor Y_q.\]
+and the new differential $(X\tensor Y)_n\to (X\tensor Y)_{n-1}$ by the Koszul sign rule:
+\[\partial_{X\tensor Y}(x\tensor y) = \partial_X x\tensor y + (-1)^{\deg x}x \tensor\partial_Yy.\] 
+\begin{defn}
+Let $M: \catname{sAb} \to \catname{Ch}_{+}(\catname{Ab})$ be the Moore complex functor. The \emph{Alexander--Whitney} map is a natural transformation of the functors $\catname{sAb}\times \catname{sAb} \to \catname{Ch}_+(\catname{Ab})$
+\[\AW: M(-\tensor -) \implies M(-)\tensor M(-)\]
+whose components are given as follows. For $A, B \in \catname{sAb}$ and $a \in A_n, b \in B_n$, define the map 
+\[\AW_{A,B}: M(A\tensor B) \to M(A)\tensor M(B), \quad a\tensor b\mapsto \bigoplus_{p+q = n} \tilde{d}^p(a)\tensor d^q(b)\]
+where $d^p$ is the face map induced by $[p]\to [n], i\mapsto i$, and $d^q$ is the face map induced by $[q]\to [n], i \mapsto i+p$. 
+\end{defn}
+\begin{rem}
+$\AW$ restricts to a natural transformation 
+\[N(-\tensor -)\implies N(-) \tensor N(-)\]
+where $N$ is the normalized chains functor. (We will denote this restriction also by $\AW$.)
+\end{rem}
+\begin{prop}\label{prop:AW_quasiiso}
+Let $A, B \in \catname{sAb}$. Then 
+\[\AW_{A,B}: N(A\tensor B) \to N(A)\tensor N(B)\]
+is a natural quasi-isomorphism.
+\begin{proof}
+Kerodon \cite[\href{https://kerodon.net/tag/00S0}{Tag 00S0}]{kerodon}.
+\end{proof}
 \end{prop}
+This is a significant fact in homological algebra; now we employ only a fraction of its power. Let $X, Y$ be a topological space, and $C_\bullet(-)$ denote the singular chains functor from $\catname{Top}$ to $\catname{sAb}$. Then $MC_\bullet(X)$ is the singular chain complex of $X$ in the usual sense.
+\begin{cor}
+There is a natural quasi isomorphism   
+\[MC_\bullet(X\times Y) \to MC_\bullet(X)\tensor MC_\bullet(Y).\]
+\begin{proof}
+Recall that $C_\bullet(-)$ is the composition of the following functors: 
+\[\catname{Top} \xrightarrow{X\mapsto \Map(\Delta^\bullet, X)} \catname{sSet} \xrightarrow{A_\bullet \mapsto \Z[A_\bullet]} \catname{sAb}\]
+and under this composition we get 
+\[X\times Y\ \mapsto \Map(\Delta^\bullet, X\times Y) = \Map(\Delta^\bullet, X)\times \Map(\Delta^\bullet, Y)  \mapsto \Z[\Map(\Delta^\bullet, X)]\tensor \Z[\Map(\Delta^\bullet, Y)]\]
+because the free abelian group functor sends Cartesian products of sets to tensor products of groups. So the simplicial abelian group $C_\bullet(X\times Y)$ is equal to $C_\bullet(X)\tensor C_\bullet(Y)$. Thus applying Proposition \ref{prop:AW_quasiiso} and the Dold--Kan correspondence we are done.
+\end{proof}
+\end{cor}
+Really what we have defined here is a topological Alexander--Whitney map which is a natural transformation of the functors $\catname{Top} \times \catname{Top}\to \catname{sAb}$:
+\[MC_\bullet(-\times -)\to MC_\bullet(-)\tensor MC_\bullet(-)\]
+For topological spaces $X,Y$, denote the constituent map by $\AW_{X,Y}$.
+From now we will use $C_\bullet(X)$ to mean both the singular chain \textit{complex} and the simplicial abelian group, depending on context. 
+\begin{cor}
+For $q\geq 0$ and a topological space $X$, there is a natural quasi-isomorphism of chain complexes 
+\[C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}.\]
+\begin{proof}
+Iterate the topological Alexander--Whitney map 
+\[C_\bullet(X\times X^{q-1}) \xrightarrow{\AW_{X, X^{q-1}}} \cdots \xrightarrow{\id^{\tensor q-2}\tensor \AW_{X, X}} C_\bullet(X)^{\tensor q}.\]
+Since each component is a natural quasi-isomorphism, so is the composition.
+\end{proof}
+\end{cor}
