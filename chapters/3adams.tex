@@ -1,6 +1,38 @@
 \section{Adams' cobar construction}
 In this chapter we define the cobar construction of a coalgebra and build up to Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of Looijenga's theorem. 
 
-\subsection{The statement} 
-\subsection{Cobar as a bicomplex}
+\subsection{The cobar construction}
+Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital coassociative $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper. We follow the modern presentation given in \cite{Rivera2022}.
+\begin{defn}
+    Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
+    \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
+    and whose differential is given by extending the linear map 
+    \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
+    to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
+\end{defn}
+We've not been explicit about the dg structure on $\Cobar(C)$,but this definition is valid owing to the following proposition:
+\begin{prop}
+    Determined by
+\end{prop}
+
+Regardless, it will be helpful to be a little more explicit. Notice that in the cobar differential, we utilize both the internal differential $\partial$ of $C$ as well as the coproduct $\Delta$. This suggests that upon expanding definitions, we should be able to realize the cobar construction as the totalization of a bicomplex. This is mostly a tedious exercise in indexing, but it will turn out to be useful later. 
+
+\begin{defn}
+    Let $(C, \Delta, \partial)$ be as above. The \emph{cobar bicomplex} is the bicomplex $\Cobar_{\bullet}^\bullet(C)$ with 
+    \[\Cobar_p^q = \bigoplus_{n_1 + \cdots + n_q = p} (s^{-1}\overline{C})_{n_1} \tensor \cdots\tensor (s^{-1}\overline{C})_{n_q}\]
+    and differentials
+    \[d_H: \Cobar_{p,q}\to \Cobar_{p-1}^q,\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^\sigma(x_i) x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_n\]
+    \[d_V: \Cobar_p^q \to \Cobar_p^{q+1}, \quad x_1\tensor \cdots \tensor x_n \mapsto \sum_{i=1}^q(-1)^\sigma(x_i) x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_n.\]
+\end{defn}
+\begin{prop}
+The totalization of $\Cobar^\bullet_\bullet(C)$ given by 
+\[\tot_k(\Cobar^\bullet_\bullet) = \bigoplus_{p-q =n} \Cobar^q_p, \quad \partial_{\tot} = \]
+is isomorphic to the standard cobar construction on $C$.
+\end{prop}
+
+
+
+
+
+What is miraculous is that this purely algebraic construction encodes a good amount of topological information.
 \subsection{Refinements}

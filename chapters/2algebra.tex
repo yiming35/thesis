@@ -105,8 +105,8 @@ Just as a unital associative $R$-algebra $A$ is one admitting a unital morphism 
 	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
 \end{tikzcd}.\]
 
-The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. 
-
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
+\[\overline{\Delta}(x) = \Delta(x) - 1\tensor x - x\tensor 1.\]
 
 \subsection{Conilpotency, cofreeness, and the tensor coalgebra}
 Let $(C,\Delta)$ be a coaugmented coalgebra. Define the \emph{coradical} (sometimes also called \emph{canonical}) filtration on $C$ as follows: 
@@ -151,5 +151,5 @@ For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\opl
 
 \subsection{Differential graded coalgebras}
 \begin{exmp}
-Singular chains on a space and the Alexander--Whitney product
+Singular chains on a space, (de)suspension
 \end{exmp}
