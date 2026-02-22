@@ -3,14 +3,11 @@
 \subsection{The theorem}
 Let $X$ be a path-connected topological space and choose basepoints $a, b \in X$. Let $\pi_X(a,b)$ be the set of homotopy classes of paths in $X$ from $a$ to $b$. In particular when $a=b$ we obtain the fundamental group of $X$. Notice that $\pi_1(X,a)$ acts on $\pi_X(a,b)$ on the right by concatenation of paths, so that the free abelian group $\Z\pi_X(a,b)$ is a right $\Z\pi_1(X)$-module. Let $\mathcal{I}_a\subset \Z\pi_1(X,a)$ be the augmentation ideal. 
 
-Consider now the following subspace of $X^n$
-\[X(n)^a_b := \{(x_1, ..., x_n) \in X^n: \begin{cases}
-x_1 = a, \text{ or} \\
-x_i = x_{i+1} \text{ for $i \in \{1, ...,n \}$, or}\\
-x_n = b
-\end{cases} \}.\]
-
-\begin{thm}
+Consider now the following subspaces of $X^n$
+\[X(n)^a := \{(x_1, ..., x_n) \in X^n: \text{$x_1 = a$ or $x_i = x_{i+1}$ for $i \in \{1, ..., n-1\}$} \} \]
+\[X(n)_b := \{(x_1, ..., x_n) \in X^n: \text{$x_n = b$ or $x_i = x_{i+1}$ for $i \in \{1, ..., n-1\}$} \} \]
+and let $X(n)^a_b := X(n)^a \cup X(n)_b$.
+\begin{thm}\label{thm:looijenga}
 There is a map 
 \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1}_a\to H_n(X^n, X(n)^a_b; \Z)\]
 which is a surjection with kernel $\Z$ if $a=b$ and an isomorphism if $a\neq b$.

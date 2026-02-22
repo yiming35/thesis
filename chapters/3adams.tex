@@ -7,32 +7,77 @@ Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
     \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
     and whose differential is given by extending the linear map 
+    % should this be reduced coprod or what i have now
     \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
-We've not been explicit about the dg structure on $\Cobar(C)$,but this definition is valid owing to the following proposition:
-\begin{prop}
-    Determined by
+We've not been explicit about the differential graded structure on $\Cobar(C)$, but this definition is valid owing to the following proposition:
+\begin{prop}\label{prop:maps_extend}
+    Let $M$ be an $R$-module. Any linear map $M \to TM$ extends uniquely to a derivation $TM\to TM$.
+    \begin{proof}
+        This follows from the more general Proposition 1.1.8, \cite{Loday2012}.
+    \end{proof} 
 \end{prop}
 
-Regardless, it will be helpful to be a little more explicit. Notice that in the cobar differential, we utilize both the internal differential $\partial$ of $C$ as well as the coproduct $\Delta$. This suggests that upon expanding definitions, we should be able to realize the cobar construction as the totalization of a bicomplex. This is mostly a tedious exercise in indexing, but it will turn out to be useful later. 
+Regardless, it will be helpful to be a little more explicit. Notice that in the cobar differential, we utilize both the internal differential $\partial$ of $C$ as well as the coproduct $\Delta$. This suggests that upon expanding definitions, we should be able to realize the cobar construction as the totalization of a bicomplex. This is mostly a tedious exercise in indexing, but it will turn out to be useful later.
 
 \begin{defn}
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar bicomplex} is the bicomplex $\Cobar_{\bullet}^\bullet(C)$ with 
     \[\Cobar_p^q = \bigoplus_{n_1 + \cdots + n_q = p} (s^{-1}\overline{C})_{n_1} \tensor \cdots\tensor (s^{-1}\overline{C})_{n_q}\]
     and differentials
-    \[d_H: \Cobar_{p,q}\to \Cobar_{p-1}^q,\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^\sigma(x_i) x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_n\]
-    \[d_V: \Cobar_p^q \to \Cobar_p^{q+1}, \quad x_1\tensor \cdots \tensor x_n \mapsto \sum_{i=1}^q(-1)^\sigma(x_i) x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_n.\]
+    \[d_H: \Cobar_{p,q}\to \Cobar_{p-1}^q,\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
+    \[d_V: \Cobar_p^q \to \Cobar_p^{q+1}, \quad x_1\tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_q\]
+    where the $x_i$ are elements of $(s^{-1}\overline{C})_{n_i}$ and $\sigma(x_i)$ is the Koszul sign $\deg x_1 + \cdots + \deg x_{i-1}$.
 \end{defn}
 \begin{prop}
 The totalization of $\Cobar^\bullet_\bullet(C)$ given by 
-\[\tot_k(\Cobar^\bullet_\bullet) = \bigoplus_{p-q =n} \Cobar^q_p, \quad \partial_{\tot} = \]
-is isomorphic to the standard cobar construction on $C$.
+\[\tot_k(\Cobar^\bullet_\bullet) = \bigoplus_{p-q = k} \Cobar^q_p\]
+with differential $\partial_{\tot} = d_H+(-1)^qd_V$ on $\Cobar^q_p$, is isomorphic as a dg algebra to $\Cobar(C_\bullet)$.
+\begin{proof}
+    Here the isomorphism is actually equality. We first check that the underlying $R$-algebras are the same:
+    \begin{equation}
+        \begin{split}
+            \tot_\bullet(\Cobar^\bullet_\bullet) &= \bigoplus_{k\in \Z} \bigoplus_{p-q = k} \Cobar^q_p \\
+            &= \bigoplus_{q \geq 0} \bigoplus_{p\geq 0}\Cobar^q_p \\
+            &= \bigoplus_{q \geq 0}  \bigoplus_{p\geq 0}\bigoplus_{n_1 + \cdots + n_q = p} (s^{-1}\overline{C})_{n_1} \tensor \cdots\tensor (s^{-1}\overline{C})_{n_q} \\
+            &= \bigoplus_{q\geq 0} (s^{-1}\overline{C})_q \\
+            &= \Cobar(C_\bullet(X)).
+        \end{split}
+    \end{equation}
+    Now by Proposition \ref{prop:maps_extend}, it suffices to check that $\partial_{\tot}$ extends the map $s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}$ given in the definition of the cobar complex. Indeed, we have that on
+    \[s^{-1}\overline{C} = \bigoplus_{n_1 =p\geq 0} (s^{-1}\overline{C})_{n_1} =\bigoplus_{p\geq 0} \Cobar^1_p,\]
+    the differential is $\partial_{\tot} = d_H - d_V$ which is exactly the cobar differential.
+\end{proof}
 \end{prop}
 
+What is miraculous is that this purely algebraic construction encodes a good amount of topological information. This is the content of Adams' theorem:
+\begin{thm}[\cite{AdamsCobar}]
+    Let $(X,x)$ be a simply connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then there is a natural isomorphism
+    \[H_\bullet(\Cobar(C_\bullet(X)))\cong H_\bullet(\Omega_xX).\]
+\end{thm}
+Thus we can regard the cobar construction as the algebraic analogue of the loop space functor. Some stuff about classifying spaces, adjointness, etc. Bar construction, etc
 
-
-
-
-What is miraculous is that this purely algebraic construction encodes a good amount of topological information.
 \subsection{Refinements}
+The isomorphism of Adams' theorem actually comes from a chain-level quasi-isomorphism. Moreover, the assumption that $X$ is simply connected can be removed. 
+\begin{thm}[\cite{Rivera2022}, Theorem 1]
+    Let $(X,x)$ be a path connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then $\Cobar(C_\bullet(X))$ is quasi-isomorphic to $C_\bullet(\Omega_xX)$ as dg algebras. 
+\end{thm}
+\begin{rem}
+    We have stated the theorem for singular chains $C_\bullet(X)$ rather than some modified chains $C_\bullet(X,b)$ (not the relative chains!), but these are quasi-isomorphic? 
+\end{rem}
+Moreover, there is a canonical way in which the cobar construction is related to the augmentation ideal-adic truncations of the fundamental group ring:
+\begin{thm}[\cite{gadish_letterbraiding}, Theorem 1.2(3)]
+    Let $A$ be a PID, and $\Gamma$ a group. Let $\mathcal{I}$ be the augemntation ideal of the group ring $A[\Gamma]$. Then we have the following isomorphism 
+    \[(\mathcal{I}^n)^{\perp} \cong H^0(\Barr_{<n}(C^\bullet(B\Gamma)); A)\]
+    where the left hand side is the orthogonal complement of $\mathcal{I}^n < A[\Gamma]$, and the left hand side is the zeroth cohomology of the subcoalgebra of the bar construction on the cochains of the classifying space $B\Gamma$, consisting of weight $<n$ tensors. \hfill \qed
+\end{thm}
+Taking $A=\Z$, $\Gamma = \pi_1(X,x)$, and dualizing, we obtain the following:
+\begin{cor}
+    There is an isomorphism of groups
+    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(B\pi_1(X,x))))\]
+    and consequently 
+    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(X))).\]
+    \begin{proof}
+        The first statement follows immediately from Gadish's theorem. The second statement follows since the zeroth homology of the cobar construction depends only on the fundamental group of a space. To see this,
+    \end{proof}
+\end{cor}

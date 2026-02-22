@@ -1,1 +1,114 @@
 \section{The proof}
+Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this section let $X$ be a path connected topological space with basepoints $a,b$. Our strategy will be use the cosimplicial path space model to construct the $E^0$-page of a spectral sequence which (1) converges to the group $H_n(X^n, X(n)^a_b)$ and (2) is related to the cobar construction, hence the groups $\Z\pi_1(X,a)/\Z\pi_1(X,a)\mathcal{I}^{n+1}_a$.
+
+\subsection{This spectral sequence...} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
+
+Now consider the bicomplex $\mathscr{C}^\bullet_\bullet$ which is morally obtained by applying singular chains to $P^\bullet$: 
+\[\mathscr{C}^q_p = C_p(P^q)\]
+with ``horizontal'' differential $d^\mathscr{C}_H: C_p(P^q)\to C_{p-1}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d^V_\mathscr{C}: C_p(P^q) \to C_p(P^q)$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
+\begin{prop}
+ $C^\bullet_\bullet$ is a bicomplex.
+ \begin{proof}
+ That $d^\mathscr{C}_H$ and $d^V_\mathscr{C}$ both square to zero follows from the fact that each row is a chain complex and each row is a cochain complex. It remains to check commutativity of the squares: 
+ 
+\[\begin{tikzcd}[cramped]
+    % https://q.uiver.app/#q=WzAsNCxbMSwxLCJDX3AoWF5xKSJdLFsxLDAsIkNfcChYXntxKzF9KSJdLFswLDAsIkNfe3AtMX0oWF57cSsxfSkiXSxbMCwxLCJDX3twLTF9KFhee3F9KSJdLFswLDFdLFswLDNdLFszLDJdLFsxLDJdXQ==
+	{C_{p-1}(X^{q+1})} & {C_p(X^{q+1})} \\
+	{C_{p-1}(X^{q})} & {C_p(X^q)}
+	\arrow[from=1-2, to=1-1]
+	\arrow[from=2-1, to=1-1]
+	\arrow[from=2-2, to=1-2]
+	\arrow[from=2-2, to=2-1]
+\end{tikzcd}\]
+Starting with a map $f: \Delta^p \to X^q$, if we first go up then left, we get the map 
+\[ \Delta^{p-1}\xrightarrow{([p]\to [p-1])^*}\Delta^p \xrightarrow{f} X^q \xrightarrow{\sum (-1)^id^i} X^{q+1}\]
+and proceeding in the other direction gives the exact same map.
+(This is really obvious, might not need to include).
+ \end{proof}
+\end{prop}
+
+Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism (?) of bicomplexes by Dold--Kan. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
+\[\mathscr{N}^q_p = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
+Moreover, the vertical differential $\mathscr{N}^q_p \to \mathscr{N}^{q+1}_p$ is induced by the zeroth coface map $d^0$. 
+% See Figure \ref{fig:bicomplex_C} for the first few rows and columns.
+% \begin{figure}
+%     \begin{tikzcd}[cramped]
+%     % https://q.uiver.app/#q=WzAsMTUsWzAsMywiQ18wKCopIl0sWzEsMywiQ18xKCopIl0sWzIsMywiQ18yKCopIl0sWzAsMiwiQ18wKFgpIl0sWzEsMiwiQ18xKFgpIl0sWzIsMiwiQ18yKFgpIl0sWzAsMSwiQ18wKFheMikiXSxbMSwxLCJDXzAoWF4yKSJdLFsyLDEsIkNfMChYXjIpIl0sWzMsMSwiXFxjZG90cyJdLFszLDIsIlxcY2RvdHMiXSxbMywzLCJcXGNkb3RzIl0sWzIsMCwiXFx2ZG90cyJdLFsxLDAsIlxcdmRvdHMiXSxbMCwwLCJcXHZkb3RzIl0sWzMsNl0sWzAsM10sWzEsMF0sWzQsM10sWzcsNl0sWzgsN10sWzUsNF0sWzQsN10sWzIsMV0sWzIsNV0sWzEsNF0sWzUsOF0sWzksOF0sWzEwLDVdLFsxMSwyXSxbOCwxMl0sWzcsMTNdLFs2LDE0XV0=
+% 	\vdots & \vdots & \vdots & \\
+% 	{C_0(X^2)} & {C_0(X^2)} & {C_0(X^2)} & \cdots \\
+% 	{C_0(X)} & {C_1(X)} & {C_2(X)} & \cdots \\
+% 	{C_0(*)} & {C_1(*)} & {C_2(*)} & \cdots
+% 	\arrow[from=2-1, to=1-1]
+% 	\arrow[from=2-2, to=1-2]
+% 	\arrow[from=2-2, to=2-1]
+% 	\arrow[from=2-3, to=1-3]
+% 	\arrow[from=2-3, to=2-2]
+% 	\arrow[from=2-4, to=2-3]
+% 	\arrow[from=3-1, to=2-1]
+% 	\arrow[from=3-2, to=2-2]
+% 	\arrow[from=3-2, to=3-1]
+% 	\arrow[from=3-3, to=2-3]
+% 	\arrow[from=3-3, to=3-2]
+% 	\arrow[from=3-4, to=3-3]
+% 	\arrow[from=4-1, to=3-1]
+% 	\arrow[from=4-2, to=3-2]
+% 	\arrow[from=4-2, to=4-1]
+% 	\arrow[from=4-3, to=3-3]
+% 	\arrow[from=4-3, to=4-2]
+% 	\arrow[from=4-4, to=4-3]
+% \end{tikzcd}
+% \caption{The bicomplex $\mathscr{C}^\bullet_\bullet$.}
+% \label{fig:bicomplex_C}
+% \end{figure}
+
+Now consider the bicomplex obtained from $\mathscr{N}$ by setting all rows above $q=n$ to zero, which we will denote by $(\mathscr{N}^{\leq n})^\bullet_\bullet$.
+\begin{prop}
+    Filtering $(\mathscr{N}^{\leq n})^\bullet_\bullet$ in the horizontal direction i.e. by the lower index, we obtain a spectral sequence collapsing on the second page with 
+    \[E^2_{n,n} = H_n(X^n, X(n)^a_b), \quad E^2_{0,0} = \begin{cases}
+        \Z & a=b\\
+        0 &  a\neq b
+    \end{cases}\]
+    converging to $H_\bullet(\tot(\mathscr{N}^{\leq n})^\bullet_\bullet)$.
+    \begin{proof}
+        Convergence is given by the fact that our bicomplex is concentrated in the first quadrant. To compute the $E^2$-page, let us begin in the $E^0$-page, whose $p$th column is the following normalized cochain complex (beginning below in degree $q=0$):
+        \[C_p(*)\to C_p(X, \{b\})\to \cdots\to C_p(X^n, X(n)_b)\to 0 \to \cdots\]
+        of the Moore complex 
+        \begin{equation}\label{eqn:moore_complex}
+            C_p(*)\to C_p(X) \to \cdots \to C_p(X^n)\to 0 \to \cdots
+        \end{equation}
+        so they have the same cohomology. Moreover, the $E^0$-differential is the cochain differential $d^0$ given our filtration. But now (\ref{eqn:moore_complex}) is just the cochain complex obtained by taking the free abelian group on the cosimplicial set $[q] \mapsto \Map(\Delta^p, F^q)$, with terms $q>n$ set to zero. Therefore, by Proposition \ref{prop:goodwillie_cor}, we have that $E^1_{p,q} = 0$ for $q \neq 0,n$. For $q=n$ and $q=0$, we have 
+        \[E^1_{p,n} = C_p(X^n, X(n)_b) /\im(d^0) = C_p(X^n, X(n)^a_b)\]
+        \[E^1_{p,0} = \ker(d^0: C_p(*)\to C_p(X, \{b\})) = \begin{cases}
+        \Z & p=0 , a=b \\
+        0 & \text{otherwise}
+        \end{cases}.\]
+
+        On the $E^1$-page, the differential is now induced by singular boundary map. Thus on the only two possibly nonzero rows $q=n$ of the $E^1$-page, we just compute the singular homology of to obtain
+        \[E^2_{p, n} = H_p(X^n, X(n)^a_b).\]
+        And on row $q=0$, we have 
+        \[E^2_{p, 0} = \begin{cases}
+            H_p(\Z\leftarrow 0 \leftarrow \cdots) & a=b \\
+            0 & a\neq b
+        \end{cases}\]
+        as desired. 
+
+        At this point, the only possibly nonzero entries on the $E^2$-page are on row $q=n$ and $q=0$. Since the $d^2$ differential has bidegree $(-2, -1)$, the only possibly nontrivial differential occurs when $n=q=1$ and $a=b$, in which case we need to check that the map 
+        \[E^2_{2,1} = H_2(X, \{a,b\}) = H_2(X, \{b\}) \to \Z = E^2_{0,0}\]
+        has trivial image. 
+    \end{proof}
+\end{prop}
+\begin{cor}
+We have a surjection 
+\[H_0(\tot(\mathscr{N}^{\leq n})^\bullet_\bullet) \twoheadrightarrow H_n(X^n, X(n)^a_b)\]
+whose kernel is $\Z$ if $a=b$ and trivial otherwise.
+\begin{proof}
+    Follows from convergence of the spectral sequence.
+\end{proof}
+\end{cor}
+\subsection{... (sort of) computes cobar}
+It remains to compute $H_0$ of this totalization. For this we return to our original bicomplex $\mathscr{C}^\bullet_\bullet$ and instead of normalizing we modify it in another way using the Alexander--Whitney map.
+We claim that this totalization is isomorphic to H0 of truncated cobar! 
+
+To see this, apply AW map to C, then see that this is exactly the cobar bicomplex 
+
+Use gadish's theorem, conclude
