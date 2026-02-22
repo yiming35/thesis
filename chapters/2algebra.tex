@@ -105,7 +105,7 @@ Just as a unital associative $R$-algebra $A$ is one admitting a unital morphism 
 	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
 \end{tikzcd}.\]
 
-The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $u: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $u$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ u_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $\eta: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $\eta$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ \eta_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
 \[\overline{\Delta}(x) = \Delta(x) - 1\tensor x - x\tensor 1.\]
 
 \subsection{Conilpotency, cofreeness, and the tensor coalgebra}
@@ -137,6 +137,13 @@ For example, $x \in M$ gets mapped to $1\tensor x + x\tensor 1$.
     \end{proof}
 \end{prop}
 
+\begin{prop}\label{prop:maps_extend}
+    Let $M$ be an $R$-module. Any linear map $M \to TM$ extends uniquely to a derivation $TM\to TM$.
+    \begin{proof}
+        This follows from the more general Proposition 1.1.8, \cite{Loday2012}.
+    \end{proof} 
+\end{prop}
+
 
 \begin{rem}
 For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\oplus \cdots$ also has an algebra structure given by tensor multiplication. We denote it by $TM$ rather than $T^cM$ to discern between the two structures. With this product it becomes the free associative $R$-algebra over $M$. In fact, the product and coproducts are compatible, making $TM$ into an \emph{bialgebra}, and in fact a \emph{Hopf algebra}.
@@ -150,6 +157,20 @@ For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\opl
 \end{prop}
 
 \subsection{Differential graded coalgebras}
+A \emph{differential graded} (often abbreviated to \emph{dg}) coalgebra is a coassociative coalgebra $(C, \Delta)$ with 
+\begin{enumerate}
+  \item a grading, i.e. $C = \oplus_{n \in \N} C_n$ such that the product sends $C_n$ to $\oplus_{i+j=n} C_i \tensor C_j$, and
+  \item a differential $d$ sending $C_i$ to $C_{i-1}$, satisfying the dual identity
+  \[\Delta \circ d = (d\tensor \id + \id \tensor d) \circ \Delta.\]
+\end{enumerate}
+Similarly this implies that the coproduct is a morphism of chain complexes, and we can think of dga coalgebras as either (1) chain complexes with a compatible coproduct, or (2) coalgebras with compatible differential. For example, the tensor (co)algebra from before is graded over $\N$.
+
+Given a dg $R$-coalgebra $C=\oplus_{n \in \N} C_n$, we can define its \emph{suspension} $sC$ to be $C$ shifted up a degree, i.e. $(sV)_i = V_{i-1}$, and its \emph{desuspension} $s^{-1}C$ to be $C$ shifted down a degree, i.e. $(s^{-1}C)_j = C_{j+1}$. Then any $x \in C_n$ determines an element $sx \in (sC)_{n+1}$ and $s^{-1}x \in (s^{-1}C)_{n-1}$. Defining these turns out to be helpful for degree bookkeeping reasons.
+
 \begin{exmp}
-Singular chains on a space, (de)suspension
+Consider the singular chains $(C_\bullet(X; \Z),\partial)$ on a topological space $X$ with basepoint $x$. We claim that they form a coaugmented dg $\Z$-coalgebra (in fact also a bialgebra). For the coproduct, notice that we always have a diagonal map $x \mapsto (x,x)$, which induces a chain map $C_\bullet(X) \to C_\bullet(X\times X)$. Now is a natural quasi-isomorphism $C_\bullet(X)\tensor C_\bullet(X)$ (for more details see Section 4.4... this ordering is not good). $C_\bullet(X)$ is counital with the map $\epsilon: C_\bullet(X) \to \Z$ given by sending all 0-simplicies to $1$ and has a coaugmentation $\eta: \Z\to C_\bullet(X)$ which sends $1$ to the 0-simplex at $x$.
+\end{exmp}
+
+\begin{exmp}
+The tensor (co)algebra
 \end{exmp}
