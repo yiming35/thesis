@@ -168,9 +168,43 @@ Similarly this implies that the coproduct is a morphism of chain complexes, and 
 Given a dg $R$-coalgebra $C=\oplus_{n \in \N} C_n$, we can define its \emph{suspension} $sC$ to be $C$ shifted up a degree, i.e. $(sV)_i = V_{i-1}$, and its \emph{desuspension} $s^{-1}C$ to be $C$ shifted down a degree, i.e. $(s^{-1}C)_j = C_{j+1}$. Then any $x \in C_n$ determines an element $sx \in (sC)_{n+1}$ and $s^{-1}x \in (s^{-1}C)_{n-1}$. Defining these turns out to be helpful for degree bookkeeping reasons.
 
 \begin{exmp}
+The tensor (co)algebra
+\end{exmp}
+
+
+\begin{exmp}
 Consider the singular chains $(C_\bullet(X; \Z),\partial)$ on a topological space $X$ with basepoint $x$. We claim that they form a coaugmented dg $\Z$-coalgebra (in fact also a bialgebra). For the coproduct, notice that we always have a diagonal map $x \mapsto (x,x)$, which induces a chain map $C_\bullet(X) \to C_\bullet(X\times X)$. Now is a natural quasi-isomorphism $C_\bullet(X)\tensor C_\bullet(X)$ (for more details see Section 4.4... this ordering is not good). $C_\bullet(X)$ is counital with the map $\epsilon: C_\bullet(X) \to \Z$ given by sending all 0-simplicies to $1$ and has a coaugmentation $\eta: \Z\to C_\bullet(X)$ which sends $1$ to the 0-simplex at $x$.
 \end{exmp}
 
-\begin{exmp}
-The tensor (co)algebra
-\end{exmp}
+\subsection{Comodules} Continuing with our previous example of singular chains on a space $X$, the situation changes if we want to talk about two distinct basepoints $a, b \in X$. In this case there is no preferred choice of coaugmentation for the coalgebra $C_\bullet(X)$. For this we need the notion of a comodule.
+
+\begin{defn}
+A \emph{left comodule} over a unital $R$-coalgebra $(C, \Delta, \epsilon)$ is an $R$-module $N$ with a left action 
+\[\Delta^L: N\to C\tensor N\]
+compatible with the coproduct and counit in the sense that the following diagrams commute:
+\[\begin{tikzcd}[cramped]
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCJOIl0sWzEsMCwiQ1xcdGVuc29yIE4iXSxbMCwxLCJDXFx0ZW5zb3IgTiJdLFsxLDEsIkNcXHRlbnNvciBDXFx0ZW5zb3IgTiJdLFsyLDAsIk4iXSxbMiwxLCJDXFx0ZW5zb3IgTiJdLFszLDEsIlJcXHRlbnNvciBOIl0sWzAsMSwiXFxEZWx0YV5MIl0sWzAsMiwiXFxEZWx0YV5MIiwyXSxbMSwzLCJcXGlkXFx0ZW5zb3IgXFxEZWx0YV5MIl0sWzIsMywiXFxEZWx0YVxcdGVuc29yIFxcaWQiLDJdLFs1LDYsIlxcZXBzaWxvblxcdGVuc29yIFxcaWQiLDJdLFs0LDYsIlxcY29uZyJdLFs0LDUsIlxcRGVsdGFeTCIsMl1d
+	N & {C\tensor N} & N & \\
+	{C\tensor N} & {C\tensor C\tensor N} & {C\tensor N} & {R\tensor N}
+	\arrow["{\Delta^L}", from=1-1, to=1-2]
+	\arrow["{\Delta^L}"', from=1-1, to=2-1]
+	\arrow["{\id\tensor \Delta^L}", from=1-2, to=2-2]
+	\arrow["{\Delta^L}"', from=1-3, to=2-3]
+	\arrow["\cong", from=1-3, to=2-4]
+	\arrow["{\Delta\tensor \id}"', from=2-1, to=2-2]
+	\arrow["{\epsilon\tensor \id}"', from=2-3, to=2-4]
+\end{tikzcd}\]
+\end{defn}
+We can similarly define a \emph{right} comodule over $C$ as an $R$-module $M$ with the analogous right action 
+\[\Delta^R: M\to M\tensor C.\]
+If a left and right comodule $M$ also satsifies the following compatibility condition:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiQ1xcdGVuc29yIE0iXSxbMCwxLCJNXFx0ZW5zb3IgQyJdLFsxLDEsIk1cXHRlbnNvciBDXFx0ZW5zb3IgTSJdLFswLDEsIlxcRGVsdGFeTCJdLFswLDIsIlxcRGVsdGFeUiIsMl0sWzEsMywiXFxpZCBcXHRlbnNvciBcXERlbHRhXlIiXSxbMiwzLCJcXERlbHRhXkxcXHRlbnNvciBcXGlkIiwyXV0=
+\[\begin{tikzcd}[cramped]
+	M & {C\tensor M} \\
+	{M\tensor C} & {M\tensor C\tensor M}
+	\arrow["{\Delta^L}", from=1-1, to=1-2]
+	\arrow["{\Delta^R}"', from=1-1, to=2-1]
+	\arrow["{\id \tensor \Delta^R}", from=1-2, to=2-2]
+	\arrow["{\Delta^L\tensor \id}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+then we call $M$ a \emph{co-bimodule}. The simplest example of a co-bimodule over a coalgebra $C$ is $C$ itself, where the left right actions are just given by the coproduct. Returning to the example of singular chains, let $C = C_\bullet(X)$. Then the chains on the pathspace 

@@ -98,7 +98,6 @@ The following results and their proofs can be found in \cite{Goerss2009}, Chapte
   \end{enumerate}
 \end{thm}
 
-
 Now we dualize. Recall that for simplicial objects, the face maps $d_i$ lower degree. For cosimplicial objects, the face maps $d^i$ raise degree, so we should get an equivalence between cosimplicial abelian groups and cochain complexes of abelian groups. This is indeed what happens.
 \begin{defn}
   Let $C^\bullet$ be a cosimplicial abelian group. Its normalized cochain complex $(NC^\bullet, \partial)$ has 
@@ -160,46 +159,6 @@ In the following discussion, we replace ``abelian group'' with ``$R$-module'' fo
   Proposition \ref{prop:goodwillie_cor} is completely false for simplicial sets which carry a lot of homological information! For example, gien a simplicial set $K_\bullet$, the chain complex $NR[K_\bullet]$ computes the homology of $K$. If these groups were all zero we would be in trouble.
 \end{rem}
 
-%  By ..., we may write the normalized chain groups
-%       \[NC^n = \coker \bigoplus_{i=1}^n (d^i: R[X^n]\to R[X^{n}])\]
-%       as the direct sum 
-%       \[R[\tilde{X}^n] \oplus (\im d^0).\] 
-%       The differential $d^0$ is zero on the second summand since $d^0d^0 = d^1d^0$, which gets quotiented out, and the differential is an isomorphism from $R[\tilde{X}^n]$ into the $\im d^0$ summand. Hence for $n>0$,
-%       \[H^n(R[X^\bullet]) = \frac{\ker \partial_n}{\im \partial_{n-1}} = \frac{\im d^0}{\im d^0} = 0.\]
-
-% \begin{lem}\label{lem:goodwillie_cor}
-%     Any $x \in X^n$ can be written in the following form:
-%     \[x = d^{i_k}\circ  \cdots\circ d^{i_1}(x_k)\]
-%     for $x_k \in X^{n-k}$ not in the image of any coface map and $i_1 < \cdots < i_k$. Moreover, this form is unique.
-%     \begin{proof}
-
-%     Let $\tilde{X}^n\subset X^n$ be the subset of cosimplicies not in the image of any coface map. If $x \in \tilde{X}^n$, we are done. Otherwise, $x = d^{i_1}(x_1)$ for some $x_1 \in X^{n-1}$.
-%     If $x_1 \in \tilde{X}^{n-1}$, we are done. Otherwise continue iterating to obtain 
-%     \[x = d^{i_k}\circ  \cdots\circ d^{i_1}(x_k).\]
-%     for $x_k \in \tilde{X}^{n-k}$.
-%     Now applying the cosimplicial identity \cite[\href{https://stacks.math.columbia.edu/tag/016I}{Tag 016I}]{stacks-project}
-%     \[a \leq b \implies d^a\circ d^b = d^{b+1}\circ d^a \]
-%     starting with $a = i_2, b=i_1$, we can continue flipping the indices to obtain $i_1 < \cdots < i_k$.
-
-%     For uniqueness, suppose
-%     \begin{equation}\label{eqn:uniqueness_proof}
-%     x= d^{i_k}\circ  \cdots\circ d^{i_1}(x_k) = d^{j_l}\circ  \cdots\circ d^{j_1}(y_l)
-%     \end{equation}
-%     such that $x_k \in \tilde{X}^{n-k}$, $y_l \in \tilde{X}^{n-l}$, and $i_1 < \cdots i_k$ and $j_1 < \cdots j_l$.
-    
-%     % We now proceed by induction on $n$. If $n=0$, there is nothing to show. Suppose for now that $i_1=j_1$. Applying $s^{i_1}$ to both sides of \ref{eqn:uniqueness_proof}, we use the cosimplicial identity  
-%     % \[a> b+1 \implies s^b\circ d^a = d^{a-1} \circ s^b\]
-%     % to conclude
-%     % \[s^{i_1}(x) = d^{i_k-1}\circ \cdots \circ s^{i_1}\circ d^{i_1}(x_k) = d^{j_l-1}\circ  \cdots\circ s^{i_1}\circ d^{j_1}(x_l)\]
-%     % Since $s^a\circ d^a = \id$ and $i_1 = j_1$, we have
-%     % \begin{equation}\label{eqn:uniqueness_proof_2}
-%     %   s^{i_1}(x) = d^{i_k-1}\circ \cdots \circ d^{i_2-1}(x_k) = d^{j_l-1}\circ  \cdots \circ d^{j_2-1}(x_l)
-%     % \end{equation}
-%     % which by induction implies that $k=l$, $i_j = j_l$, as desired. 
-
-%     % It remains to show that $i_1=j_1$. 
-%     \end{proof} 
-% \end{lem}
 
 \subsection{Alexander--Whitney}
 In the proof of Looijenga's theorem there is a step where we roughly need to move from singular chains on a product space to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map. We will present it in generality before specializing to our case.

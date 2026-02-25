@@ -50,6 +50,22 @@ What is miraculous is that this purely algebraic construction encodes a good amo
 \end{thm}
 Thus we can regard the cobar construction as the algebraic analogue of the loop space functor. Some stuff about classifying spaces, adjointness, etc. Bar construction, etc
 
+\subsection{Two-sided version} 
+The cobar construction of a dg coalgebra is a special case of a more general \emph{two-sided} cobar construction. An analogous two-sided bar construction is well documented (for example \cite{May2025}, \cite{Zhang2019TwoSidedBar}). Here we give an exposition of the dual construction, which seems to not appear in the literature:
+\begin{defn}
+Let $C = \overline{C}\oplus R$ be a coaugmented $R$-coalgebra and let $N,M$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
+\[\Cobar(N,C,M)^q = M\tensor C^{\tensor q} \tensor N\]
+with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
+\[d^i = \begin{cases}
+    \Delta^R \tensor \id^{\tensor q} & i =0  \\
+    \id^{\tensor i } \tensor \Delta \tensor \id^{q-i} & i \in \{1, ..., q-1\} \\
+    \id^{\tensor q}\tensor \Delta^L & i =q
+\end{cases}\]
+and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
+\[s^i = \id^{\tensor i} \tensor \epsilon \tensor \id^{\tensor q-i-1}\]
+\end{defn}
+If $C$ also has dg structure ...
+
 \subsection{Refinements}
 The isomorphism of Adams' theorem actually comes from a chain-level quasi-isomorphism. Moreover, the assumption that $X$ is simply connected can be removed. 
 \begin{thm}[\cite{Rivera2022}, Theorem 1]
