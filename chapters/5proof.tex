@@ -1,7 +1,7 @@
 \section{The proof}
 Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this section let $X$ be a path connected topological space with basepoints $a,b$. Our strategy will be use the cosimplicial path space model to construct the $E^0$-page of a spectral sequence which (1) converges to the group $H_n(X^n, X(n)^a_b)$ and (2) is related to the cobar construction, hence the groups $\Z\pi_1(X,a)/\Z\pi_1(X,a)\mathcal{I}^{n+1}_a$.
 
-\subsection{This spectral sequence...} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
+\subsection{Building the spectral sequence} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
 
 Now consider the bicomplex $\mathscr{C}^\bullet_\bullet$ which is morally obtained by applying singular chains to $P^\bullet$: 
 \[\mathscr{C}^q_p = C_p(P^q)\]
@@ -103,7 +103,7 @@ whose kernel is $\Z$ if $a=b$ and trivial otherwise.
     Follows from convergence of the spectral sequence.
 \end{proof}
 \end{cor}
-\subsection{... (sort of) computes cobar}
+\subsection{Functoriality}
 It remains to compute $H_0$ of this totalization. For this we return to our original bicomplex $\mathscr{C}^\bullet_\bullet$ and instead of normalizing the columns, we first look at the rows $\mathscr{C}^q_\bullet$ for each $q$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}^q_\bullet = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
 to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It follows from Corollary \ref{cor:topological_aw} that this map $\mathscr{C} \to \mathscr{D}$ of bicomplexes is a quasi-isomorphism. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
@@ -194,12 +194,12 @@ The arrow on the right turns out to be an isomorphism, but it is beyond the scop
 \end{rem}
 
 % Now we have all the ingredients. It's time to cook.
-\begin{proof}[Proof of Theorem \ref{thm:looijenga}]
+\begin{proof}[Proof of Theorem \ref{thm:looijenga} for $a=b$]
     In the quasi-isomorphism $\Cobar(C_\bullet(X))\to \tot_\bullet(\mathscr{N})$ produced in Proposition \ref{thm:new_cobar}, the truncation of $\mathscr{N}$ by $q$ corresponds to the tensor length truncation of $\Cobar$. It follows that the restriction
     \[\Cobar_{\leq n}(C_\bullet(X))\to \tot_\bullet(\mathscr{N}^{\leq n})\]
-    is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism when
+    is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism
     \[H_0\Cobar_{\leq n}(C_\bullet(X))\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
-    which by Corollary \ref{cor:gadish} yields an isomorphism when $x:= a=b$:
+    which by Corollary \ref{cor:gadish} yields an isomorphism 
     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n}).\]
     By Corollary \ref{cor:spectral_convergence}, we get a surjection
     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
