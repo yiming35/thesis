@@ -121,77 +121,63 @@ whose kernel is $\Z$ if $a=b$ and trivial otherwise.
 \subsection{Functoriality}
 It remains to compute $H_0$ of this totalization. For this we return to our original bicomplex $\mathscr{C}^\bullet_\bullet$ and instead of normalizing the columns, we first look at the rows $\mathscr{C}^q_\bullet$ for each $q$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}^q_\bullet = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
-to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It follows from Corollary \ref{cor:topological_aw} that this map $\mathscr{C} \to \mathscr{D}$ of bicomplexes is a quasi-isomorphism. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
+to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It follows from Corollary \ref{cor:topological_aw} and Proposition \ref{lem:quasiiso_bicomplex} that this map $\mathscr{C} \to \mathscr{D}$ of bicomplexes is a quasi-isomorphism. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
 \begin{equation}
 \mathscr{D}^q_p = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
 \end{equation}
-\begin{prop} Suppose $x:= a=b$. The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
-	\[\mathscr{D}(d^i) = \begin{cases}
-		\eta(1)\tensor \id^{\tensor q} & i=0 \\
-		\id^{\tensor i-1}\tensor \Delta \tensor \id^{\tensor q-i} & i \in \{1, ..., q\} \\
-		\id^{\tensor q} \tensor \eta(1) & i=q
-	\end{cases}
-	\quad \text{ and } \quad 
-	\mathscr{D}(s^i) = \id^{\tensor i}\tensor \varepsilon\tensor \id^{q-i-1}\]
-	where by a slight abuse of notation, $\eta(1)$ is the constant map at $x$.
+
+\begin{prop}\label{prop:two_sided_cobar_D}
+	$\mathscr{D}$ is isomorphic to $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))$.
+
 	\begin{proof}
-		Naturality of Alexander--Whitney implies that the following diagram commutes:
-			\[\begin{tikzcd}[sep=large]
-				% https://q.uiver.app/#q=WzAsNixbMSwwLCJDX1xcYnVsbGV0KCpcXHRpbWVzIFhecSkiXSxbMiwwLCJDX1xcYnVsbGV0KFhee3ErMX0pIl0sWzEsMSwiQ19cXGJ1bGxldCgqKSBcXHRlbnNvciBDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDEsIkNfXFxidWxsZXQoWClee1xcdGVuc29yIHErMX0iXSxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDMsIkNfXFxidWxsZXQoXFxpb3RhX3gpXFx0ZW5zb3IgXFxpZF57XFx0ZW5zb3IgcX0iXSxbMCwyLCJcXEFXX3sqLCBYXnF9IiwyXSxbMCwxLCJDX1xcYnVsbGV0KFxcaW90YV94XFx0aW1lc1xcaWRfe1hecX0pIl0sWzEsMywiXFxBV197cSsxfSJdLFs0LDAsIlxcY29uZyJdLFs0LDUsIlxcQVdfcSIsMl0sWzUsMiwiXFxjb25nIl0sWzQsMSwiQ19cXGJ1bGxldChkXjApIiwwLHsiY3VydmUiOi01fV0sWzUsMywiXFxtYXRoc2Nye0R9KGReMCkiLDIseyJjdXJ2ZSI6NX1dXQ==
-				{C_\bullet(X^q)} & {C_\bullet(*\times X^q)} & {C_\bullet(X^{q+1})} \\
-				{C_\bullet(X)^{\tensor q}} & {C_\bullet(*) \tensor C_\bullet(X)^{\tensor q}} & {C_\bullet(X)^{\tensor q+1}}
-				\arrow["\cong", from=1-1, to=1-2]
-				\arrow["{C_\bullet(d^0)}", curve={height=-30pt}, from=1-1, to=1-3]
-				\arrow["{\AW_q}"', from=1-1, to=2-1]
-				\arrow["{C_\bullet(\iota_x\times\id_{X^q})}", from=1-2, to=1-3]
-				\arrow["{\AW_{*, X^q}}"', from=1-2, to=2-2]
-				\arrow["{\AW_{q+1}}", from=1-3, to=2-3]
-				\arrow["\cong", from=2-1, to=2-2]
-				\arrow["{\mathscr{D}(d^0)}"', curve={height=30pt}, from=2-1, to=2-3]
-				\arrow["{C_\bullet(\iota_x)\tensor \id^{\tensor q}}", from=2-2, to=2-3]
-			\end{tikzcd}\]
-		where $\iota_x$ is the inclusion at the basepoint. But now we make the identifications 
-		\[C_\bullet(*)\tensor C_\bullet(X)^{\tensor q}\cong C_\bullet(X)^{\tensor q}, \text{ and } C_\bullet(\iota_x) = \eta(1)\]
-		to conclude 
-		\[ (\eta(1)\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}C_\bullet(d^0)\]
-		which implies $\mathscr{D}(d^0) = \eta(1)\tensor \id^{\tensor q}$. The arguments for the other maps are analogous.
+		Let us first check on the level of groups.
+	% 	The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
+	% \[\mathscr{D}(d^i) = \begin{cases}
+	% 	\eta_a \tensor \id^{\tensor q} & i=0 \\
+	% 	\id^{\tensor i-1}\tensor \Delta \tensor \id^{\tensor q-i} & i \in \{1, ..., q\} \\
+	% 	\id^{\tensor q} \tensor \eta_b & i=q
+	% \end{cases}
+	% \quad \text{ and } \quad 
+	% \mathscr{D}(s^i) = \id^{\tensor i}\tensor \epsilon\tensor \id^{q-i-1}\]
+	% where $\eta_a$ and $\eta_b$ are the generators of $C_\bullet(\{a\}) = \Z = C_\bullet(\{b\})$.
+		% Naturality of Alexander--Whitney implies that the following diagram commutes:
+		% 	\[\begin{tikzcd}[sep=large]
+		% 		% https://q.uiver.app/#q=WzAsNixbMSwwLCJDX1xcYnVsbGV0KCpcXHRpbWVzIFhecSkiXSxbMiwwLCJDX1xcYnVsbGV0KFhee3ErMX0pIl0sWzEsMSwiQ19cXGJ1bGxldCgqKSBcXHRlbnNvciBDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDEsIkNfXFxidWxsZXQoWClee1xcdGVuc29yIHErMX0iXSxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDMsIkNfXFxidWxsZXQoXFxpb3RhX3gpXFx0ZW5zb3IgXFxpZF57XFx0ZW5zb3IgcX0iXSxbMCwyLCJcXEFXX3sqLCBYXnF9IiwyXSxbMCwxLCJDX1xcYnVsbGV0KFxcaW90YV94XFx0aW1lc1xcaWRfe1hecX0pIl0sWzEsMywiXFxBV197cSsxfSJdLFs0LDAsIlxcY29uZyJdLFs0LDUsIlxcQVdfcSIsMl0sWzUsMiwiXFxjb25nIl0sWzQsMSwiQ19cXGJ1bGxldChkXjApIiwwLHsiY3VydmUiOi01fV0sWzUsMywiXFxtYXRoc2Nye0R9KGReMCkiLDIseyJjdXJ2ZSI6NX1dXQ==
+		% 		{C_\bullet(X^q)} & {C_\bullet(*\times X^q)} & {C_\bullet(X^{q+1})} \\
+		% 		{C_\bullet(X)^{\tensor q}} & {C_\bullet(*) \tensor C_\bullet(X)^{\tensor q}} & {C_\bullet(X)^{\tensor q+1}}
+		% 		\arrow["\cong", from=1-1, to=1-2]
+		% 		\arrow["{C_\bullet(d^0)}", curve={height=-30pt}, from=1-1, to=1-3]
+		% 		\arrow["{\AW_q}"', from=1-1, to=2-1]
+		% 		\arrow["{C_\bullet(\iota_a\times\id_{X^q})}", from=1-2, to=1-3]
+		% 		\arrow["{\AW_{*, X^q}}"', from=1-2, to=2-2]
+		% 		\arrow["{\AW_{q+1}}", from=1-3, to=2-3]
+		% 		\arrow["\cong", from=2-1, to=2-2]
+		% 		\arrow["{\mathscr{D}(d^0)}"', curve={height=30pt}, from=2-1, to=2-3]
+		% 		\arrow["{C_\bullet(\iota_a)\tensor \id^{\tensor q}}", from=2-2, to=2-3]
+		% 	\end{tikzcd}\]
+		% where $\iota_a$ is the inclusion $\{a\} \hookrightarrow X$. But now we make the identifications 
+		% \[C_\bullet(*)\tensor C_\bullet(X)^{\tensor q}\cong C_\bullet(X)^{\tensor q}, \text{ and } C_\bullet(\iota_a) = \eta_a\]
+		% to conclude 
+		% \[ (\eta(1)\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}C_\bullet(d^0)\]
+		% which implies $\mathscr{D}(d^0) = \eta_a\tensor \id^{\tensor q}$. The arguments for the other maps are analogous.
 	\end{proof}
 \end{prop}
-
-We now want to replace each column of $\mathscr{D}$:
-\[\mathscr{D}^\bullet_p: C_p(*)\to C_p(X)\to C_p(X)^{\tensor 2}\to \cdots\] 
-with its normalized cochain complex, which is the reason we computed these maps. Here we use an alternative formulation (prove) of the normalized cochain complex to obtain 
-\begin{equation}
-	\begin{split}
-		N\mathscr{D}_p^q &= \bigcap_{i=0}^{q-1}\ker(s^i: \mathscr{D}_p^q\to \mathscr{D}_p^{q-1}) \\
-		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \varepsilon\tensor \id^{\tensor q-i-1}) \\
-		&=  (\ker(\varepsilon)^{\tensor q})_p \\
-		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}(X)} \tensor \cdots \tensor \overline{C_{n_q}(X)}
-	\end{split}
-\end{equation}
-Now this is beginning to look very similar to the cobar construction on $C_\bullet(X)$. Because the vertical differential raises $q$, and the horizontal differential lowers $p$, when we totalize $N\mathscr{D}^\bullet_\bullet$ we take total degree $k = p-q$ to obtain a chain complex, similar to the construction of the cobar bicomplex.
+The following theorem thus follows from our discussion of the cobar construction in Chapter 3, and the bicomplex quasi-isomorphisms constructed in this section:
 
 \begin{thm}\label{thm:new_cobar}
-    Suppose $x:= a=b$. Then 
-    \begin{enumerate}
-        \item There is an isomorphism $\tot N\mathscr{D} \to \Cobar(C_\bullet(X))$.
-        \item There is a quasi-isomorphism $\Cobar(C_\bullet(X))\to \tot_\bullet(\mathscr{N})$.
-    \end{enumerate}
+    There is a quasi-isomorphism of bicomplexes
+	\[\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{N}.\]
     \begin{proof}
-    We first show that (1) implies (2). Consider the following diagram where the solid arrows are quasi-isomorphisms previously constructed in this section, since totalization preserves quasi-isomorphisms. Their composition with (1) gives the desired quasi-isomorphism.
-		\[\begin{tikzcd}
-			% https://q.uiver.app/#q=WzAsNSxbMCwyLCJcXENvYmFyKENfXFxidWxsZXQoWCkpIl0sWzAsMSwiXFx0b3QgTlxcbWF0aHNjcntEfSJdLFsxLDEsIlxcdG90XFxtYXRoc2Nye0R9Il0sWzEsMCwiXFx0b3QgXFxtYXRoc2Nye0N9Il0sWzIsMCwiXFx0b3QgXFxtYXRoc2Nye059Il0sWzEsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCJcXEFXIiwyLHsib2Zmc2V0IjoxfV0sWzIsMywiXFxFWiIsMix7Im9mZnNldCI6MX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDQsIiIsMix7ImN1cnZlIjo1LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwxLCIoMSkiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
-			& {\tot \mathscr{C}} & {\tot \mathscr{N}} \\
-			{\tot N\mathscr{D}} & {\tot\mathscr{D}} \\
-			{\Cobar(C_\bullet(X))}
-			\arrow[two heads, from=1-2, to=1-3]
-			\arrow["\AW"', shift right, from=1-2, to=2-2]
-			\arrow[hook, from=2-1, to=2-2]
-			\arrow["\EZ"', shift right, from=2-2, to=1-2]
-			\arrow["{(2)}"', curve={height=30pt}, dashed, from=3-1, to=1-3]
-			\arrow["{(1)}", dashed, from=3-1, to=2-1]
+    Composing the quasi-isomorphisms and equalities obtained so far, we have 
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXENvYmFyKENfXFxidWxsZXQoXFx7YlxcfSksIENfXFxidWxsZXQoWCksIENfXFxidWxsZXQoXFx7YVxcfSkpIl0sWzEsMCwiXFxtYXRoc2Nye0R9Il0sWzIsMCwiXFxtYXRoc2Nye0N9Il0sWzMsMCwiXFxtYXRoc2Nye059Il0sWzAsMV0sWzEsMiwiXFxBVyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiXFxFWiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiKFxcUzUuMSkiXSxbMCwzLCIiLDIseyJjdXJ2ZSI6NSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+		\[\begin{tikzcd}[column sep=3em]
+			{\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))} & {\mathscr{D}} & {\mathscr{C}} & {\mathscr{N}}
+			\arrow["\ref{prop:two_sided_cobar_D}", from=1-1, to=1-2]
+			\arrow["\AW", shift left, tail reversed, no head, from=1-2, to=1-3]
+			\arrow["\EZ", shift left, tail reversed, no head, from=1-3, to=1-2]
+			\arrow["{(\S5.1)}", from=1-3, to=1-4]
 		\end{tikzcd}\]
-    To see (1), notice that $N\mathscr{D}$ is exactly the cobar bicomplex of $C_\bullet(X)$ in Definition \ref{def:cobar_bicomplex}, so that Proposition \ref{prop:cobar_bicomplex} yields an isomorphism $\tot N\mathscr{D}\to \Cobar(C_\bullet(X))$. 
+		which is a quasi-isomorphism.
     \end{proof}
 \end{thm}
 \begin{rem}
@@ -204,7 +190,7 @@ We have not yet used Adams' theorem. But what we have proven should suggest that
 	\arrow["{?}", dashed, from=1-3, to=2-3]
 	\arrow[equal, from=2-1, to=2-3]
 \end{tikzcd}\]
-The arrow on the right turns out to be an isomorphism, but it is beyond the scope of this thesis. 
+
 \end{rem}
 
 % Now we have all the ingredients. It's time to cook.
