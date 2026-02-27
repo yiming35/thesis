@@ -79,7 +79,7 @@ If $C,N,M$ have additional dg structure (i.e. $C$ is a dg coalgebra and $N, M$ a
     \[d^V: \Cobar(N,C,M)^{q-1}_\bullet\to \Cobar(N,C,M)^{q}_\bullet,\quad d_V = \sum_{i=0}^q d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
     \[d_H: \Cobar(N,C,M)^q_p\to \Cobar(N,C,M)^q_{p-1}\]
-    \begin{equation}
+    \begin{equation}\label{eqn: twoside_cobar_differential}
     \begin{split}
     d_H(m\tensor c_1 \tensor \cdots \tensor c_q \tensor n) &= \hspace{2pt} \partial_M(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n \\
     &+\sum_{i=1}^q (-1)^{|m| + \sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q \tensor n \\
@@ -144,7 +144,7 @@ For the proof we need a fact from homological algebra.
         is too. The proof supposing $f$ is a column-wise quasi-isomorphism proceeds identically, by truncating column-wise.
     \end{proof}
 \end{lem}
-Because we will use this notion many more times times in this thesis, we make the following \emph{ad hoc} definition: 
+Because we will use this notion many more times times in this thesis, we make the following definition: 
 \begin{defn}
     A map $f: D \to E$ of first quadrant spectral sequences is a \emph{quasi-isomorphism} if it is a row- or column-wise quasi-isomorphism. 
 \end{defn}

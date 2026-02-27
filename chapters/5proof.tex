@@ -127,10 +127,27 @@ to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It 
 \end{equation}
 
 \begin{prop}\label{prop:two_sided_cobar_D}
-	$\mathscr{D}$ is isomorphic to $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))$.
-
+	There is a natural isomorphism $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{D}$.
 	\begin{proof}
-		Let us first check on the level of groups.
+		Denote $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))$ by just $\Cobar$. We have  $C_\bullet(\{a\}) \cong \Z \cong C_\bullet(\{b\})$, hence natural isomorphisms 
+		\[C_\bullet(\{a\}) \tensor C_{b_1}(X) \to C_{b_1}(X)\]
+		\[C_{b_q}(X) \tensor C_\bullet(\{b\}) \to C_{b_q}(X)\]
+		yielding a natural isomorphism
+		\begin{equation}
+			\begin{split}
+			\phi: \Cobar^q_p &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} C_n(\{a\}) \tensor C_{b_1}(X) \tensor \cdots \tensor C_{b_q}(X)\tensor C_m(\{b\}) \\
+			&\to \bigoplus_{b_1 + \cdots + b_q = p}  C_{b_1}(X) \tensor \cdots \tensor C_{b_q}(X) = \mathscr{D}^q_p.
+			\end{split}
+		\end{equation}
+		We now check that the differentials are compatible with $\phi$. Because $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ are chain complexes where all differentials are zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
+		\begin{equation}
+		\begin{split}
+			\phi(d_H^{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_1\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} \partial_M(m) \tensor c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q \tensor \partial_N(n)) \\
+			&= \sum_{i=1}^q (-1)^{\sigma(c_i)}  c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q  \\
+			&= d_{\mathscr{D}}(\phi(m\tensor c_1\tensor \cdots \tensor c_q \tensor n)).
+		\end{split}
+		\end{equation}
+		Vertically,
 	% 	The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
 	% \[\mathscr{D}(d^i) = \begin{cases}
 	% 	\eta_a \tensor \id^{\tensor q} & i=0 \\
