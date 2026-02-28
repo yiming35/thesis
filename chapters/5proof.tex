@@ -1,4 +1,4 @@
-\section{The proof}
+\section{Proof of main theorem}
 Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this section let $X$ be a path connected topological space with basepoints $a,b$. Our strategy will be use the cosimplicial path space model to construct the $E^0$-page of a spectral sequence which (1) converges to the group $H_n(X^n, X(n)^a_b)$ and (2) is related to the cobar construction, hence the groups $\Z\pi_1(X,a)/\Z\pi_1(X,a)\mathcal{I}^{n+1}_a$.
 
 \subsection{Building the spectral sequence} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
@@ -126,28 +126,64 @@ to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It 
 \mathscr{D}^q_p = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
 \end{equation}
 
-\begin{prop}\label{prop:two_sided_cobar_D}
-	There is a natural isomorphism $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{D}$.
+\begin{thm}\label{thm:two_sided_cobar_D}
+	Let $NC_\bullet(-)$ be the normalized singular chains functor. Regard $NC_\bullet(\{a\})$ as a right $NC_\bullet(X)$-comodule via the right comodule action 
+	\[\Delta^R: NC_\bullet(\{a\})\xrightarrow{\AW} NC_\bullet(\{a\})\tensor NC_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a} NC_\bullet(\{a\}) \tensor NC_\bullet(X)\]
+	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a natural isomorphism 
+	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{D}.\]
 	\begin{proof}
-		Denote $\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))$ by just $\Cobar$. We have  $C_\bullet(\{a\}) \cong \Z \cong C_\bullet(\{b\})$, hence natural isomorphisms 
-		\[C_\bullet(\{a\}) \tensor C_{b_1}(X) \to C_{b_1}(X)\]
-		\[C_{b_q}(X) \tensor C_\bullet(\{b\}) \to C_{b_q}(X)\]
+		Denote $\Cobar(\cdots)$ by $\Cobar$. Note that $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are just the chain complexes with a $\Z$ term concentrated in degree zero, i.e. the identity object in the symmetric monoidal structure on $\catname{Ch}_+(\catname{Ab})$. Hence we have natural isomorphisms 
+		\[\psi_a: NC_\bullet(\{a\}) \tensor NC_\bullet(X) \to NC_\bullet(X)\]
+		\[\psi_b: NC_\bullet(X) \tensor NC_\bullet(\{b\}) \to NC_\bullet(X)\]
 		yielding a natural isomorphism
 		\begin{equation}
 			\begin{split}
-			\phi: \Cobar^q_p &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} C_n(\{a\}) \tensor C_{b_1}(X) \tensor \cdots \tensor C_{b_q}(X)\tensor C_m(\{b\}) \\
-			&\to \bigoplus_{b_1 + \cdots + b_q = p}  C_{b_1}(X) \tensor \cdots \tensor C_{b_q}(X) = \mathscr{D}^q_p.
+			\phi: \Cobar^q_p &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} NC_n(\{a\}) \tensor NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X)\tensor NC_m(\{b\}) \\
+			&\to \bigoplus_{b_1 + \cdots + b_q = p}  NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X) = \mathscr{D}^q_p.
 			\end{split}
 		\end{equation}
-		We now check that the differentials are compatible with $\phi$. Because $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ are chain complexes where all differentials are zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
-		\begin{equation}
+		We now check that the differentials are compatible with $\phi$. Because $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have all differentials zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
+		\begin{equation*}
 		\begin{split}
-			\phi(d_H^{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_1\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} \partial_M(m) \tensor c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q \tensor \partial_N(n)) \\
-			&= \sum_{i=1}^q (-1)^{\sigma(c_i)}  c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q  \\
+			\phi(d_H^{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor c_q \tensor n) \\
+			&= \sum_{i=1}^q (-1)^{\sigma(c_i)}  \psi_a(m\tensor c_1) \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor \psi_b(c_q\tensor n)  \\
 			&= d_{\mathscr{D}}(\phi(m\tensor c_1\tensor \cdots \tensor c_q \tensor n)).
 		\end{split}
-		\end{equation}
-		Vertically,
+		\end{equation*}
+		The vertical differential in both cases is given by the alternating sum of coface maps. We need to show that $\phi\circ d_{\Cobar}^i = d_{\mathscr{D}}^i \circ \phi$ for all $i$. For $i=0$, the map $d_{\mathscr{D}}^i: \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet$ is induced by the following inclusion under the topological Alexander--Whitney map: 
+		\[(x_1, ..., x_q)\to (a, x_1, ..., x_q).\]
+		Naturality of Alexander--Whitney implies that the following diagram commutes:
+			\[\begin{tikzcd}[sep=large]
+				% https://q.uiver.app/#q=WzAsNixbMSwwLCJDX1xcYnVsbGV0KCpcXHRpbWVzIFhecSkiXSxbMiwwLCJDX1xcYnVsbGV0KFhee3ErMX0pIl0sWzEsMSwiQ19cXGJ1bGxldCgqKSBcXHRlbnNvciBDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDEsIkNfXFxidWxsZXQoWClee1xcdGVuc29yIHErMX0iXSxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDMsIkNfXFxidWxsZXQoXFxpb3RhX3gpXFx0ZW5zb3IgXFxpZF57XFx0ZW5zb3IgcX0iXSxbMCwyLCJcXEFXX3sqLCBYXnF9IiwyXSxbMCwxLCJDX1xcYnVsbGV0KFxcaW90YV94XFx0aW1lc1xcaWRfe1hecX0pIl0sWzEsMywiXFxBV197cSsxfSJdLFs0LDAsIlxcY29uZyJdLFs0LDUsIlxcQVdfcSIsMl0sWzUsMiwiXFxjb25nIl0sWzQsMSwiQ19cXGJ1bGxldChkXjApIiwwLHsiY3VydmUiOi01fV0sWzUsMywiXFxtYXRoc2Nye0R9KGReMCkiLDIseyJjdXJ2ZSI6NX1dXQ==
+				{NC_\bullet(X^q)} & {NC_\bullet(\{a\}\times X^q)} & {NC_\bullet(X^{q+1})} \\
+				{NC_\bullet(X)^{\tensor q}} & {NC_\bullet(\{a\}) \tensor NC_\bullet(X)^{\tensor q}} & {NC_\bullet(X)^{\tensor q+1}}
+				\arrow["\cong", from=1-1, to=1-2]
+				\arrow["{NC_\bullet(d^0)}", curve={height=-30pt}, from=1-1, to=1-3]
+				\arrow["{\AW_q}"', from=1-1, to=2-1]
+				\arrow["{NC_\bullet(\iota_a\times\id_{X^q})}", from=1-2, to=1-3]
+				\arrow["{\AW_{\{a\}, X^q}}"', from=1-2, to=2-2]
+				\arrow["{\AW_{q+1}}", from=1-3, to=2-3]
+				\arrow["\cong", from=2-1, to=2-2]
+				\arrow["{d^0_{\mathscr{D}}}"', curve={height=30pt}, from=2-1, to=2-3]
+				\arrow["{NC_\bullet(\iota_a)\tensor \id^{\tensor q}}", from=2-2, to=2-3]
+			\end{tikzcd}\]
+		where $\iota_a$ is the inclusion $\{a\} \hookrightarrow X$. But now we make the identifications 
+		\[NC_\bullet(\{a\})\tensor NC_\bullet(X)^{\tensor q}\cong NC_\bullet(X)^{\tensor q}, \text{ and } NC_\bullet(\iota_a) = \eta_a\]
+		to conclude 
+		\[ (\eta_a\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}NC_\bullet(d^0)\]
+		which implies $d_{\mathscr{D}}^0 = \eta_a\tensor \id^{\tensor q}$. (By a slight abuse of notation we use $\eta_a$ to denote both the constant map at $\eta_a$ as well as the constant zero simplex at $a$). Then by naturality of the Alexander--Whitney map,
+		\begin{equation*}
+\begin{split}
+    \phi(d^0_{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\Delta^R(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n) \\
+    &= \phi\big(((\id\tensor \iota_a)\circ \AW(m)) \tensor c_1 \tensor \cdots \tensor c_q \tensor n \big) \\
+    &= \phi(m \tensor \eta_a \tensor c_1 \tensor \cdots \tensor c_q \tensor n) \\
+    &= \psi_a(m \tensor \eta_a) \tensor c_1 \tensor \cdots \tensor \psi_b(c_q \tensor n) \\
+    &= \eta_a \tensor \psi_a(m \tensor c_1) \tensor \cdots \tensor \psi_b(c_q \tensor n) \\
+    &= (\eta_a \tensor \id^{\tensor q})\big(\psi_a(m \tensor c_1) \tensor \cdots \tensor \psi_b(c_q \tensor n)\big) \\
+    &= d^0_\mathscr{D}(\phi(m \tensor c_1\tensor \cdots \tensor c_q \tensor n))
+\end{split}
+\end{equation*}
+		The proof for $d^1, ..., d^q$ are analogous. Hence $\phi$ is a bicomplex isomorphism $\Cobar \to \mathscr{D}$.
 	% 	The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
 	% \[\mathscr{D}(d^i) = \begin{cases}
 	% 	\eta_a \tensor \id^{\tensor q} & i=0 \\
@@ -178,18 +214,17 @@ to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It 
 		% \[ (\eta(1)\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}C_\bullet(d^0)\]
 		% which implies $\mathscr{D}(d^0) = \eta_a\tensor \id^{\tensor q}$. The arguments for the other maps are analogous.
 	\end{proof}
-\end{prop}
-The following theorem thus follows from our discussion of the cobar construction in Chapter 3, and the bicomplex quasi-isomorphisms constructed in this section:
-
+\end{thm}
+Using this theorem and the bicomplex quasi-isomorphisms constructed previosuly, this result follows:
 \begin{thm}\label{thm:new_cobar}
     There is a quasi-isomorphism of bicomplexes
-	\[\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{N}.\]
+	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{N}.\]
     \begin{proof}
-    Composing the quasi-isomorphisms and equalities obtained so far, we have 
+    Composing the quasi-isomorphisms and isomorphisms obtained so far, we have 
 		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXENvYmFyKENfXFxidWxsZXQoXFx7YlxcfSksIENfXFxidWxsZXQoWCksIENfXFxidWxsZXQoXFx7YVxcfSkpIl0sWzEsMCwiXFxtYXRoc2Nye0R9Il0sWzIsMCwiXFxtYXRoc2Nye0N9Il0sWzMsMCwiXFxtYXRoc2Nye059Il0sWzAsMV0sWzEsMiwiXFxBVyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiXFxFWiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiKFxcUzUuMSkiXSxbMCwzLCIiLDIseyJjdXJ2ZSI6NSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 		\[\begin{tikzcd}[column sep=3em]
-			{\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))} & {\mathscr{D}} & {\mathscr{C}} & {\mathscr{N}}
-			\arrow["\ref{prop:two_sided_cobar_D}", from=1-1, to=1-2]
+			{\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))} & {\mathscr{D}} & {\mathscr{C}} & {\mathscr{N}}
+			\arrow["\ref{thm:two_sided_cobar_D}", from=1-1, to=1-2]
 			\arrow["\AW", shift left, tail reversed, no head, from=1-2, to=1-3]
 			\arrow["\EZ", shift left, tail reversed, no head, from=1-3, to=1-2]
 			\arrow["{(\S5.1)}", from=1-3, to=1-4]
@@ -198,7 +233,7 @@ The following theorem thus follows from our discussion of the cobar construction
     \end{proof}
 \end{thm}
 \begin{rem}
-We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between $\Cobar(C_\bullet(X))$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial loop space! So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' then we would obtain Adams' theorem. See the following diagram:
+We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space! So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
 \[\begin{tikzcd}[cramped]
 	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
 	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
@@ -207,18 +242,19 @@ We have not yet used Adams' theorem. But what we have proven should suggest that
 	\arrow["{?}", dashed, from=1-3, to=2-3]
 	\arrow[equal, from=2-1, to=2-3]
 \end{tikzcd}\]
-
+then we would have a version of Adams' theorem.
 \end{rem}
 
 % Now we have all the ingredients. It's time to cook.
-\begin{proof}[Proof of Theorem \ref{thm:looijenga} for $a=b$]
-    In the quasi-isomorphism $\Cobar(C_\bullet(X))\to \tot_\bullet(\mathscr{N})$ produced in Proposition \ref{thm:new_cobar}, the truncation of $\mathscr{N}$ by $q$ corresponds to the tensor length truncation of $\Cobar$. It follows that the restriction
-    \[\Cobar_{\leq n}(C_\bullet(X))\to \tot_\bullet(\mathscr{N}^{\leq n})\]
+\begin{proof}[Proof of Theorem \ref{thm:looijenga}]
+    In the quasi-isomorphism $\Cobar\to \mathscr{N}$ produced in Theorem \ref{thm:new_cobar}, the truncation of $\mathscr{N}$ by $q$ corresponds to the tensor length truncation of $\Cobar$. It follows by Lemma \ref{lem:quasiiso_bicomplex} that the induced map on totalizations of the truncated bicomplexes 
+    \[\tot\Cobar_{\leq n}\to \tot_\bullet(\mathscr{N}^{\leq n})\]
     is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism
-    \[H_0\Cobar_{\leq n}(C_\bullet(X))\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
-    which by Corollary \ref{cor:gadish} yields an isomorphism 
-    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n}).\]
+    \[H_0\tot\Cobar_{\leq n}\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
+	LAST STEP: 
+    which by (???) yields an isomorphism 
+    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n}).\]
     By Corollary \ref{cor:spectral_convergence}, we get a surjection
-    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
-    whose kernel is $\Z$, completing the proof.
+    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
+    whose kernel is $\Z$ is $a=b$ and trivial otherwise, completing the proof.
 \end{proof}

@@ -148,7 +148,7 @@ Because we will use this notion many more times times in this thesis, we make th
 \begin{defn}
     A map $f: D \to E$ of first quadrant spectral sequences is a \emph{quasi-isomorphism} if it is a row- or column-wise quasi-isomorphism. 
 \end{defn}
-Then Proposition \ref{prop:twoside_reduction} says that a quasi-isomorphism of bicomplexes induces a quasi-isomorphism of totalizations. 
+Then Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of bicomplexes induces a quasi-isomorphism of totalizations. 
 \begin{proof}[Proof of Proposition \ref{prop:twoside_reduction}]
     We take the normalized cochain complex on each column of $\Cobar_p^\bullet$ to obtain:
     \begin{equation}
@@ -162,16 +162,16 @@ Then Proposition \ref{prop:twoside_reduction} says that a quasi-isomorphism of b
 \end{equation}
 Upon checking differentials, we find that the normalized bicomplex $N\Cobar$ is equal to the reduced cobar construction on $C$. Since $N\Cobar \hookrightarrow \Cobar$ is a quasi-isomorphism, we conclude by Proposition \ref{prop:twoside_reduction}.
 \end{proof}
-Let us now return to topological problem where we want to have two coaugmentations of $C_\bullet(X)$ corresponding to the inclusion of distinct basepoints $\iota_a: \{a\} \hookrightarrow X$ and $\iota_b: \{b\} \hookrightarrow X$. We regard $C_\bullet(\{a\}) \cong \Z$ as a right $C_\bullet(X)$-comodule via the following composite
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX1xcYnVsbGV0KFxce2FcXH0pIl0sWzEsMSwiQ19cXGJ1bGxldChcXHthXFx9KVxcdGVuc29yIENfXFxidWxsZXQoWCkiXSxbMSwwLCJDX1xcYnVsbGV0KFxce2FcXH0pXFx0ZW5zb3IgQ19cXGJ1bGxldChcXHthXFx9KSJdLFswLDIsIlxcQVdfe1xce2FcXH19Il0sWzIsMSwiXFxpZFxcdGVuc29yIFxcaW90YV9hIl0sWzAsMSwiXFxEZWx0YV5SIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-\[\begin{tikzcd}
-	{C_\bullet(\{a\})} & {C_\bullet(\{a\})\tensor C_\bullet(\{a\})} \\
-	& {C_\bullet(\{a\})\tensor C_\bullet(X)}
-	\arrow["{\AW_{\{a\}}}", from=1-1, to=1-2]
-	\arrow["{\Delta^R}"', dashed, from=1-1, to=2-2]
-	\arrow["{\id\tensor \iota_a}", from=1-2, to=2-2]
-\end{tikzcd}\]
-and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. 
+% Let us now return to topological problem where we want to have two coaugmentations of $C_\bullet(X)$ corresponding to the inclusion of distinct basepoints $\iota_a: \{a\} \hookrightarrow X$ and $\iota_b: \{b\} \hookrightarrow X$. We regard $C_\bullet(\{a\}) \cong \Z$ as a right $C_\bullet(X)$-comodule via the following composite
+% % https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX1xcYnVsbGV0KFxce2FcXH0pIl0sWzEsMSwiQ19cXGJ1bGxldChcXHthXFx9KVxcdGVuc29yIENfXFxidWxsZXQoWCkiXSxbMSwwLCJDX1xcYnVsbGV0KFxce2FcXH0pXFx0ZW5zb3IgQ19cXGJ1bGxldChcXHthXFx9KSJdLFswLDIsIlxcQVdfe1xce2FcXH19Il0sWzIsMSwiXFxpZFxcdGVuc29yIFxcaW90YV9hIl0sWzAsMSwiXFxEZWx0YV5SIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+% \[\begin{tikzcd}
+% 	{C_\bullet(\{a\})} & {C_\bullet(\{a\})\tensor C_\bullet(\{a\})} \\
+% 	& {C_\bullet(\{a\})\tensor C_\bullet(X)}
+% 	\arrow["{\AW_{\{a\}}}", from=1-1, to=1-2]
+% 	\arrow["{\Delta^R}"', dashed, from=1-1, to=2-2]
+% 	\arrow["{\id\tensor \iota_a}", from=1-2, to=2-2]
+% \end{tikzcd}\]
+% and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. 
 
 \subsection{Homology and the fundamental group}
 There is a sense in which Adams' theorem allows one to use homology to approximate the fundamental group. ..
