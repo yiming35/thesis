@@ -3,7 +3,7 @@ Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this sectio
 
 \subsection{Building the spectral sequence} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
 
-Now consider the bicomplex $\mathscr{C}^\bullet_\bullet$ which is morally obtained by applying singular chains to $P^\bullet$: 
+Now consider the bicomplex $\mathscr{C}^\bullet_\bullet$ which is obtained by applying singular chains to $P^\bullet$: 
 \[\mathscr{C}^q_p = C_p(P^q)\]
 with ``horizontal'' differential $d^\mathscr{C}_H: C_p(P^q)\to C_{p-1}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d^V_\mathscr{C}: C_p(P^q) \to C_p(P^q)$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
 \begin{prop}
@@ -27,7 +27,7 @@ and proceeding in the other direction gives the exact same map.
  \end{proof}
 \end{prop}
 
-Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism (?) of bicomplexes by Dold--Kan. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
+Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism of bicomplexes by Dold--Kan. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
 \[\mathscr{N}^q_p = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
 Moreover, the vertical differential $\mathscr{N}^q_p \to \mathscr{N}^{q+1}_p$ is induced by the zeroth coface map $d^0$. 
 % See Figure \ref{fig:bicomplex_C} for the first few rows and columns.
@@ -121,7 +121,15 @@ whose kernel is $\Z$ if $a=b$ and trivial otherwise.
 \subsection{Functoriality}
 It remains to compute $H_0$ of this totalization. For this we return to our original bicomplex $\mathscr{C}^\bullet_\bullet$ and instead of normalizing the columns, we first look at the rows $\mathscr{C}^q_\bullet$ for each $q$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}^q_\bullet = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
-to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. It follows from Corollary \ref{cor:topological_aw} and Proposition \ref{lem:quasiiso_bicomplex} that this map $\mathscr{C} \to \mathscr{D}$ of bicomplexes is a quasi-isomorphism. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
+to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. 
+
+\begin{prop}
+	The map $\mathscr{C} \to \mathscr{D}$ induced by Alexander--Whitney is a quasi-isomorphism of bicomplexes, with inverse quasi-isomorphism induced by the Eilenberg--Zilber map.
+	\begin{proof}
+		Combine Corollary \ref{cor:topological_aw}, Theorem \ref{thm:eilenberg_zilber}, and Proposition \ref{lem:quasiiso_bicomplex},
+	\end{proof}
+\end{prop}
+By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
 \begin{equation}
 \mathscr{D}^q_p = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
 \end{equation}

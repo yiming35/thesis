@@ -161,9 +161,9 @@ In the following discussion, we replace ``abelian group'' with ``$R$-module'' fo
 
 
 \subsection{Alexander--Whitney and Eilenberg--Zilber}
-In the proof of Looijenga's theorem there is a step where we roughly need to move from singular chains on a product space to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map. We will present it in generality before specializing to our case.
+In the proof of Looijenga's theorem there is a step where we roughly need to move from singular chains on a product space to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map, with a natural inverse called the Eilenberg--Zilber map.
 
-In some sense, the Alexander--Whitney map is a way of moving between the category of simplicial abelian groups and the category of chain complexes of abelian groups that preserves their respective monoidal structure. Let us recall these structures. The monoidal product on $\catname{sAb}$ is given levelwise: for $A, B\in\catname{sAb}$, we have 
+The Alexander--Whitney map is a way of moving between the category of simplicial abelian groups and the category of chain complexes of abelian groups that preserves their respective monoidal structure. Let us recall these structures. The monoidal product on $\catname{sAb}$ is given levelwise: for $A, B\in\catname{sAb}$, we have 
 \[(A\tensor B)_n = A_n\tensor B_n\]
 and the face and degeneracy maps are inherited naturally. The monoidal product on the category of chain complexes is given as follows: for $X,Y \in \catname{Ch}_+(\catname{Ab})$, define 
 \[(X\tensor Y)_n = \bigoplus_{p+q = n} X_p\tensor Y_q.\]
@@ -207,10 +207,26 @@ For topological spaces $X,Y$, denote the constituent map by $\AW_{X,Y}$.
 From now we will use $C_\bullet(X)$ to mean both the singular chain complex and the simplicial abelian group, depending on context. 
 \begin{cor}\label{cor:topological_aw}
 For $q\geq 0$ and a topological space $X$, there is a natural quasi-isomorphism of chain complexes 
-\[C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}.\]
+\[\AW_q: C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}.\]
 \begin{proof}
 Iterate the topological Alexander--Whitney map 
 \[C_\bullet(X\times X^{q-1}) \xrightarrow{\AW_{X, X^{q-1}}} \cdots \xrightarrow{\id^{\tensor q-2}\tensor \AW_{X, X}} C_\bullet(X)^{\tensor q}.\]
 Since each component is a natural quasi-isomorphism, so is the composition.
 \end{proof}
 \end{cor}
+As promised, there is also a map going the other way, called the \emph{Eilenberg--Zilber} map, a natural transformation of functors
+\[\EZ: M(-)\tensor M(-)\implies M(-\tensor -).\]
+We are content without having an explicit formula for this map; it is slightly more finnicky than the one for Alexander--Whitney, and all we need to know is the following theorem:
+\begin{thm}[Eilenberg--Zilber theorem, \cite{Eilenberg1953}]\label{thm:eilenberg_zilber}
+  For simplicial abelian groups $A,B$, we have chain homotopies 
+  \[\AW\circ \EZ \simeq \id_{M(A)\tensor M(B)}, \quad \EZ\circ\AW \simeq \id_{M(A\tensor B)}.\]
+\end{thm}
+Consequently, $\EZ$ is also a quasi-isomorphism, and these maps are inverses. Specializing to our topological setting, we obtain 
+\begin{cor}
+For $q>0$ and a topological space $X$, there is a natural quasi-isomorphim of chain complexes 
+\[\EZ_q: C_\bullet(X)^{\tensor q}\to C_\bullet(X^q).\]
+Moreover, $\EZ_q$ and $\AW_q$ are quasi-inverses. \hfill \qed
+\end{cor}
+\begin{rem}
+The proof of the Eilenberg--Zilber theorem appearing in \cite{Eilenberg1953} did not contain any explicit formulas. Rather the proof made use of acyclic models. Explicit formulas for the maps involved can be found in \cite{Eilenberg_MacLane}, stated in terms of \emph{$(p,q)$-shuffles}.
+\end{rem}
