@@ -1,0 +1,239 @@
+\usepackage[margin=1.5in]{geometry}
+\usepackage{comment}
+\usepackage{tgtermes}
+\usepackage{amssymb}
+\usepackage{newtxmath}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[normalem]{ulem}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{float, caption}
+\usepackage{enumerate}
+\usepackage{hyperref}  
+\usepackage{tikz}
+\usepackage{quiver}
+\usepackage{anyfontsize}
+\usepackage{epigraph}
+\setlength\epigraphrule{0pt}
+
+\usetikzlibrary{decorations.pathreplacing, calc}
+\tikzcdset{
+  diagrams={>={Straight Barb[scale=0.5]}}
+}
+
+\tikzset{
+  COSIMPLICIALaltstackar/.style={decorate, decoration={show path construction,
+    lineto code={
+      \path (\tikzinputsegmentfirst); \pgfgetlastxy{\xstart}{\ystart}
+      \path (\tikzinputsegmentlast); \pgfgetlastxy{\xend}{\yend}
+      \path ($(0,0)!3pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
+      \foreach \n[evaluate=\n as \k using .5*#1-\n+.5] in {1,...,#1}{
+        \ifodd\n{\draw[->, shorten <=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}
+        \else{\draw[<-, shorten >=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}\fi
+      }
+    }
+  }}, COSIMPLICIALaltstackar/.default={1}
+}
+
+
+\tikzset{
+  SIMPLICIALaltstackar/.style={decorate, decoration={show path construction,
+    lineto code={
+      \path (\tikzinputsegmentfirst); \pgfgetlastxy{\xstart}{\ystart}
+      \path (\tikzinputsegmentlast); \pgfgetlastxy{\xend}{\yend}
+      \path ($(0,0)!3pt!(\ystart-\yend,\xend-\xstart)$); \pgfgetlastxy{\xperp}{\yperp}
+      \foreach \n[evaluate=\n as \k using .5*#1-\n+.5] in {1,...,#1}{
+        \ifodd\n{\draw[<-, shorten >=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}
+        \else{\draw[->, shorten <=2pt, shift={($\k*(\xperp,\yperp)$)}](\xstart,\ystart)--(\xend,\yend);}\fi
+      }
+    }
+  }}, SIMPLICIALaltstackar/.default={1}
+}
+
+
+\hypersetup{%
+  bookmarksnumbered=true,%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue
+  }   
+  
+\let\fullref\autoref
+\def\makeautorefname#1#2{\expandafter\def\csname#1autorefname\endcsname{#2}}
+\def\equationautorefname~#1\null{(#1)\null}
+\makeautorefname{footnote}{footnote}%
+\makeautorefname{item}{item}%
+\makeautorefname{figure}{Figure}%
+\makeautorefname{table}{Table}%
+\makeautorefname{part}{Part}%
+\makeautorefname{appendix}{Appendix}%
+\makeautorefname{chapter}{Chapter}%
+\makeautorefname{section}{Section}%
+\makeautorefname{subsection}{Section}%
+\makeautorefname{subsubsection}{Section}%
+\makeautorefname{theorem}{Theorem}%
+\makeautorefname{thm}{Theorem}%
+\makeautorefname{cor}{Corollary}%
+\makeautorefname{lem}{Lemma}%
+\makeautorefname{prop}{Proposition}%
+\makeautorefname{pro}{Property}
+\makeautorefname{conj}{Conjecture}%
+\makeautorefname{defn}{Definition}%
+\makeautorefname{notn}{Notation}
+\makeautorefname{notns}{Notations}
+\makeautorefname{rem}{Remark}%
+\makeautorefname{quest}{Question}%
+\makeautorefname{exmp}{Example}%
+\makeautorefname{ax}{Axiom}%
+\makeautorefname{claim}{Claim}%
+\makeautorefname{ass}{Assumption}%
+\makeautorefname{asss}{Assumptions}%
+\makeautorefname{con}{Construction}%
+\makeautorefname{prob}{Problem}%
+\makeautorefname{warn}{Warning}%
+\makeautorefname{obs}{Observation}%
+\makeautorefname{conv}{Convention}%
+
+%theoremstyle{plain} --- default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{prob}{Problem}[section]
+\newtheorem{conj}{Conjecture}[section]
+
+
+%\newtheorem{ass}{Assumption}[section]
+%\newtheorem{asses}{Assumptions}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ass}{Assumption}[section]
+\newtheorem{asss}{Assumptions}[section]
+\newtheorem{ax}{Axiom}[section]
+\newtheorem{con}{Construction}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{notn}{Notation}[section]
+\newtheorem{notns}{Notations}[section]
+\newtheorem{pro}{Property}[section]
+\newtheorem{quest}{Question}[section]
+\newtheorem{rem}{Remark}[section]
+\newtheorem{warn}{Warning}[section]
+\newtheorem{sch}{Scholium}[section]
+\newtheorem{obs}{Observation}[section]
+\newtheorem{conv}{Convention}[section]
+
+
+
+
+
+%%%% hack to get fullref working correctly
+\makeatletter
+\let\c@obs=\c@thm
+\let\c@cor=\c@thm
+\let\c@prop=\c@thm
+\let\c@lem=\c@thm
+\let\c@prob=\c@thm
+\let\c@con=\c@thm
+\let\c@conj=\c@thm
+\let\c@defn=\c@thm
+\let\c@notn=\c@thm
+\let\c@notns=\c@thm
+\let\c@exmp=\c@thm
+\let\c@ax=\c@thm
+\let\c@pro=\c@thm
+\let\c@ass=\c@thm
+\let\c@warn=\c@thm
+\let\c@rem=\c@thm
+\let\c@sch=\c@thm
+\let\c@equation\c@thm
+\numberwithin{equation}{section}
+
+
+
+% ===== Math Operators =====
+\DeclareMathOperator{\ex}{ex}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\csh}{csh}
+\DeclareMathOperator{\sect}{Sect}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\vertices}{vert}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\atan2}{atan2}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\edge}{edge}
+\DeclareMathOperator{\tensor}{\otimes}
+\DeclareMathOperator{\tot}{Tot}
+\DeclareMathOperator{\dir}{dir}
+\DeclareMathOperator{\sweep}{sweep}
+\DeclareMathOperator{\comet}{Comet}
+\DeclareMathOperator{\nor}{nor}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Cyl}{Cyl}
+\DeclareMathOperator{\hofib}{hofib}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\conf}{Conf}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Intr}{int}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\AW}{\mathcal{AW}}
+\DeclareMathOperator{\EZ}{\mathcal{EZ}}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Cobar}{\catname{Cobar}}
+\DeclareMathOperator{\Barr}{\catname{Bar}}
+\DeclareMathOperator{\der}{Der}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\GL}{GL}
+
+
+% ===== Custom Commands =====
+\newcommand{\after}{$\circ$}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\RP}{\mathbf{R}P}
+\newcommand{\gp}{\mathrm{gp}}
+
+\newcommand{\CP}{\mathbf{C}P}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\lb}{\langle}
+\newcommand{\rb}{\rangle}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\HH}{\mathbf{H}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\powerset}{\mathscr{P}}
+\newcommand{\pset}{\mathscr{P}}
+\newcommand{\catname}{\mathsf}
+\newcommand{\p}{^{\prime}}
+\newcommand{\pp}{^{\prime\prime}}
+\newcommand{\iso}{\cong}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\dt}{\,dt}
+\newcommand{\dz}{\,dz}
+\newcommand{\dvol}{d\!\vol}
+\newcommand{\ceq}{\coloneqq}
+\newcommand{\tto}{\rightrightarrows}
+\newcommand{\nat}{\Rightarrow}
+\newcommand{\contains}{\supseteq}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\bigtensor}{\bigotimes}
+\newcommand{\const}{\mathrm{const}}
+
+\renewcommand{\qedsymbol}{$\square$} 
