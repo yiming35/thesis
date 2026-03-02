@@ -172,17 +172,17 @@ Upon checking differentials, we find that the normalized bicomplex $N\Cobar$ is 
 % 	\arrow["{\id\tensor \iota_a}", from=1-2, to=2-2]
 % \end{tikzcd}\]
 % and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. 
-Finally, we should check that this generalization of the cobar construction extends Adams' theorem.
-\begin{thm}\label{thm:adams_path}
-    Let $X$ be a space with basepoints $a,b$. Regard $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ as ... 
+% Finally, we should check that this generalization of the cobar construction extends Adams' theorem.
+% \begin{thm}\label{thm:adams_path}
+%     Let $X$ be a space with basepoints $a,b$. Regard $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ as ... 
     
-    There is a natural quasi-isomorphism from the totalization of the two-sided cobar construction 
-    \[\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
-    to the singular chains on the path space $C_\bullet(\Omega_{a,b}X)$.
-    \begin{proof}
+%     There is a natural quasi-isomorphism from the totalization of the two-sided cobar construction 
+%     \[\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
+%     to the singular chains on the path space $C_\bullet(\Omega_{a,b}X)$.
+%     \begin{proof}
     
-    \end{proof}
-\end{thm}
+%     \end{proof}
+% \end{thm}
 
 \subsection{Homology and the fundamental group}
 Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
@@ -212,9 +212,17 @@ A dual version of this theorem with cohomology and the bar construction can be f
     Clearly the image of $\tilde{\phi}$ is all of $\mathcal{I}^p$. It remains to show that the kernel of $\tilde{\phi}$ is equal to the image of the total cobar differential 
     \[\partial_{\Cobar} = d_H + d^V: \tot_1\Cobar \to \tot_0\Cobar.\]
     Let us first show $\im \partial_{\Cobar} \subset \ker \tilde{\phi}$. Take a 2-simplex $\tau \in C_2(X) \cong \Cobar^1_2$ and suppose the singular boundary is $\partial_H(\tau)=e_0-e_1+e_2$. Then 
-    \[\phi(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
-    On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to 
-    \[e_0 \tensor \tau + [e_0e_1] \tensor [e_1e_2] + \tau \tensor [e_2]\]
+    \[\tilde{\phi}(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
+    On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to (here $v_0 = e_0(0)$ and $v_2 = e_2(1)$)
+    \[v_0 \tensor \tau + [e_2] \tensor [e_0] + \tau \tensor v_2\]
+    Since we are working with normalized chains, we get 
+    \[\tilde{\phi}(d^V(1_a\tensor \tau \tensor 1_b)) = \phi([e_2]\tensor [e_0]) = (1-\tilde{e}_2)(1-\tilde{e_0}) = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_2\tilde{e}_0 = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_1 \]
+    Hence 
+    \[\tilde{\phi}(d_{\Cobar}(1_a\tensor \tau \tensor 1_b))  = 0.\] 
+
+    So $\tilde{\phi}$ descends to a map $\phi: H_0\tot \to \Z\pi_1(X,a)[s_b]$. Because the row-wise filtration on $\tot\Cobar$ corresponds exactly to tensor length, we have that the restriction of $\phi$ is an isomorphism onto $\mathcal{I}^p$, so that 
+    \[E^{\infty}_{-p,p} \cong \mathcal{I}^p / \mathcal{I}^{p+1}\]
+    as desired.
     \end{proof}
 \end{thm}
 % \begin{lem}[\cite{Stallings1975}, Corollaries 5.2, 5.3]

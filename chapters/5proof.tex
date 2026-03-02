@@ -274,10 +274,15 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
     \[\tot\Cobar_{\leq n}\to \tot_\bullet(\mathscr{N}^{\leq n})\]
     is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism
     \[H_0\tot\Cobar_{\leq n}\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
-	LAST STEP: 
-    which by (???) yields an isomorphism 
-    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n}).\]
+	
+	The filtration on $H_0\tot\Cobar_{\leq n}$ has only two nonzero pieces, which by Theorem \ref{thm:stallings_generalization} are given by
+	\[F_{-n}H_0\tot \cong E_{-n,n}^\infty \cong \mathcal{I}^n/\mathcal{I}^{n+1}, \quad F_0H_0\tot \cong E_{-0,0} = \mathcal{I}^0/ \mathcal{I} = \Z\pi_1(X,x)/\mathcal{I} \cong \Z\]
+	so we have an exact sequence 
+	\[0 \to \mathcal{I}^n/\mathcal{I}^{n+1} \to H_0\tot\Cobar_{\leq n} \to \Z\to 0\]
+	yielding an isomorphism 
+	\[H_0\tot\Cobar_{\leq n} \cong \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}.\]
+	
     By Corollary \ref{cor:spectral_convergence}, we get a surjection
-    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \to H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
-    whose kernel is $\Z$ is $a=b$ and trivial otherwise, completing the proof.
+    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar_{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
+    whose kernel if $\Z$ is $a=b$ and trivial otherwise, completing the proof.
 \end{proof}
