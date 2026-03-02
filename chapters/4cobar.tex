@@ -209,7 +209,12 @@ A dual version of this theorem with cohomology and the bar construction can be f
     \[\tilde{\phi}(1_a \tensor \sigma_1 \tensor \cdots \sigma_p \tensor 1_b) = (1_a-\tilde{\sigma}_1)\cdots (1_a-\tilde{\sigma}_p)s_b\]
     where 
     \[\tilde{\sigma}_i = s_{\sigma_{i}(0)} * \sigma_i * s_{\sigma_i(1)}.\]
-    Clearly the image of $\tilde{\phi}$ is all of $\mathscr{I}^p$. We claim that $\tilde{\phi}$ descends to $H_0\tot(\Cobar)$.
+    Clearly the image of $\tilde{\phi}$ is all of $\mathcal{I}^p$. It remains to show that the kernel of $\tilde{\phi}$ is equal to the image of the total cobar differential 
+    \[\partial_{\Cobar} = d_H + d^V: \tot_1\Cobar \to \tot_0\Cobar.\]
+    Let us first show $\im \partial_{\Cobar} \subset \ker \tilde{\phi}$. Take a 2-simplex $\tau \in C_2(X) \cong \Cobar^1_2$ and suppose the singular boundary is $\partial_H(\tau)=e_0-e_1+e_2$. Then 
+    \[\phi(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
+    On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to 
+    \[e_0 \tensor \tau + [e_0e_1] \tensor [e_1e_2] + \tau \tensor [e_2]\]
     \end{proof}
 \end{thm}
 % \begin{lem}[\cite{Stallings1975}, Corollaries 5.2, 5.3]
