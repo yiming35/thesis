@@ -1,8 +1,8 @@
 \section{Adams' cobar construction}
-In this chapter we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of the main theorem.
+In this chapter we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and conclude by elaborating on the relationship between the cobar construction and the fundamental group.
 
 \subsection{The cobar construction}
-Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital coassociative $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper. We follow the modern presentation given in \cite{Rivera2022}.
+Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital coassociative $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar} and \cite{Chen1973}. We follow the presentation given in \cite{Rivera2022}.
 \begin{defn}
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
     \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
@@ -172,33 +172,73 @@ Upon checking differentials, we find that the normalized bicomplex $N\Cobar$ is 
 % 	\arrow["{\id\tensor \iota_a}", from=1-2, to=2-2]
 % \end{tikzcd}\]
 % and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. 
+Finally, we should check that this generalization of the cobar construction extends Adams' theorem.
+\begin{thm}\label{thm:adams_path}
+    Let $X$ be a space with basepoints $a,b$. Regard $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ as ... 
+    
+    There is a natural quasi-isomorphism from the totalization of the two-sided cobar construction 
+    \[\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
+    to the singular chains on the path space $C_\bullet(\Omega_{a,b}X)$.
+    \begin{proof}
+    
+    \end{proof}
+\end{thm}
 
 \subsection{Homology and the fundamental group}
-There is a sense in which Adams' theorem allows one to use homology to approximate the fundamental group. ..
-The isomorphism of Adams' theorem actually comes from a chain-level quasi-isomorphism. Moreover, the assumption that $X$ is simply connected can be removed. 
-\begin{thm}[\cite{Rivera2022}, Theorem 1]
-    Let $(X,x)$ be a path connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then $\Cobar(C_\bullet(X))$ is quasi-isomorphic to $C_\bullet(\Omega_xX)$ as dg algebras. 
+Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
+\begin{thm}[\cite{Stallings1975}, Theorem 5.4]\label{thm:stallings}
+    Let $R$ be a ring and $(X,x)$ a path-connected space. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R[\pi_1(X,x)]$. Let $E$ be the spectral sequence associated to the cobar construction on $C_\bullet(X)$ with basepoint $x$. Then there is an isomorphism
+    \[\mathcal{I}^p/\mathcal{I}^{p+1} \cong E^\infty_{-p,p}.\]
 \end{thm}
-\begin{rem}
-    We have stated the theorem for singular chains $C_\bullet(X)$ rather than some modified chains $C_\bullet(X,b)$ (not the relative chains!), but these are quasi-isomorphic? 
-\end{rem}
-\begin{rem}
-Cobar not preserving quasi isomorphisms
-\end{rem}
-Moreover, there is a canonical way in which the cobar construction is related to the augmentation ideal-adic truncations of the fundamental group ring:
-\begin{thm}[\cite{gadish_letterbraiding}, Theorem 1.2(3)]
-    Let $A$ be a PID, and $\Gamma$ a group. Let $\mathcal{I}$ be the augemntation ideal of the group ring $A[\Gamma]$. Then we have the following isomorphism 
-    \[(\mathcal{I}^n)^{\perp} \cong H^0(\Barr_{<n}(C^\bullet(B\Gamma)); A)\]
-    where the left hand side is the orthogonal complement of $\mathcal{I}^n < A[\Gamma]$, and the left hand side is the zeroth cohomology of the subcoalgebra of the bar construction on the cochains of the classifying space $B\Gamma$, consisting of weight $<n$ tensors. \hfill \qed
-\end{thm}
-Taking $A=\Z$, $\Gamma = \pi_1(X,x)$, and dualizing, we obtain the following:
-\begin{cor}\label{cor:gadish}
-    There is an isomorphism of groups
-    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(B\pi_1(X,x))))\]
-    and consequently 
-    \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(X)))\]
-    where $\Cobar_{\leq n}$ denotes the cobar complex with length $>n$ tensors truncated.
+A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The goal of this subsection will be to prove an integral version of this theorem for the two-sided cobar construction.
+\begin{thm}\label{thm:stallings_generalization}
+    Let $X$ be a path-connected space with basepoints $a,b$. Let $\mathcal{I}$ be the augmentation ideal of the group ring $\Z\pi_1(X,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
+    \[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))\]
+    Then there is an isomorphism
+    \[\mathcal{I}^p/\mathcal{I}^{p+1} \to E^\infty_{-p,p}.\]
     \begin{proof}
-        The first statement follows immediately from Gadish's theorem. The second statement follows since the zeroth homology of the cobar construction depends only on the fundamental group of a space. To see this,
+    It will again to turn out to be easier to work with the normalized cobar, a la the proof of Proposition \ref{prop:twoside_reduction}. So abbreviate $N\Cobar(\cdots)$ by $\Cobar$. By Theorem \ref{thm:adams_path}, we have an isomorphism 
+    \[H_0(\tot(\Cobar)) \to H_0(\Omega_{a,b}X) \cong \Z\pi_0(\Omega_{a,b}X).\]
+    Recall that the bigrading on the two-sided cobar construction is given by 
+    \[\Cobar(N,C,M)^q_p = \bigoplus_{a + b_1 + \cdots + b_q + c = p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\] 
+    so that the degree zero totalization is given exactly by terms with $p=-q$. Since $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have only nonzero terms concentrated in degree zero, while in the reduced complex we have $\overline{NC_0(X)} = 0$, we are forced to have 
+    \[\Cobar^p_{-p} = NC_\bullet(\{a\})\tensor \overline{NC_1(X)}^{\tensor p}\tensor NC_\bullet(\{b\}).\]
+    We can then define a map from $\tot_0(\Cobar)$ to a rank one free module over $\Z\pi_1(X,a)$ as follows. Fix a spanning tree of $X$ with basepoint at a, i.e. a collection of paths for each $x$ in $a$
+    \[\{s: [0,1]\to X: s_x(0) = a, s_x(1) = x\}.\]
+    with the requirement that $s_a$ is the constant path at $a$. Then define $\tilde{\phi}: \tot_0(\Cobar)\to \Z\pi_1(X,a)[s_b]$ via 
+    \[\tilde{\phi}(1_a \tensor \sigma_1 \tensor \cdots \sigma_p \tensor 1_b) = (1_a-\tilde{\sigma}_1)\cdots (1_a-\tilde{\sigma}_p)s_b\]
+    where 
+    \[\tilde{\sigma}_i = s_{\sigma_{i}(0)} * \sigma_i * s_{\sigma_i(1)}.\]
+    Clearly the image of $\tilde{\phi}$ is all of $\mathscr{I}^p$. We claim that $\tilde{\phi}$ descends to $H_0\tot(\Cobar)$.
     \end{proof}
-\end{cor}
+\end{thm}
+% \begin{lem}[\cite{Stallings1975}, Corollaries 5.2, 5.3]
+%     Let $X$ be a path-connected space. Something about two-sided cobar giving same thing for $X$ and $K(\pi_1(X), 1)$.
+% \end{lem}
+
+% \begin{thm}[\cite{Rivera2022}, Theorem 1]
+%     Let $(X,x)$ be a path connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then $\Cobar(C_\bullet(X))$ is quasi-isomorphic to $C_\bullet(\Omega_xX)$ as dg algebras. 
+% \end{thm}
+% \begin{rem}
+%     We have stated the theorem for singular chains $C_\bullet(X)$ rather than some modified chains $C_\bullet(X,b)$ (not the relative chains!), but these are quasi-isomorphic? 
+% \end{rem}
+% \begin{rem}
+% Cobar not preserving quasi isomorphisms
+% \end{rem}
+% Moreover, there is a canonical way in which the cobar construction is related to the augmentation ideal-adic truncations of the fundamental group ring:
+% \begin{thm}[\cite{gadish_letterbraiding}, Theorem 1.2(3)]
+%     Let $A$ be a PID, and $\Gamma$ a group. Let $\mathcal{I}$ be the augemntation ideal of the group ring $A[\Gamma]$. Then we have the following isomorphism 
+%     \[(\mathcal{I}^n)^{\perp} \cong H^0(\Barr_{<n}(C^\bullet(B\Gamma)); A)\]
+%     where the left hand side is the orthogonal complement of $\mathcal{I}^n < A[\Gamma]$, and the left hand side is the zeroth cohomology of the subcoalgebra of the bar construction on the cochains of the classifying space $B\Gamma$, consisting of weight $<n$ tensors. \hfill \qed
+% \end{thm}
+% Taking $A=\Z$, $\Gamma = \pi_1(X,x)$, and dualizing, we obtain the following:
+% \begin{cor}\label{cor:gadish}
+%     There is an isomorphism of groups
+%     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(B\pi_1(X,x))))\]
+%     and consequently 
+%     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(X)))\]
+%     where $\Cobar_{\leq n}$ denotes the cobar complex with length $>n$ tensors truncated.
+%     \begin{proof}
+%         The first statement follows immediately from Gadish's theorem. The second statement follows since the zeroth homology of the cobar construction depends only on the fundamental group of a space. To see this,
+%     \end{proof}
+% \end{cor}

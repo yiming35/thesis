@@ -137,28 +137,43 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
 \begin{thm}\label{thm:two_sided_cobar_D}
 	Let $NC_\bullet(-)$ be the normalized singular chains functor. Regard $NC_\bullet(\{a\})$ as a right $NC_\bullet(X)$-comodule via the right comodule action 
 	\[\Delta^R: NC_\bullet(\{a\})\xrightarrow{\AW} NC_\bullet(\{a\})\tensor NC_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a} NC_\bullet(\{a\}) \tensor NC_\bullet(X)\]
-	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a natural isomorphism 
+	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a natural quasi-isomorphism 
 	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{D}.\]
 	\begin{proof}
-		Denote $\Cobar(\cdots)$ by $\Cobar$. Note that $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are just the chain complexes with a $\Z$ term concentrated in degree zero, i.e. the identity object in the symmetric monoidal structure on $\catname{Ch}_+(\catname{Ab})$. Hence we have natural isomorphisms 
+		Denote $\Cobar(\cdots)$ by $\Cobar$. We will exhibit an isomorphism from $\Cobar$ into a bicomplex that is quasi-isomorphic to $\mathscr{D}$. 
+		
+		Note that $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are just the chain complexes with a $\Z$ term concentrated in degree zero, i.e. the identity object in the symmetric monoidal structure on $\catname{Ch}_+(\catname{Ab})$. Hence we have natural isomorphisms 
 		\[\psi_a: NC_\bullet(\{a\}) \tensor NC_\bullet(X) \to NC_\bullet(X)\]
 		\[\psi_b: NC_\bullet(X) \tensor NC_\bullet(\{b\}) \to NC_\bullet(X)\]
 		yielding a natural isomorphism
 		\begin{equation}
 			\begin{split}
 			\phi: \Cobar^q_p &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} NC_n(\{a\}) \tensor NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X)\tensor NC_m(\{b\}) \\
-			&\to \bigoplus_{b_1 + \cdots + b_q = p}  NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X) = \mathscr{D}^q_p.
+			&\to \bigoplus_{b_1 + \cdots + b_q = p}  NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X) =: N\mathscr{D}^q_p.
 			\end{split}
 		\end{equation}
-		We now check that the differentials are compatible with $\phi$. Because $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have all differentials zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
+		where $N\mathscr{D}$ bicomplex obtained by taking normalized chains on each row of $\mathscr{C}^\bullet_\bullet$ then applying the Alexander--Whitney map, as in the diagram below:
+
+		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJOQ19cXGJ1bGxldChYXnEpIl0sWzEsMCwiQ19cXGJ1bGxldChYKV57XFx0ZW5zb3IgcX0gPSBcXG1hdGhzY3J7RH1fXFxidWxsZXRecSJdLFsxLDEsIk5DX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSA9Ok5cXG1hdGhzY3J7RH1ecV9cXGJ1bGxldCJdLFswLDIsIlxcQVdfcSJdLFsxLDMsIlxcQVdfcSIsMl0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+		\[\begin{tikzcd}[cramped]
+			{C_\bullet(X^q)} & {C_\bullet(X)^{\tensor q} = \mathscr{D}_\bullet^q} \\
+			{NC_\bullet(X^q)} & {NC_\bullet(X)^{\tensor q} =:N\mathscr{D}^q_\bullet}
+			\arrow["{\AW_q}", from=1-1, to=1-2]
+			\arrow[hook, from=2-1, to=1-1]
+			\arrow["{\AW_q}"', from=2-1, to=2-2]
+			\arrow[hook, from=2-2, to=1-2]
+		\end{tikzcd}\]
+		By Dold--Kan, the inclusion $N\mathscr{D}\hookrightarrow \mathscr{D}$ is a bicomplex quasi-isomorphism.
+
+		We now check that the differentials on $\Cobar$ and $N\mathscr{D}$ are compatible with $\phi$. Because $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have all differentials zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
 		\begin{equation*}
 		\begin{split}
 			\phi(d_H^{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor c_q \tensor n) \\
 			&= \sum_{i=1}^q (-1)^{\sigma(c_i)}  \psi_a(m\tensor c_1) \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor \psi_b(c_q\tensor n)  \\
-			&= d_{\mathscr{D}}(\phi(m\tensor c_1\tensor \cdots \tensor c_q \tensor n)).
+			&= d_{N\mathscr{D}}(\phi(m\tensor c_1\tensor \cdots \tensor c_q \tensor n)).
 		\end{split}
 		\end{equation*}
-		The vertical differential in both cases is given by the alternating sum of coface maps. We need to show that $\phi\circ d_{\Cobar}^i = d_{\mathscr{D}}^i \circ \phi$ for all $i$. For $i=0$, the map $d_{\mathscr{D}}^i: \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet$ is induced by the following inclusion under the topological Alexander--Whitney map: 
+		The vertical differential in both cases is given by the alternating sum of coface maps. We will show that $\phi\circ d_{\Cobar}^i = d_{N\mathscr{D}}^i \circ \phi$ for all $i$. For $i=0$, the map $d_{N\mathscr{D}}^i: N\mathscr{D}^q_\bullet \to N\mathscr{D}^{q+1}_\bullet$ is induced by the following inclusion under the topological Alexander--Whitney map: 
 		\[(x_1, ..., x_q)\to (a, x_1, ..., x_q).\]
 		Naturality of Alexander--Whitney implies that the following diagram commutes:
 			\[\begin{tikzcd}[sep=large]
@@ -179,7 +194,7 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
 		\[NC_\bullet(\{a\})\tensor NC_\bullet(X)^{\tensor q}\cong NC_\bullet(X)^{\tensor q}, \text{ and } NC_\bullet(\iota_a) = \eta_a\]
 		to conclude 
 		\[ (\eta_a\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}NC_\bullet(d^0)\]
-		which implies $d_{\mathscr{D}}^0 = \eta_a\tensor \id^{\tensor q}$. (By a slight abuse of notation we use $\eta_a$ to denote both the constant map at $\eta_a$ as well as the constant zero simplex at $a$). Then by naturality of the Alexander--Whitney map,
+		which implies $d_{N\mathscr{D}}^0 = \eta_a\tensor \id^{\tensor q}$. (By a slight abuse of notation we use $\eta_a$ to denote both the constant map at $\eta_a$ as well as the constant zero simplex at $a$). Then by naturality of the Alexander--Whitney map,
 		\begin{equation*}
 \begin{split}
     \phi(d^0_{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\Delta^R(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n) \\
@@ -188,10 +203,10 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
     &= \psi_a(m \tensor \eta_a) \tensor c_1 \tensor \cdots \tensor \psi_b(c_q \tensor n) \\
     &= \eta_a \tensor \psi_a(m \tensor c_1) \tensor \cdots \tensor \psi_b(c_q \tensor n) \\
     &= (\eta_a \tensor \id^{\tensor q})\big(\psi_a(m \tensor c_1) \tensor \cdots \tensor \psi_b(c_q \tensor n)\big) \\
-    &= d^0_\mathscr{D}(\phi(m \tensor c_1\tensor \cdots \tensor c_q \tensor n))
+    &= d^0_{N\mathscr{D}}(\phi(m \tensor c_1\tensor \cdots \tensor c_q \tensor n))
 \end{split}
 \end{equation*}
-		The proof for $d^1, ..., d^q$ are analogous. Hence $\phi$ is a bicomplex isomorphism $\Cobar \to \mathscr{D}$.
+		The proof for $d^1, ..., d^q$ are analogous. Hence $\phi$ is a bicomplex quasi-isomorphism $\Cobar \to N\mathscr{D}$, and postcomposing with the inclusion $N\mathscr{D}\hookrightarrow \mathscr{D}$ yields the desired quasi-isomorphism.
 	% 	The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
 	% \[\mathscr{D}(d^i) = \begin{cases}
 	% 	\eta_a \tensor \id^{\tensor q} & i=0 \\
@@ -223,7 +238,7 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
 		% which implies $\mathscr{D}(d^0) = \eta_a\tensor \id^{\tensor q}$. The arguments for the other maps are analogous.
 	\end{proof}
 \end{thm}
-Using this theorem and the bicomplex quasi-isomorphisms constructed previosuly, this result follows:
+
 \begin{thm}\label{thm:new_cobar}
     There is a quasi-isomorphism of bicomplexes
 	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{N}.\]
@@ -240,18 +255,18 @@ Using this theorem and the bicomplex quasi-isomorphisms constructed previosuly, 
 		which is a quasi-isomorphism.
     \end{proof}
 \end{thm}
-\begin{rem}
-We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space! So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
-\[\begin{tikzcd}[cramped]
-	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
-	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
-	\arrow["\simeq", from=1-1, to=1-3]
-	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
-	\arrow["{?}", dashed, from=1-3, to=2-3]
-	\arrow[equal, from=2-1, to=2-3]
-\end{tikzcd}\]
-then we would have a version of Adams' theorem.
-\end{rem}
+% \begin{rem}
+% We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space! So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
+% \[\begin{tikzcd}[cramped]
+% 	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
+% 	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
+% 	\arrow["\simeq", from=1-1, to=1-3]
+% 	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
+% 	\arrow["{?}", dashed, from=1-3, to=2-3]
+% 	\arrow[equal, from=2-1, to=2-3]
+% \end{tikzcd}\]
+% then we would have a version of Adams' theorem.
+% \end{rem}
 
 % Now we have all the ingredients. It's time to cook.
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]

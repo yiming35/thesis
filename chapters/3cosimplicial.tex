@@ -150,13 +150,13 @@ In the following discussion, we replace ``abelian group'' with ``$R$-module'' fo
   \end{enumerate}
   Now we compute the coface map 
   \[d^0: A^n \sqcup B^n \to A^{n+1}\sqcup B^{n+1}.\]
-  By the two claims, $d^0$ is an bijection $A^n \to B^{n+1}$. On $B^n$, we have $d^0x = d^0d^0y = d^1d^0y$ for some $y \in X^{n-1}$ by cosimplicial identities, so this is zero in $NC^{n-1}$. It follows that 
+  By the two claims, $d^0$ is a bijection $A^n \to B^{n+1}$. On $B^n$, we have $d^0x = d^0d^0y = d^1d^0y$ for some $y \in X^{n-1}$ by cosimplicial identities, so this is zero in $NC^{n}$. It follows that 
   \[H^n(R[X^\bullet]) = \frac{\ker (d^0: NC[X^n] \to NC[X^{n+1}])}{\im(d^0: NC[X^{n-1}]\to NC[X^n])} = \frac{B^n}{B^n} = 0\]
   completing the proof.
   \end{proof}
 \end{prop}
 \begin{rem}
-  Proposition \ref{prop:goodwillie_cor} is completely false for simplicial sets which carry a lot of homological information! For example, gien a simplicial set $K_\bullet$, the chain complex $NR[K_\bullet]$ computes the homology of $K$. If these groups were all zero we would be in trouble.
+  The analogue of Proposition \ref{prop:goodwillie_cor} for simplicial sets is completely false! For example, gien a simplicial set $K_\bullet$, the chain complex $NR[K_\bullet]$ computes the homology of $K$. If these groups were all zero we would be in trouble.
 \end{rem}
 
 
@@ -225,8 +225,8 @@ Consequently, $\EZ$ is also a quasi-isomorphism, and these maps are inverses. Sp
 \begin{cor}
 For $q>0$ and a topological space $X$, there is a natural quasi-isomorphim of chain complexes 
 \[\EZ_q: C_\bullet(X)^{\tensor q}\to C_\bullet(X^q).\]
-Moreover, $\EZ_q$ and $\AW_q$ are quasi-inverses. \hfill \qed
+Moreover, $\EZ_q \circ \AW_q$ is chain homotopic to the idenitty on $C_\bullet(X^q)$ and $\AW_q \circ \EZ_q$ is chain homotopic to the identity on $C_\bullet(X)^{\tensor q}$. \hfill \qed
 \end{cor}
 \begin{rem}
-The proof of the Eilenberg--Zilber theorem appearing in \cite{Eilenberg1953} did not contain any explicit formulas. Rather the proof made use of acyclic models. Explicit formulas for the maps involved can be found in \cite{Eilenberg_MacLane}, stated in terms of \emph{$(p,q)$-shuffles}.
+The proof of the Eilenberg--Zilber theorem appearing in \cite{Eilenberg1953} did not contain any explicit formulas. Rather the proof made use of acyclic models. Explicit formulas for the maps involved can be found in \cite{Eilenberg_MacLane}, stated in terms of \emph{$(p,q)$-shuffles}, which correspond to the way simplicies can be multiplied and divided.
 \end{rem}
