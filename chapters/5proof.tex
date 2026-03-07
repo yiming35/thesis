@@ -27,7 +27,7 @@ and proceeding in the other direction gives the exact same map.
  \end{proof}
 \end{prop}
 
-Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism of bicomplexes by Dold--Kan. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
+Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism of bicomplexes by Dold--Kan and Lemma \ref{lem:quasiiso_bicomplex}. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
 \[\mathscr{N}^q_p = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
 Moreover, the vertical differential $\mathscr{N}^q_p \to \mathscr{N}^{q+1}_p$ is induced by the zeroth coface map $d^0$. 
 % See Figure \ref{fig:bicomplex_C} for the first few rows and columns.
@@ -126,7 +126,7 @@ to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$.
 \begin{prop}
 	The map $\mathscr{C} \to \mathscr{D}$ induced by Alexander--Whitney is a quasi-isomorphism of bicomplexes, with inverse quasi-isomorphism induced by the Eilenberg--Zilber map.
 	\begin{proof}
-		Combine Corollary \ref{cor:topological_aw}, Theorem \ref{thm:eilenberg_zilber}, and Proposition \ref{lem:quasiiso_bicomplex},
+		Combine Corollary \ref{cor:topological_aw}, Theorem \ref{thm:eilenberg_zilber}, and Lemma \ref{lem:quasiiso_bicomplex},
 	\end{proof}
 \end{prop}
 By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
@@ -275,10 +275,10 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
     is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism
     \[H_0\tot\Cobar_{\leq n}\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
 	
-	The filtration on $H_0\tot\Cobar_{\leq n}$ has only two nonzero pieces, which by Theorem \ref{thm:stallings_generalization} are given by
-	\[F_{-n}H_0\tot \cong E_{-n,n}^\infty \cong \mathcal{I}^n/\mathcal{I}^{n+1}, \quad F_0H_0\tot \cong E_{-0,0} = \mathcal{I}^0/ \mathcal{I} = \Z\pi_1(X,x)/\mathcal{I} \cong \Z\]
-	so we have an exact sequence 
-	\[0 \to \mathcal{I}^n/\mathcal{I}^{n+1} \to H_0\tot\Cobar_{\leq n} \to \Z\to 0\]
+	The filtration on $H_0\tot\Cobar_{\leq n}$ has only two nonzero pieces, which by (stallings) are given by ... 
+	% \[F_{-n}H_0\tot \cong E_{-n,n}^\infty \cong \mathcal{I}^n/\mathcal{I}^{n+1}, \quad F_0H_0\tot \cong E_{-0,0} = \mathcal{I}^0/ \mathcal{I} = \Z\pi_1(X,x)/\mathcal{I} \cong \Z\]
+	% so we have an exact sequence 
+	% \[0 \to \mathcal{I}^n/\mathcal{I}^{n+1} \to H_0\tot\Cobar_{\leq n} \to \Z\to 0\]
 	yielding an isomorphism 
 	\[H_0\tot\Cobar_{\leq n} \cong \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}.\]
 	

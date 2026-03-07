@@ -3,7 +3,7 @@ In this chapter we define the cobar construction of a coalgebra and introduce Ad
 
 \subsection{The cobar construction}
 Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital coassociative $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar} and \cite{Chen1973}. We follow the presentation given in \cite{Rivera2022}.
-\begin{defn}
+\begin{defn}\label{def:cobar_algebra}
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
     \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
     and whose differential is given by extending the linear map 
@@ -12,34 +12,37 @@ Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
 The definition of the differential here is valid owing to Proposition \ref{prop:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter we have that as a chain complex, $\Cobar(C)$ has terms 
-\begin{equation}
+\begin{equation}\label{eqn:cobar_terms}
 \begin{split}
-    \Cobar_k(C) &= T_k(s^{-1}\overline{C}) \\
+    \Cobar_k(C) &= (T(s^{-1}\overline{C}))_k \\
     &= \bigoplus_{q \geq 0} (s^{-1}\overline{C})^{\tensor q}_k\\
     &= \bigoplus_{q \geq 0}\bigoplus_{n_1 + \cdots + n_q = k} (s^{-1}\overline{C})_{n_1} \tensor \cdots \tensor (s^{-1}\overline{C})_{n_q} \\
     &= \bigoplus_{q \geq 0}\bigoplus_{n_1 + \cdots + n_q = k} \overline{C}_{n_1+1} \tensor \cdots \tensor \overline{C}_{n_q+1} \\
     &= \bigoplus_{q \geq 0}\bigoplus_{m_1 + \cdots + m_q = k+q} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \\
-    &=  \bigoplus_{p-q = k} \bigoplus_{m_1 + \cdots + m_q = p} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \\
+    &=  \bigoplus_{p+q = -k} \bigoplus_{m_1 + \cdots + m_q = -p} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \\
 \end{split}
 \end{equation}
-The purpose of introducing the dummy variable $p$ at the end of this tedious indexing exercise was to suggest that we should be able to realize the cobar construction as the totalization of a bicomplex in $p$ and $q$. Indeed, in the cobar differential, we utilize both the internal differential $\partial$ of $C$ as well as the coproduct $\Delta$. One of these will turn out to raise $q$ and the other will lower $p$.
+The purpose of introducing the dummy variable $p$ at the end of this tedious indexing exercise was to suggest that we should be able to realize the cobar construction as the totalization of a second quadrant bicomplex. Indeed, in the cobar differential, we utilize both the internal differential $\partial$ of $C$ with its differential graded structure as well as the coproduct $\Delta$ of $C$ as a coalgebra.
 
 \begin{defn}\label{def:cobar_bicomplex}
-    Let $(C, \Delta, \partial)$ be as above. The \emph{cobar bicomplex} is the bicomplex $\Cobar_{\bullet}^\bullet(C)$ with 
-    \[\Cobar_p^q := \bigoplus_{m_1 + \cdots + m_q = p} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \]
+    Let $(C, \Delta, \partial)$ be as above. The \emph{cobar bicomplex} is the bicomplex $\Cobar_{\bullet,\bullet}(C)$ with 
+    \[\Cobar_{p,q} := \bigoplus_{m_1 + \cdots + m_q = -p} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \]
     and differentials
-    \[d_H: \Cobar_{p,q}\to \Cobar_{p-1}^q,\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
-    \[d_V: \Cobar_p^q \to \Cobar_p^{q+1}, \quad x_1\tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_q\]
-    where the $x_i$ are elements of $(s^{-1}\overline{C})_{n_i}$ and $\sigma(x_i)$ is the Koszul sign $\deg x_1 + \cdots + \deg x_{i-1}$.
+    \[d_H: \Cobar_{p,q}\to \Cobar_{p+1,q},\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
+    \[d_V: \Cobar_{p,q}\to \Cobar_{p, q+1}, \quad x_1\tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_q\]
+    where $\sigma(x_i)$ is the Koszul sign $\deg x_1 + \cdots + \deg x_{i-1}$.
 \end{defn}
+\begin{warn}
+    We have overloaded the notation $\Cobar$, first to refer to the functor from Definition \ref{def:cobar_algebra} sending a dg coalgebra to a dg algebra, and second to represent the functor from Definition \ref{def:cobar_bicomplex} sending a dg coalgebra to a bicomplex. We will distinguish these using  subscripts: using $\Cobar_\bullet$ for the first and $\Cobar_{\bullet,\bullet}$ for the second. But the next proposition shows that this distinction is not so important.
+\end{warn}
 \begin{prop}\label{prop:cobar_bicomplex}
-The totalization of $\Cobar^\bullet_\bullet(C)$ given by 
-\[\tot_k(\Cobar^\bullet_\bullet) = \bigoplus_{p-q = k} \Cobar^q_p\]
-with differential $\partial_{\tot} = d_H+(-1)^qd_V$ on $\Cobar^q_p$, is isomorphic as a dg algebra to $\Cobar(C_\bullet)$.
+The totalization of $\Cobar_{\bullet,\bullet}(C)$ given by 
+\[\tot_k(\Cobar_{\bullet,\bullet}) = \bigoplus_{p+q = -k} \Cobar_{p,q}\]
+with differential $\partial_{\tot} = d_H+(-1)^qd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
 \begin{proof}
-    By the preceeding discussion, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Now by Proposition \ref{prop:maps_extend}, it suffices to check that $\partial_{\tot}$ extends the map $s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}$ given in the definition of the cobar complex. Indeed, we have that on
-    \[s^{-1}\overline{C} = \bigoplus_{n_1 =p\geq 0} (s^{-1}\overline{C})_{n_1} =\bigoplus_{p\geq 0} \Cobar^1_p,\]
-    the differential is $\partial_{\tot} = d_H - d_V$ which is exactly the cobar differential.
+    By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Proposition \ref{prop:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
+    \[(s^{-1}\overline{C})_p = \Cobar_{p,1}\]
+    and on this component $\partial_{\tot}$ is precisely $d_H - d_V$.
 \end{proof}
 \end{prop}
 
@@ -48,9 +51,9 @@ What is miraculous is that this purely algebraic construction encodes a good amo
     Let $(X,x)$ be a simply connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then there is a natural isomorphism
     \[H_\bullet(\Cobar(C_\bullet(X)))\cong H_\bullet(\Omega_xX).\]
 \end{thm}
-Thus we can regard the cobar construction as the algebraic analogue of the based loop space functor $\Omega_x(-)$. As the prefix \emph{co-} suggests, the cobar construction is adjoint to a functor 
+Thus we can regard the cobar construction as the algebraic analogue of the based loop space functor. As the prefix \emph{co-} suggests, the cobar construction is adjoint to a functor 
 \[\Barr: \catname{dgAlg} \to \catname{dgConilCoalg}\]
-called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. See Chapter 2 of \cite{Loday2012} for precise statements and a comparison of the two constructions.
+called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. We comment briefly on the bar construction in the following few sections.
 \begin{rem}
 The name \emph{bar} construction comes from typesetting. Pre-\LaTeX, a tensor $x_1 \tensor \cdots \tensor x_n$ would be written $x_1 | \cdots | x_n$. Adams attributes the name \emph{cobar} to H. Cartan (see footnote 3 of \cite{AdamsCobar}).
 \end{rem}
@@ -58,7 +61,7 @@ The name \emph{bar} construction comes from typesetting. Pre-\LaTeX, a tensor $x
 \subsection{Two-sided version} 
 The cobar construction of a dg coalgebra is a special case of a more general \emph{two-sided} cobar construction. An analogous two-sided bar construction is well documented (for example \cite{May1972}, \cite{Zhang2019TwoSidedBar}, \cite{May2025}). Here we give an exposition of the dual construction, which seems to not appear in the literature.
 \begin{defn}
-Let $C = \overline{C}\oplus R$ be a coaugmented $R$-coalgebra and let $N,M$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
+Let $C$ be a conilpotent $R$-coalgebra and let $N,M$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
 \[\Cobar(N,C,M)^q = M\tensor C^{\tensor q} \tensor N\]
 with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
 \[d^i = \begin{cases}
@@ -69,16 +72,16 @@ with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
 and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
 \[s^i = \id^{\tensor i} \tensor \epsilon \tensor \id^{\tensor q-i-1}\]
 \end{defn}
-If $C,N,M$ have additional dg structure (i.e. $C$ is a dg coalgebra and $N, M$ are dg comodules), then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following notion, generalizing the previous discussion of the cobar bicomplex:
+If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following notion, generalizing the previous discussion of the cobar bicomplex:
 \begin{defn}
     Let $(C, \partial_C)$, $(N, \partial_N)$, and $(M, \partial_M)$ be as above. The \emph{two-sided cobar bicomplex} has underlying $R$-module 
-    \[\Cobar(N,C,M)^{\bullet}_\bullet = \bigoplus_{q\geq 0} M\tensor C^{\tensor q} \tensor N\]
+    \[\Cobar(N,C,M)_{\bullet,\bullet} = \bigoplus_{q\geq 0} M\tensor C^{\tensor q} \tensor N\]
     and bigrading 
-    \[\Cobar(N,C,M)^q_p = \bigoplus_{a + b_1 + \cdots + b_q + c = p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\]
-    with vertical differential given by the alternating sums 
-    \[d^V: \Cobar(N,C,M)^{q-1}_\bullet\to \Cobar(N,C,M)^{q}_\bullet,\quad d_V = \sum_{i=0}^q d^i \]
+    \[\Cobar(N,C,M)_{p,q} = \bigoplus_{a + b_1 + \cdots + b_q + c = -p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\]
+    with vertical differential given by the alternating sums of the coface maps 
+    \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_\bullet{\bullet, q},\quad d_V = \sum_{i=0}^q d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
-    \[d_H: \Cobar(N,C,M)^q_p\to \Cobar(N,C,M)^q_{p-1}\]
+    \[d_H: \Cobar(N,C,M)_{p,q}\to \Cobar(N,C,M){p-1,q}\]
     \begin{equation}\label{eqn: twoside_cobar_differential}
     \begin{split}
     d_H(m\tensor c_1 \tensor \cdots \tensor c_q \tensor n) &= \hspace{2pt} \partial_M(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n \\
@@ -86,10 +89,88 @@ If $C,N,M$ have additional dg structure (i.e. $C$ is a dg coalgebra and $N, M$ a
     &+ (-1)^{|m|+ \sigma(c_q)} m \tensor c_1 \tensor \cdots \tensor c_q \tensor \partial_N(n)
     \end{split}
     \end{equation}
-    where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $p-q$ and differential $d_H + (-1)^qd^V$ on $\Cobar(N,C,M)^q_\bullet$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$.
+    where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^qd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$.
 \end{defn} 
 
-This two-sided construction reduces to the one in the previous subsection as follows. Let $C$ be a dg coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-module with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
+Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are refering to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection. To prove this we need a definition and a few lemmas. 
+\begin{lem}\label{lem:quasiiso_bicomplex}
+    Let $f: D_{\bullet, \bullet} \to E_{\bullet, \bullet}$ be a map of second quadrant bicomplexes of abelian groups with differentials of bidegree $(+1, 0)$ and $(0,+1)$. If $f$ is a column-wise quasi-isomorphism, then the induced map on totalizations $f_*: \tot D\to \tot E$ is a quasi-isomorphism.
+    \begin{proof}
+        Consider the column-wise filtration $D^{\leq m}_{\bullet,\bullet}$ where the first $m$ columns (i.e. $p \in \{0, ..., -m\})$ are nonzero, and likewise for $E$. We proceed by induction. If $m=0$ we are done, so suppose for $m\geq 1$ that 
+        \[f_*: \tot(D^{\leq m-1}) \to \tot(E^{\leq m-1})\]
+        is a quasi-isomorphism. 
+
+        Totalizing by taking total degree $k = -p-q$, we have the short exact sequence 
+        \[ 0 \to \tot(F^{\leq m-1} D) \hookrightarrow \tot(D^{\leq m}) \twoheadrightarrow D_{-m, \bullet}[m] \to 0 \]
+        where $D_{-m, \bullet}[m]$ is the shifted complex 
+        \[D_{-m, 0} \to D_{-m, 1} \to \cdots\]
+        where the $D_{-m, 0}$ term is in degree $m$. Then by the five lemma applied to the following diagram and the corresponding diagram in the long exact sequence on homology
+        % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlxcdG90KERee1xcbGVxIG0tMX0pIl0sWzIsMCwiXFx0b3QoRF57XFxsZXEgbX0pIl0sWzMsMCwiRF97LW0sXFxidWxsZXR9W21dIl0sWzQsMCwiMCJdLFswLDEsIjAiXSxbMSwxLCJcXHRvdChFXntcXGxlcSBtLTF9KSJdLFsyLDEsIlxcdG90KEVee1xcbGVxIG19KSJdLFszLDEsIkVfey1tLFxcYnVsbGV0fVttXSJdLFs0LDEsIjAiXSxbMCwxXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFszLDRdLFs4LDldLFs3LDgsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzUsNl0sWzEsNl0sWzIsN10sWzMsOF1d
+        \[\begin{tikzcd}[cramped]
+            0 & {\tot(D^{\leq m-1})} & {\tot(D^{\leq m})} & {D_{-m,\bullet}[m]} & 0 \\
+            0 & {\tot(E^{\leq m-1})} & {\tot(E^{\leq m})} & {E_{-m,\bullet}[m]} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[hook, from=1-2, to=1-3]
+            \arrow[from=1-2, to=2-2]
+            \arrow[two heads, from=1-3, to=1-4]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=1-4, to=2-4]
+            \arrow[from=2-1, to=2-2]
+            \arrow[hook, from=2-2, to=2-3]
+            \arrow[two heads, from=2-3, to=2-4]
+            \arrow[from=2-4, to=2-5]
+        \end{tikzcd}\]
+        we conclude that $f_*$ is a quasi-isomorphism. Now $D$ is a filtered colimit of the $D^{\leq m}$, and homology and totalization commute with filtered colimits, so we conclude that $f_*$ is a quasi-isomorphism $\tot(D) \to \tot(E)$.
+    \end{proof}
+\end{lem}
+Because we will use this notion many more times, we make the following definition: 
+\begin{defn}
+    A map $f: D \to E$ of first quadrant spectral sequences is a \emph{quasi-isomorphism} if it is a column-wise quasi-isomorphism. (So Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of bicomplexes induces a quasi-isomorphism on totalizations).
+\end{defn}
+
+For the next definition and lemma let $C, C'$ be nilpotent $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Then any map $f: C\to C'$ induces a map 
+\[[f]: \gr C \to \gr C'\]
+of associated graded modules. 
+\begin{defn}
+If $[f]$ is a quasi-isomorphism, then $f$ is called a \emph{graded isomorphism}.
+\end{defn}
+In general this is a stronger assumption than $f$ inducing a quasi-isomorphism, as we see:
+\begin{lem}\label{lem:graded_quism}
+    Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. If $f: C\to C'$ is a graded quasi-isomorphism, (and $C,C',N, M$ are flat over $R$), then the induced map 
+    \[f_*: \tot\Cobar(N,C,M)\to \tot\Cobar(N',C', M')\]
+    is a quasi-isomorphism, where $N' = N$ is regarded as a left $C'$-comodule and $M' = M$ is regarded as a right $C'$-comodule via the maps
+    \[N' = N \xrightarrow{\Delta^L} C\tensor N \xrightarrow{f\tensor \id} C' \tensor N\]
+    \[M' = M \xrightarrow{\Delta^R} M\tensor C \xrightarrow{f\tensor \id} M\tensor C'\]
+    \begin{proof} 
+        We imitate the strategy of the proof of the analogous Proposition 2.4.1 in \cite{Loday2012}, which is over a field and done for the regular cobar construction. 
+
+        Define a weighting on the elements of $C, N, M$ via 
+        \[|x| = \{\min r: x \in F_r\}\]
+        where $F_r$ is the coradical filtration on the respective modules. Consider the filtration on the two-sided cobar construction given by 
+        \[F_r\Cobar(N,C,M) := \{m \tensor c_1 \tensor \cdots \tensor c_q \tensor n: |m| + |c_1| + \cdots + |c_q| + |n| \leq r\}.\]
+        The totalization of $\Cobar$ inherits this filtration: 
+        \[F_r\tot_k\Cobar(N,C,M) := \bigoplus_{p+q = -k} F_r\Cobar_{p,q}.\]
+        The filtration is bounded below and exhaustive by conilpotency, so its associated spectral sequence converges to the homology of $\tot\Cobar(N,C,M)$. The zeroth page of this spectral sequence is given by 
+        \[E^0_{s,t}\Cobar(N,C,M) = \frac{F_s\tot_{s+t}\Cobar}{F_{s-1}\tot_{s+t}\Cobar} = \bigoplus_{q\geq 0}\frac{F_s(M\tensor C^{\tensor q}\tensor N)_{s+t}}{F_{s-1}(M\tensor C^{\tensor q}\tensor N)_{s+t}}.\]
+        Because all the modules are flat, we can commute the associated graded with the tensor products to obtain 
+        \[E^0_{s,t}\Cobar(N,C,M) = \bigoplus_{q\geq 0} \bigoplus_{a + b_1 + \cdots + b_q + c = s} (\gr_a M \tensor \gr_{b_1} C \tensor \cdots \tensor \gr_{b_q}\tensor \gr_c N)_{s+t}.\]
+        Summing over $t$, each column of the $E^0$ page is therefore given by 
+        \[E^0_{s,\bullet} =\Cobar(\gr N, \gr C, \gr M)^{(s)}\]
+        where the superscript $(s)$ denotes the subcomplex of elements satisfying
+        \[ |n| + |c_1| + \tensor + |c_q| + m = s.\]
+        In other words, the induced map 
+        \[E^0(\Cobar(f)): E^0\Cobar(\gr N,\gr C,\gr M) \to E^0\Cobar(\gr N, \gr C', \gr M)\]
+        is exactly the induced map $\Cobar([f])$. So it suffices to prove that the column-wise maps are quasi-isomorphisms in light of Lemma \ref{lem:quasiiso_bicomplex}.
+
+        To do so, we define another filtration $G$ on each column $E^0_{s,\bullet}$ based on tensor length, with 
+        \[n\tensor c_1 \tensor \cdots \tensor c_q \tensor m \in G_kE^0_{s,\bullet} \iff q \geq -k.\]
+        ....
+    \end{proof}
+\end{lem}
+
+\begin{prop}\label{prop:twoside_reduction}  
+Let $C$ be a flat conilpotent dg coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
 \[\begin{tikzcd}[cramped]
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzAsMSwiQyJdLFsxLDEsIkNcXHRlbnNvciBSIl0sWzAsMSwiXFxldGEiLDJdLFswLDIsIlxcRGVsdGFeTCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDIsIlxcY29uZyIsMl1d
 	R & \\
@@ -98,70 +179,23 @@ This two-sided construction reduces to the one in the previous subsection as fol
 	\arrow["{\Delta^L}", dashed, from=1-1, to=2-2]
 	\arrow["\cong"', from=2-1, to=2-2]
 \end{tikzcd}\]
-and likewise for the right action. This is the correct reduction:
-\begin{prop}\label{prop:twoside_reduction}  
-$\tot\Cobar(R,C,R)$ as above is quasi-isomorphic to the single cobar construction from Definition 3.1.
-\end{prop}
-For the proof we need a fact from homological algebra.
-\begin{lem}\label{lem:quasiiso_bicomplex}
-    Let $f: D_{\bullet, \bullet} \to E_{\bullet, \bullet}$ be a map of first quadrant bicomplexes of abelian groups. If $f$ is a row-wise or column-wise quasi-isomorphism, then the induced map on totalizations $f_*: \tot D\to \tot E$ is a quasi-isomorphism.
-    \begin{proof}
-        We do the proof where $f$ is a row-wise quasi-isomorphism, i.e. for fixed $q$ we have a quasi-isomorphism 
-        \[f: D_{\bullet, q}\to E_{\bullet, q}.\] 
-        Let us first consider the truncated bicomplexes $D^{\leq n}_{\bullet,\bullet}, E^{\leq n}_{\bullet,\bullet}$ where the first $n$ rows are nonzero. Then $f_*$ restricts to a map $D^{\leq n}_{\bullet,\bullet}\to E^{\leq n}_{\bullet,\bullet}$. We will induct on $n$. If $n=0$, there is nothing to prove. Suppose now that $n>1$ and $f: D^{\leq n-1}_{\bullet,\bullet}\to E^{\leq n-1}_{\bullet,\bullet}$ induces a quasi-isomorphism of totalizations. 
+and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is quasi-isomorphic to the single cobar construction $\Cobar_\bullet(C)$ of Definition \ref{def:cobar_algebra}.
 
-        We totalize by taking $\tot(D)_k = \bigoplus_{p+q=k} D_{p,q}$. So we have an exact sequence of chain complexes
-        \[\tot(D^{\leq n-1}) \hookrightarrow  \tot(D^{\leq n}) \twoheadrightarrow D_{\bullet, n}[-n]\] 
-        where $D_{\bullet, n}[-n]$ is the chain complex beginning below in degree 0,
-        \[D_{\bullet, n}[-n]: 0\leftarrow \cdots \leftarrow {D^{0,n}} \leftarrow D^{1,n}\leftarrow \cdots\]
-        having first nonzero term $D^{0,n}$ in degree $n$. Repeating the same construction for $E$, we get a commutative diagram of short exact sequences 
-        \[\begin{tikzcd}[cramped]
-            % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiXFx0b3QoRF57XFxsZXEgbi0xfSkiXSxbMSwxLCJcXHRvdChFXntcXGxlcSBuLTF9KSJdLFsyLDAsIlxcdG90KERee1xcbGVxIG59KSJdLFsyLDEsIlxcdG90KEVee1xcbGVxIG59KSJdLFszLDAsIkRfe1xcYnVsbGV0LCBufVstbl0iXSxbMywxLCJFX3tcXGJ1bGxldCwgbn1bLW5dIl0sWzAsMCwiMCJdLFswLDEsIjAiXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFswLDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzEsMywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMyw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwxLCJmXyoiLDJdLFs0LDUsImZfKiJdLFsyLDMsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs2LDBdLFs3LDFdLFs0LDhdLFs1LDldXQ==
-            0 & {\tot(D^{\leq n-1})} & {\tot(D^{\leq n})} & {D_{\bullet, n}[-n]} & 0 \\
-            0 & {\tot(E^{\leq n-1})} & {\tot(E^{\leq n})} & {E_{\bullet, n}[-n]} & 0
-            \arrow[from=1-1, to=1-2]
-            \arrow[hook, from=1-2, to=1-3]
-            \arrow["{f_*}"', from=1-2, to=2-2]
-            \arrow[two heads, from=1-3, to=1-4]
-            \arrow[dashed, from=1-3, to=2-3]
-            \arrow[from=1-4, to=1-5]
-            \arrow["{f_*}", from=1-4, to=2-4]
-            \arrow[from=2-1, to=2-2]
-            \arrow[hook, from=2-2, to=2-3]
-            \arrow[two heads, from=2-3, to=2-4]
-            \arrow[from=2-4, to=2-5]
-        \end{tikzcd}\]
-        in which the two outer arrows are quasi-isomorphisms. The five lemma concludes the induction. Hence $f_*: \tot(D^{\leq n})\to \tot(E^{\leq n})$ is a quasi-isomorphism for all $n$. 
-        
-        We can now write $D$ and $E$ as the direct limits (which are colimits) of their truncated subcomplexes
-        \[D = \varinjlim_{n} D^{\leq n}, \quad E = \varinjlim_{n} E^{\leq n}.\]
-        Now totalization is a colimit, and colimits commute with colimits, so $f_*$ assembles into a map of direct limits 
-        \[f_*: \varinjlim_n \tot(D^{\leq n}) \to \varinjlim_n \tot(E^{\leq n}).\]
-        Since homology commutes with filtered colimits, we a map of colimits
-        \[\varinjlim_n H_*\tot(D^{\leq n})\to \varinjlim_n H_*\tot(E^{\leq n})\]
-        where each map $H_*\tot(D^{\leq n}) \to H_*\tot(E^{\leq n})$ is an isomorphism, implying that 
-        \[f_*: H_*\tot(D)\to H_*\tot(E)\]  
-        is too. The proof supposing $f$ is a column-wise quasi-isomorphism proceeds identically, by truncating column-wise.
-    \end{proof}
-\end{lem}
-Because we will use this notion many more times times in this thesis, we make the following definition: 
-\begin{defn}
-    A map $f: D \to E$ of first quadrant spectral sequences is a \emph{quasi-isomorphism} if it is a row- or column-wise quasi-isomorphism. 
-\end{defn}
-Then Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of bicomplexes induces a quasi-isomorphism of totalizations. 
-\begin{proof}[Proof of Proposition \ref{prop:twoside_reduction}]
-    We take the normalized cochain complex on each column of $\Cobar_p^\bullet$ to obtain:
+\begin{proof}
+    We take the normalized cochain complex on each column $\Cobar_{p,\bullet}$ to obtain:
     \begin{equation}
 	\begin{split}
-		N\Cobar_p^q &= \bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_p^q\to \Cobar_p^{q-1}) \\
+		N\Cobar_{p,q}(R,C,R) &= \bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
 		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
 		&=  (\ker(\epsilon)^{\tensor q})_p \\
 		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
-        &= old cobar.
+        &= \Cobar_{p,q}(C).
 	\end{split}
 \end{equation}
-Upon checking differentials, we find that the normalized bicomplex $N\Cobar$ is equal to the reduced cobar construction on $C$. Since $N\Cobar \hookrightarrow \Cobar$ is a quasi-isomorphism, we conclude by Proposition \ref{prop:twoside_reduction}.
+Upon checking differentials, we conclude that the normalized bicomplex $N\Cobar$ is equal to the cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:graded_quism}.
 \end{proof}
+\end{prop}
+
 % Let us now return to topological problem where we want to have two coaugmentations of $C_\bullet(X)$ corresponding to the inclusion of distinct basepoints $\iota_a: \{a\} \hookrightarrow X$ and $\iota_b: \{b\} \hookrightarrow X$. We regard $C_\bullet(\{a\}) \cong \Z$ as a right $C_\bullet(X)$-comodule via the following composite
 % % https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX1xcYnVsbGV0KFxce2FcXH0pIl0sWzEsMSwiQ19cXGJ1bGxldChcXHthXFx9KVxcdGVuc29yIENfXFxidWxsZXQoWCkiXSxbMSwwLCJDX1xcYnVsbGV0KFxce2FcXH0pXFx0ZW5zb3IgQ19cXGJ1bGxldChcXHthXFx9KSJdLFswLDIsIlxcQVdfe1xce2FcXH19Il0sWzIsMSwiXFxpZFxcdGVuc29yIFxcaW90YV9hIl0sWzAsMSwiXFxEZWx0YV5SIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 % \[\begin{tikzcd}
@@ -190,41 +224,40 @@ Adams' theorem allows one to use homology and the cobar construction to approxim
     Let $R$ be a ring and $(X,x)$ a path-connected space. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R[\pi_1(X,x)]$. Let $E$ be the spectral sequence associated to the cobar construction on $C_\bullet(X)$ with basepoint $x$. Then there is an isomorphism
     \[\mathcal{I}^p/\mathcal{I}^{p+1} \cong E^\infty_{-p,p}.\]
 \end{thm}
-A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The goal of this subsection will be to prove an integral version of this theorem for the two-sided cobar construction.
-\begin{thm}\label{thm:stallings_generalization}
+A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The goal of this subsection will be to prove the following integral version of this theorem for the two-sided cobar construction:
+\begin{prop}\label{prop:stallings_generalization}
     Let $X$ be a path-connected space with basepoints $a,b$. Let $\mathcal{I}$ be the augmentation ideal of the group ring $\Z\pi_1(X,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
     \[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))\]
     Then there is an isomorphism
     \[\mathcal{I}^p/\mathcal{I}^{p+1} \to E^\infty_{-p,p}.\]
-    \begin{proof}
-    It will again to turn out to be easier to work with the normalized cobar, a la the proof of Proposition \ref{prop:twoside_reduction}. So abbreviate $N\Cobar(\cdots)$ by $\Cobar$. By Theorem \ref{thm:adams_path}, we have an isomorphism 
-    \[H_0(\tot(\Cobar)) \to H_0(\Omega_{a,b}X) \cong \Z\pi_0(\Omega_{a,b}X).\]
-    Recall that the bigrading on the two-sided cobar construction is given by 
-    \[\Cobar(N,C,M)^q_p = \bigoplus_{a + b_1 + \cdots + b_q + c = p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\] 
-    so that the degree zero totalization is given exactly by terms with $p=-q$. Since $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have only nonzero terms concentrated in degree zero, while in the reduced complex we have $\overline{NC_0(X)} = 0$, we are forced to have 
-    \[\Cobar^p_{-p} = NC_\bullet(\{a\})\tensor \overline{NC_1(X)}^{\tensor p}\tensor NC_\bullet(\{b\}).\]
-    We can then define a map from $\tot_0(\Cobar)$ to a rank one free module over $\Z\pi_1(X,a)$ as follows. Fix a spanning tree of $X$ with basepoint at a, i.e. a collection of paths for each $x$ in $a$
-    \[\{s: [0,1]\to X: s_x(0) = a, s_x(1) = x\}.\]
-    with the requirement that $s_a$ is the constant path at $a$. Then define $\tilde{\phi}: \tot_0(\Cobar)\to \Z\pi_1(X,a)[s_b]$ via 
-    \[\tilde{\phi}(1_a \tensor \sigma_1 \tensor \cdots \sigma_p \tensor 1_b) = (1_a-\tilde{\sigma}_1)\cdots (1_a-\tilde{\sigma}_p)s_b\]
-    where 
-    \[\tilde{\sigma}_i = s_{\sigma_{i}(0)} * \sigma_i * s_{\sigma_i(1)}.\]
-    Clearly the image of $\tilde{\phi}$ is all of $\mathcal{I}^p$. It remains to show that the kernel of $\tilde{\phi}$ is equal to the image of the total cobar differential 
-    \[\partial_{\Cobar} = d_H + d^V: \tot_1\Cobar \to \tot_0\Cobar.\]
-    Let us first show $\im \partial_{\Cobar} \subset \ker \tilde{\phi}$. Take a 2-simplex $\tau \in C_2(X) \cong \Cobar^1_2$ and suppose the singular boundary is $\partial_H(\tau)=e_0-e_1+e_2$. Then 
-    \[\tilde{\phi}(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
-    On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to (here $v_0 = e_0(0)$ and $v_2 = e_2(1)$)
-    \[v_0 \tensor \tau + [e_2] \tensor [e_0] + \tau \tensor v_2\]
-    Since we are working with normalized chains, we get 
-    \[\tilde{\phi}(d^V(1_a\tensor \tau \tensor 1_b)) = \phi([e_2]\tensor [e_0]) = (1-\tilde{e}_2)(1-\tilde{e_0}) = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_2\tilde{e}_0 = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_1 \]
-    Hence 
-    \[\tilde{\phi}(d_{\Cobar}(1_a\tensor \tau \tensor 1_b))  = 0.\] 
+%     \begin{proof}
+%     It will again to turn out to be easier to work with the normalized cobar, a la the proof of Proposition \ref{prop:twoside_reduction}. So abbreviate $N\Cobar(\cdots)$ by $\Cobar$. 
+%     Recall that the bigrading on the two-sided cobar construction is given by 
+%     \[\Cobar(N,C,M)^q_p = \bigoplus_{a + b_1 + \cdots + b_q + c = p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\] 
+%     so that the degree zero totalization is given exactly by terms with $p=-q$. Since $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have only nonzero terms concentrated in degree zero, while in the reduced complex we have $\overline{NC_0(X)} = 0$, we are forced to have 
+%     \[\Cobar^p_{-p} = NC_\bullet(\{a\})\tensor \overline{NC_1(X)}^{\tensor p}\tensor NC_\bullet(\{b\}).\]
+%     We can then define a map from $\tot_0(\Cobar)$ to a rank one free module over $\Z\pi_1(X,a)$ as follows. Fix a spanning tree of $X$ with basepoint at a, i.e. a collection of paths for each $x$ in $a$
+%     \[\{s: [0,1]\to X: s_x(0) = a, s_x(1) = x\}.\]
+%     with the requirement that $s_a$ is the constant path at $a$. Then define $\tilde{\phi}: \tot_0(\Cobar)\to \Z\pi_1(X,a)[s_b]$ via 
+%     \[\tilde{\phi}(1_a \tensor \sigma_1 \tensor \cdots \sigma_p \tensor 1_b) = (1_a-\tilde{\sigma}_1)\cdots (1_a-\tilde{\sigma}_p)s_b\]
+%     where 
+%     \[\tilde{\sigma}_i = s_{\sigma_{i}(0)} * \sigma_i * s_{\sigma_i(1)}.\]
+%     Clearly the image of $\tilde{\phi}$ is all of $\mathcal{I}^p$. It remains to show that the kernel of $\tilde{\phi}$ is equal to the image of the total cobar differential 
+%     \[\partial_{\Cobar} = d_H + d^V: \tot_1\Cobar \to \tot_0\Cobar.\]
+%     Let us first show $\im \partial_{\Cobar} \subset \ker \tilde{\phi}$. Take a 2-simplex $\tau \in C_2(X) \cong \Cobar^1_2$ and suppose the singular boundary is $\partial_H(\tau)=e_0-e_1+e_2$. Then 
+%     \[\tilde{\phi}(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
+%     On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to (here $v_0 = e_0(0)$ and $v_2 = e_2(1)$)
+%     \[v_0 \tensor \tau + [e_2] \tensor [e_0] + \tau \tensor v_2\]
+%     Since we are working with normalized chains, we get 
+%     \[\tilde{\phi}(d^V(1_a\tensor \tau \tensor 1_b)) = \phi([e_2]\tensor [e_0]) = (1-\tilde{e}_2)(1-\tilde{e_0}) = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_2\tilde{e}_0 = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_1 \]
+%     Hence 
+%     \[\tilde{\phi}(d_{\Cobar}(1_a\tensor \tau \tensor 1_b))  = 0.\] 
 
-    So $\tilde{\phi}$ descends to a map $\phi: H_0\tot \to \Z\pi_1(X,a)[s_b]$. Because the row-wise filtration on $\tot\Cobar$ corresponds exactly to tensor length, we have that the restriction of $\phi$ is an isomorphism onto $\mathcal{I}^p$, so that 
-    \[E^{\infty}_{-p,p} = F_{-p}H_0\tot / F_{-p-1}H_0\tot\cong \mathcal{I}^p / \mathcal{I}^{p+1}\]
-    as desired.
-    \end{proof}
-\end{thm}
+%     So $\tilde{\phi}$ descends to a map $\phi: H_0\tot \to \Z\pi_1(X,a)[s_b]$. Because the row-wise filtration on $\tot\Cobar$ corresponds exactly to tensor length, the restriction of $\phi$ onto the $-p$th stage of the filtration is an isomorphism onto $\mathcal{I}^p$, so that 
+%     \[E^{\infty}_{-p,p} = F_{-p}H_0\tot / F_{-p-1}H_0\tot\cong \mathcal{I}^p / \mathcal{I}^{p+1}\]
+%     as desired.
+%     \end{proof}
+% \end{thm}
 % \begin{lem}[\cite{Stallings1975}, Corollaries 5.2, 5.3]
 %     Let $X$ be a path-connected space. Something about two-sided cobar giving same thing for $X$ and $K(\pi_1(X), 1)$.
 % \end{lem}
@@ -254,4 +287,31 @@ A dual version of this theorem with cohomology and the bar construction can be f
 %     \begin{proof}
 %         The first statement follows immediately from Gadish's theorem. The second statement follows since the zeroth homology of the cobar construction depends only on the fundamental group of a space. To see this,
 %     \end{proof}
-% \end{cor}
+\end{prop}
+
+Before we begin, Stallings relies on the following crucial result of Brown:
+\begin{thm}[Theorem 10.2, \cite{Brown1959}]
+    Let $C$ be a dga $R$-coalgebra. Suppose $C_0  = R$, $H_1(C) = 0$, and (What is L??). Then there is a chain equivalence
+    \[\Cobar(\Barr(C))\to \Barr(C) \to C.\]
+\end{thm}
+His proof contains explicit maps between the constructions. In our case we specialize to the case where $C$ is the acyclic cochain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. This is useful for the following reason.
+\begin{cor}
+    There is a chain equivalence 
+    \[\Cobar(C_\bullet(BG)) \to \Z G\]
+    and consequently for any path-connected space $X$ with a single 0-cell $a$, there is an isomorphism 
+    \[H_0\Cobar(C_\bullet(X)) \to \Z\pi_1(X,a).\]
+    \begin{proof}
+        The bar construction on $\Z G$ is equivalent to singular chains on the Eilenberg--MacLane space $K(G, 1)$. This is an intermediate step and we don't discuss the bar construction again, so we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}.
+
+        The second isomorphism follows by Corollary 5.3 of \cite{Stallings1975}, which says that the map of $X$ into the $K(\pi_1(X,a), 1)$ induces an isomorphism on cobar constructions.
+    \end{proof}
+\end{cor}
+
+In generalize Stallings' theorem, we make the following constructions to avoid basepoint choice problems. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi(X)$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. We can enrich this category in abelian groups by letting the morphisms be the free abelian group on homotopy classes of paths. Denote this resulting category by $\Z\Pi(X)$.
+
+\begin{defn}
+The \emph{cobar category} of a space $X$ is the category $\CCobar(X)$ whose objects are the zero-simplices of $X$ and morphisms between $a,b \in X^0$ is the chain complex
+\[\tot_\bullet\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})).\]
+The composition of morphisms is given by 
+\end{defn}
+
