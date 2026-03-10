@@ -1,4 +1,4 @@
-\section{(Co)simplicial objects}
+\section{(Co)simplicial methods}
 \epigraph{\textit{A cosimplicial object of a category $\mathcal{C}$ could be defined simply as a simplicial object of the opposite category $\mathcal{C}^\mathrm{op}$. This is not really how the human brain works...}}{---Stacks Project, \cite[\href{https://stacks.math.columbia.edu/tag/016I}{Tag 016I}]{stacks-project}}
 
 In this chapter we define cosimplicial objects, the totalization of a cosimplicial space, and provide some examples. We will state the Dold--Kan correspondence and use it to prove a useful statement for later on. Finally we conclude with an exposition of the Alexander--Whitney map, which couldn't find a home in any other chapter. We assume some familiarity with simplicial objects.
@@ -49,7 +49,7 @@ The codegeneracy maps $s^j: P_{a,b}^{n+1}X \to P_{a,b}^{n}X$ are given by
 \[s^j(x_1, ..., x_{n+1}) =(x_1, ...,\widehat{x_{j+1}}, ... x_{n+1}), \quad j \in \{0, ..., n\}\]
 where the $\widehat{\phantom{-}}$ denotes omission.
 \end{exmp}
-We leave it to the reader to verify that the maps in both examples satisfy the cosimplicial identities. Why we refer to Example \ref{example:cosimplicial_path_space} by \textit{path spaces} will become evident in the next section. 
+We leave it to the reader to verify that the maps in both examples satisfy the cosimplicial identities. Why we refer to Example \ref{example:cosimplicial_path_space} by \textit{path spaces} will become evident in the following section. 
 
 \subsection{Totalization} 
 Cosimplicial spaces provide a useful model for many types of topological spaces, including the based path and loop spaces. This is done via \emph{totalization}, which is dual to the notion of geometric realization of a simplicial set. 
@@ -58,7 +58,7 @@ Given a cosimplicial space $X^\bullet: \mathbf{\Delta}\to \catname{Top}$, define
 \[\tot(X^\bullet) := \Hom_{\catname{csTop}}(\Delta^\bullet, X^\bullet),\]
 i.e. maps $f^n: \Delta^n \to X^n$ for all $n\geq 0$ that commute with the coface and codegeneracy maps. We topologize it as a subspace of $\prod_{n\geq 0} \Hom(\Delta^n, X^n)$ with the compact-open topology. Thus totalization gives us a functor from $\catname{csTop}$ to $\catname{Top}$. 
 
-What seems to be happening here is that by iterating the face maps, we are creating finer and finer piecewise subdivisons of paths whose endpoints are at $a$ and $b$. Indeed, 
+Returning to Example \ref{example:cosimplicial_path_space}, what seems to be happening  is that by iterating the face maps, we are creating finer and finer piecewise paths whos endpoints agree, and basepoints are at $a$ and $b$. Indeed, 
 \begin{prop}
   $\tot(P_{a,b}^\bullet X)$ is homeomorphic to the path space $\Omega_{a,b}X$ of paths in $X$ beginning at $a$ and ending at $b$.
   \begin{proof}
@@ -81,7 +81,7 @@ What seems to be happening here is that by iterating the face maps, we are creat
 \end{prop}
 We will call $P_{a,b}^\bullet X$ a cosimplicial model for the path space of $X$. When $a=b$ we get a cosimplicial model for the based loop space of $X$. It turns out that the cosimplicial space $P_{x,x}^\bullet X$ is in some sense the underlying cosimplicial set of the cobar construction of $C_\bullet(X)$, as we will see in the course of this thesis.
 
-\subsection{Dold--Kan} Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. Although these are duals, there is once again some asymmetry, as suggested by the quote.
+\subsection{Dold--Kan} Recall that the standard Dold--Kan correspondence gives an equivalence of categories between simplicial abelian groups and (non-negative) chain complexes of abelian groups. We'll restate some important results and their duals. 
 \begin{defn}
   Let $A$ be a simplicial abelian group. Its \emph{normalized chain complex} $(NA_\bullet, \partial)$ has
   \[NA_n = \bigcap_{i=1}^{n} \ker(d^i: A_n \to A_{n-1}),\quad \partial = d_0: NA_n \to NA_{n-1}\]
@@ -114,7 +114,7 @@ Analogously we obtain the following statements:
   \end{enumerate}
 \end{thm}
 Really we could have stated the previous four theorems for simplicial objects in any abelian category. 
-In the following discussion, we replace ``abelian group'' with ``$R$-module'' for some commutative ring $R$. Consider the free $R$-module functor $R[-]:\catname{Set} \to \catname{Mod}_R$. Then given any cosimplicial set $X^\bullet: \mathbf{\Delta} \to \catname{Set}$ the composition of functors $R[X^\bullet]$ yields a cosimplicial $R$-module. We first state a useful lemma, which was taken by a comment of Tom Goodwillie on a MathOverflow thread \cite{Goodwillie} related to the forthcoming Proposition \ref{prop:goodwillie_cor}.
+In the following discussion, we replace ``abelian group'' with ``$R$-module'' for some commutative ring $R$. Consider the free $R$-module functor $R[-]:\catname{Set} \to \catname{Mod}_R$. Then given any cosimplicial set $X^\bullet: \mathbf{\Delta} \to \catname{Set}$, the composition of functors $R[X^\bullet]$ yields a cosimplicial $R$-module. We first state a useful lemma, which was taken by a comment of Tom Goodwillie on a MathOverflow thread \cite{Goodwillie} related to the upcoming Proposition \ref{prop:goodwillie_cor}.
 \begin{lem}[Goodwillie's lemma]\label{lem:goodwillie}
     Let $n>0$ and choose $x,y \in X^n$. If $x,y$ are not in the image of any coface maps $d^j: X^{n-1}\to X^n$, then $d^ix = d^jy$ implies $i=j$ and $x=y$.
     \begin{proof}
@@ -156,12 +156,12 @@ In the following discussion, we replace ``abelian group'' with ``$R$-module'' fo
   \end{proof}
 \end{prop}
 \begin{rem}
-  The analogue of Proposition \ref{prop:goodwillie_cor} for simplicial sets is completely false! For example, gien a simplicial set $K_\bullet$, the chain complex $NR[K_\bullet]$ computes the homology of $K$. If these groups were all zero we would be in trouble.
+  The analogue of Proposition \ref{prop:goodwillie_cor} for simplicial sets is completely false! For example, given a simplicial set $K_\bullet$, the chain complex $NR[K_\bullet]$ computes the homology of $K$. If these groups were all zero we would be in trouble.
 \end{rem}
 
 
 \subsection{Alexander--Whitney and Eilenberg--Zilber}
-In the proof of Looijenga's theorem there is a step where we roughly need to move from singular chains on a product space to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map, with a natural inverse called the Eilenberg--Zilber map.
+In the proof of Looijenga's theorem there is a step where one needs to move from singular chains on a product to the product of chains. There is a canonical way to do so, called the Alexander--Whitney map, with a natural inverse called the Eilenberg--Zilber map.
 
 The Alexander--Whitney map is a way of moving between the category of simplicial abelian groups and the category of chain complexes of abelian groups that preserves their respective monoidal structure. Let us recall these structures. The monoidal product on $\catname{sAb}$ is given levelwise: for $A, B\in\catname{sAb}$, we have 
 \[(A\tensor B)_n = A_n\tensor B_n\]
@@ -179,7 +179,7 @@ where $d^p$ is the face map induced by $[p]\to [n], i\mapsto i$, and $d^q$ is th
 \begin{rem}
 $\AW$ restricts to a natural transformation 
 \[N(-\tensor -)\implies N(-) \tensor N(-)\]
-where $N$ is the normalized chains functor. (We will denote this restriction also by $\AW$.)
+where $N$ is the normalized chains functor. We will denote this restriction also by $\AW$.
 \end{rem}
 \begin{prop}\label{prop:AW_quasiiso}
 Let $A, B \in \catname{sAb}$. Then 
@@ -216,7 +216,7 @@ Since each component is a natural quasi-isomorphism, so is the composition.
 \end{cor}
 As promised, there is also a map going the other way, called the \emph{Eilenberg--Zilber} map, a natural transformation of functors
 \[\EZ: M(-)\tensor M(-)\implies M(-\tensor -).\]
-We are content without having an explicit formula for this map; it is slightly more finnicky than the one for Alexander--Whitney, and all we need to know is the following theorem:
+We are content without having an explicit formula for this map; it is slightly more finnicky than the formula for Alexander--Whitney, and all we need is the following theorem:
 \begin{thm}[Eilenberg--Zilber theorem, \cite{Eilenberg1953}]\label{thm:eilenberg_zilber}
   For simplicial abelian groups $A,B$, we have chain homotopies 
   \[\AW\circ \EZ \simeq \id_{M(A)\tensor M(B)}, \quad \EZ\circ\AW \simeq \id_{M(A\tensor B)}.\]
@@ -228,5 +228,5 @@ For $q>0$ and a topological space $X$, there is a natural quasi-isomorphim of ch
 Moreover, $\EZ_q \circ \AW_q$ is chain homotopic to the idenitty on $C_\bullet(X^q)$ and $\AW_q \circ \EZ_q$ is chain homotopic to the identity on $C_\bullet(X)^{\tensor q}$. \hfill \qed
 \end{cor}
 \begin{rem}
-The proof of the Eilenberg--Zilber theorem appearing in \cite{Eilenberg1953} did not contain any explicit formulas. Rather the proof made use of acyclic models. Explicit formulas for the maps involved can be found in \cite{Eilenberg_MacLane}, stated in terms of \emph{$(p,q)$-shuffles}, which correspond to the way simplicies can be multiplied and divided.
+The proof of the Eilenberg--Zilber theorem appearing in \cite{Eilenberg1953} does not contain any explicit formulas, making use instead of acyclic models. Explicit formulas for the maps involved can be found in \cite{Eilenberg_MacLane}, stated in terms of \emph{$(p,q)$-shuffles}, which encode to the way simplicies can be multiplied and divided.
 \end{rem}

@@ -1,4 +1,4 @@
-% \section{Coalgebras and Adams theorem}
+
 
 % In this chapter we give a brief overview of the important algebraic constructions used throughout the thesis. The reader should feel free to skip this the first two subsections if they are familiar with the theory of (co)associative (co)algebras. The main reference for the background material is from the first two chapters of \cite{Loday2012}. We then state Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We conclude by highlighting some recent refinements of Adams' theorem, which will be used in the proof of Looijenga's theorem.
 
@@ -14,7 +14,7 @@
 
 % \subsubsection{Group rings} One important class of algebras are group rings. For a fixed ring $R$ and a group $G$, the \emph{group ring of $G$ over $R$}, denoted $R[G]$, has elements finite formal linear combinations of elements in $G$ with coefficients in $R$, with addition and multiplication given by
 % \[(\sum_{g \in G} r_g g)+ (\sum_{g \in G}s_g g) = \sum_{g \in G}(r_g+s_g)g,\quad (\sum_{g \in G} r_g g)(\sum_{g \in G}s_g g) = \sum_{g \in G}\sum_{g_1g_2=g} (r_{g_1}s_{g_2})g.\]
-% Then the action of $R$ on $R[G]$ given by multipliying coefficients gives $R[G]$ the structure of an $R$-algebra. One should think of $R[G]$ as some sort of free module over $R$ with basis $G$. Group rings abound in the representation theory of groups, where any representation $\rho: G\to \GL(V)$ of a group $G$ over a $k$-vector space $V$ corresponds to a module over the group ring $k[G]$. In this thesis, however, we do not need to take this perspective (unless we could?)
+% Then the action of % \section{Coalgebras and Adams theorem}$R$ on $R[G]$ given by multipliying coefficients gives $R[G]$ the structure of an $R$-algebra. One should think of $R[G]$ as some sort of free module over $R$ with basis $G$. Group rings abound in the representation theory of groups, where any representation $\rho: G\to \GL(V)$ of a group $G$ over a $k$-vector space $V$ corresponds to a module over the group ring $k[G]$. In this thesis, however, we do not need to take this perspective (unless we could?)
 
 % As an algebra, $R[G]$ comes with a natural augmentation, given by the map
 % \[\varepsilon: R[G]\to R,\quad \varepsilon(\sum_{g\in G}r_gg) = \sum_{g\in G}r_g.\]
@@ -65,7 +65,7 @@
 %     \end{proof}
 % \end{prop}
 
-\section{Coalgebras} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.  The reader should feel free to skip this chapter if they are familiar with the theory of (co)associative (co)algebras.
+\section{Coalgebra crash course} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.  The reader should feel free to skip this chapter if they are familiar with the theory of (co)associative (co)algebras.
 \subsection{First definitions} Let $R$ be a commutative ring.
 
 \begin{defn}

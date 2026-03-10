@@ -1,103 +1,72 @@
 \section{Proof of main theorem}
-Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this section let $X$ be a path connected topological space with basepoints $a,b$. Our strategy will be use the cosimplicial path space model to construct the $E^0$-page of a spectral sequence which (1) converges to the group $H_n(X^n, X(n)^a_b)$ and (2) is related to the cobar construction, hence the groups $\Z\pi_1(X,a)/\Z\pi_1(X,a)\mathcal{I}^{n+1}_a$.
+Here we present the proof of Theorem \ref{thm:looijenga}. Throughout this section let $X$ be a path connected topological space with basepoints $a,b$. Our strategy will be to consider the spectral sequence associated to the two-sided cobar construction. We will show that it converges to the group $H_n(X^n, X(n)^a_b)$ and conclude by the previous discussion relating the cobar construction to the fundamental group. 
 
 \subsection{Building the spectral sequence} Recall the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. From now we denote it by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign.
 
-Now consider the bicomplex $\mathscr{C}^\bullet_\bullet$ which is obtained by applying singular chains to $P^\bullet$: 
-\[\mathscr{C}^q_p = C_p(P^q)\]
-with ``horizontal'' differential $d^\mathscr{C}_H: C_p(P^q)\to C_{p-1}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d^V_\mathscr{C}: C_p(P^q) \to C_p(P^q)$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
-\begin{prop}
- $C^\bullet_\bullet$ is a bicomplex.
- \begin{proof}
- That $d^\mathscr{C}_H$ and $d^V_\mathscr{C}$ both square to zero follows from the fact that each row is a chain complex and each row is a cochain complex. It remains to check commutativity of the squares: 
- 
-\[\begin{tikzcd}[cramped]
-    % https://q.uiver.app/#q=WzAsNCxbMSwxLCJDX3AoWF5xKSJdLFsxLDAsIkNfcChYXntxKzF9KSJdLFswLDAsIkNfe3AtMX0oWF57cSsxfSkiXSxbMCwxLCJDX3twLTF9KFhee3F9KSJdLFswLDFdLFswLDNdLFszLDJdLFsxLDJdXQ==
-	{C_{p-1}(X^{q+1})} & {C_p(X^{q+1})} \\
-	{C_{p-1}(X^{q})} & {C_p(X^q)}
-	\arrow[from=1-2, to=1-1]
-	\arrow[from=2-1, to=1-1]
-	\arrow[from=2-2, to=1-2]
-	\arrow[from=2-2, to=2-1]
-\end{tikzcd}\]
-Starting with a map $f: \Delta^p \to X^q$, if we first go up then left, we get the map 
-\[ \Delta^{p-1}\xrightarrow{([p]\to [p-1])^*}\Delta^p \xrightarrow{f} X^q \xrightarrow{\sum (-1)^id^i} X^{q+1}\]
-and proceeding in the other direction gives the exact same map.
-(This is really obvious, might not need to include).
- \end{proof}
-\end{prop}
+Now consider the bicomplex $\mathscr{C}_{\bullet,\bullet}$ which is obtained by applying singular chains to $P^\bullet$: 
+\[\mathscr{C}_{p,q} = C_{-p}(P^q)\]
+with ``horizontal'' differential $d^\mathscr{C}_H: C_p(P^q)\to C_{p+1}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d^V_\mathscr{C}: C_p(P^q) \to C_p(P^{q+1})$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
 
-Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_p^\bullet$ which is the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}^\bullet_\bullet$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. This is a bicomplex for the same reason as above, and the inclusion $\mathscr{N} \hookrightarrow \mathscr{C}$ is a quasi-isomorphism of bicomplexes by Dold--Kan and Lemma \ref{lem:quasiiso_bicomplex}. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
-\[\mathscr{N}^q_p = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
-Moreover, the vertical differential $\mathscr{N}^q_p \to \mathscr{N}^{q+1}_p$ is induced by the zeroth coface map $d^0$. 
-% See Figure \ref{fig:bicomplex_C} for the first few rows and columns.
-% \begin{figure}
-%     \begin{tikzcd}[cramped]
-%     % https://q.uiver.app/#q=WzAsMTUsWzAsMywiQ18wKCopIl0sWzEsMywiQ18xKCopIl0sWzIsMywiQ18yKCopIl0sWzAsMiwiQ18wKFgpIl0sWzEsMiwiQ18xKFgpIl0sWzIsMiwiQ18yKFgpIl0sWzAsMSwiQ18wKFheMikiXSxbMSwxLCJDXzAoWF4yKSJdLFsyLDEsIkNfMChYXjIpIl0sWzMsMSwiXFxjZG90cyJdLFszLDIsIlxcY2RvdHMiXSxbMywzLCJcXGNkb3RzIl0sWzIsMCwiXFx2ZG90cyJdLFsxLDAsIlxcdmRvdHMiXSxbMCwwLCJcXHZkb3RzIl0sWzMsNl0sWzAsM10sWzEsMF0sWzQsM10sWzcsNl0sWzgsN10sWzUsNF0sWzQsN10sWzIsMV0sWzIsNV0sWzEsNF0sWzUsOF0sWzksOF0sWzEwLDVdLFsxMSwyXSxbOCwxMl0sWzcsMTNdLFs2LDE0XV0=
-% 	\vdots & \vdots & \vdots & \\
-% 	{C_0(X^2)} & {C_0(X^2)} & {C_0(X^2)} & \cdots \\
-% 	{C_0(X)} & {C_1(X)} & {C_2(X)} & \cdots \\
-% 	{C_0(*)} & {C_1(*)} & {C_2(*)} & \cdots
+% \begin{prop}
+%  $C^\bullet_\bullet$ is a bicomplex.
+%  \begin{proof}
+%  That $d^\mathscr{C}_H$ and $d^V_\mathscr{C}$ both square to zero follows from the fact that each row is a chain complex and each row is a cochain complex. It remains to check commutativity of the squares: 
+ 
+% \[\begin{tikzcd}[cramped]
+%     % https://q.uiver.app/#q=WzAsNCxbMSwxLCJDX3AoWF5xKSJdLFsxLDAsIkNfcChYXntxKzF9KSJdLFswLDAsIkNfe3AtMX0oWF57cSsxfSkiXSxbMCwxLCJDX3twLTF9KFhee3F9KSJdLFswLDFdLFswLDNdLFszLDJdLFsxLDJdXQ==
+% 	{C_{p-1}(X^{q+1})} & {C_p(X^{q+1})} \\
+% 	{C_{p-1}(X^{q})} & {C_p(X^q)}
+% 	\arrow[from=1-2, to=1-1]
 % 	\arrow[from=2-1, to=1-1]
 % 	\arrow[from=2-2, to=1-2]
 % 	\arrow[from=2-2, to=2-1]
-% 	\arrow[from=2-3, to=1-3]
-% 	\arrow[from=2-3, to=2-2]
-% 	\arrow[from=2-4, to=2-3]
-% 	\arrow[from=3-1, to=2-1]
-% 	\arrow[from=3-2, to=2-2]
-% 	\arrow[from=3-2, to=3-1]
-% 	\arrow[from=3-3, to=2-3]
-% 	\arrow[from=3-3, to=3-2]
-% 	\arrow[from=3-4, to=3-3]
-% 	\arrow[from=4-1, to=3-1]
-% 	\arrow[from=4-2, to=3-2]
-% 	\arrow[from=4-2, to=4-1]
-% 	\arrow[from=4-3, to=3-3]
-% 	\arrow[from=4-3, to=4-2]
-% 	\arrow[from=4-4, to=4-3]
-% \end{tikzcd}
-% \caption{The bicomplex $\mathscr{C}^\bullet_\bullet$.}
-% \label{fig:bicomplex_C}
-% \end{figure}
+% \end{tikzcd}\]
+% Starting with a map $f: \Delta^p \to X^q$, if we first go up then left, we get the map 
+% \[ \Delta^{p-1}\xrightarrow{([p]\to [p-1])^*}\Delta^p \xrightarrow{f} X^q \xrightarrow{\sum (-1)^id^i} X^{q+1}\]
+% and proceeding in the other direction gives the exact same map.
+% (This is really obvious, might not need to include).
+%  \end{proof}
+% \end{prop}
 
-Now consider the bicomplex obtained from $\mathscr{N}$ by setting all rows above $q=n$ to zero, which we will denote by $(\mathscr{N}^{\leq n})^\bullet_\bullet$.
+Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_{p,\bullet}$, the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}_{\bullet,\bullet}$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. The map $\mathscr{C}\twoheadrightarrow \mathscr{N}$ is a quasi-isomorphism of bicomplexes by Dold--Kan and Lemma \ref{lem:quasiiso_bicomplex}. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
+\[\mathscr{N}_{p,q} = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
+Moreover, the vertical differential $\mathscr{N}_{p,q} \to \mathscr{N}_{p,q+1}$ is induced by the zeroth coface map $d^0$. Consider now the bicomplex obtained from $\mathscr{N}$ by setting all rows above $q=n$ to zero, which we will denote by $(\mathscr{N}^{\leq n})^\bullet_\bullet$.
 \begin{prop}
-    Filtering $(\mathscr{N}^{\leq n})^\bullet_\bullet$ in the horizontal direction i.e. by the lower index, we obtain a spectral sequence collapsing on the second page with 
-    \[E^2_{n,n} = H_n(X^n, X(n)^a_b), \quad E^2_{0,0} = \begin{cases}
+    Filtering $(\mathscr{N}^{\leq n})$ by the lower index, we obtain a second-quadrant spectral sequence collapsing on the second page with 
+    \[E^2_{-n,n} = H_n(X^n, X(n)^a_b), \quad E^2_{0,0} = \begin{cases}
         \Z & a=b\\
         0 &  a\neq b
     \end{cases}\]
-    converging to $H_\bullet(\tot(\mathscr{N}^{\leq n})^\bullet_\bullet)$.
+    converging to $H_\bullet\tot(\mathscr{N}^{\leq n})$.
     \begin{proof}
-        Convergence is given by the fact that our bicomplex is concentrated in the first quadrant. To compute the $E^2$-page, let us begin in the $E^0$-page, whose $p$th column is the following normalized cochain complex (beginning below in degree $q=0$):
+        The filtration is bounded below and exhaustive, so the spectral sequence converges. To compute the $E^2$-page, let us begin on $E^0$, whose $-p$th column is the following normalized cochain complex (beginning below in degree $q=0$):
         \[C_p(*)\to C_p(X, \{b\})\to \cdots\to C_p(X^n, X(n)_b)\to 0 \to \cdots\]
         of the Moore complex 
         \begin{equation}\label{eqn:moore_complex}
             C_p(*)\to C_p(X) \to \cdots \to C_p(X^n)\to 0 \to \cdots
         \end{equation}
-        so they have the same cohomology. Moreover, the $E^0$-differential is the cochain differential $d^0$ given our filtration. But now (\ref{eqn:moore_complex}) is just the cochain complex obtained by taking the free abelian group on the cosimplicial set $[q] \mapsto \Map(\Delta^p, F^q)$, with terms $q>n$ set to zero. Therefore, by Proposition \ref{prop:goodwillie_cor}, we have that $E^1_{p,q} = 0$ for $q \neq 0,n$. For $q=n$ and $q=0$, we have 
-        \[E^1_{p,n} = C_p(X^n, X(n)_b) /\im(d^0) = C_p(X^n, X(n)^a_b)\]
-        \[E^1_{p,0} = \ker(d^0: C_p(*)\to C_p(X, \{b\})) = \begin{cases}
+        so they have the same cohomology. But now (\ref{eqn:moore_complex}) is just the cochain complex obtained by taking the free abelian group on the cosimplicial set $[q] \mapsto \Map(\Delta^p, F^q)$, with terms $q>n$ set to zero. Therefore, by Proposition \ref{prop:goodwillie_cor}, we have that $E^1_{-p,q} = 0$ for $q \neq 0,n$. For $q=n$ and $q=0$, we have 
+        \[E^1_{-p,n} = C_p(X^n, X(n)_b) /\im(d^0) = C_p(X^n, X(n)^a_b)\]
+        \[E^1_{-p,0} = \ker(d^0: C_p(*)\to C_p(X, \{b\})) = \begin{cases}
         \Z & p=0 , a=b \\
         0 & \text{otherwise}
         \end{cases}.\]
 
-        On the $E^1$-page, the differential is now induced by singular boundary map. Thus on the only two possibly nonzero rows $q=n$ of the $E^1$-page, we just compute the singular homology of to obtain
-        \[E^2_{p, n} = H_p(X^n, X(n)^a_b).\]
-        And on row $q=0$, we have 
-        \[E^2_{p, 0} = \begin{cases}
+        On the $E^1$-page, the differential is now induced by singular boundary map. On the first nonzero row $q=n$ of the $E^1$-page, we just take singular homology to obtain
+        \[E^2_{-p, n} = H_p(X^n, X(n)^a_b).\]
+        And on the other possibly nonzero row $q=0$, we have 
+        \[E^2_{-p, 0} = \begin{cases}
             H_p(\Z\leftarrow 0 \leftarrow \cdots) & a=b \\
             0 & a\neq b
         \end{cases}\]
         as desired. 
 
-        At this point, because the only nonzero rows are $q=n$ and possibly $q=0$, the differentials on the pages $E^{\geq 2}$ are all zero, except possibly on page $E^{n+1}$, where we have a differential $d_{n+1}$ of bidegree $(-n-1, -n)$ from $E^{n+1}_{n+1, n} = H_{n+1}(X^n, X(n)^a_b)$ to $E^{n+1}_{0,0} = \Z$. To see that $d_{n+1} = 0$, consider the map of pairs $f: (X,x)\to (*,*)$. Repeating the constructions in this section, we get a spectral sequence $D_{\bullet,\bullet}$ computing $H_n(*^n, *(n)^*_*) = 0$. By functoriality, $f$ induces a morphism of spectral sequences. Specializing to the $n+1$th page, we have a commutative square 
+        At this point, because the only nonzero rows are $q=n$ and possibly $q=0$, the differentials on the pages $E^{\geq 2}$ are all zero, except possibly on page $E^{n+1}$, where we have a differential $d_{n+1}$ of bidegree $(n+1, -n)$ from $E^{n+1}_{-n-1, n} = H_{n+1}(X^n, X(n)^a_b)$ to $E^{n+1}_{0,0} = \Z$. To see that $d_{n+1} = 0$, consider the map of pairs $f: (X,x)\to (*,*)$. Repeating the constructions in this section, we get a spectral sequence $D_{\bullet,\bullet}$ computing $H_n(*^n, *(n)^*_*) = 0$. By functoriality, $f$ induces a morphism of spectral sequences. Specializing to the $n+1$th page, we have a commutative square 
 		
 		\[\begin{tikzcd}[cramped]
 			% https://q.uiver.app/#q=WzAsOCxbMSwwLCJFXntuKzF9X3tuKzEsbn0iXSxbMSwxLCJEXntuKzF9X3tuKzEsbn0iXSxbMiwwLCJFXntuKzF9X3swLDB9Il0sWzIsMSwiRF57bisxfV97MCwwfSJdLFswLDAsIkhfe24rMX0oWF5uLFgobileeF94KSJdLFszLDAsIlxcWiJdLFswLDEsIkhfe24rMX0oKiwqKT0wIl0sWzMsMSwiXFxaIl0sWzAsMSwiZl8qIiwyXSxbMCwyLCJkXkVfe24rMX0iXSxbMSwzLCJkXkRfe24rMX0iLDJdLFsyLDMsImZfKiJdLFs0LDAsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDcsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-			{H_{n+1}(X^n,X(n)^x_x)} & {E^{n+1}_{n+1,n}} & {E^{n+1}_{0,0}} & \Z \\
-			{H_{n+1}(*,*)=0} & {D^{n+1}_{n+1,n}} & {D^{n+1}_{0,0}} & \Z
+			{H_{n+1}(X^n,X(n)^x_x)} & {E^{n+1}_{-n-1,n}} & {E^{n+1}_{0,0}} & \Z \\
+			{H_{n+1}(*,*)=0} & {D^{n+1}_{-n-1,n}} & {D^{n+1}_{0,0}} & \Z
 			\arrow[equal, from=1-1, to=1-2]
 			\arrow["{d^E_{n+1}}", from=1-2, to=1-3]
 			\arrow["{f_*}"', from=1-2, to=2-2]
@@ -112,68 +81,66 @@ Now consider the bicomplex obtained from $\mathscr{N}$ by setting all rows above
 \end{prop}
 \begin{cor}\label{cor:spectral_convergence}
 We have a surjection 
-\[H_0(\tot(\mathscr{N}^{\leq n})^\bullet_\bullet) \twoheadrightarrow H_n(X^n, X(n)^a_b)\]
-whose kernel is $\Z$ if $a=b$ and trivial otherwise.
+\[H_0(\tot(\mathscr{N}^{\leq n})) \twoheadrightarrow H_n(X^n, X(n)^a_b)\]
+whose kernel is $\Z$ if $a=b$, and trivial otherwise.
 \begin{proof}
     Follows from convergence of the spectral sequence.
 \end{proof}
 \end{cor}
 \subsection{Functoriality}
-It remains to compute $H_0$ of this totalization. For this we return to our original bicomplex $\mathscr{C}^\bullet_\bullet$ and instead of normalizing the columns, we first look at the rows $\mathscr{C}^q_\bullet$ for each $q$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
-\[\mathscr{C}^q_\bullet = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
-to obtain a new bicomplex, which we will call $\mathscr{D}^\bullet_\bullet$. 
+It remains to compute $H_0$ of this totalization. For this we will return to our original bicomplex $\mathscr{C}$ and show that its truncated totalization is quasi-isomorphic to the totalization of the two-sided cobar bicomplex! Instead of normalizing the columns, let us first consider the rows $\mathscr{C}_{\bullet,q}$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
+\[\mathscr{C}_{-\bullet,q} = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
+to obtain a new bicomplex, which we will call $\mathscr{D}$. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
+\begin{equation}
+\mathscr{D}_{-p,q} = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
+\end{equation}
+Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtained from $\mathscr{C}$ and $\mathscr{D}$ by setting all rows of above $q=n$ to zero. 
 
-\begin{prop}
-	The map $\mathscr{C} \to \mathscr{D}$ induced by Alexander--Whitney is a quasi-isomorphism of bicomplexes, with inverse quasi-isomorphism induced by the Eilenberg--Zilber map.
+\begin{lem}\label{lem:quasi_iso_CtoD}
+	The map $\mathscr{C}^{\leq n} \to \mathscr{D}^{\leq n}$ induced by Alexander--Whitney is a quasi-isomorphism of bicomplexes, with inverse quasi-isomorphism induced by the Eilenberg--Zilber map.
 	\begin{proof}
 		Combine Corollary \ref{cor:topological_aw}, Theorem \ref{thm:eilenberg_zilber}, and Lemma \ref{lem:quasiiso_bicomplex},
 	\end{proof}
-\end{prop}
-By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
-\begin{equation}
-\mathscr{D}^q_p = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
-\end{equation}
-
+\end{lem}
 \begin{thm}\label{thm:two_sided_cobar_D}
-	Let $NC_\bullet(-)$ be the normalized singular chains functor. Regard $NC_\bullet(\{a\})$ as a right $NC_\bullet(X)$-comodule via the right comodule action 
-	\[\Delta^R: NC_\bullet(\{a\})\xrightarrow{\AW} NC_\bullet(\{a\})\tensor NC_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a} NC_\bullet(\{a\}) \tensor NC_\bullet(X)\]
-	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a natural quasi-isomorphism 
-	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{D}.\]
+	Let $C_\bullet(-)$ be the singular chains functor. Regard $C_\bullet(\{a\})$ as a right $C_\bullet(X)$-comodule via the right comodule action 
+	\[\Delta^R: C_\bullet(\{a\})\xrightarrow{\AW} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a} C_\bullet(\{a\}) \tensor C_\bullet(X)\]
+	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a quasi-isomorphism 
+	\[\Cobar^{\leq n}(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{D}^{\leq n}.\]
 	\begin{proof}
-		Denote $\Cobar(\cdots)$ by $\Cobar$. We will exhibit an isomorphism from $\Cobar$ into a bicomplex that is quasi-isomorphic to $\mathscr{D}$. 
-		
-		Note that $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are just the chain complexes with a $\Z$ term concentrated in degree zero, i.e. the identity object in the symmetric monoidal structure on $\catname{Ch}_+(\catname{Ab})$. Hence we have natural isomorphisms 
-		\[\psi_a: NC_\bullet(\{a\}) \tensor NC_\bullet(X) \to NC_\bullet(X)\]
-		\[\psi_b: NC_\bullet(X) \tensor NC_\bullet(\{b\}) \to NC_\bullet(X)\]
-		yielding a natural isomorphism
-		\begin{equation}
-			\begin{split}
-			\phi: \Cobar^q_p &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} NC_n(\{a\}) \tensor NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X)\tensor NC_m(\{b\}) \\
-			&\to \bigoplus_{b_1 + \cdots + b_q = p}  NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X) =: N\mathscr{D}^q_p.
-			\end{split}
+		Denote $\Cobar(\cdots)$ by $\Cobar$. Because all modules involved are free, hence flat over $\Z$, it suffices by Lemma \ref{lem:graded_quism} to exhibit a quasi-isomorphism from 
+		\begin{equation}\label{eqn:two_sided_normalized_cobar}
+		N\Cobar^{\leq n} : = \Cobar^{\leq n}(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))
 		\end{equation}
-		where $N\mathscr{D}$ bicomplex obtained by taking normalized chains on each row of $\mathscr{C}^\bullet_\bullet$ then applying the Alexander--Whitney map, as in the diagram below:
-
-		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJOQ19cXGJ1bGxldChYXnEpIl0sWzEsMCwiQ19cXGJ1bGxldChYKV57XFx0ZW5zb3IgcX0gPSBcXG1hdGhzY3J7RH1fXFxidWxsZXRecSJdLFsxLDEsIk5DX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSA9Ok5cXG1hdGhzY3J7RH1ecV9cXGJ1bGxldCJdLFswLDIsIlxcQVdfcSJdLFsxLDMsIlxcQVdfcSIsMl0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+		to $\mathscr{D}^{\leq n}$. Now by Lemma \ref{lem:quasiiso_bicomplex}, it suffices to exhibit a quasi-isomorphism from (\ref{eqn:two_sided_normalized_cobar}) to $N\mathscr{D}^{\leq n}$, the truncation of the bicomplex obtained by replacing each column of $\mathscr{C}$ with its normalized chains, then applying the Alexander--Whitney map, as in the diagram below:
 		\[\begin{tikzcd}[cramped]
-			{C_\bullet(X^q)} & {C_\bullet(X)^{\tensor q} = \mathscr{D}_\bullet^q} \\
-			{NC_\bullet(X^q)} & {NC_\bullet(X)^{\tensor q} =:N\mathscr{D}^q_\bullet}
+			% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJOQ19cXGJ1bGxldChYXnEpIl0sWzEsMCwiQ19cXGJ1bGxldChYKV57XFx0ZW5zb3IgcX0gPSBcXG1hdGhzY3J7RH1fXFxidWxsZXRecSJdLFsxLDEsIk5DX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSA9Ok5cXG1hdGhzY3J7RH1ecV9cXGJ1bGxldCJdLFswLDIsIlxcQVdfcSJdLFsxLDMsIlxcQVdfcSIsMl0sWzEsMCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMywyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+			{C_\bullet(X^q)} & {C_\bullet(X)^{\tensor q} = \mathscr{D}_{\bullet,q}} \\
+			{NC_\bullet(X^q)} & {NC_\bullet(X)^{\tensor q} =:N\mathscr{D}_{\bullet, q}}
 			\arrow["{\AW_q}", from=1-1, to=1-2]
 			\arrow[hook, from=2-1, to=1-1]
 			\arrow["{\AW_q}"', from=2-1, to=2-2]
 			\arrow[hook, from=2-2, to=1-2]
 		\end{tikzcd}\]
-		By Lemma \ref{lem:quasiiso_bicomplex}, because the Alexander--Whitney map is a graded quasi-isomorphism, the inclusion $N\mathscr{D}\hookrightarrow \mathscr{D}$ is a bicomplex quasi-isomorphism.
-
-		We now check that the differentials on $\Cobar$ and $N\mathscr{D}$ are compatible with $\phi$. Because $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have all differentials zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} gives 
+		Notice that $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are just the chain complexes with a $\Z$ term concentrated in degree zero, i.e. the identity object in the symmetric monoidal structure on $\catname{Ch}_+(\catname{Ab})$. Hence we have natural isomorphisms 
+		\[\psi_a: NC_\bullet(\{a\}) \tensor NC_\bullet(X) \to NC_\bullet(X)\]
+		\[\psi_b: NC_\bullet(X) \tensor NC_\bullet(\{b\}) \to NC_\bullet(X)\]
+		which combine to give a natural isomorphism $\phi:= \psi_a \tensor \id^{\tensor \bullet}\tensor \psi_b$:
+		\begin{equation}
+			\begin{split}
+			\phi: N\Cobar_{-p,q} &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} NC_n(\{a\}) \tensor NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X)\tensor NC_m(\{b\}) \\
+			&\to \bigoplus_{b_1 + \cdots + b_q = p}  NC_{b_1}(X) \tensor \cdots \tensor NC_{b_q}(X) =: N\mathscr{D}_{-p,q}.
+			\end{split}
+		\end{equation}
+		We now check that the differentials on $N\Cobar$ and $N\mathscr{D}$ are compatible with $\phi$. Because all differentials of $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ are zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} yields 
 		\begin{equation*}
 		\begin{split}
-			\phi(d_H^{\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor c_q \tensor n) \\
+			\phi(d_H^{N\Cobar}(m \tensor c_1\tensor \cdots \tensor c_q\tensor n)) &= \phi(\sum_{i=1}^q (-1)^{\sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor c_q \tensor n) \\
 			&= \sum_{i=1}^q (-1)^{\sigma(c_i)}  \psi_a(m\tensor c_1) \tensor \cdots \tensor \partial_{NC}(c_i) \tensor \cdots \tensor \psi_b(c_q\tensor n)  \\
 			&= d_{N\mathscr{D}}(\phi(m\tensor c_1\tensor \cdots \tensor c_q \tensor n)).
 		\end{split}
 		\end{equation*}
-		The vertical differential in both cases is given by the alternating sum of coface maps. We will show that $\phi\circ d_{\Cobar}^i = d_{N\mathscr{D}}^i \circ \phi$ for all $i$. For $i=0$, the map $d_{N\mathscr{D}}^i: N\mathscr{D}^q_\bullet \to N\mathscr{D}^{q+1}_\bullet$ is induced by the following inclusion under the topological Alexander--Whitney map: 
+		The vertical differential in both cases is given by the alternating sum of coface maps $d^i$. We will show that $\phi\circ d_{\Cobar}^i = d_{N\mathscr{D}}^i \circ \phi$ for all $i$. For $i=0$, the map $d_{N\mathscr{D}}^i: N\mathscr{D}^q_\bullet \to N\mathscr{D}^{q+1}_\bullet$ is induced by the following inclusion under the topological Alexander--Whitney map: 
 		\[(x_1, ..., x_q)\to (a, x_1, ..., x_q).\]
 		Naturality of Alexander--Whitney implies that the following diagram commutes:
 			\[\begin{tikzcd}[sep=large]
@@ -206,83 +173,34 @@ By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigradin
     &= d^0_{N\mathscr{D}}(\phi(m \tensor c_1\tensor \cdots \tensor c_q \tensor n))
 \end{split}
 \end{equation*}
-		The proof for $d^1, ..., d^q$ are analogous. Hence $\phi$ is a bicomplex quasi-isomorphism $\Cobar \to N\mathscr{D}$, and postcomposing with the inclusion $N\mathscr{D}\hookrightarrow \mathscr{D}$ yields the desired quasi-isomorphism.
-	% 	The coface maps $d^i: X^q \to X^{q+1}$ and codegeneracy maps $s^i: X^q\to X^{q-1}$ respectively induce maps $\mathscr{D}(d^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q+1}_\bullet, \quad \mathscr{D}(s^i): \mathscr{D}^q_\bullet \to \mathscr{D}^{q-1}_\bullet$ given by
-	% \[\mathscr{D}(d^i) = \begin{cases}
-	% 	\eta_a \tensor \id^{\tensor q} & i=0 \\
-	% 	\id^{\tensor i-1}\tensor \Delta \tensor \id^{\tensor q-i} & i \in \{1, ..., q\} \\
-	% 	\id^{\tensor q} \tensor \eta_b & i=q
-	% \end{cases}
-	% \quad \text{ and } \quad 
-	% \mathscr{D}(s^i) = \id^{\tensor i}\tensor \epsilon\tensor \id^{q-i-1}\]
-	% where $\eta_a$ and $\eta_b$ are the generators of $C_\bullet(\{a\}) = \Z = C_\bullet(\{b\})$.
-		% Naturality of Alexander--Whitney implies that the following diagram commutes:
-		% 	\[\begin{tikzcd}[sep=large]
-		% 		% https://q.uiver.app/#q=WzAsNixbMSwwLCJDX1xcYnVsbGV0KCpcXHRpbWVzIFhecSkiXSxbMiwwLCJDX1xcYnVsbGV0KFhee3ErMX0pIl0sWzEsMSwiQ19cXGJ1bGxldCgqKSBcXHRlbnNvciBDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDEsIkNfXFxidWxsZXQoWClee1xcdGVuc29yIHErMX0iXSxbMCwwLCJDX1xcYnVsbGV0KFhecSkiXSxbMCwxLCJDX1xcYnVsbGV0KFgpXntcXHRlbnNvciBxfSJdLFsyLDMsIkNfXFxidWxsZXQoXFxpb3RhX3gpXFx0ZW5zb3IgXFxpZF57XFx0ZW5zb3IgcX0iXSxbMCwyLCJcXEFXX3sqLCBYXnF9IiwyXSxbMCwxLCJDX1xcYnVsbGV0KFxcaW90YV94XFx0aW1lc1xcaWRfe1hecX0pIl0sWzEsMywiXFxBV197cSsxfSJdLFs0LDAsIlxcY29uZyJdLFs0LDUsIlxcQVdfcSIsMl0sWzUsMiwiXFxjb25nIl0sWzQsMSwiQ19cXGJ1bGxldChkXjApIiwwLHsiY3VydmUiOi01fV0sWzUsMywiXFxtYXRoc2Nye0R9KGReMCkiLDIseyJjdXJ2ZSI6NX1dXQ==
-		% 		{C_\bullet(X^q)} & {C_\bullet(*\times X^q)} & {C_\bullet(X^{q+1})} \\
-		% 		{C_\bullet(X)^{\tensor q}} & {C_\bullet(*) \tensor C_\bullet(X)^{\tensor q}} & {C_\bullet(X)^{\tensor q+1}}
-		% 		\arrow["\cong", from=1-1, to=1-2]
-		% 		\arrow["{C_\bullet(d^0)}", curve={height=-30pt}, from=1-1, to=1-3]
-		% 		\arrow["{\AW_q}"', from=1-1, to=2-1]
-		% 		\arrow["{C_\bullet(\iota_a\times\id_{X^q})}", from=1-2, to=1-3]
-		% 		\arrow["{\AW_{*, X^q}}"', from=1-2, to=2-2]
-		% 		\arrow["{\AW_{q+1}}", from=1-3, to=2-3]
-		% 		\arrow["\cong", from=2-1, to=2-2]
-		% 		\arrow["{\mathscr{D}(d^0)}"', curve={height=30pt}, from=2-1, to=2-3]
-		% 		\arrow["{C_\bullet(\iota_a)\tensor \id^{\tensor q}}", from=2-2, to=2-3]
-		% 	\end{tikzcd}\]
-		% where $\iota_a$ is the inclusion $\{a\} \hookrightarrow X$. But now we make the identifications 
-		% \[C_\bullet(*)\tensor C_\bullet(X)^{\tensor q}\cong C_\bullet(X)^{\tensor q}, \text{ and } C_\bullet(\iota_a) = \eta_a\]
-		% to conclude 
-		% \[ (\eta(1)\tensor \id^{\tensor q}) \circ \AW_q = \AW_{q+1} \circ  \hspace{2pt}C_\bullet(d^0)\]
-		% which implies $\mathscr{D}(d^0) = \eta_a\tensor \id^{\tensor q}$. The arguments for the other maps are analogous.
+		The proof for $d^1, ..., d^q$ are analogous. Hence the restriction of $\phi$ to the truncated bicomplexes yields a quasi-isomorphism $N\Cobar^{\leq n} \to N\mathscr{D}^{\leq n} $, completing the proof.
 	\end{proof}
 \end{thm}
 
-\begin{thm}\label{thm:new_cobar}
-    There is a quasi-isomorphism of bicomplexes
-	\[\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\})) \to \mathscr{N}.\]
-    \begin{proof}
-    Composing the quasi-isomorphisms and isomorphisms obtained so far, we have 
-		% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXENvYmFyKENfXFxidWxsZXQoXFx7YlxcfSksIENfXFxidWxsZXQoWCksIENfXFxidWxsZXQoXFx7YVxcfSkpIl0sWzEsMCwiXFxtYXRoc2Nye0R9Il0sWzIsMCwiXFxtYXRoc2Nye0N9Il0sWzMsMCwiXFxtYXRoc2Nye059Il0sWzAsMV0sWzEsMiwiXFxBVyIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiXFxFWiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiKFxcUzUuMSkiXSxbMCwzLCIiLDIseyJjdXJ2ZSI6NSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-		\[\begin{tikzcd}[column sep=3em]
-			{\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))} & {\mathscr{D}} & {\mathscr{C}} & {\mathscr{N}}
-			\arrow["\ref{thm:two_sided_cobar_D}", from=1-1, to=1-2]
-			\arrow["\AW", shift left, tail reversed, no head, from=1-2, to=1-3]
-			\arrow["\EZ", shift left, tail reversed, no head, from=1-3, to=1-2]
-			\arrow["{(\S5.1)}", from=1-3, to=1-4]
-		\end{tikzcd}\]
-		which is a quasi-isomorphism.
-    \end{proof}
-\end{thm}
-% \begin{rem}
-% We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space! So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
-% \[\begin{tikzcd}[cramped]
-% 	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
-% 	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
-% 	\arrow["\simeq", from=1-1, to=1-3]
-% 	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
-% 	\arrow["{?}", dashed, from=1-3, to=2-3]
-% 	\arrow[equal, from=2-1, to=2-3]
-% \end{tikzcd}\]
-% then we would have a version of Adams' theorem.
-% \end{rem}
-
-% Now we have all the ingredients. It's time to cook.
+\begin{rem}
+We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space. So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
+\[\begin{tikzcd}[cramped]
+	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
+	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
+	\arrow["\cong", from=1-1, to=1-3]
+	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
+	\arrow["{?}", dashed, from=1-3, to=2-3]
+	\arrow["\cong", from=2-1, to=2-3]
+\end{tikzcd}\]
+then we would have a version of Adams' theorem.
+\end{rem}
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]
-    In the quasi-isomorphism $\Cobar\to \mathscr{N}$ produced in Theorem \ref{thm:new_cobar}, the truncation of $\mathscr{N}$ by $q$ corresponds to the tensor length truncation of $\Cobar$. It follows by Lemma \ref{lem:quasiiso_bicomplex} that the induced map on totalizations of the truncated bicomplexes 
-    \[\tot\Cobar_{\leq n}\to \tot_\bullet(\mathscr{N}^{\leq n})\]
-    is still a quasi-isomorphism. On zeroth homology, we therefore have an isomorphism
-    \[H_0\tot\Cobar_{\leq n}\to H_0\tot_\bullet(\mathscr{N}^{\leq n})\]
-	
-	The filtration on $H_0\tot\Cobar_{\leq n}$ has only two nonzero pieces, which by (stallings) are given by ... 
-	% \[F_{-n}H_0\tot \cong E_{-n,n}^\infty \cong \mathcal{I}^n/\mathcal{I}^{n+1}, \quad F_0H_0\tot \cong E_{-0,0} = \mathcal{I}^0/ \mathcal{I} = \Z\pi_1(X,x)/\mathcal{I} \cong \Z\]
-	% so we have an exact sequence 
-	% \[0 \to \mathcal{I}^n/\mathcal{I}^{n+1} \to H_0\tot\Cobar_{\leq n} \to \Z\to 0\]
-	yielding an isomorphism 
-	\[H_0\tot\Cobar_{\leq n} \cong \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}.\]
-	
-    By Corollary \ref{cor:spectral_convergence}, we get a surjection
+	By Theorem \ref{thm:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subchapter, we have a quasi-isomorphism 
+	\[\tot(\Cobar^{\leq n}) \xrightarrow{\ref{thm:two_sided_cobar_D}} \tot(\mathscr{D}^{\leq n}) \xrightarrow{\ref{lem:quasi_iso_CtoD}} \tot(\mathscr{C}^{\leq n}) \xrightarrow{ chapter } \tot(\mathscr{N}^{\leq n}).\]
+	Therefore, on zeroth homology we have an isomorphism 
+    \begin{equation}\label{eqn:cobar_iso_N}
+		H_0\tot\Cobar^{\leq n}\to H_0\tot(\mathscr{N}^{\leq n})
+	\end{equation}
+	Now Theorem \ref{thm:stallings_generalization} yields an isomorphism 
+	\begin{equation}\label{eqn:N_and_fundamental_gp}
+		H_0\tot(\mathscr{N}^{\leq n}) \cong \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}.
+	\end{equation}
+    Combining Equations \ref{eqn:cobar_iso_N}, \ref{eqn:N_and_fundamental_gp} and applying Corollary \ref{cor:spectral_convergence}, we obtain a surjection
     \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar_{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
-    whose kernel if $\Z$ is $a=b$ and trivial otherwise, completing the proof.
+    whose kernel if $\Z$ is $a=b$ and trivial otherwise.
 \end{proof}

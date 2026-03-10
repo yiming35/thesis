@@ -1,8 +1,30 @@
+% \usepackage{MinionPro}  % use Minion only for text
 \usepackage[margin=1.5in]{geometry}
-\usepackage{comment}
 \usepackage{tgtermes}
 \usepackage{amssymb}
 \usepackage{newtxmath}
+
+% \usepackage{libertinust1math}
+
+\usepackage{lettrine}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\scshape}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}[runin]
+  {\normalfont\normalsize\itshape}
+  {\thesubsection}{0.5em}{}[.]
+
+\titlespacing*{\subsection}{0pt}{1.5ex}{0.5em}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\mdseries}
+  {\thesubsubsection}{1em}{}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{comment}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[normalem]{ulem}
 \usepackage{url}
@@ -14,6 +36,7 @@
 \usepackage{quiver}
 \usepackage{anyfontsize}
 \usepackage{epigraph}
+\usepackage{titletoc}
 \setlength\epigraphrule{0pt}
 
 \usetikzlibrary{decorations.pathreplacing, calc}
@@ -215,7 +238,6 @@
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\HH}{\mathbf{H}}
 \newcommand{\T}{\mathcal{T}}
-\newcommand{\powerset}{\mathscr{P}}
 \newcommand{\pset}{\mathscr{P}}
 \newcommand{\catname}{\mathsf}
 \newcommand{\p}{^{\prime}}
