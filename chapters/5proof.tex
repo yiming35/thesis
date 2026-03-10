@@ -88,7 +88,7 @@ whose kernel is $\Z$ if $a=b$, and trivial otherwise.
 \end{proof}
 \end{cor}
 \subsection{Functoriality}
-It remains to compute $H_0$ of this totalization. For this we will return to our original bicomplex $\mathscr{C}$ and show that its truncated totalization is quasi-isomorphic to the totalization of the two-sided cobar bicomplex! Instead of normalizing the columns, let us first consider the rows $\mathscr{C}_{\bullet,q}$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
+It remains to compute $H_0$ of this totalization. For this we will return to our original bicomplex $\mathscr{C}$ and show that its truncated totalization is quasi-isomorphic to the totalization of the two-sided cobar bicomplex. Instead of normalizing the columns, let us first consider the rows $\mathscr{C}_{\bullet,q}$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}_{-\bullet,q} = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
 to obtain a new bicomplex, which we will call $\mathscr{D}$. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
 \begin{equation}
@@ -108,8 +108,9 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
 	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a quasi-isomorphism 
 	\[\Cobar^{\leq n}(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{D}^{\leq n}.\]
 	\begin{proof}
-		Denote $\Cobar(\cdots)$ by $\Cobar$. Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are torsion-free \footnote{Need to prove this}, hence free and flat over $\Z$. 
-		
+		Denote $\Cobar(\cdots)$ by $\Cobar$. Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are free. To see this, notice that the coradical filtration on singular chains is just the skeletal filtration:
+		\[F_rC_\bullet(X) = \bigoplus_{k=0}^r C_k(X),\]
+		so that the associated gradeds are just the levelwise singular chain groups, which are free.
 		
 		Therefore, by Lemma \ref{lem:graded_quism} and Lemma \ref{lem:normalized_inclusion_is_graded_quism}, it suffices to exhibit a quasi-isomorphism from 
 		\begin{equation}\label{eqn:two_sided_normalized_cobar}
@@ -206,3 +207,4 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
     \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar_{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
     whose kernel if isomorphic to $\Z$ is $a=b$ and trivial otherwise. It remains to see that if $a=b$, the kernel is generate by the constant path at $a$.
 \end{proof}
+\subsection{Looking forward}

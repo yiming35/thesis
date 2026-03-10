@@ -11,7 +11,7 @@ Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)
     \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
-The definition of the differential here is valid owing to Proposition \ref{prop:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter we have that as a chain complex, $\Cobar(C)$ has terms 
+The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter we have that as a chain complex, $\Cobar(C)$ has terms 
 \begin{equation}\label{eqn:cobar_terms}
 \begin{split}
     \Cobar_k(C) &= (T(s^{-1}\overline{C}))_k \\
@@ -40,7 +40,7 @@ The totalization of $\Cobar_{\bullet,\bullet}(C)$ given by
 \[\tot_k(\Cobar_{\bullet,\bullet}) = \bigoplus_{p+q = -k} \Cobar_{p,q}\]
 with differential $\partial_{\tot} = d_H+(-1)^qd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
 \begin{proof}
-    By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Proposition \ref{prop:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
+    By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Lemma \ref{lem:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
     \[(s^{-1}\overline{C})_p = \Cobar_{p,1}\]
     and on this component $\partial_{\tot}$ is precisely $d_H - d_V$.
 \end{proof}
@@ -158,23 +158,34 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
     We take the normalized cochain complex on each column $\Cobar_{p,\bullet}$ to obtain:
     \begin{equation}
 	\begin{split}
-		N\Cobar_{p,q}(R,C,R) &= \bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
+		N\Cobar_{p,q}(R,C,R) &\cong\bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
 		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
 		&=  (\ker(\epsilon)^{\tensor q})_p \\
 		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
         &= \Cobar_{p,q}(C).
 	\end{split}
 \end{equation}
-Upon checking differentials, we conclude that the normalized bicomplex $N\Cobar$ is equal to the cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
+Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
 \end{proof}
 \end{prop}
 
-If there is any justice, the two-sided cobar construction should be sufficiently functorial, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemma let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Then any map $f: C\to C'$ induces a map 
+We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemmas, let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Therefore, any map $f: C\to C'$ induces a map 
 \[[f]: \gr C \to \gr C'\]
-of associated graded modules. 
+of associated gradeds.
 \begin{defn}
-If $[f]$ is a quasi-isomorphism, then $f$ is called a \emph{graded isomorphism}.
+If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded isomorphism}.
 \end{defn}
+The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
+\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
+    Let $C$ be a conilpotent dg coalgebra. The inclusion of the normalized cochain complex into the Moore complex is a graded quasi-isomorphism.
+    \begin{proof}
+        First note that any coalgebra map $f: C\to C'$ of conilpotent coalgebras preserves the coradical filtration $F_\bullet$. To see this, take an element 
+        \[x \in F_rC = \{x \in C:  \forall n\geq r, \overline{\Delta}^n(x) = 0\}.\]
+        Then, since $f$ commutes with coproducts, we have 
+        \[ \overline{\Delta}^n\circ f(x) = (f \tensor \cdots \tensor f)\circ \Delta^nf(x) = 0\]
+        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtraiton. Hence the chain homotopy descends to the associated graded.
+    \end{proof}
+\end{lem}
 
 \begin{lem}\label{lem:graded_quism}
     Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. If $f: C\to C'$, $g: N \to N'$, and $h: M\to M'$ are graded quasi-isomorphisms, and $C, C', N, N', M, M'$ and their associated gradeds are flat, then the induced map 
@@ -210,11 +221,6 @@ If $[f]$ is a quasi-isomorphism, then $f$ is called a \emph{graded isomorphism}.
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
-The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
-\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
-
-\end{lem}
-
 
 \subsection{Homology and the fundamental group}
 Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
