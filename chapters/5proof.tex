@@ -108,7 +108,10 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
 	and likewise for $C_\bullet(\{b\})$ as a left $C_\bullet(X)$-comodule. Then there is a quasi-isomorphism 
 	\[\Cobar^{\leq n}(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \mathscr{D}^{\leq n}.\]
 	\begin{proof}
-		Denote $\Cobar(\cdots)$ by $\Cobar$. Because all modules involved are free, hence flat over $\Z$, it suffices by Lemma \ref{lem:graded_quism} to exhibit a quasi-isomorphism from 
+		Denote $\Cobar(\cdots)$ by $\Cobar$. Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are torsion-free \footnote{Need to prove this}, hence free and flat over $\Z$. 
+		
+		
+		Therefore, by Lemma \ref{lem:graded_quism} and Lemma \ref{lem:normalized_inclusion_is_graded_quism}, it suffices to exhibit a quasi-isomorphism from 
 		\begin{equation}\label{eqn:two_sided_normalized_cobar}
 		N\Cobar^{\leq n} : = \Cobar^{\leq n}(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))
 		\end{equation}
@@ -176,19 +179,18 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
 		The proof for $d^1, ..., d^q$ are analogous. Hence the restriction of $\phi$ to the truncated bicomplexes yields a quasi-isomorphism $N\Cobar^{\leq n} \to N\mathscr{D}^{\leq n} $, completing the proof.
 	\end{proof}
 \end{thm}
-
-\begin{rem}
-We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space. So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
-\[\begin{tikzcd}[cramped]
-	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
-	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
-	\arrow["\cong", from=1-1, to=1-3]
-	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
-	\arrow["{?}", dashed, from=1-3, to=2-3]
-	\arrow["\cong", from=2-1, to=2-3]
-\end{tikzcd}\]
-then we would have a version of Adams' theorem.
-\end{rem}
+% \begin{rem}
+% We have not yet used Adams' theorem. But what we have proven should suggest that the theorem is true for the following reason. We have exhibited a quasi-isomorphism between the two-sided cobar construction on $C_\bullet(X)$ and the totalization of $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space. So if we can somehow commute ``chains on a totalization'' and ``totalization of chains'' as in the right arrow in the following diagram
+% \[\begin{tikzcd}[cramped]
+% 	{\Cobar(C_\bullet(X))} && {\tot(\mathscr{C})=\tot(C_\bullet P^\bullet_{x,x}X)} \\
+% 	{C_\bullet(\Omega_xX)} && {C_\bullet(\tot(P^\bullet_{x,x}X))}
+% 	\arrow["\cong", from=1-1, to=1-3]
+% 	\arrow["{\text{Adams' theorem}}"', dashed, from=1-1, to=2-1]
+% 	\arrow["{?}", dashed, from=1-3, to=2-3]
+% 	\arrow["\cong", from=2-1, to=2-3]
+% \end{tikzcd}\]
+% then we would have a version of Adams' theorem.
+% \end{rem}
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]
 	By Theorem \ref{thm:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subchapter, we have a quasi-isomorphism 
 	\[\tot(\Cobar^{\leq n}) \xrightarrow{\ref{thm:two_sided_cobar_D}} \tot(\mathscr{D}^{\leq n}) \xrightarrow{\ref{lem:quasi_iso_CtoD}} \tot(\mathscr{C}^{\leq n}) \xrightarrow{ chapter } \tot(\mathscr{N}^{\leq n}).\]
@@ -202,5 +204,5 @@ then we would have a version of Adams' theorem.
 	\end{equation}
     Combining Equations \ref{eqn:cobar_iso_N}, \ref{eqn:N_and_fundamental_gp} and applying Corollary \ref{cor:spectral_convergence}, we obtain a surjection
     \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar_{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
-    whose kernel if $\Z$ is $a=b$ and trivial otherwise.
+    whose kernel if isomorphic to $\Z$ is $a=b$ and trivial otherwise. It remains to see that if $a=b$, the kernel is generate by the constant path at $a$.
 \end{proof}

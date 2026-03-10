@@ -141,13 +141,41 @@ Because we will use this notion many more times, we make the following definitio
     A map $f: D \to E$ of second-quadrant bicomplexes is a \emph{quasi-isomorphism} if it is a column-wise quasi-isomorphism. (So Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of second quadrant bicomplexes induces a quasi-isomorphism on totalizations).
 \end{defn}
 
-For the next definition and lemma let $C, C'$ be nilpotent $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Then any map $f: C\to C'$ induces a map 
+
+\begin{prop}\label{prop:twoside_reduction}  
+Let $C$ be a conilpotent dg $R$-coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
+\[\begin{tikzcd}[cramped]
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzAsMSwiQyJdLFsxLDEsIkNcXHRlbnNvciBSIl0sWzAsMSwiXFxldGEiLDJdLFswLDIsIlxcRGVsdGFeTCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDIsIlxcY29uZyIsMl1d
+	R & \\
+	C & {C\tensor R}
+	\arrow["\eta"', from=1-1, to=2-1]
+	\arrow["{\Delta^L}", dashed, from=1-1, to=2-2]
+	\arrow["\cong"', from=2-1, to=2-2]
+\end{tikzcd}\]
+and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is quasi-isomorphic to the single cobar construction $\Cobar_\bullet(C)$ of Definition \ref{def:cobar_algebra}.
+
+\begin{proof}
+    We take the normalized cochain complex on each column $\Cobar_{p,\bullet}$ to obtain:
+    \begin{equation}
+	\begin{split}
+		N\Cobar_{p,q}(R,C,R) &= \bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
+		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
+		&=  (\ker(\epsilon)^{\tensor q})_p \\
+		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
+        &= \Cobar_{p,q}(C).
+	\end{split}
+\end{equation}
+Upon checking differentials, we conclude that the normalized bicomplex $N\Cobar$ is equal to the cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
+\end{proof}
+\end{prop}
+
+If there is any justice, the two-sided cobar construction should be sufficiently functorial, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemma let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Then any map $f: C\to C'$ induces a map 
 \[[f]: \gr C \to \gr C'\]
 of associated graded modules. 
 \begin{defn}
 If $[f]$ is a quasi-isomorphism, then $f$ is called a \emph{graded isomorphism}.
 \end{defn}
-In general this is a stronger assumption than $f$ inducing a quasi-isomorphism, as we see:
+
 \begin{lem}\label{lem:graded_quism}
     Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. If $f: C\to C'$, $g: N \to N'$, and $h: M\to M'$ are graded quasi-isomorphisms, and $C, C', N, N', M, M'$ and their associated gradeds are flat, then the induced map 
     \[(g,f,h)_*: \tot\Cobar(N,C,M)\to \tot\Cobar(N',C', M')\]
@@ -182,33 +210,10 @@ In general this is a stronger assumption than $f$ inducing a quasi-isomorphism, 
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
+The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
+\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
 
-\begin{prop}\label{prop:twoside_reduction}  
-Let $C$ be a flat conilpotent dg coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
-\[\begin{tikzcd}[cramped]
-    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJSIl0sWzAsMSwiQyJdLFsxLDEsIkNcXHRlbnNvciBSIl0sWzAsMSwiXFxldGEiLDJdLFswLDIsIlxcRGVsdGFeTCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDIsIlxcY29uZyIsMl1d
-	R & \\
-	C & {C\tensor R}
-	\arrow["\eta"', from=1-1, to=2-1]
-	\arrow["{\Delta^L}", dashed, from=1-1, to=2-2]
-	\arrow["\cong"', from=2-1, to=2-2]
-\end{tikzcd}\]
-and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is quasi-isomorphic to the single cobar construction $\Cobar_\bullet(C)$ of Definition \ref{def:cobar_algebra}.
-
-\begin{proof}
-    We take the normalized cochain complex on each column $\Cobar_{p,\bullet}$ to obtain:
-    \begin{equation}
-	\begin{split}
-		N\Cobar_{p,q}(R,C,R) &= \bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
-		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
-		&=  (\ker(\epsilon)^{\tensor q})_p \\
-		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
-        &= \Cobar_{p,q}(C).
-	\end{split}
-\end{equation}
-Upon checking differentials, we conclude that the normalized bicomplex $N\Cobar$ is equal to the cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:graded_quism}.
-\end{proof}
-\end{prop}
+\end{lem}
 
 
 \subsection{Homology and the fundamental group}
