@@ -183,12 +183,18 @@ The example to keep in mind is the inclusion of the normalized cochain complex i
         \[x \in F_rC = \{x \in C:  \forall n\geq r, \overline{\Delta}^n(x) = 0\}.\]
         Then, since $f$ commutes with coproducts, we have 
         \[ \overline{\Delta}^n\circ f(x) = (f \tensor \cdots \tensor f)\circ \Delta^nf(x) = 0\]
-        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtraiton. Hence the chain homotopy descends to the associated graded.
+        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtration. Hence the chain homotopy descends to the associated graded.
     \end{proof}
 \end{lem}
 
 \begin{lem}\label{lem:graded_quism}
-    Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. If $f: C\to C'$, $g: N \to N'$, and $h: M\to M'$ are graded quasi-isomorphisms, and $C, C', N, N', M, M'$ and their associated gradeds are flat, then the induced map 
+    Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. Suppose 
+    \begin{enumerate}
+    \item $f: C\to C'$ is a graded quasi-isomorphism,
+    \item $g: N\to N'$ and $h: M\to M'$ are graded comodule maps that are quasi-isomorphisms,
+    \item $C, C', N, N', M, M'$ and their associated gradeds are flat.
+    \end{enumerate}
+    Then the induced map 
     \[(g,f,h)_*: \tot\Cobar(N,C,M)\to \tot\Cobar(N',C', M')\]
     is a quasi-isomorphism of bicomplexes.
     \begin{proof} 
@@ -271,9 +277,9 @@ If $X$ is path-connected then there is a fully faithful functor $\CCobar(X) \to 
 \begin{proof}
     We define the functor $F$ to be the identity on objects. For $a,b \in X^0$ we have to show that there is an isomorphism 
     \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    Consider first the map  $F_{a,b}': \ker(\partial_{\Cobar})\to \Z\Pi_X(a,b)$ defined via
+    Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
     \[F_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a\]
-    for a cycle $1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a$. Note that the multiplication in $\Z\pi_X(a,b)$ between two paths is given by concatenation if they share endpoints, and zero otherwise. To see this descends to $H_0$ of cobar, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
+    Note that the multiplication in $\Z\pi_X(a,b)$ between two paths is given by concatenation if they share endpoints, and zero otherwise. To see this descends to $H_0$ of cobar, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
     \begin{equation}
         \begin{split}  
         F'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
@@ -288,8 +294,9 @@ If $X$ is path-connected then there is a fully faithful functor $\CCobar(X) \to 
     \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
     To see it is an isomorphism, note that by choosing a path $\sigma$ from $a$ to $b$, we can make $\Pi_X(a,b)$ into a $\pi_1(X,a)$-torsor, which induces an isomorphism on the free abelian groups
     \[\Z\pi_1(X,a) \to  \Z\pi_X(a,b)\]
-    given by concatenation with $\sigma$. Similarly, we have a isomorphism 
-    \[\Cobar(C_\bullet(X)) \cong \Cobar(C_\bullet(\{a\}), C_\bullet(X), C_\bullet(\{a\})) \to \Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \]
+    given by concatenation with $\sigma$. Similarly, we construct a isomorphism 
+    \[\Cobar(C_\bullet(X)) \cong \Cobar(C_\bullet(\{a\}), C_\bullet(X), C_\bullet(\{a\})) \to \Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
+    using the path $\sigma$ as follows ???
     induced by the isomorphism $C_\bullet(\{a\}) \to C_\bullet(\{b\})$ coming from concatenation with $\sigma$. These isomorphisms fit into a commutative diagram 
     \[\begin{tikzcd}[cramped]
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIXzBcXENvYmFyKENfXFxidWxsZXQoWCkpIl0sWzEsMCwiXFxaXFxwaV8xKFgsYSkiXSxbMSwxLCJcXFpcXFBpX1goYSxiKSJdLFswLDEsIkhfMFxcQ29iYXIoQ19cXGJ1bGxldChiKSwgQ19cXGJ1bGxldChYKSwgQ19cXGJ1bGxldChhKSkiXSxbMCwxLCJcXHJlZntjb3I6Y29iYXJfemd9Il0sWzEsMiwiXFxjb25nIl0sWzMsMiwiRl97YSxifSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDMsIlxcY29uZyIsMl1d
@@ -301,6 +308,8 @@ If $X$ is path-connected then there is a fully faithful functor $\CCobar(X) \to 
         \arrow["{F_{a,b}}"', dashed, from=2-1, to=2-2]
     \end{tikzcd}\]
     implying that $F_{a,b}$ too is an isomorphism. 
+    % To make sure that the choice of $\sigma$ is sufficiently functorial, we fix a spanning tree of paths beginning in $a$:
+    % \[\{\sigma_x: [0,1] \to X: x \in X,\sigma(0) = a, \sigma(1) = x\}.\]
 \end{proof}
 \end{prop}
 Theorem \ref{thm:stallings_generalization} then follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page computes the associated graded of $\Z\pi_X(a,b)$ under this filtration.

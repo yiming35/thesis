@@ -1,4 +1,4 @@
-\section{Coalgebra crash course} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions.  The reader should feel free to skip this chapter if they are familiar with the theory of (co)associative (co)algebras.Let $R$ be a commutative ring.
+\section{Coalgebra crash course} As suggested by the name, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the maps don't go in the way we are used to. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions. The reader should feel free to skip this chapter if they are familiar with the theory of (co)associative (co)algebras. Let $R$ be a commutative ring.
 \begin{defn}
     A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an $R$-linear map $\Delta: C\to C\tensor C$, called the \emph{coproduct}, such that the following diagram commutes:
 \[\begin{tikzcd}
@@ -17,7 +17,7 @@ One way to think about the coproduct is that it tells one how to decompose a giv
     \[\Delta(x^n) = \sum_{k=0}^n {\binom{n}{k}} x^k \tensor x^{n-k}.\]
     This looks awfully like the binomial formula. Indeed this coproduct tells us all the ways to decompose a set of size $n$ into two subsets. 
 \end{exmp}
-I learned of this example from this MathOverflow comment of Qiaochu Yuan \cite{Qiaochu_Coalgebra}. Though this example is combinatorial in nature, the notion of coproduct as decomposition will come up again, when we discuss how the subdivision of topological simplices induces a coproduct on singular chains.
+The author learned of this example from this MathOverflow comment of Qiaochu Yuan \cite{Qiaochu_Coalgebra}. Though this example is combinatorial in nature, the notion of coproduct as decomposition will come up again, when we discuss how the subdivision of topological simplices induces a coproduct on singular chains.
 
 
 Given an associative algebra $A$ it is intuitive how to compose the product to obtain a map $A^{\tensor n} \to A$. With a coassociative coalgebra $(C,\Delta)$ there is an analogous notion. Define the \emph{iterated coproduct} $\Delta^n: C\to C^{\tensor n+1}$ inductively with $\Delta^0 = \id, \Delta^1 = \Delta$, and 
