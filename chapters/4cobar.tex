@@ -38,11 +38,11 @@ The purpose of introducing the dummy variable $p$ at the end of this tedious ind
 \begin{prop}\label{prop:cobar_bicomplex}
 The totalization of $\Cobar_{\bullet,\bullet}(C)$ given by 
 \[\tot_k(\Cobar_{\bullet,\bullet}) = \bigoplus_{p+q = -k} \Cobar_{p,q}\]
-with differential $\partial_{\tot} = d_H+(-1)^qd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
+with differential $\partial_{\Cobar} = d_H+(-1)^pd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
 \begin{proof}
     By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Lemma \ref{lem:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
     \[(s^{-1}\overline{C})_p = \Cobar_{p,1}\]
-    and on this component $\partial_{\tot}$ is precisely $d_H - d_V$.
+    and on this component $\partial_{\tot}$ is precisely $\partial_{\Cobar} = d_H - d_V$.
 \end{proof}
 \end{prop}
 
@@ -81,7 +81,7 @@ By the Dold--Kan correspondence we can also regard this as a chain complex. If $
     with vertical differential given by the alternating sums of the coface maps 
     \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_{\bullet, q},\quad d_V = \sum_{i=0}^q (-1)^i d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
-    \[d_H: \Cobar(N,C,M)_{p,q}\to \Cobar(N,C,M){p-1,q}\]
+    \[d_H: \Cobar(N,C,M)_{p,q}\to \Cobar(N,C,M)_{p-1,q}\]
     \begin{equation}\label{eqn: twoside_cobar_differential}
     \begin{split}
     d_H(m\tensor c_1 \tensor \cdots \tensor c_q \tensor n) &= \hspace{2pt} \partial_M(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n \\
@@ -89,7 +89,7 @@ By the Dold--Kan correspondence we can also regard this as a chain complex. If $
     &+ (-1)^{|m|+ \sigma(c_q)} m \tensor c_1 \tensor \cdots \tensor c_q \tensor \partial_N(n)
     \end{split}
     \end{equation}
-    where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^qd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
+    where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
 \end{defn} 
 
 Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are refering to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
@@ -225,118 +225,6 @@ Upon checking differentials, we conclude that the normalized two-sided cobar bic
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
-
-\subsection{Homology and the fundamental group}
-Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
-\begin{thm}[\cite{Stallings1975}, Theorem 5.4]\label{thm:stallings}
-    Let $R$ be a ring and $(X,x)$ a path-connected space. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R[\pi_1(X,x)]$. Let $E$ be the spectral sequence associated to the cobar construction on $C_\bullet(X)$ with basepoint $x$, and the filtration by tensor length. Then there is an isomorphism
-    \[\mathcal{I}^p/\mathcal{I}^{p+1} \cong E^\infty_{-p,p}.\]
-\end{thm}
-A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The goal of this subsection will be to prove the following integral version of this theorem for the two-sided cobar construction:
-\begin{thm}\label{thm:stallings_generalization}
-    Let $X$ be a path-connected space with basepoints $a,b$. Let $\mathcal{I}$ be the augmentation ideal of the group ring $\Z\pi_1(X,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
-    \[\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
-    where the filtration is given by tensor length. Then there is an isomorphism
-    \[\Z\pi_X(a,b)\mathcal{I}^p/\Z\pi_X(a,b)\mathcal{I}^{p+1} \to E^\infty_{-p,p}.\]
-\end{thm}
-
-We will imitate Stallings' strategy. He relies on the following result of Brown:
-\begin{thm}[Theorem 10.2, \cite{Brown1959}]
-    Let $C$ be a dga $R$-coalgebra. Suppose $C_0  = R$, $H_1(C) = 0$, and (). Then there is a chain equivalence
-    \[\Cobar(\Barr(C)) \to C.\]
-\end{thm}
- In our case we specialize to the case where $C$ is the acyclic cochain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. This is useful for the following reason.
-\begin{prop}\label{prop:cobar_zg}
-    There is a chain equivalence 
-    \[\Cobar(C_\bullet(BG)) \to \Z G\]
-    and consequently for any path-connected space $X$ with a single 0-cell $a$, there is an isomorphism 
-    \[H_0\Cobar(C_\bullet(X)) \to \Z\pi_1(X,a).\]
-    \begin{proof}
-        The bar construction on $\Z G$ is equivalent to singular chains on the Eilenberg--MacLane space $K(G, 1)$. This is an intermediate step and we don't discuss the bar construction again, so we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}.
-
-        The second isomorphism follows by Corollary 5.3 of \cite{Stallings1975}, which says that the map of $X$ into the $K(\pi_1(X,a), 1)$ induces an isomorphism on cobar constructions.
-    \end{proof}
-\end{prop}
-Stallings' proof then proceeds via the observation that that under this isomorphism, the tensor length truncations of $\Cobar$ correspond to the $\mathcal{I}$-adic filtration on the fundamental group ring.
-
-\newpage In order to generalize Stallings' theorem, we need a few constructions. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi(X)$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. 
-\begin{defn}
-     Let $\Z\Pi^0(X)$ be the category whose objects are zero-simplicies of $X$ and morphisms are the free abelian group on homotopy classes of paths.
-\end{defn}
-
-This category is enriched in abelian groups, and we want to find an isomorphism between the group $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the two-sided cobar construction on 
-\[C_\bullet(a), C_\bullet(X), C_\bullet(b).\] By Dold--Kan, each column of $\Cobar(N,C,M)$ is a cosimplicial module/cochain complex, which has a normalized cochain complex, which we denote $N\Cobar(N,C,M)$, so that the quotient map $\Cobar\to N\Cobar$ is a homotopy equivalence. Moreover, by the fact that singular chains and their associated gradeds are $\Z$-flat \footnote{Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are free. To see this, notice that the coradical filtration on singular chains is just the skeletal filtration:
-		\[F_rC_\bullet(X) = \bigoplus_{k=0}^r C_k(X),\]
-		so that the associated gradeds are just the levelwise singular chain groups, which are free hence flat.}, 
-it suffices by Lemma \ref{lem:graded_quism} to exhibit an isomorphism from $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the (twice)-normalized two-sided cobar complex 
-\begin{equation}\label{eqn:twice_normalized_cobar}
-N\Cobar(NC_\bullet({b}), NC_\bullet(X), NC_\bullet({a})).
-\end{equation}
-
-\begin{defn}
-The \emph{cobar category} of a space $X$ is the category $\CCobar(X)$ whose objects are the zero-simplices of $X$ and morphisms between $a,b \in X^0$ is zeroth homology of the two-sided cobar construction in \ref{eqn:twice_normalized_cobar}. 
-\end{defn}
-Notice that when $X$ has only a single zero simplex, then $\CCobar(X)$ is a one-object category whose homset is the zeroth homology of the cobar construction on $C_\bullet(X)$ by Proposition \ref{prop:twoside_reduction}. In this case, Proposition \ref{prop:cobar_zg} implies that we have a fully faithful functor, and consequently an isomorphism of categories
-\[\CCobar(X) \to \Z\Pi^0(X).\]
-This generalizes to the multiple basepoint case:
-\begin{prop}\label{prop:fully_faithful}
-If $X$ is path-connected then there is an isomorphism of categories $F: \Z\Pi(X) \to \CCobar(X)$.
-\end{prop}
-Before we begin with the proof, it helps to regard $\Z\Pi^0(X)$ as a category whose morphisms are contained in a ring, so that we have a well defined multiplication when we define this isomorphism.
-\begin{defn}
-For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free module on the set of all morphisms in $\mathcal{C}$. The addition on $\R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
-\end{defn}
-If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. 
-
-In our case, let $X$ be a topological space, and first consider the full subcategory of the fundamental groupoid whose objects are just the zero simplicies of $X$, which we will denote by $\Pi_X^0$. Form the integral category algebra $\Z\Pi_X^0$ on this category. An element of $\Z\Pi_X^0$ is some $\Z$-linear combination of paths between zero simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise.
-%  If $X$ has finitely many zero simplicies, then $\Z\Pi_X^0$ has the structure of a matrix ring. Let $x_1, ..., x_n$ be the zero simplicies. Then an element of $\Z\Pi_X^0$ corresponds to an $n$-by-$n$ matrix whose $(i,j)$-entry is an element of the free abelian group $\Z\Pi_X(x_i, x_j)$. 
-\begin{proof}[Proof of Proposition \ref{prop:fully_faithful}]
-    We define the functor $F$ to be the identity on objects. For $a,b \in X^0$ we have to show that there is an isomorphism 
-    \[F_{a,b}: \Z\Pi(X)(a,b) \to H_0\tot N\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))\]
-    of abelian groups. Let $\sigma$ be a path in $X$ whose endpoints are at $a$ and $b$, i.e. a generator of $\Z\Pi(X)(a,b)$. First define 
-    \[F_{a,b}(\sigma) := 1_b \tensor (1-\sigma) \tensor 1_a  =  1_b\tensor 1_a - 1_b\tensor \sigma \tensor 1_a.\]
-    Here $1_b\tensor 1_a \in N\Cobar_{0,0}$ and $1_b\tensor \sigma \tensor 1_a \in N\Cobar_{-1,1}$. We first claim that this is indeed a cycle. Computing the components of the cobar differential, we have:
-    \begin{equation}
-    \begin{split}
-        d_H(1_b\tensor 1_a) &= 0 \\
-        d_V(1_b\tensor 1_a) &= 1_b\tensor 1_b\tensor 1_a - 1_b\tensor 1_a\tensor 1_a \\
-        d_H(1_b\tensor \sigma\tensor 1_a) &=1_a \tensor \partial(\sigma)\tensor 1_b = 1_a\tensor (b-a)\tensor 1_b \\
-        d_V(1_b\tensor \sigma \tensor 1_a) &= 1_b\tensor \overline{\Delta}(\sigma) \tensor 1_a = 0
-    \end{split}
-    \end{equation}
-    where the last equality comes from the fact that the unnormalized Alexander--Whitney map sends $\sigma$ to $1_{\sigma(1)} \tensor \sigma + \sigma \tensor 1_{\sigma(0)}$, which is zero after normalization. Subtracting the latter two from the former two yields zero, so $F$ actually maps onto the zeroth homology. 
-
-    Next, we claim that $F$ is well-defined, i.e. homotopy invariant. Let $\sigma, \tau \in \Z\Pi(X)(a,b)$ be homotopic rel endpoints. This is witnessed by a square as follows:
-    [picture here]
-    Then we have $\partial \Sigma_1 = 1_b - \delta + \sigma$ and $\partial \Sigma_2 = \tau - \delta + 1_a$. Since the constant simplices vanish in the normalized complex $NC_\bullet(X)$, we have that $\sigma$ and $\tau$ are homologous to $\delta$, hence each other, so that the classes
-    \[F_{a,b}(\tau), F_{a,b}(\sigma)\]
-    are the same in homology.
-
-    Finally, to see that $F$ is a functor, we must show it respects composition of paths.
-
-    For the inverse map, define 
-    $G_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ via
-    \[G_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a.\]
-    Here the multiplication is given by regarding $\Z\Pi(X)(a,b)$ as a subset of the category algebra $\Z\Pi^0_X$, where $1$ is some sort of ``local identity'' given by the sum of all endpoints of the 1-simplicies $c_1, ..., c_q$. Though janky this is well-defined. To see this descends to zeroth homology, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
-    \begin{equation}
-        \begin{split}  
-        G'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
-        &= 1 - [d_0\sigma] + [d_1\sigma] - [d_2\sigma] \\
-        G'(\overline{\Delta}\sigma) &= (1 - [d_2\sigma])(1 - [d_0\sigma]) \\
-        &= 1 - [d_0\sigma] - [d_2\sigma] + [d_2\sigma * d_0\sigma]\\
-        \end{split}
-    \end{equation}
-    so that 
-    \[G'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) = G'(\partial\sigma-\overline{\Delta}(\sigma))=[d_1\sigma] -[d_2\sigma * d_0\sigma] = 0\]
-    since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $G'_{a,b}$ descends to a well defined map 
-    \[G_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    One checks that $F, G$ are mutually inverse.
-\end{proof}
-
-Theorem \ref{thm:stallings_generalization} then follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page computes the associated graded of $\Z\pi_X(a,b)$ under this filtration.
-
-
-\newpage
 
 
     % Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
