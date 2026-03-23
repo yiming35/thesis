@@ -79,7 +79,7 @@ By the Dold--Kan correspondence we can also regard this as a chain complex. If $
     and bigrading 
     \[\Cobar(N,C,M)_{p,q} = \bigoplus_{a + b_1 + \cdots + b_q + c = -p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\]
     with vertical differential given by the alternating sums of the coface maps 
-    \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_\bullet{\bullet, q},\quad d_V = \sum_{i=0}^q d^i \]
+    \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_{\bullet, q},\quad d_V = \sum_{i=0}^q (-1)^i d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
     \[d_H: \Cobar(N,C,M)_{p,q}\to \Cobar(N,C,M){p-1,q}\]
     \begin{equation}\label{eqn: twoside_cobar_differential}
@@ -141,6 +141,23 @@ Because we will use this notion many more times, we make the following definitio
     A map $f: D \to E$ of second-quadrant bicomplexes is a \emph{quasi-isomorphism} if it is a column-wise quasi-isomorphism. (So Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of second quadrant bicomplexes induces a quasi-isomorphism on totalizations).
 \end{defn}
 
+We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemmas, let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Therefore, any map $f: C\to C'$ induces a map 
+\[[f]: \gr C \to \gr C'\]
+of associated gradeds.
+\begin{defn}
+If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded isomorphism}.
+\end{defn}
+The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
+\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
+    Let $C$ be a conilpotent dg coalgebra. The inclusion of the normalized cochain complex into the Moore complex is a graded quasi-isomorphism.
+    \begin{proof}
+        First note that any coalgebra map $f: C\to C'$ of conilpotent coalgebras preserves the coradical filtration $F_\bullet$. To see this, take an element 
+        \[x \in F_rC = \{x \in C:  \forall n\geq r, \overline{\Delta}^n(x) = 0\}.\]
+        Then, since $f$ commutes with coproducts, we have 
+        \[ \overline{\Delta}^n\circ f(x) = (f \tensor \cdots \tensor f)\circ \Delta^nf(x) = 0\]
+        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtration. Hence the chain homotopy descends to the associated graded.
+    \end{proof}
+\end{lem}
 
 \begin{prop}\label{prop:twoside_reduction}  
 Let $C$ be a conilpotent dg $R$-coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
@@ -165,28 +182,9 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
         &= \Cobar_{p,q}(C).
 	\end{split}
 \end{equation}
-Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. Since the inclusion of the normalized complex is a graded quasi-isomorphism, we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
+Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. By Lemma \ref{lem:normalized_inclusion_is_graded_quism}, the inclusion of the normalized complex is a graded quasi-isomorphism, and we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
 \end{proof}
 \end{prop}
-
-We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemmas, let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Therefore, any map $f: C\to C'$ induces a map 
-\[[f]: \gr C \to \gr C'\]
-of associated gradeds.
-\begin{defn}
-If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded isomorphism}.
-\end{defn}
-The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
-\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
-    Let $C$ be a conilpotent dg coalgebra. The inclusion of the normalized cochain complex into the Moore complex is a graded quasi-isomorphism.
-    \begin{proof}
-        First note that any coalgebra map $f: C\to C'$ of conilpotent coalgebras preserves the coradical filtration $F_\bullet$. To see this, take an element 
-        \[x \in F_rC = \{x \in C:  \forall n\geq r, \overline{\Delta}^n(x) = 0\}.\]
-        Then, since $f$ commutes with coproducts, we have 
-        \[ \overline{\Delta}^n\circ f(x) = (f \tensor \cdots \tensor f)\circ \Delta^nf(x) = 0\]
-        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtration. Hence the chain homotopy descends to the associated graded.
-    \end{proof}
-\end{lem}
-
 \begin{lem}\label{lem:graded_quism}
     Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. Suppose 
     \begin{enumerate}
@@ -260,60 +258,120 @@ We will imitate Stallings' strategy. He relies on the following result of Brown:
     \end{proof}
 \end{prop}
 Stallings' proof then proceeds via the observation that that under this isomorphism, the tensor length truncations of $\Cobar$ correspond to the $\mathcal{I}$-adic filtration on the fundamental group ring.
-In order to generalize Stallings' theorem, we make the following constructions. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi_X$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. 
+
+\newpage In order to generalize Stallings' theorem, we need a few constructions. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi(X)$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. 
 \begin{defn}
-     $\Z\Pi_X$ is the category whose objects are points in $X$ and morphisms are the free abelian group on homotopy classes of paths.
+     Let $\Z\Pi^0(X)$ be the category whose objects are zero-simplicies of $X$ and morphisms are the free abelian group on homotopy classes of paths.
 \end{defn}
 
+This category is enriched in abelian groups, and we want to find an isomorphism between the group $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the two-sided cobar construction on 
+\[C_\bullet(a), C_\bullet(X), C_\bullet(b).\] By Dold--Kan, each column of $\Cobar(N,C,M)$ is a cosimplicial module/cochain complex, which has a normalized cochain complex, which we denote $N\Cobar(N,C,M)$, so that the quotient map $\Cobar\to N\Cobar$ is a homotopy equivalence. Moreover, by the fact that singular chains and their associated gradeds are $\Z$-flat \footnote{Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are free. To see this, notice that the coradical filtration on singular chains is just the skeletal filtration:
+		\[F_rC_\bullet(X) = \bigoplus_{k=0}^r C_k(X),\]
+		so that the associated gradeds are just the levelwise singular chain groups, which are free hence flat.}, 
+it suffices by Lemma \ref{lem:graded_quism} to exhibit an isomorphism from $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the (twice)-normalized two-sided cobar complex 
+\begin{equation}\label{eqn:twice_normalized_cobar}
+N\Cobar(NC_\bullet({b}), NC_\bullet(X), NC_\bullet({a})).
+\end{equation}
+
 \begin{defn}
-The \emph{cobar category} of a space $X$ is the category $\CCobar(X)$ whose objects are the zero-simplices of $X$ and morphisms between $a,b \in X^0$ is zeroth homology of the two-sided cobar construction
-\[H_0\tot_\bullet\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})).\]
+The \emph{cobar category} of a space $X$ is the category $\CCobar(X)$ whose objects are the zero-simplices of $X$ and morphisms between $a,b \in X^0$ is zeroth homology of the two-sided cobar construction in \ref{eqn:twice_normalized_cobar}. 
 \end{defn}
-Both categories above are enriched in abelian groups. Notice that when $X$ has only a single zero simplex, then $\CCobar(X)$ is a one-object category whose hom-set the zeroth homology of the cobar construction on $C_\bullet(X)$ by Proposition \ref{prop:twoside_reduction}. In this case, Prop \ref{prop:cobar_zg} implies that we have a fully faithful functor 
-\[\CCobar(X) \to \Z\Pi(X).\]
+Notice that when $X$ has only a single zero simplex, then $\CCobar(X)$ is a one-object category whose homset is the zeroth homology of the cobar construction on $C_\bullet(X)$ by Proposition \ref{prop:twoside_reduction}. In this case, Proposition \ref{prop:cobar_zg} implies that we have a fully faithful functor, and consequently an isomorphism of categories
+\[\CCobar(X) \to \Z\Pi^0(X).\]
 This generalizes to the multiple basepoint case:
-\begin{prop}
-If $X$ is path-connected then there is a fully faithful functor $\CCobar(X) \to \Z\Pi(X)$.
-\begin{proof}
+\begin{prop}\label{prop:fully_faithful}
+If $X$ is path-connected then there is an isomorphism of categories $F: \Z\Pi(X) \to \CCobar(X)$.
+\end{prop}
+Before we begin with the proof, it helps to regard $\Z\Pi^0(X)$ as a category whose morphisms are contained in a ring, so that we have a well defined multiplication when we define this isomorphism.
+\begin{defn}
+For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free module on the set of all morphisms in $\mathcal{C}$. The addition on $\R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
+\end{defn}
+If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. 
+
+In our case, let $X$ be a topological space, and first consider the full subcategory of the fundamental groupoid whose objects are just the zero simplicies of $X$, which we will denote by $\Pi_X^0$. Form the integral category algebra $\Z\Pi_X^0$ on this category. An element of $\Z\Pi_X^0$ is some $\Z$-linear combination of paths between zero simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise.
+%  If $X$ has finitely many zero simplicies, then $\Z\Pi_X^0$ has the structure of a matrix ring. Let $x_1, ..., x_n$ be the zero simplicies. Then an element of $\Z\Pi_X^0$ corresponds to an $n$-by-$n$ matrix whose $(i,j)$-entry is an element of the free abelian group $\Z\Pi_X(x_i, x_j)$. 
+\begin{proof}[Proof of Proposition \ref{prop:fully_faithful}]
     We define the functor $F$ to be the identity on objects. For $a,b \in X^0$ we have to show that there is an isomorphism 
-    \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
-    \[F_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a\]
-    Note that the multiplication in $\Z\pi_X(a,b)$ between two paths is given by concatenation if they share endpoints, and zero otherwise. To see this descends to $H_0$ of cobar, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
+    \[F_{a,b}: \Z\Pi(X)(a,b) \to H_0\tot N\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))\]
+    of abelian groups. Let $\sigma$ be a path in $X$ whose endpoints are at $a$ and $b$, i.e. a generator of $\Z\Pi(X)(a,b)$. First define 
+    \[F_{a,b}(\sigma) := 1_b \tensor (1-\sigma) \tensor 1_a  =  1_b\tensor 1_a - 1_b\tensor \sigma \tensor 1_a.\]
+    Here $1_b\tensor 1_a \in N\Cobar_{0,0}$ and $1_b\tensor \sigma \tensor 1_a \in N\Cobar_{-1,1}$. We first claim that this is indeed a cycle. Computing the components of the cobar differential, we have:
+    \begin{equation}
+    \begin{split}
+        d_H(1_b\tensor 1_a) &= 0 \\
+        d_V(1_b\tensor 1_a) &= 1_b\tensor 1_b\tensor 1_a - 1_b\tensor 1_a\tensor 1_a \\
+        d_H(1_b\tensor \sigma\tensor 1_a) &=1_a \tensor \partial(\sigma)\tensor 1_b = 1_a\tensor (b-a)\tensor 1_b \\
+        d_V(1_b\tensor \sigma \tensor 1_a) &= 1_b\tensor \overline{\Delta}(\sigma) \tensor 1_a = 0
+    \end{split}
+    \end{equation}
+    where the last equality comes from the fact that the unnormalized Alexander--Whitney map sends $\sigma$ to $1_{\sigma(1)} \tensor \sigma + \sigma \tensor 1_{\sigma(0)}$, which is zero after normalization. Subtracting the latter two from the former two yields zero, so $F$ actually maps onto the zeroth homology. 
+
+    Next, we claim that $F$ is well-defined, i.e. homotopy invariant. Let $\sigma, \tau \in \Z\Pi(X)(a,b)$ be homotopic rel endpoints. This is witnessed by a square as follows:
+    [picture here]
+    Then we have $\partial \Sigma_1 = 1_b - \delta + \sigma$ and $\partial \Sigma_2 = \tau - \delta + 1_a$. Since the constant simplices vanish in the normalized complex $NC_\bullet(X)$, we have that $\sigma$ and $\tau$ are homologous to $\delta$, hence each other, so that the classes
+    \[F_{a,b}(\tau), F_{a,b}(\sigma)\]
+    are the same in homology.
+
+    Finally, to see that $F$ is a functor, we must show it respects composition of paths.
+
+    For the inverse map, define 
+    $G_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ via
+    \[G_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a.\]
+    Here the multiplication is given by regarding $\Z\Pi(X)(a,b)$ as a subset of the category algebra $\Z\Pi^0_X$, where $1$ is some sort of ``local identity'' given by the sum of all endpoints of the 1-simplicies $c_1, ..., c_q$. Though janky this is well-defined. To see this descends to zeroth homology, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
     \begin{equation}
         \begin{split}  
-        F'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
+        G'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
         &= 1 - [d_0\sigma] + [d_1\sigma] - [d_2\sigma] \\
-        F'(\overline{\Delta}\sigma) &= (1 - [d_2\sigma])(1 - [d_0\sigma]) \\
+        G'(\overline{\Delta}\sigma) &= (1 - [d_2\sigma])(1 - [d_0\sigma]) \\
         &= 1 - [d_0\sigma] - [d_2\sigma] + [d_2\sigma * d_0\sigma]\\
-        F'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) &= F'(\partial\sigma-\overline{\Delta}(\sigma)) \\
-        &= [d_1\sigma] -[d_2\sigma * d_0\sigma] = 0
         \end{split}
     \end{equation}
-    since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $F'_{a,b}$ descends to a well defined map 
-    \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    To see it is an isomorphism, note that by choosing a path $\sigma$ from $a$ to $b$, we can make $\Pi_X(a,b)$ into a $\pi_1(X,a)$-torsor, which induces an isomorphism on the free abelian groups
-    \[\Z\pi_1(X,a) \to  \Z\pi_X(a,b)\]
-    given by concatenation with $\sigma$. Similarly, we construct a isomorphism 
-    \[\Cobar(C_\bullet(X)) \cong \Cobar(C_\bullet(\{a\}), C_\bullet(X), C_\bullet(\{a\})) \to \Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
-    using the path $\sigma$ as follows ???
-    induced by the isomorphism $C_\bullet(\{a\}) \to C_\bullet(\{b\})$ coming from concatenation with $\sigma$. These isomorphisms fit into a commutative diagram 
-    \[\begin{tikzcd}[cramped]
-        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIXzBcXENvYmFyKENfXFxidWxsZXQoWCkpIl0sWzEsMCwiXFxaXFxwaV8xKFgsYSkiXSxbMSwxLCJcXFpcXFBpX1goYSxiKSJdLFswLDEsIkhfMFxcQ29iYXIoQ19cXGJ1bGxldChiKSwgQ19cXGJ1bGxldChYKSwgQ19cXGJ1bGxldChhKSkiXSxbMCwxLCJcXHJlZntjb3I6Y29iYXJfemd9Il0sWzEsMiwiXFxjb25nIl0sWzMsMiwiRl97YSxifSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDMsIlxcY29uZyIsMl1d
-        {H_0\Cobar(C_\bullet(X))} & {\Z\pi_1(X,a)} \\
-        {H_0\Cobar(C_\bullet(b), C_\bullet(X), C_\bullet(a))} & {\Z\Pi_X(a,b)}
-        \arrow["{\cong, \ref{prop:cobar_zg}}", from=1-1, to=1-2]
-        \arrow["\cong"', from=1-1, to=2-1]
-        \arrow["\cong", from=1-2, to=2-2]
-        \arrow["{F_{a,b}}"', dashed, from=2-1, to=2-2]
-    \end{tikzcd}\]
-    implying that $F_{a,b}$ too is an isomorphism. 
-    % To make sure that the choice of $\sigma$ is sufficiently functorial, we fix a spanning tree of paths beginning in $a$:
-    % \[\{\sigma_x: [0,1] \to X: x \in X,\sigma(0) = a, \sigma(1) = x\}.\]
+    so that 
+    \[G'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) = G'(\partial\sigma-\overline{\Delta}(\sigma))=[d_1\sigma] -[d_2\sigma * d_0\sigma] = 0\]
+    since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $G'_{a,b}$ descends to a well defined map 
+    \[G_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
+    One checks that $F, G$ are mutually inverse.
 \end{proof}
-\end{prop}
+
 Theorem \ref{thm:stallings_generalization} then follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page computes the associated graded of $\Z\pi_X(a,b)$ under this filtration.
 
+
+\newpage
+
+
+    % Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
+    % \[F_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a\]
+    % Note that the multiplication in $\Z\pi_X(a,b)$ between two paths is given by concatenation if they share endpoints, and zero otherwise. To see this descends to $H_0$ of cobar, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
+    % \begin{equation}
+    %     \begin{split}  
+    %     F'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
+    %     &= 1 - [d_0\sigma] + [d_1\sigma] - [d_2\sigma] \\
+    %     F'(\overline{\Delta}\sigma) &= (1 - [d_2\sigma])(1 - [d_0\sigma]) \\
+    %     &= 1 - [d_0\sigma] - [d_2\sigma] + [d_2\sigma * d_0\sigma]\\
+    %     F'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) &= F'(\partial\sigma-\overline{\Delta}(\sigma)) \\
+    %     &= [d_1\sigma] -[d_2\sigma * d_0\sigma] = 0
+    %     \end{split}
+    % \end{equation}
+    % since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $F'_{a,b}$ descends to a well defined map 
+    % \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
+    % To see it is an isomorphism, note that by choosing a path $\sigma$ from $a$ to $b$, we can make $\Pi_X(a,b)$ into a $\pi_1(X,a)$-torsor, which induces an isomorphism on the free abelian groups
+    % \[\Z\pi_1(X,a) \to  \Z\pi_X(a,b)\]
+    % given by concatenation with $\sigma$. Similarly, we construct a isomorphism 
+    % \[\Cobar(C_\bullet(X)) \cong \Cobar(C_\bullet(\{a\}), C_\bullet(X), C_\bullet(\{a\})) \to \Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
+    % using the path $\sigma$ as follows ???
+    % induced by the isomorphism $C_\bullet(\{a\}) \to C_\bullet(\{b\})$ coming from concatenation with $\sigma$. These isomorphisms fit into a commutative diagram 
+    % \[\begin{tikzcd}[cramped]
+    %     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIXzBcXENvYmFyKENfXFxidWxsZXQoWCkpIl0sWzEsMCwiXFxaXFxwaV8xKFgsYSkiXSxbMSwxLCJcXFpcXFBpX1goYSxiKSJdLFswLDEsIkhfMFxcQ29iYXIoQ19cXGJ1bGxldChiKSwgQ19cXGJ1bGxldChYKSwgQ19cXGJ1bGxldChhKSkiXSxbMCwxLCJcXHJlZntjb3I6Y29iYXJfemd9Il0sWzEsMiwiXFxjb25nIl0sWzMsMiwiRl97YSxifSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDMsIlxcY29uZyIsMl1d
+    %     {H_0\Cobar(C_\bullet(X))} & {\Z\pi_1(X,a)} \\
+    %     {H_0\Cobar(C_\bullet(b), C_\bullet(X), C_\bullet(a))} & {\Z\Pi_X(a,b)}
+    %     \arrow["{\cong, \ref{prop:cobar_zg}}", from=1-1, to=1-2]
+    %     \arrow["\cong"', from=1-1, to=2-1]
+    %     \arrow["\cong", from=1-2, to=2-2]
+    %     \arrow["{F_{a,b}}"', dashed, from=2-1, to=2-2]
+    % \end{tikzcd}\]
+    % implying that $F_{a,b}$ too is an isomorphism. 
+    % % To make sure that the choice of $\sigma$ is sufficiently functorial, we fix a spanning tree of paths beginning in $a$:
+    % % \[\{\sigma_x: [0,1] \to X: x \in X,\sigma(0) = a, \sigma(1) = x\}.\]
 % \begin{proof}
 %     It will again to turn out to be easier to work with the normalized cobar, a la the proof of Proposition \ref{prop:twoside_reduction}. So abbreviate $N\Cobar(\cdots)$ by $\Cobar$. 
 %     Recall that the bigrading on the two-sided cobar construction is given by 
