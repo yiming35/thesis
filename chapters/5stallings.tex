@@ -16,7 +16,7 @@ A dual version of this theorem with cohomology and the bar construction can be f
 \subsection{Setup}
 We will imitate Stallings' strategy. He relies on the following result of Brown:
 \begin{thm}[Theorem 10.2, \cite{Brown1959}]
-    Let $C$ be a dga $R$-coalgebra. Suppose $C_0  = R$, $H_1(C) = 0$, and (). Then there is a chain equivalence
+    Let $C$ be a dga $R$-coalgebra. Suppose $C_0  = R$ and $H_1(C) = 0$. Then there is a chain equivalence
     \[\Cobar(\Barr(C)) \to C.\]
 \end{thm}
  In our case we specialize to the case where $C$ is the acyclic cochain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. This is useful for the following reason.
@@ -139,7 +139,7 @@ In our case, let $X$ be a topological space, and first consider the full subcate
     \[F(G(1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a)) = F(\sigma) = 1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a\]
     completing the proof. 
 \begin{proof}[Proof of Claim \ref{claim:zero_cobar_generation}]
-    Let $x = \sum_{i=1}^N x_i \in \tot_0\Cobar$ be a cycle. Choose the term $x_i$ with the highest number of tensor factors, say $x_q = 1_b\tensor c_1 \tensor \cdots \tensor c_q \tensor 1_a$. Because the vertical cobar differential increases tensor length, it must vanish on $x_q$, so we have 
+    Take a cycle $x = \sum_{i=1}^q x_i \in \tot_0\Cobar$, where $x_i$ is of the form $1_b \tensor c_1\tensor \cdots \tensor c_i\tensor 1_a$. Consider the term $x_q = 1_b\tensor c_1 \tensor \cdots \tensor c_q \tensor 1_a$ with the highest number of tensor factors. Because the vertical cobar differential increases tensor length, it must vanish on $x_q$, so we have 
     \begin{equation}
         \begin{split}
         0 = d_V(x_q) &= \Delta^R(1_b)\tensor c_1 \tensor \cdots \tensor c_q \tensor 1_a \\
@@ -150,8 +150,6 @@ In our case, let $X$ be a topological space, and first consider the full subcate
         &+(-1)^{q+1} 1_b\tensor c_1 \tensor \cdots \tensor c_q \tensor 1_a \tensor 1_a
         \end{split}
     \end{equation}
-    and upon expanding we find that $c_1(0) = b$, $c_i(1) = c_{i+1}(0)$ for $i \in \{0, ..., q\}$, and $c_q(1) = a$. Hence all the component 1-simplicies must be contiguous. We now claim that if $q\geq 2$, we can write $x_q$ as a linear combination of length 0 and length 1 tensors. This follows from the computation surrounding Equation \ref{eqn:reduce_to_one_tensor} where any tensor length two element is homologous to the sum of tensor length one elements. Hence a cycle $x$ is of the form $x_0 + x_1$, completing the proof. 
+    and upon expanding we find that $c_1(0) = b$, $c_i(1) = c_{i+1}(0)$ for $i \in \{0, ..., q\}$, and $c_q(1) = a$. Hence all the component 1-simplicies must be contiguous. We now claim that if $q\geq 2$, we can write $x_q$ as a linear combination of length 0 and length 1 tensors. This follows from the computation surrounding Equation \ref{eqn:reduce_to_one_tensor} where any tensor length two element is homologous to the sum of tensor length one elements. Moreover, a computation shows that any $x_0$ or $x_1$ alone cannot be a cycle. Hence all cycles are of the form $x_0 + x_1$.
 \end{proof}
-
-
 This completes the proof of Proposition \ref{prop:fully_faithful}. Now Theorem \ref{thm:stallings_generalization} follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page computes the associated graded of $\Z\pi_X(a,b)$ under this filtration.

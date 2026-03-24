@@ -1,19 +1,24 @@
 \section{Introduction}
-Algebraic topology seeks to study topological spaces by means of \emph{algebraic invariants}, which assign to each space an algebraic object, so that two ``similar'' spaces receive the same object. Of these invariants, there is a balance to strike between how fine the invariant is, and how easy it is to compute. On one end, 
-\subsection{Main theorem}
-Let $X$ be a path-connected topological space and choose basepoints $a, b \in X$. Let $\pi_X(a,b)$ be the set of homotopy classes of paths in $X$ from $a$ to $b$. In particular when $a=b$ we obtain the fundamental group of $X$. Notice that $\pi_1(X,a)$ acts on $\pi_X(a,b)$ on the right by concatenation of paths, so that the free abelian group $\Z\pi_X(a,b)$ is a right $\Z\pi_1(X)$-module. Let $\mathcal{I}_a\subset \Z\pi_1(X,a)$ be the augmentation ideal. 
+\lettrine{A}{ssociated} to a based topological space $(X,x)$ is its fundamental group $\pi_1(X,x)$. In his groundbreaking 1895 paper \emph{Analysis Situs} \cite{poincare1895analysis}, Henri Poincar{\'e} introduced the fundamental group alongside other important concepts such as homology and cobordism, essentially founding the modern study of algebraic topology. This thesis is broadly concerned with the relationship between the fundamental group and homology: the former contains more information, while the latter is easier to compute. One can ask whether it is possible to gleam information about $\pi_1(X,x)$ from the homology of $X$. 
 
-Consider now the following subspaces of $X^n$
-\[X(n)^a := \{(x_1, ..., x_n) \in X^n: \text{$x_1 = a$ or $x_i = x_{i+1}$ for $i \in \{1, ..., n-1\}$} \} \]
-\[X(n)_b := \{(x_1, ..., x_n) \in X^n: \text{$x_n = b$ or $x_i = x_{i+1}$ for $i \in \{1, ..., n-1\}$} \} \]
-and let $X(n)^a_b := X(n)^a \cup X(n)_b$.
+While the integral homology groups are always abelian, the fundamental group is usually not. So let us instead examine the integral group ring $\Z\pi_1(X,x)$. This is unfortunately an unwiedly object: if $\pi_1(X,x)$ is infinite, which is often the case, then $\Z\pi_1(X,x)$ is of infinite rank. To turn it into something feasible for study, let us consider the quotients of $\Z\pi_1(X,x)$ by the powers of its augmentation ideal $\mathcal{I}$. A result of Stallings (Theorem \ref{thm:stallings} here, Theorem 5.4 in \cite{Stallings1975}) relates this truncated fundamental group ring to the $E^\infty$-page of a certain spectral sequence associated to the \emph{cobar construction} on the singular chains of $X$. The cobar construction can be defined purely algebraically, but when performed on the singular chains, there is a nice topological interpretation in terms of certain  homology groups of $X$. It is through this that we will relate $\Z\pi_1(X,x)/\mathcal{I}$ to the homology of $X$. 
+\subsection{Main theorem}
+Let $X$ be a path-connected topological space and choose basepoints $a, b \in X$. Let $\pi_X(a,b)$ be the set of homotopy classes of paths in $X$ from $a$ to $b$. In particular when $a=b$ we obtain the fundamental group of $X$. Notice that $\pi_1(X,a)$ acts on $\pi_X(a,b)$ on the right by concatenation of paths, so that the free abelian group $\Z\pi_X(a,b)$ is a right $\Z\pi_1(X)$-module. Let $\mathcal{I}_a\subset \Z\pi_1(X,a)$ be the augmentation ideal. Define the following subspace of $X^n$:
+\[X(n)^a_b = \{ (x_1,\dots,x_n) \in X^n \mid x_1 = a \;\text{or}\; x_n = b \;\text{or}\; x_i = x_{i+1} \text{ for some } i \}.\]
+Our main theorem is the following.
 \begin{thm}\label{thm:looijenga}
-There is a map 
+There is a group homomorphism 
 \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1}_a\to H_n(X^n, X(n)^a_b; \Z)\]
 which is a surjection with kernel $\Z1_a$ if $a=b$ and an isomorphism if $a\neq b$.
 \end{thm}
-The author first encountered this theorem in a paper of Looijenga (\cite{Looijenga2025}, Theorem 1.1), who attributes this theorem (or a dual version with rational coefficients) to Deligne and Goncharov, (\cite{DELIGNE2005}, Proposition 3.4), who attribute it to Beilinson.
+A dual cohomological version of this result with field coefficients is proven by Deligne and Goncharov in \cite{DELIGNE2005}, Proposition 3.4, where they attribute it to Beilinson. The version stated here comes from \cite{Looijenga2025}, Theorem 1.1, where the proof is far more concise and eloquent, but (to a student like myself) more opaque. Returning to the paper of Deligne and Goncharov, in the discussion following the statement and proof of the result, the authors suggest another way to prove this result in terms of cosimplicial spaces. We find this method more enlightening. In particular, it offers an explanation for why the subspace $X(n)^a_b$ appears. The goal of this thesis will be to develop the necessary background and pursue this alternate proof, while hopefully clearly explicating the details of each step. 
 
+\subsection{Organization} In [] we give a crash course on the theory of coalgebras. In [] we develop the basic theory of (co)simplicial objects, in particular cosimplicial topological spaces. We also collect some helpful technical lemmas regarding (co)simplicial sets. The reader should feel free to skip these first two sections if they are familiar with the theory. Both coalgebras and (co)simplicial objects are crucial in [], where we introduce the cobar construction and Adams' theorem, and define a generalized two-sided version of the cobar construction. In [] we generalize Stallings' theorem to this two-sided version, and finally use all these ingredients to prove Theorem \ref{thm:looijenga} in [].
 
-\subsection{Prerequisites, conventions, overview}
-
+I have tried to make the thesis readable to anyone who has had slightly more than a course or two in algebraic topology, and working knowledge of (homological) algebra. Here are some prerequisites that we assume to keep this thesis under a page limit:
+\begin{itemize}
+\item Algebraic topology at the level of the first two chapters of Hatcher's book \cite{Hatcher:478079}.
+\item Homological algebra, in particular the spectral sequences associated to a bicomplex. Though somewhat technically, they will play a key computational role in the thesis. The proof of the main theorem comes from the close examination of one particular spectral sequence. We have included proofs of some auxillary results about these spectral sequences, but the reader could possibly regard them as a black box.
+\item Basic notions in category theory: functors, natural transformations, adjunctions, (co)limits. 
+\item Some prior exposure to simplicial sets. This will be very helpful even though we technically develop the theory of cosimplicial objects from scratch.
+\end{itemize}
