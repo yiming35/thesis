@@ -1,8 +1,8 @@
 
-\section{Homology and the fundamental group}
+\section{Homology and the fundamental group}\label{chapter:stallings}
 Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
 \begin{thm}[\cite{Stallings1975}, Theorem 5.4]\label{thm:stallings}
-    Let $R$ be a ring and $(X,x)$ a path-connected space. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R[\pi_1(X,x)]$. Let $E$ be the spectral sequence associated to the cobar construction on $C_\bullet(X)$ with basepoint $x$, and the filtration by tensor length. Then there is an isomorphism
+    Let $R$ be a ring and $(X,x)$ a path-connected space. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R[\pi_1(X,x)]$. Let $E$ be the spectral sequence associated to the one-sided cobar bicomplex on $C_\bullet(X)$ with basepoint $x$, and the filtration by tensor length. Then there is an isomorphism
     \[\mathcal{I}^p/\mathcal{I}^{p+1} \cong E^\infty_{-p,p}.\]
 \end{thm}
 A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The goal of this section will be to prove the following integral version of this theorem for the two-sided cobar construction:
@@ -19,30 +19,30 @@ We will imitate Stallings' strategy. He relies on the following result of Brown:
     Let $C$ be a dga $R$-coalgebra. Suppose $C_0  = R$ and $H_1(C) = 0$. Then there is a chain equivalence
     \[\Cobar(\Barr(C)) \to C.\]
 \end{thm}
- In our case we specialize to the case where $C$ is the acyclic cochain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. This is useful for the following reason.
+ This is an intermediate step and we don't discuss the bar construction again, so we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}. In our case we specialize to the case where $C$ is the acyclic cochain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. This is useful for the following reason.
 \begin{prop}\label{prop:cobar_zg}
     There is a chain equivalence 
     \[\Cobar(C_\bullet(BG)) \to \Z G\]
     and consequently for any path-connected space $X$ with a single 0-cell $a$, there is an isomorphism 
     \[H_0\Cobar(C_\bullet(X)) \to \Z\pi_1(X,a).\]
     \begin{proof}
-        The bar construction on $\Z G$ is equivalent to singular chains on the Eilenberg--MacLane space $K(G, 1)$. This is an intermediate step and we don't discuss the bar construction again, so we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}.
-
+        The bar construction on $\Z G$ is equivalent to singular chains on the classifying space $BG$. Then apply Brown's theorem.
         The second isomorphism follows by Corollary 5.3 of \cite{Stallings1975}, which says that the map of $X$ into the $K(\pi_1(X,a), 1)$ induces an isomorphism on cobar constructions.
     \end{proof}
 \end{prop}
 Stallings' proof then proceeds via the observation that that under this isomorphism, the tensor length truncations of $\Cobar$ correspond to the $\mathcal{I}$-adic filtration on the fundamental group ring.
 
-We want to generalize Stallings' theorem to the multiple basepoint case. In order to do so, we need a few constructions. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi(X)$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. 
+In order generalize his result we need a few auxilliary constructions. Recall that the \emph{fundamental groupoid} of a space $X$ is the category $\Pi_X$ whose objects are points in $X$ and morphisms are homotopy classes of paths between two points. 
 \begin{defn}
-     Let $\Z\Pi^0(X)$ be the category whose objects are zero-simplicies of $X$ and morphisms are the free abelian group on homotopy classes of paths.
+     Let $\Z\Pi^0(X)$ denote the category whose objects are zero-simplicies of $X$ and morphisms are the free abelian group on homotopy classes of paths.
 \end{defn}
 
 This category is enriched in abelian groups, and we want to find an isomorphism between the group $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the two-sided cobar construction on 
-\[C_\bullet(a), C_\bullet(X), C_\bullet(b).\] By Dold--Kan, each column of $\Cobar(N,C,M)$ is a cosimplicial module/cochain complex, which has a normalized cochain complex, which we denote $N\Cobar(N,C,M)$, so that the quotient map $\Cobar\to N\Cobar$ is a homotopy equivalence. Moreover, by the fact that singular chains and their associated gradeds are $\Z$-flat \footnote{Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are free. To see this, notice that the coradical filtration on singular chains is just the skeletal filtration:
+\[C_\bullet(a), C_\bullet(X), C_\bullet(b).\] 
+As aforementioned, this is easier after normalizing the cobar construction. By Dold--Kan, each column of $\Cobar(N,C,M)$ is a cosimplicial module/cochain complex, which has a normalized cochain complex, which we denote $N\Cobar(N,C,M)$, so that the quotient map $\Cobar\to N\Cobar$ is a homotopy equivalence. Moreover, by the fact that singular chains and their associated gradeds are $\Z$-flat \footnote{Singular chains are free abelian groups, hence flat over $\Z$. Moreover, over $\Z$, submodules of free modules are free. Lastly, the associated gradeds of the singular chains are free. To see this, notice that the coradical filtration on singular chains is just the skeletal filtration:
 		\[F_rC_\bullet(X) = \bigoplus_{k=0}^r C_k(X),\]
 		so that the associated gradeds are just the levelwise singular chain groups, which are free hence flat.}, 
-it suffices by Lemma \ref{lem:graded_quism} to exhibit an isomorphism from $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the (twice)-normalized two-sided cobar complex 
+it suffices by Lemma \ref{lem:graded_quism} to exhibit an isomorphism from $\Z\Pi^0(X)(a,b)$ and the zeroth homology of the (twice-)normalized two-sided cobar complex 
 \begin{equation}\label{eqn:twice_normalized_cobar}
 N\Cobar(NC_\bullet({b}), NC_\bullet(X), NC_\bullet({a})).
 \end{equation}
@@ -56,35 +56,20 @@ This generalizes to the multiple basepoint case:
 \begin{prop}\label{prop:fully_faithful}
 If $X$ is path-connected then there is an isomorphism of categories $F: \Z\Pi(X) \to \CCobar(X)$.
 \end{prop}
-Before we begin with the proof, it helps to regard $\Z\Pi^0(X)$ as a category whose morphisms are contained in a ring, so that we have a well defined multiplication when we define this isomorphism.
+Before we begin with the proof, it helps to regard $\Z\Pi^0(X)$ as a category whose morphisms are contained in a ring, so that we have a well defined multiplication when we define this isomorphism on morphisms. 
 \begin{defn}
-For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free module on the set of all morphisms in $\mathcal{C}$. The addition on $\R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
+For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free $R$-module on the set of all morphisms in $\mathcal{C}$. The addition on $\R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
 \end{defn}
-If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. 
-
-In our case, let $X$ be a topological space, and first consider the full subcategory of the fundamental groupoid whose objects are just the zero simplicies of $X$, which we will denote by $\Pi_X^0$. Form the integral category algebra $\Z\Pi_X^0$ on this category. An element of $\Z\Pi_X^0$ is some $\Z$-linear combination of paths between zero simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise.
+If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. In our case, let $X$ be a topological space, and first consider the full subcategory of the fundamental groupoid whose objects are just the zero simplicies of $X$, which we will denote by $\Pi_X^0$. Form the integral category algebra $\Z\Pi_X^0$ on this category. An element of $\Z\Pi_X^0$ is some $\Z$-linear combination of paths between zero simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise. By regarding $\Z\Pi(X)(a,b)$ as a subset of $\Z\Pi_X^0$, we can multiply its elements. 
 
 \subsection{Proof of Proposition \ref{prop:fully_faithful}}
     We define the functor $F$ to be the identity on objects. For $a,b \in X^0$ we have to show that there is an isomorphism 
     \[F_{a,b}: \Z\Pi(X)(a,b) \to H_0\tot N\Cobar(NC_\bullet(\{b\}), NC_\bullet(X), NC_\bullet(\{a\}))\]
-    of abelian groups. Let $\sigma$ be a path in $X$ whose endpoints are at $a$ and $b$, i.e. a generator of $\Z\Pi(X)(a,b)$. First define 
+    of abelian groups. Let $\sigma$ be a generator of $\Z\Pi(X)(a,b)$, i.e. the homotopy class of a path in $X$ whose endpoints are at $a$ and $b$.  First define 
     \[F_{a,b}(\sigma) := 1_b \tensor (1-\sigma) \tensor 1_a  =  1_b\tensor 1_a - 1_b\tensor \sigma \tensor 1_a.\]
     Here $1_b\tensor 1_a \in N\Cobar_{0,0}$ and $1_b\tensor \sigma \tensor 1_a \in N\Cobar_{-1,1}$. 
     
-    We first claim that this is indeed a cycle. Computing the components of the cobar differential, we have:
-    \begin{equation}
-    \begin{split}
-        d_H(1_b\tensor 1_a) &= 0 \\
-        d_V(1_b\tensor 1_a) &= 1_b\tensor 1_b\tensor 1_a - 1_b\tensor 1_a\tensor 1_a  = 0\\
-        d_H(1_b\tensor \sigma\tensor 1_a) &=1_a \tensor \partial(\sigma)\tensor 1_b = 1_a\tensor (b-a)\tensor 1_b  =0\\
-        d_V(1_b\tensor \sigma \tensor 1_a) &= 1_b\tensor \overline{\Delta}(\sigma) \tensor 1_a  = 0
-    \end{split}
-    \end{equation}
-    where the equalities come from the fact that any 0-simplex becomes zero after normalization, and that the unnormalized Alexander--Whitney map sends $\sigma$ to $1_{\sigma(1)} \tensor \sigma + \sigma \tensor 1_{\sigma(0)}$.
-
-    Next, we claim that $F$ is well-defined, i.e. homotopy invariant. Let $\sigma, \tau \in \Z\Pi(X)(a,b)$ be homotopic rel endpoints. This is witnessed by a square
-    \[picture of homotopy square\]
-    Then the singular boundary map gives $\partial \Sigma_1 = 1_b - \delta + \sigma$ and $\partial \Sigma_2 = \tau - \delta + 1_a$. Computing the total cobar differential on $1_b\tensor (\Sigma_1 -\Sigma_2) \tensor 1_a$, the vertical terms vanish, since they introduce 0-simplicies, leaving us with only the horizontal differential, induced by the singular boundary:
+    We first claim that $F$ is well-defined, i.e. homotopy invariant. Let $\sigma, \tau$ represent the same generator of $\Z\Pi(X)(a,b)$. So they are homotopic rel endpoints. This is witnessed by a square whose bottom edge is $\sigma$, top edge is $\tau$, left and right edges are the constant maps at $a$ and $b$. We can divide it diagonally and call the diagonal path $\delta$, and resultant 2-simplices $\Sigma_1$ and $\Sigma_2$. Computing the total cobar differential on $1_b\tensor (\Sigma_1 -\Sigma_2) \tensor 1_a$, the vertical terms vanish, since they introduce 0-simplicies, leaving us with only the horizontal differential, induced by the singular boundary:
     \begin{equation}
     \begin{split}
         \partial_{\Cobar}(1_b \tensor (\Sigma_1 - \Sigma_2) \tensor 1_a) &= d_H(1_b \tensor (\Sigma_1 - \Sigma_2) \tensor 1_a) \\
@@ -95,9 +80,20 @@ In our case, let $X$ be a topological space, and first consider the full subcate
     \end{equation}
     Hence $F_{a,b}(\tau)$ and $F_{a,b}(\sigma)$ are homologous.
 
-    Now, to see that $F$ is a functor, we must show it respects composition of paths. Take two classes
+    We claim next that $F(\sigma)$ is indeed a cycle. Computing the components of the cobar differential, we have:
+    \begin{equation}
+    \begin{split}
+        d_H(1_b\tensor 1_a) &= 0 \\
+        d_V(1_b\tensor 1_a) &= 1_b\tensor 1_b\tensor 1_a - 1_b\tensor 1_a\tensor 1_a  = 0\\
+        d_H(1_b\tensor \sigma\tensor 1_a) &=1_a \tensor \partial(\sigma)\tensor 1_b = 1_a\tensor (b-a)\tensor 1_b  =0\\
+        d_V(1_b\tensor \sigma \tensor 1_a) &= 1_b\tensor \overline{\Delta}(\sigma) \tensor 1_a  = 0
+    \end{split}
+    \end{equation}
+    where the equalities come from the fact that any 0-simplex becomes zero after normalization, and that the unnormalized Alexander--Whitney map sends $\sigma$ to $1_{\sigma(1)} \tensor \sigma + \sigma \tensor 1_{\sigma(0)}$.
+
+    To see that $F$ is a functor, we must show it respects composition of paths. Choosing two classes
     \[\sigma \in \Z\Pi(X)(a,b),\quad \tau \in \Z\Pi(X)(b,c)\]
-    and consider the 2-simplex $\Sigma$ whose zeroth edge is $\sigma$, first edge is $\tau*\sigma$, and second edge is $\tau$.  We compute 
+    we compute 
     \begin{equation}\label{eqn:reduce_to_one_tensor}
     \begin{split}
     F_{b,c}(\tau) \tensor F_{a,b}(\sigma) &= (1_c \tensor 1_b - 1_c \tensor \tau \tensor 1_b) \tensor (1_b\tensor 1_a - 1_b\tensor \sigma \tensor 1_a) \\
@@ -113,31 +109,30 @@ In our case, let $X$ be a topological space, and first consider the full subcate
     Here the multiplication is given by regarding $\Z\Pi(X)(a,b)$ as a subset of the category algebra $\Z\Pi^0_X$, where $1$ is some sort of ``local identity'' given by the sum of all endpoints of the 1-simplicies $c_1, ..., c_q$. To see this descends to zeroth homology, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
     \begin{equation}
         \begin{split}  
-        G'(\partial \sigma) &= (1 - d_0\sigma) - (1 - d_1\sigma) + (1 - d_2\sigma) \\
+        G'_{a,b}(\partial \sigma) &= (1 - d_0\sigma) - (1 - d_1\sigma) + (1 - d_2\sigma) \\
         &= 1 - d_0\sigma + d_1\sigma - d_2\sigma \\
-        G'(\overline{\Delta}\sigma) &= (1 - d_2\sigma)(1 - d_0\sigma) \\
+        G'_{a,b}(\overline{\Delta}\sigma) &= (1 - d_2\sigma)(1 - d_0\sigma) \\
         &= 1 - d_0\sigma - d_2\sigma + d_2\sigma * d_0\sigma\\
         \end{split}
     \end{equation}
     so that 
-    \[G'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) = G'(\partial\sigma-\overline{\Delta}(\sigma))=[d_1\sigma] -[d_2\sigma * d_0\sigma] = 0\]
+    \[G'_{a,b}\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) = G'(\partial\sigma-\overline{\Delta}(\sigma))=[d_1\sigma] -[d_2\sigma * d_0\sigma] = 0\]
     since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $G'_{a,b}$ descends to a well defined map 
     \[G_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    It is straightfoward to check that $G\circ F$ is the identity, so that $F$ is injective. Surjectivity comes from the following claim:
+    It is straightfoward to check that $G_{a,b}\circ F_{a,b}$ is the identity, so $F_{a,b}$ is injective. Surjectivity comes from the following claim:
     \begin{claim}\label{claim:zero_cobar_generation}
     The zeroth homology of the totalization of \ref{eqn:twice_normalized_cobar} is generated by elements of the form $1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a$, where $\sigma$ is a 1-simplex from $a$ to $b$.
     \end{claim}
     By this claim, we have 
     \begin{equation}
     \begin{split}
-    G(1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a) &=  G(1_b\tensor 1_a) - G(1_b\tensor\sigma \tensor 1_a )  \\
-    &= 1_b\cdot 1 \cdot 1_a - 1_b \cdot (1-\sigma) \cdot 1_a \\
-    &= 1_b\cdot \sigma \cdot 1_a = \sigma
+    F\circ G(1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a) &=  F\circ G(1_b\tensor 1_a) - F\circ G(1_b\tensor\sigma \tensor 1_a )  \\
+    &= F(1_b\cdot 1 \cdot 1_a) - F(1_b \cdot (1-\sigma) \cdot 1_a) \\
+    &= F(1_b\cdot \sigma \cdot 1_a)= F(\sigma) \\
+    &= 1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a
     \end{split}
     \end{equation}
-    so that 
-    \[F(G(1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a)) = F(\sigma) = 1_b\tensor 1_a - 1_b\tensor \sigma\tensor 1_a\]
-    completing the proof. 
+    showing that $F_{a,b}$ surjects onto the generators, completing the proof of Proposition \ref{prop:fully_faithful}.\hfill \qed
 \begin{proof}[Proof of Claim \ref{claim:zero_cobar_generation}]
     Take a cycle $x = \sum_{i=1}^q x_i \in \tot_0\Cobar$, where $x_i$ is of the form $1_b \tensor c_1\tensor \cdots \tensor c_i\tensor 1_a$. Consider the term $x_q = 1_b\tensor c_1 \tensor \cdots \tensor c_q \tensor 1_a$ with the highest number of tensor factors. Because the vertical cobar differential increases tensor length, it must vanish on $x_q$, so we have 
     \begin{equation}
@@ -152,4 +147,4 @@ In our case, let $X$ be a topological space, and first consider the full subcate
     \end{equation}
     and upon expanding we find that $c_1(0) = b$, $c_i(1) = c_{i+1}(0)$ for $i \in \{0, ..., q\}$, and $c_q(1) = a$. Hence all the component 1-simplicies must be contiguous. We now claim that if $q\geq 2$, we can write $x_q$ as a linear combination of length 0 and length 1 tensors. This follows from the computation surrounding Equation \ref{eqn:reduce_to_one_tensor} where any tensor length two element is homologous to the sum of tensor length one elements. Moreover, a computation shows that any $x_0$ or $x_1$ alone cannot be a cycle. Hence all cycles are of the form $x_0 + x_1$.
 \end{proof}
-This completes the proof of Proposition \ref{prop:fully_faithful}. Now Theorem \ref{thm:stallings_generalization} follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page computes the associated graded of $\Z\pi_X(a,b)$ under this filtration.
+This completes the proof of Proposition \ref{prop:fully_faithful}. Now Theorem \ref{thm:stallings_generalization} follows immediately by noticing that under $F_{a,b}$, the tensor-length filtration on the two-sided cobar construction corresponds to the $\mathcal{I}$-adic filtration on $\Z\pi_X(a,b)$. Thus the $E^\infty$-page of the spectral sequence associated to the tensor-length filtration on the cobar construction computes the associated graded of $\Z\pi_X(a,b)$ under its corresponding $\mathcal{I}$-adic filtration.

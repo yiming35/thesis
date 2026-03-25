@@ -4,7 +4,6 @@
 % \usepackage{amssymb}
 % \usepackage{newtxmath}
 
-
 \usepackage{lettrine}
 \usepackage{mathrsfs}
 \usepackage{comment}
@@ -14,7 +13,7 @@
 \usepackage{graphicx}
 \usepackage{float, caption}
 \usepackage{enumerate}
-\usepackage{hyperref}  
+\usepackage{hyperref}  % 1. hyperref MUST be loaded before cleveref
 \usepackage{tikz}
 \usepackage{quiver}
 \usepackage{anyfontsize}
@@ -64,8 +63,11 @@
   filecolor=blue,%
   menucolor=blue,%
   urlcolor=blue
-  }   
-  
+}   
+
+% 2. cleveref MUST be loaded after hyperref, but before \newtheorems
+\usepackage[capitalize,nameinlink]{cleveref} 
+
 \let\fullref\autoref
 \def\makeautorefname#1#2{\expandafter\def\csname#1autorefname\endcsname{#2}}
 \def\equationautorefname~#1\null{(#1)\null}
@@ -102,64 +104,36 @@
 \makeautorefname{obs}{Observation}%
 \makeautorefname{conv}{Convention}%
 
+% 3. Defining environments with standard shared counter syntax [thm] 
+% This natively handles what the \makeatletter hack was trying to do.
 %theoremstyle{plain} --- default
 \newtheorem{thm}{Theorem}[section]
-\newtheorem{cor}{Corollary}[section]
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{lem}{Lemma}[section]
-\newtheorem{prob}{Problem}[section]
-\newtheorem{conj}{Conjecture}[section]
-
-
-%\newtheorem{ass}{Assumption}[section]
-%\newtheorem{asses}{Assumptions}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{conj}[thm]{Conjecture}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{ass}{Assumption}[section]
-\newtheorem{asss}{Assumptions}[section]
-\newtheorem{ax}{Axiom}[section]
-\newtheorem{con}{Construction}[section]
-\newtheorem{exmp}{Example}[section]
-\newtheorem{notn}{Notation}[section]
-\newtheorem{notns}{Notations}[section]
-\newtheorem{pro}{Property}[section]
-\newtheorem{quest}{Question}[section]
-\newtheorem{rem}{Remark}[section]
-\newtheorem{warn}{Warning}[section]
-\newtheorem{sch}{Scholium}[section]
-\newtheorem{obs}{Observation}[section]
-\newtheorem{conv}{Convention}[section]
-\newtheorem{claim}{Claim}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ass}[thm]{Assumption}
+\newtheorem{asss}[thm]{Assumptions}
+\newtheorem{ax}[thm]{Axiom}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{pro}[thm]{Property}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{conv}[thm]{Convention}
+\newtheorem{claim}[thm]{Claim}
 
-
-
-
-
-%%%% hack to get fullref working correctly
-\makeatletter
-\let\c@obs=\c@thm
-\let\c@cor=\c@thm
-\let\c@prop=\c@thm
-\let\c@lem=\c@thm
-\let\c@prob=\c@thm
-\let\c@con=\c@thm
-\let\c@conj=\c@thm
-\let\c@defn=\c@thm
-\let\c@notn=\c@thm
-\let\c@notns=\c@thm
-\let\c@exmp=\c@thm
-\let\c@ax=\c@thm
-\let\c@pro=\c@thm
-\let\c@ass=\c@thm
-\let\c@warn=\c@thm
-\let\c@rem=\c@thm
-\let\c@sch=\c@thm
-\let\c@equation\c@thm
-\let\c@claim=\c@thm
+% Reset equations to number by section
 \numberwithin{equation}{section}
-
-
 
 % ===== Math Operators =====
 \DeclareMathOperator{\ex}{ex}
@@ -204,7 +178,6 @@
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\GL}{GL}
 
-
 % ===== Custom Commands =====
 \newcommand{\after}{$\circ$}
 \newcommand{\N}{\mathbf{N}}
@@ -243,4 +216,4 @@
 \newcommand{\const}{\mathrm{const}}
 \newcommand{\CCobar}{\mathfrak{C}\catname{obar}}
 
-\renewcommand{\qedsymbol}{$\square$} 
+\renewcommand{\qedsymbol}{$\square$}

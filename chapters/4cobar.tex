@@ -1,8 +1,8 @@
-\section{Adams' cobar construction}
-In this chapter we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ via a purely algebraic construction on the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and conclude by elaborating on the relationship between the cobar construction and the fundamental group.
+\section{Adams' cobar construction}\label{chapter:adamscobar}
+In this chapter we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ purely algebraically from the the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and prove some useful factors about the underlying homological algebra.
 
 \subsection{The cobar construction}
-Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpotent $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar}. We follow the presentation given in \cite{Rivera2022}.
+Let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpotent $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar}. We follow the presentation given in \cite{Rivera2022}.
 \begin{defn}\label{def:cobar_algebra}
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
     \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
@@ -11,7 +11,7 @@ Let $R$ be a commutative unital ring and let $(C = \overline{C} \oplus R,\Delta)
     \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
-The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter we have that as a chain complex, $\Cobar(C)$ has terms 
+The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter, as a chain complex, $\Cobar(C)$ has terms 
 \begin{equation}\label{eqn:cobar_terms}
 \begin{split}
     \Cobar_k(C) &= (T(s^{-1}\overline{C}))_k \\
@@ -36,7 +36,7 @@ The purpose of introducing the dummy variable $p$ at the end of this tedious ind
     We have overloaded the notation $\Cobar$, first to refer to the functor from Definition \ref{def:cobar_algebra} sending a dg coalgebra to a dg algebra, and second to represent the functor from Definition \ref{def:cobar_bicomplex} sending a dg coalgebra to a bicomplex. We will distinguish these using  subscripts: using $\Cobar_\bullet$ for the first and $\Cobar_{\bullet,\bullet}$ for the second. But the next proposition shows that this distinction is not so important.
 \end{warn}
 \begin{prop}\label{prop:cobar_bicomplex}
-The totalization of $\Cobar_{\bullet,\bullet}(C)$ given by 
+The totalization of the bicomplex $\Cobar_{\bullet,\bullet}(C)$ given by 
 \[\tot_k(\Cobar_{\bullet,\bullet}) = \bigoplus_{p+q = -k} \Cobar_{p,q}\]
 with differential $\partial_{\Cobar} = d_H+(-1)^pd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
 \begin{proof}
@@ -53,13 +53,16 @@ What is miraculous is that this purely algebraic construction encodes a good amo
 \end{thm}
 Thus we can regard the cobar construction as the algebraic analogue of the based loop space functor. As the prefix \emph{co-} suggests, the cobar construction is adjoint to a functor 
 \[\Barr: \catname{dgAlg} \to \catname{dgConilCoalg}\]
-called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. We comment briefly on the bar construction in the following few sections.
+called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. We will briefly touch on the bar construction in \S\ref{chapter:stallings}.
+\begin{rem}
+    The isomorphism in Adams' theorem is actually at the chain level. Moreover, Rivera has proved in \cite{Rivera2022} that the simply-connectedness assumption can be reduced to path-connectedness. 
+\end{rem}
 \begin{rem}
 The name \emph{bar} construction comes from typesetting. Pre-\LaTeX, a tensor $x_1 \tensor \cdots \tensor x_n$ would be written $x_1 | \cdots | x_n$. Adams attributes the name \emph{cobar} to H. Cartan (see footnote 3 of \cite{AdamsCobar}).
 \end{rem}
 
 \subsection{Two-sided version} 
-The cobar construction of a dg coalgebra is a special case of a more general \emph{two-sided} cobar construction. An analogous two-sided bar construction is well documented (for example in \cite{Zhang2019TwoSidedBar}, \cite{May2025}). Here we give an exposition of the dual construction, which seems to not appear in the literature.
+The cobar construction of a dg coalgebra is a special case of a more general \emph{two-sided} cobar construction, which will allow us to talk about path spaces with differing endpoints. An analogous two-sided bar construction is well documented (for example in \cite{Zhang2019TwoSidedBar}, \cite{May2025}). Here we give an exposition of the dual construction, which seems to not appear in the literature.
 \begin{defn}
 Let $C$ be a conilpotent $R$-coalgebra and let $N,M$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
 \[\Cobar(N,C,M)^q = M\tensor C^{\tensor q} \tensor N\]
@@ -70,9 +73,9 @@ with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
     \id^{\tensor q}\tensor \Delta^L & i =q
 \end{cases}\]
 and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
-\[s^i = \id^{\tensor i} \tensor \epsilon \tensor \id^{\tensor q-i-1}\]
+\[s^i = \id^{\tensor i} \tensor \epsilon \tensor \id^{\tensor q-i-1}.\]
 \end{defn}
-By the Dold--Kan correspondence we can also regard this as a chain complex. If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following notion, generalizing the previous discussion of the cobar bicomplex:
+By the Dold--Kan correspondence we can also regard this as a chain complex of $R$-modules. If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following definition, generalizing the previous discussion of the cobar bicomplex:
 \begin{defn}
     Let $(C, \partial_C)$, $(N, \partial_N)$, and $(M, \partial_M)$ be as above. The \emph{two-sided cobar bicomplex} has underlying $R$-module 
     \[\Cobar(N,C,M)_{\bullet,\bullet} = \bigoplus_{q\geq 0} M\tensor C^{\tensor q} \tensor N\]
@@ -106,11 +109,10 @@ Once again we are overloading the notation $\Cobar$, but having multiple argumen
         is a quasi-isomorphism. 
 
         Totalizing by taking total degree $k = -p-q$, we have the short exact sequence 
-        \[ 0 \to \tot(F^{\leq m-1} D) \hookrightarrow \tot(D^{\leq m}) \twoheadrightarrow D_{-m, \bullet}[m] \to 0 \]
+        \[ 0 \to \tot(D^{\leq m-1}) \hookrightarrow \tot(D^{\leq m}) \twoheadrightarrow D_{-m, \bullet}[m] \to 0 \]
         where $D_{-m, \bullet}[m]$ is the shifted complex 
-        \[D_{-m, 0} \to D_{-m, 1} \to \cdots\]
-        where the $D_{-m, 0}$ term is in degree $m$. Then by the five lemma applied to the following diagram and the corresponding diagram in the long exact sequence on homology
-        
+        \[\cdots \to 0 \to D_{-m, 0} \to D_{-m, 1} \to \cdots\]
+        where the $D_{-m, 0}$ term lies in degree $m$. Then by the five lemma applied to the following diagram and the corresponding diagram in the long exact sequence on homology
         \[\begin{tikzcd}[cramped]
             % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlxcdG90KERee1xcbGVxIG0tMX0pIl0sWzIsMCwiXFx0b3QoRF57XFxsZXEgbX0pIl0sWzMsMCwiRF97LW0sXFxidWxsZXR9W21dIl0sWzQsMCwiMCJdLFswLDEsIjAiXSxbMSwxLCJcXHRvdChFXntcXGxlcSBtLTF9KSJdLFsyLDEsIlxcdG90KEVee1xcbGVxIG19KSJdLFszLDEsIkVfey1tLFxcYnVsbGV0fVttXSJdLFs0LDEsIjAiXSxbMCwxXSxbMSwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFszLDRdLFs4LDldLFs3LDgsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzUsNl0sWzEsNl0sWzIsN10sWzMsOF1d
             0 & {\tot(D^{\leq m-1})} & {\tot(D^{\leq m})} & {D_{-m,\bullet}[m]} & 0 \\
@@ -141,24 +143,19 @@ Because we will use this notion many more times, we make the following definitio
     A map $f: D \to E$ of second-quadrant bicomplexes is a \emph{quasi-isomorphism} if it is a column-wise quasi-isomorphism. (So Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of second quadrant bicomplexes induces a quasi-isomorphism on totalizations).
 \end{defn}
 
-We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. For the next definition and lemmas, let $C, C'$ be conilpotent dg $R$-coalgebras with the coradical filtration $F_\bullet$. Let $\gr_rC = F_rC/F_{r-1}C$ be the pieces of the associated graded $C$ and likewise for $C'$. Therefore, any map $f: C\to C'$ induces a map 
-\[[f]: \gr C \to \gr C'\]
+We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. Let $V_\bullet, V'_\bullet$ be chain complexes of $R$-modules with a filtration $F_\bullet$. For example, it could be a conilpotent dg $R$-coalgebra with the coradical filtration. Consider the pieces of the associated graded $\gr_rV = F_rV/F_{r-1}V$. If $f: V\to V'$ is a filtered morphism, then it induces a map of associated gradeds
+\[[f]: \gr V \to \gr V'\]
 of associated gradeds.
 \begin{defn}
-If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded isomorphism}.
+If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}.
 \end{defn}
-The example to keep in mind is the inclusion of the normalized cochain complex into the Moore complex, as it will come up later.
+The example to keep in mind is the following:
 \begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
-    Let $C$ be a conilpotent dg coalgebra. The inclusion of the normalized cochain complex into the Moore complex is a graded quasi-isomorphism.
+    Let $C$ be a conilpotent dg coalgebra and consider the cosimplicial $R$-module $\Cobar:= \Cobar(R,C,R)$. Then the quotient map from the the Moore complex of $\Cobar$ onto its normalized cochain complex is a graded quasi-isomorphism, with respect to the filtration inherited from the coradical filtration on $C$.
     \begin{proof}
-        First note that any coalgebra map $f: C\to C'$ of conilpotent coalgebras preserves the coradical filtration $F_\bullet$. To see this, take an element 
-        \[x \in F_rC = \{x \in C:  \forall n\geq r, \overline{\Delta}^n(x) = 0\}.\]
-        Then, since $f$ commutes with coproducts, we have 
-        \[ \overline{\Delta}^n\circ f(x) = (f \tensor \cdots \tensor f)\circ \Delta^nf(x) = 0\]
-        as desired. Since the chain homotopy equivalence between $NC$ and $MC$ is a linear combination of coalgebra maps (see again the discussion after Corollary 3.2, \cite{Loday2012}), they too respect the coradical filtration. Hence the chain homotopy descends to the associated graded.
+        The chain homotopy equivalence between $N\Cobar$ and $M\Cobar$ is induced by linear combinations of chain maps  (see again the discussion after Corollary 3.2, \cite{Loday2012}), which respect the filtration since they are built out of the coface/codegeneracy maps, which respect the coradical filtrations. Hence the chain homotopy descends to the associated graded complexes.
     \end{proof}
 \end{lem}
-
 \begin{prop}\label{prop:twoside_reduction}  
 Let $C$ be a conilpotent dg $R$-coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
 \[\begin{tikzcd}[cramped]
@@ -218,13 +215,14 @@ Upon checking differentials, we conclude that the normalized two-sided cobar bic
 
         To do so, we define another filtration $G$ on each column $E^0_{s,\bullet}$ based on tensor length, with 
         \[n\tensor c_1 \tensor \cdots \tensor c_q \tensor m \in G_kE^0_{s,\bullet} \iff q \geq -k.\]
-        This is an exhaustive increasing filtration and is bounded below, so the associated spectral sequence, which we will denote by $\tilde{E}$, converges. The filtration $G_k/G_{k-1}$ isolates elements with tensor length exactly $k$. Because the vertical differentials induced by the coproduct increase tensor length, they are zero on $\tilde{E}^0$, so the $d^0$ differential solely comes from the internal differentials of $\gr N, \gr C, \gr M$, i.e. the $\tilde{E}^0$-page is just the tensor product of the chain complexes $\gr N\tensor (\gr C)^{\tensor q}\tensor  \gr M$. By flatness and the K{\"u}nneth formula, we obtain 
+        This is an exhaustive increasing filtration and is bounded below, so the associated spectral sequence, which we will denote by $\tilde{E}$, converges. The filtered pieces $G_k/G_{k-1}$ consist of elements with tensor length exactly $k$. Because the vertical differentials induced by the coproduct increase tensor length, they are zero on $\tilde{E}^0$, so the $d^0$ differential solely comes from the internal differentials of $\gr N, \gr C, \gr M$, i.e. the $\tilde{E}^0$-page is just the tensor product of the chain complexes $\gr N\tensor (\gr C)^{\tensor q}\tensor  \gr M$. By flatness and the K{\"u}nneth formula, we obtain 
         \[\tilde{E}^1(C) = H_\bullet(\gr N)\tensor H_\bullet(\gr C)^{\tensor q}\tensor H_\bullet(\gr M).\]
         By assumption, $([g],[f],[h])$ induces an isomorphism 
         \[\tilde{E}^1(C) \to \tilde{E}^1(C')\]
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
+We prove these lemmas because it is often easier to work with the normalized objects, as we shall see in the following section.
 
 
     % Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
