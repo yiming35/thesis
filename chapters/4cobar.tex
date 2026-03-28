@@ -40,7 +40,7 @@ The totalization of the bicomplex $\Cobar_{\bullet,\bullet}(C)$ given by
 \[\tot_k(\Cobar_{\bullet,\bullet}) = \bigoplus_{p+q = -k} \Cobar_{p,q}\]
 with differential $\partial_{\Cobar} = d_H+(-1)^pd_V$ on $\Cobar_{\bullet,q}$, is isomorphic as a dg algebra to $\Cobar_\bullet(C)$.
 \begin{proof}
-    By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar^\bullet_\bullet)$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Lemma \ref{lem:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
+    By Equation \ref{eqn:cobar_terms}, we have an equality of groups $\tot_k(\Cobar_{\bullet,\bullet})$ and $\Cobar_k(C)$. Since $d_H$ is of degree $(+1, 0)$ and $d_V$ is of degree $(0, +1)$, the total differential $\partial_{\Cobar}$ has total degree $-1$. By Lemma \ref{lem:maps_extend}, it suffices to show they agree on the component $s^{-1}\overline{C}$. Indeed, under the identification in Equation \ref{eqn:cobar_terms}, we have 
     \[(s^{-1}\overline{C})_p = \Cobar_{p,1}\]
     and on this component $\partial_{\tot}$ is precisely $\partial_{\Cobar} = d_H - d_V$.
 \end{proof}
@@ -53,9 +53,9 @@ What is miraculous is that this purely algebraic construction encodes a good amo
 \end{thm}
 Thus we can regard the cobar construction as the algebraic analogue of the based loop space functor. As the prefix \emph{co-} suggests, the cobar construction is adjoint to a functor 
 \[\Barr: \catname{dgAlg} \to \catname{dgConilCoalg}\]
-called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. We will briefly touch on the bar construction in \S\ref{chapter:stallings}.
+called the \emph{bar construction}, which is (roughly) the algebraic version of the delooping of a space. We will briefly touch on the bar construction again in \S\ref{chapter:stallings}.
 \begin{rem}
-    The isomorphism in Adams' theorem is actually at the chain level. Moreover, Rivera has proved in \cite{Rivera2022} that the simply-connectedness assumption can be reduced to path-connectedness. 
+    The isomorphism in Adams' theorem occurs at chain level. Moreover, Rivera has proved in \cite{Rivera2022} that the simply-connectedness assumption can be reduced to path-connectedness. 
 \end{rem}
 \begin{rem}
 The name \emph{bar} construction comes from typesetting. Pre-\LaTeX, a tensor $x_1 \tensor \cdots \tensor x_n$ would be written $x_1 | \cdots | x_n$. Adams attributes the name \emph{cobar} to H. Cartan (see footnote 3 of \cite{AdamsCobar}).
@@ -64,23 +64,27 @@ The name \emph{bar} construction comes from typesetting. Pre-\LaTeX, a tensor $x
 \subsection{Two-sided version} 
 The cobar construction of a dg coalgebra is a special case of a more general \emph{two-sided} cobar construction, which will allow us to talk about path spaces with differing endpoints. An analogous two-sided bar construction is well documented (for example in \cite{Zhang2019TwoSidedBar}, \cite{May2025}). Here we give an exposition of the dual construction, which seems to not appear in the literature.
 \begin{defn}
-Let $C$ be a conilpotent $R$-coalgebra and let $N,M$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
+Let $(C,\Delta)$ be a conilpotent $R$-coalgebra and let $(N,\Delta^L)$ and $(M,\Delta^R)$ be left and right comodules over $C$, respectively. The \emph{two-sided cobar construction on} $(N, C, M)$ is the cosimplicial $R$-module 
 \[\Cobar(N,C,M)^q = M\tensor C^{\tensor q} \tensor N\]
 with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
 \[d^i = \begin{cases}
-    \Delta^R \tensor \id^{\tensor q} & i =0  \\
-    \id^{\tensor i } \tensor \Delta \tensor \id^{q-i} & i \in \{1, ..., q-1\} \\
-    \id^{\tensor q}\tensor \Delta^L & i =q
+    \Delta^R \tensor \id^{\tensor q-1} \tensor \id_N& i =0  \\
+    \id_M \tensor \id_C^{\tensor i-1} \tensor \Delta \tensor \id_C^{q-i-1} \tensor \id_N & i \in \{1, ..., q-1\} \\
+    \id_M\tensor \id^{\tensor q-1}\tensor \Delta^L & i =q
 \end{cases}\]
 and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
-\[s^i = \id^{\tensor i} \tensor \epsilon \tensor \id^{\tensor q-i-1}.\]
+\[s^i = \id_M\tensor  \id^{\tensor i-1} \tensor \epsilon \tensor \id^{\tensor q-i+1} \tensor \id_N, \quad i \in \{1, ..., q+1\}\]
+where $\epsilon: C \to \Z$ is the counit.
 \end{defn}
 By the Dold--Kan correspondence we can also regard this as a chain complex of $R$-modules. If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following definition, generalizing the previous discussion of the cobar bicomplex:
 \begin{defn}
-    Let $(C, \partial_C)$, $(N, \partial_N)$, and $(M, \partial_M)$ be as above. The \emph{two-sided cobar bicomplex} has underlying $R$-module 
-    \[\Cobar(N,C,M)_{\bullet,\bullet} = \bigoplus_{q\geq 0} M\tensor C^{\tensor q} \tensor N\]
-    and bigrading 
-    \[\Cobar(N,C,M)_{p,q} = \bigoplus_{a + b_1 + \cdots + b_q + c = -p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\]
+    Let $(C, \partial_C)$, $(N, \partial_N)$, and $(M, \partial_M)$ be as above. The \emph{two-sided cobar bicomplex} has underlying bigraded $R$-module 
+    \begin{equation}
+    \begin{split}
+    \Cobar(N,C,M)_{p,q} &= (M\tensor C^{\tensor q} \tensor N)_p \\
+    &= \bigoplus_{a + b_1 + \cdots + b_q + c = -p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c
+    \end{split}
+    \end{equation}
     with vertical differential given by the alternating sums of the coface maps 
     \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_{\bullet, q},\quad d_V = \sum_{i=0}^q (-1)^i d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
@@ -95,7 +99,7 @@ By the Dold--Kan correspondence we can also regard this as a chain complex of $R
     where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
 \end{defn} 
 
-Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are refering to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
+This lives in the second quadrant. Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are refering to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
 \begin{lem}\label{lem:quasiiso_bicomplex}
     Let $f: D_{\bullet, \bullet} \to E_{\bullet, \bullet}$ be a map of second quadrant bicomplexes of abelian groups with differentials of bidegree $(+1, 0)$ and $(0,+1)$. Then 
     \begin{enumerate}
@@ -138,24 +142,7 @@ Once again we are overloading the notation $\Cobar$, but having multiple argumen
         \end{enumerate}
     \end{proof}
 \end{lem}
-Because we will use this notion many more times, we make the following definition: 
-\begin{defn}
-    A map $f: D \to E$ of second-quadrant bicomplexes is a \emph{quasi-isomorphism} if it is a column-wise quasi-isomorphism. (So Lemma \ref{lem:quasiiso_bicomplex} says that a quasi-isomorphism of second quadrant bicomplexes induces a quasi-isomorphism on totalizations).
-\end{defn}
 
-We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dga coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. Regardless, it is possible to state this result if we assume a stronger hypothesis. Let $V_\bullet, V'_\bullet$ be chain complexes of $R$-modules with a filtration $F_\bullet$. For example, it could be a conilpotent dg $R$-coalgebra with the coradical filtration. Consider the pieces of the associated graded $\gr_rV = F_rV/F_{r-1}V$. If $f: V\to V'$ is a filtered morphism, then it induces a map of associated gradeds
-\[[f]: \gr V \to \gr V'\]
-of associated gradeds.
-\begin{defn}
-If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}.
-\end{defn}
-The example to keep in mind is the following:
-\begin{lem}\label{lem:normalized_inclusion_is_graded_quism}
-    Let $C$ be a conilpotent dg coalgebra and consider the cosimplicial $R$-module $\Cobar:= \Cobar(R,C,R)$. Then the quotient map from the the Moore complex of $\Cobar$ onto its normalized cochain complex is a graded quasi-isomorphism, with respect to the filtration inherited from the coradical filtration on $C$.
-    \begin{proof}
-        The chain homotopy equivalence between $N\Cobar$ and $M\Cobar$ is induced by linear combinations of chain maps  (see again the discussion after Corollary 3.2, \cite{Loday2012}), which respect the filtration since they are built out of the coface/codegeneracy maps, which respect the coradical filtrations. Hence the chain homotopy descends to the associated graded complexes.
-    \end{proof}
-\end{lem}
 \begin{prop}\label{prop:twoside_reduction}  
 Let $C$ be a conilpotent dg $R$-coalgebra with coaugmentation $\eta: R\to C$. Set $N=M=R$, regarded as a dg $R$-comodule with $R$ concentrated in degree zero. Define the left action $\Delta^L: N\to C\tensor N$ via 
 \[\begin{tikzcd}[cramped]
@@ -169,7 +156,7 @@ Let $C$ be a conilpotent dg $R$-coalgebra with coaugmentation $\eta: R\to C$. Se
 and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is quasi-isomorphic to the single cobar construction $\Cobar_\bullet(C)$ of Definition \ref{def:cobar_algebra}.
 
 \begin{proof}
-    We take the normalized cochain complex on each column $\Cobar_{p,\bullet}$ to obtain:
+    Consider the bicomplex that is obtained by replacing each column of $\Cobar(R,C,R)$ with its normalized cochain complex:
     \begin{equation}
 	\begin{split}
 		N\Cobar_{p,q}(R,C,R) &\cong\bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
@@ -179,19 +166,27 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
         &= \Cobar_{p,q}(C).
 	\end{split}
 \end{equation}
-Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. By Lemma \ref{lem:normalized_inclusion_is_graded_quism}, the inclusion of the normalized complex is a graded quasi-isomorphism, and we conclude by Lemma \ref{lem:quasiiso_bicomplex}.
+Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. By Lemma \ref{lem:quasiiso_bicomplex}, the map $\Cobar \to N\Cobar$ induces a quasi-isomorphism of total complexes, completing the proof.
 \end{proof}
 \end{prop}
+
+We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dg coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. There are two remedies: (1) we can impose a stronger condition on the quasi-isomorphism of coalgebras, or (2) in view of the second half of Lemma \ref{lem:quasiiso_bicomplex}, we can ask whether the induced map on a truncated finite version of cobar is a quasi-isomorphism.
+
+For (1), let $C, C'$ be dg conilpotent $R$-coalgebras equipped with the coradical filtration $F_\bullet$, and let $f: C\to C'$ be a morphism of dg conilpotent $R$-coalgebras. Since the maps and differentials respect the coradical filtration, $f$ descends to a map $[f]: \gr_\bullet C\to \gr_\bullet C'$ of associated gradeds, where $\gr_r C = F_rC/F_{r-1}C$.
+\begin{defn}
+If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}.
+\end{defn}
+
 \begin{lem}\label{lem:graded_quism}
     Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. Suppose 
     \begin{enumerate}
-    \item $f: C\to C'$ is a graded quasi-isomorphism,
-    \item $g: N\to N'$ and $h: M\to M'$ are graded comodule maps that are quasi-isomorphisms,
-    \item $C, C', N, N', M, M'$ and their associated gradeds are flat.
+    \item $f: C\to C'$ is a graded quasi-isomorphism with respect to the coradical filtration,
+    \item  $g:N \to N'$, and $h: M\to M'$ are graded comodule maps that are graded quasi-isomorphisms with respect to the coradical filtration, 
+    \item $C, C', N, N', M, M'$ and their associated gradeds are flat over $R$. 
     \end{enumerate}
     Then the induced map 
     \[(g,f,h)_*: \tot\Cobar(N,C,M)\to \tot\Cobar(N',C', M')\]
-    is a quasi-isomorphism of bicomplexes.
+    is a quasi-isomorphism.
     \begin{proof} 
         We imitate the strategy of the proof of the analogous Proposition 2.4.1 in \cite{Loday2012}, which is over a field and done for the regular cobar construction. 
 
@@ -215,15 +210,31 @@ Upon checking differentials, we conclude that the normalized two-sided cobar bic
 
         To do so, we define another filtration $G$ on each column $E^0_{s,\bullet}$ based on tensor length, with 
         \[n\tensor c_1 \tensor \cdots \tensor c_q \tensor m \in G_kE^0_{s,\bullet} \iff q \geq -k.\]
-        This is an exhaustive increasing filtration and is bounded below, so the associated spectral sequence, which we will denote by $\tilde{E}$, converges. The filtered pieces $G_k/G_{k-1}$ consist of elements with tensor length exactly $k$. Because the vertical differentials induced by the coproduct increase tensor length, they are zero on $\tilde{E}^0$, so the $d^0$ differential solely comes from the internal differentials of $\gr N, \gr C, \gr M$, i.e. the $\tilde{E}^0$-page is just the tensor product of the chain complexes $\gr N\tensor (\gr C)^{\tensor q}\tensor  \gr M$. By flatness and the K{\"u}nneth formula, we obtain 
+        This is an exhaustive increasing filtration and is bounded below, so the associated spectral sequence, which we will denote by $\tilde{E}$, converges. The filtered pieces $G_k/G_{k-1}$ consist of elements with tensor length exactly $k$. Because the vertical differentials induced by the coproduct increase tensor length, they are zero on $\tilde{E}^0$, so the $d^0$ differential solely comes from the internal differentials of $\gr N, \gr C, \gr M$, i.e. the $\tilde{E}^0$-page is just the tensor product of the complexes $\gr N\tensor (\gr C)^{\tensor q}\tensor  \gr M$. By flatness and the K{\"u}nneth formula, we obtain 
         \[\tilde{E}^1(C) = H_\bullet(\gr N)\tensor H_\bullet(\gr C)^{\tensor q}\tensor H_\bullet(\gr M).\]
         By assumption, $([g],[f],[h])$ induces an isomorphism 
         \[\tilde{E}^1(C) \to \tilde{E}^1(C')\]
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
-We prove these lemmas because it is often easier to work with the normalized objects, as we shall see in the following section.
-
+In practice, however, the notion of a graded quasi-isomorphism can be quite restrictive. Within the scope of this thesis, we will be working with a truncated version of the cobar construction, in which quasi-isomorphisms of coalgebras will always induce quasi-isomorphisms. Let us make this precise. Let $\Cobar^{>n}$ denote the subcomplex of $\Cobar$ obtained by setting all rows below $n$ to zero, and let $\Cobar^{\leq n}$ be the quotient bicompelex $\Cobar / \Cobar^{\leq n}$. Then $\Cobar^{\leq n}$ is a second quadrant bicomplex satisfying the assumptions of the second half of Lemma \ref{lem:graded_quism}. Therefore, we obtain the following corollary:
+\begin{cor}\label{cor:truncated_quism}
+Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. Suppose 
+\begin{enumerate}
+    \item $f: C\to C'$, $g: N\to N'$, and $h: M\to M'$ are quasi-isomorphisms,
+    \item $g, h$ are (left/right)-comodule maps,
+    \item $C,C',N,N',M,M'$ are flat over $R$.
+\end{enumerate} 
+Then the induced map on truncated two-sided cobar constructions 
+\[(g,f,h)_*: \Cobar^{\leq n}(N,C,M)\to \Cobar^{\leq n}(N',C',M')\]
+induces a quasi-isomorphism on totalizations.
+\begin{proof}
+By flatness and the K{\"u}nneth formula, the induced map on row $q$, given by
+\[(g,f,h)_* = g \tensor f^{\tensor q}\tensor h\]
+is a quasi-isomorphism. Applying the second half of Lemma \ref{lem:quasiiso_bicomplex} completes the proof.
+\end{proof}
+\end{cor}
+The scenario in which this applies is if we want to use normalized singular chains instead of singular chains.
 
     % Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
     % \[F_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a\]
