@@ -108,7 +108,7 @@ This lives in the second quadrant. Once again we are overloading the notation $\
     \end{enumerate}
     \begin{proof}
         \begin{enumerate}
-        \item Let $D^{\leq m}_{\bullet,\bullet}$ be the subcomplex of $D$ where the first $m$ columns (i.e. $p \in \{0, ..., -m\})$ are nonzero, and likewise for $E$. We proceed by induction on $m$. If $m=0$ we are done, so suppose for $m\geq 1$ that 
+        \item Let $D^{\leq m}_{\bullet,\bullet}$ be the quotient complex of $D$ obtained by quotienting out the rows above $m$, and likewise for $E$. We proceed by induction on $m$. If $m=0$ we are done, so suppose for $m\geq 1$ that 
         \[f_*: \tot(D^{\leq m-1}) \to \tot(E^{\leq m-1})\]
         is a quasi-isomorphism. 
 
@@ -234,95 +234,4 @@ By flatness and the K{\"u}nneth formula, the induced map on row $q$, given by
 is a quasi-isomorphism. Applying the second half of Lemma \ref{lem:quasiiso_bicomplex} completes the proof.
 \end{proof}
 \end{cor}
-The scenario in which this applies is if we want to use normalized singular chains instead of singular chains.
-
-    % Consider first the map  $F_{a,b}': \tot_0\Cobar \to \Z\Pi_X(a,b)$ defined via
-    % \[F_{a,b}'( 1_b\tensor c_1 \tensor \cdots \tensor c_q\tensor 1_a) = 1_b\cdot (\prod_{i=1}^q (1-[c_i]))\cdot  1_a\]
-    % Note that the multiplication in $\Z\pi_X(a,b)$ between two paths is given by concatenation if they share endpoints, and zero otherwise. To see this descends to $H_0$ of cobar, let $\sigma \in C_2(X)$ be a 2-simplex. By definition of the two-sided cobar differential, we have 
-    % \begin{equation}
-    %     \begin{split}  
-    %     F'(\partial \sigma) &= (1 - [d_0\sigma]) - (1 - [d_1\sigma]) + (1 - [d_2\sigma]) \\
-    %     &= 1 - [d_0\sigma] + [d_1\sigma] - [d_2\sigma] \\
-    %     F'(\overline{\Delta}\sigma) &= (1 - [d_2\sigma])(1 - [d_0\sigma]) \\
-    %     &= 1 - [d_0\sigma] - [d_2\sigma] + [d_2\sigma * d_0\sigma]\\
-    %     F'\circ \partial_{\Cobar}(1_a\tensor \sigma \tensor 1_b) &= F'(\partial\sigma-\overline{\Delta}(\sigma)) \\
-    %     &= [d_1\sigma] -[d_2\sigma * d_0\sigma] = 0
-    %     \end{split}
-    % \end{equation}
-    % since $d_2\sigma * d_0\sigma$ is homotopic to $d_1\sigma$. Thus $F'_{a,b}$ descends to a well defined map 
-    % \[F_{a,b}: H_0\tot\Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\})) \to \Z\Pi_X(a,b).\]
-    % To see it is an isomorphism, note that by choosing a path $\sigma$ from $a$ to $b$, we can make $\Pi_X(a,b)$ into a $\pi_1(X,a)$-torsor, which induces an isomorphism on the free abelian groups
-    % \[\Z\pi_1(X,a) \to  \Z\pi_X(a,b)\]
-    % given by concatenation with $\sigma$. Similarly, we construct a isomorphism 
-    % \[\Cobar(C_\bullet(X)) \cong \Cobar(C_\bullet(\{a\}), C_\bullet(X), C_\bullet(\{a\})) \to \Cobar(C_\bullet(\{b\}), C_\bullet(X), C_\bullet(\{a\}))\]
-    % using the path $\sigma$ as follows ???
-    % induced by the isomorphism $C_\bullet(\{a\}) \to C_\bullet(\{b\})$ coming from concatenation with $\sigma$. These isomorphisms fit into a commutative diagram 
-    % \[\begin{tikzcd}[cramped]
-    %     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIXzBcXENvYmFyKENfXFxidWxsZXQoWCkpIl0sWzEsMCwiXFxaXFxwaV8xKFgsYSkiXSxbMSwxLCJcXFpcXFBpX1goYSxiKSJdLFswLDEsIkhfMFxcQ29iYXIoQ19cXGJ1bGxldChiKSwgQ19cXGJ1bGxldChYKSwgQ19cXGJ1bGxldChhKSkiXSxbMCwxLCJcXHJlZntjb3I6Y29iYXJfemd9Il0sWzEsMiwiXFxjb25nIl0sWzMsMiwiRl97YSxifSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDMsIlxcY29uZyIsMl1d
-    %     {H_0\Cobar(C_\bullet(X))} & {\Z\pi_1(X,a)} \\
-    %     {H_0\Cobar(C_\bullet(b), C_\bullet(X), C_\bullet(a))} & {\Z\Pi_X(a,b)}
-    %     \arrow["{\cong, \ref{prop:cobar_zg}}", from=1-1, to=1-2]
-    %     \arrow["\cong"', from=1-1, to=2-1]
-    %     \arrow["\cong", from=1-2, to=2-2]
-    %     \arrow["{F_{a,b}}"', dashed, from=2-1, to=2-2]
-    % \end{tikzcd}\]
-    % implying that $F_{a,b}$ too is an isomorphism. 
-    % % To make sure that the choice of $\sigma$ is sufficiently functorial, we fix a spanning tree of paths beginning in $a$:
-    % % \[\{\sigma_x: [0,1] \to X: x \in X,\sigma(0) = a, \sigma(1) = x\}.\]
-% \begin{proof}
-%     It will again to turn out to be easier to work with the normalized cobar, a la the proof of Proposition \ref{prop:twoside_reduction}. So abbreviate $N\Cobar(\cdots)$ by $\Cobar$. 
-%     Recall that the bigrading on the two-sided cobar construction is given by 
-%     \[\Cobar(N,C,M)^q_p = \bigoplus_{a + b_1 + \cdots + b_q + c = p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c\] 
-%     so that the degree zero totalization is given exactly by terms with $p=-q$. Since $NC_\bullet(\{a\})$ and $NC_\bullet(\{b\})$ have only nonzero terms concentrated in degree zero, while in the reduced complex we have $\overline{NC_0(X)} = 0$, we are forced to have 
-%     \[\Cobar^p_{-p} = NC_\bullet(\{a\})\tensor \overline{NC_1(X)}^{\tensor p}\tensor NC_\bullet(\{b\}).\]
-%     We can then define a map from $\tot_0(\Cobar)$ to a rank one free module over $\Z\pi_1(X,a)$ as follows. Fix a spanning tree of $X$ with basepoint at a, i.e. a collection of paths for each $x$ in $a$
-%     \[\{s: [0,1]\to X: s_x(0) = a, s_x(1) = x\}.\]
-%     with the requirement that $s_a$ is the constant path at $a$. Then define $\tilde{\phi}: \tot_0(\Cobar)\to \Z\pi_1(X,a)[s_b]$ via 
-%     \[\tilde{\phi}(1_a \tensor \sigma_1 \tensor \cdots \sigma_p \tensor 1_b) = (1_a-\tilde{\sigma}_1)\cdots (1_a-\tilde{\sigma}_p)s_b\]
-%     where 
-%     \[\tilde{\sigma}_i = s_{\sigma_{i}(0)} * \sigma_i * s_{\sigma_i(1)}.\]
-%     Clearly the image of $\tilde{\phi}$ is all of $\mathcal{I}^p$. It remains to show that the kernel of $\tilde{\phi}$ is equal to the image of the total cobar differential 
-%     \[\partial_{\Cobar} = d_H + d^V: \tot_1\Cobar \to \tot_0\Cobar.\]
-%     Let us first show $\im \partial_{\Cobar} \subset \ker \tilde{\phi}$. Take a 2-simplex $\tau \in C_2(X) \cong \Cobar^1_2$ and suppose the singular boundary is $\partial_H(\tau)=e_0-e_1+e_2$. Then 
-%     \[\tilde{\phi}(d_H(1_a\tensor \tau\tensor 1_b)) = \phi(e_0-e_1+e_2) = [1-\tilde{e}_0-(1-\tilde{e}_1) + 1-\tilde{e}_2] = 1-\tilde{e}_0 + \tilde{e}_1 - \tilde{e}_2.\]
-%     On the other hand, the Alexander--Whitney diagonal sends $\tau \in C_2(X)$ to (here $v_0 = e_0(0)$ and $v_2 = e_2(1)$)
-%     \[v_0 \tensor \tau + [e_2] \tensor [e_0] + \tau \tensor v_2\]
-%     Since we are working with normalized chains, we get 
-%     \[\tilde{\phi}(d^V(1_a\tensor \tau \tensor 1_b)) = \phi([e_2]\tensor [e_0]) = (1-\tilde{e}_2)(1-\tilde{e_0}) = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_2\tilde{e}_0 = 1 - \tilde{e}_0 - \tilde{e}_2 +\tilde{e}_1 \]
-%     Hence 
-%     \[\tilde{\phi}(d_{\Cobar}(1_a\tensor \tau \tensor 1_b))  = 0.\] 
-
-%     So $\tilde{\phi}$ descends to a map $\phi: H_0\tot \to \Z\pi_1(X,a)[s_b]$. Because the row-wise filtration on $\tot\Cobar$ corresponds exactly to tensor length, the restriction of $\phi$ onto the $-p$th stage of the filtration is an isomorphism onto $\mathcal{I}^p$, so that 
-%     \[E^{\infty}_{-p,p} = F_{-p}H_0\tot / F_{-p-1}H_0\tot\cong \mathcal{I}^p / \mathcal{I}^{p+1}\]
-%     as desired.
-%     \end{proof}
-% \end{thm}
-% \begin{lem}[\cite{Stallings1975}, Corollaries 5.2, 5.3]
-%     Let $X$ be a path-connected space. Something about two-sided cobar giving same thing for $X$ and $K(\pi_1(X), 1)$.
-% \end{lem}
-
-% \begin{thm}[\cite{Rivera2022}, Theorem 1]
-%     Let $(X,x)$ be a path connected based topological space. Let $\Omega_xX$ be the space of loops in $X$ based at $x$. Then $\Cobar(C_\bullet(X))$ is quasi-isomorphic to $C_\bullet(\Omega_xX)$ as dg algebras. 
-% \end{thm}
-% \begin{rem}
-%     We have stated the theorem for singular chains $C_\bullet(X)$ rather than some modified chains $C_\bullet(X,b)$ (not the relative chains!), but these are quasi-isomorphic? 
-% \end{rem}
-% \begin{rem}
-% Cobar not preserving quasi isomorphisms
-% \end{rem}
-% Moreover, there is a canonical way in which the cobar construction is related to the augmentation ideal-adic truncations of the fundamental group ring:
-% \begin{thm}[\cite{gadish_letterbraiding}, Theorem 1.2(3)]
-%     Let $A$ be a PID, and $\Gamma$ a group. Let $\mathcal{I}$ be the augemntation ideal of the group ring $A[\Gamma]$. Then we have the following isomorphism 
-%     \[(\mathcal{I}^n)^{\perp} \cong H^0(\Barr_{<n}(C^\bullet(B\Gamma)); A)\]
-%     where the left hand side is the orthogonal complement of $\mathcal{I}^n < A[\Gamma]$, and the left hand side is the zeroth cohomology of the subcoalgebra of the bar construction on the cochains of the classifying space $B\Gamma$, consisting of weight $<n$ tensors. \hfill \qed
-% \end{thm}
-% Taking $A=\Z$, $\Gamma = \pi_1(X,x)$, and dualizing, we obtain the following:
-% \begin{cor}\label{cor:gadish}
-%     There is an isomorphism of groups
-%     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(B\pi_1(X,x))))\]
-%     and consequently 
-%     \[\Z\pi_1(X,x)/ \mathcal{I}^{n+1} \cong H_0(\Cobar_{\leq n}(C_\bullet(X)))\]
-%     where $\Cobar_{\leq n}$ denotes the cobar complex with length $>n$ tensors truncated.
-%     \begin{proof}
-%         The first statement follows immediately from Gadish's theorem. The second statement follows since the zeroth homology of the cobar construction depends only on the fundamental group of a space. To see this,
-%     \end{proof}
+The scenario in which this applies is if we want to use normalized singular chains instead of singular chains inside of the cobar construction. Note that this is different to what we did in \ref{prop:twoside_reduction}, where what we did was normalize each \emph{column} of the two-sided cobar complex, rather than replace the terms with their normalized counterparts.

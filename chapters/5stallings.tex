@@ -1,4 +1,3 @@
-
 \section{Homology and the fundamental group}\label{chapter:stallings}
 Adams' theorem allows one to use homology and the cobar construction to approximate the fundamental group:
 \begin{thm}[\cite{Stallings1975}, Theorem 5.4]\label{thm:stallings}
@@ -58,54 +57,55 @@ If $\mathcal{C}$ has only finitely many objects, then the sum of all identity ob
     For $a,b \in X^0$, the map 
     \[\varphi_{a,b}: \tot_0\Cobar^{\leq n}(N_\bullet(b), N_\bullet(X), N_\bullet(a)) \to \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}\]
     given by
-    \[\varphi(1_a \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_q) = 1_a\cdot (\prod_{i=1}^q(1-\sigma_i))\cdot 1_b\]
-    on generators consisting of 1-simplicies, and zero otherwise, descends to an isomorphism on zeroth homology.
+    \[\varphi(1_b \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_a) = 1_b\cdot (\prod_{i=1}^q(1-\sigma_i))\cdot 1_a\]
+    on generators consisting of 1-simplicies, and zero otherwise, descends to an isomorphism on zeroth homology. On the righthand side, the multiplication comes from the category algebra, where the element $1$ is the sum of the constant paths at $a, b$ and all endpoints of $\sigma_1, ..., \sigma_q$.
     \begin{proof}
-        Let us first check that $\varphi_{a,b}$ descends to homology. By definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(X)$, say $\Lambda$. Computing the two-sided cobar differential, we have 
+        We need to check that $\varphi_{a,b}$ factors through the subcomplex $\Cobar^{\leq n}$ and that it descends to homology. For the first point, clearly any element of tensor length $>n$ maps to an element of $\Z\pi_X(a,b)\mathcal{I}^{n+1}$. For the second, by definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(X)$, say $\Lambda$. Computing the two-sided cobar differential, we have 
         \begin{equation}
             \begin{split}  
             \varphi_{a,b}(\partial \Lambda) &= (1 - d_0\Lambda) - (1 - d_1\Lambda) + (1 - d_2\Lambda) \\
             &= 1 - d_0\Lambda + d_1\Lambda - d_2\Lambda \\
-            G'_{a,b}(\overline{\Delta}\Lambda) &= (1 - d_2\Lambda)(1 - d_0\Lambda) \\
+            \varphi_{a,b}(\overline{\Delta}\Lambda) &= (1 - d_2\Lambda)(1 - d_0\Lambda) \\
             &= 1 - d_0\Lambda - d_2\Lambda + d_2\Lambda * d_0\Lambda\\
             \end{split}
         \end{equation}
         so that 
-        \[\varphi_{a,b}\circ \partial_{\Cobar}(1_a\tensor \Lambda \tensor 1_b) = G'(\partial\Lambda-\overline{\Delta}(\Lambda))=[d_1\Lambda] -[d_2\Lambda * d_0\Lambda] = 0\]
+        \[\varphi_{a,b}\circ \partial_{\Cobar}(1_a\tensor \Lambda \tensor 1_b) = \varphi_{a,b}(\partial\Lambda-\overline{\Delta}(\Lambda))=[d_1\Lambda] -[d_2\Lambda * d_0\Lambda] = 0\]
         since $d_2\Lambda * d_0\Lambda$ is homotopic to $d_1\Lambda$. Thus $\varphi_{a,b}$ descends to a well defined map on zeroth homology.
             
-        
         The remainder of the proof relies on a comparison with Stallings' theorem. First, recall that we have a homotopy equivalence $|\Sing(X)|$ from the geometric realization of its singular complex to $X$. Inside $\Sing(X)$, we can contract a maximal spanning tree of zero-simplices $T$, giving a quasi-isomorphism
-        \[q: N_\bullet(X) = N_\bullet(|\Sing(X)|) \to N_\bullet(\Sing(X)/T)\]
+        \[q: N_\bullet(X) = N_\bullet(\Sing(X)) \to N_\bullet(\Sing(X)/T)\]
         where $N_\bullet$ denotes normalized singular chains, and $\Sing(X)/T$ has a single zero-simplex $*$. Let $D$ denote the two-sided cobar bicomplex 
         \[\Cobar(N_\bullet(b), N_\bullet(X), N_\bullet(a))\] 
         and $D^{>n}$, $D^{\leq n}$ be the previous subcomplex and quotient. Then $q$ induces a map from $D$ onto the two-sided cobar construction on
         \begin{equation}\label{eqn:two_sided_cobar_on_contracted}
-        (N_\bullet(*), N_\bullet(\Sing(X)/T), N_\bullet(*))
+        (N_\bullet(*), N_\bullet(\Sing(X)/T), N_\bullet(*)).
         \end{equation}
-        By Lemma \ref{lem:quasiiso_bicomplex} and Proposition \ref{prop:twoside_reduction}, \ref{eqn:two_sided_cobar_on_contracted} is quasi-isomorphic after totalization to the single-sided cobar construction $\Cobar(C_\bullet(|\Sing(X)/T|))$ with basepoint $*$. Let $E$, $E^{>n}$, $E^{\leq n}$ denote the corresponding bicomplexes for $\Cobar(C_\bullet(|\Sing(X)/T|))$. This gives us a quasi-isomorphism $\tot D^{\leq n}\to E^{\leq n}$. Consider now the following diagram:
+        By Lemma \ref{lem:quasiiso_bicomplex} and Proposition \ref{prop:twoside_reduction}, the two-sided cobar construction on (\ref{eqn:two_sided_cobar_on_contracted}) is quasi-isomorphic after totalization to the single-sided cobar construction $\Cobar(C_\bullet(\Sing(X)/T))$ with basepoint $*$. Let $E$, $E^{>n}$, $E^{\leq n}$ denote the corresponding bicomplexes for $\Cobar(C_\bullet(\Sing(X)/T))$. This gives us a quasi-isomorphism $\tot D^{\leq n}\to E^{\leq n}$. Consider now the following diagram:
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIXzAoRF57XFxsZXEgbn0pIl0sWzAsMSwiXFxaXFxwaV9YKGEsYikvXFxaXFxwaV9YKGEsYilcXG1hdGhjYWx7SX1ee24rMX0iXSxbMSwwLCJIXzAoRV57XFxsZXEgbn0pIl0sWzEsMSwiXFxaXFxwaV8xKHxcXFNpbmcoWCkvVHwsICopL1xcbWF0aGNhbHtJfV57bisxfSJdLFswLDEsIlxcdmFycGhpX3thLGJ9IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsMywiXFxyZWZ7dGhtOnN0YWxsaW5nc30iXSxbMCwyXSxbMSwzXV0=
         \[\begin{tikzcd}[cramped]
             {H_0(D^{\leq n})} & {H_0(E^{\leq n})} \\
             {\Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}} & {\Z\pi_1(|\Sing(X)/T|, *)/\mathcal{I}^{n+1}}
             \arrow[from=1-1, to=1-2]
             \arrow["{\varphi_{a,b}}"', dashed, from=1-1, to=2-1]
-            \arrow["{\ref{thm:stallings}}", from=1-2, to=2-2]
+            \arrow[from=1-2, to=2-2]
             \arrow[from=2-1, to=2-2]
         \end{tikzcd}\]
         By the previous discussion, the top and right arrows are isomorphisms. The bottom isomorhpism induced by the following map $\Z\pi_X(a,b)\to \Z\pi_1(|\Sing(X)/T|,*)$. A generator $\sigma \in \Z\Pi_X(a,b)$ is a 1-simplex, hence a $1$-cell in $|\Sing(X)|$ which can be concatenated with the path from $b\to a$ in the tree $|T|$. Then quotienting yields an element in $\Z\pi_1(|\Sing(X)/T|, *)$. Since $|T|$ is a maximal tree this is an isomorphism. Since $\varphi_{a,b}$ commutes with these maps, we are done.
     \end{proof}
 \end{prop}
-We assure the reader that the collection of maps $\varphi_{a,b}$ for $a,b \in X^0$ are natural in the category of topological spaces with two basepoints. 
+We assure the reader that the collection of maps $\varphi_{a,b}$ for $a,b \in X$ are natural in the category of topological spaces with two basepoints. 
 \begin{proof}[Proof of  \ref{thm:stallings_generalization}]
     First note that the short exact sequence $0 \to D^{>n} \to D \to D^{\leq n} \to 0$ induces a long exact sequence 
 \[\cdots \to H_0( D^{>n}) \to H_0(D) \to H_0(D^{\leq n}) \to H_{-1}(D^{>n})\to \cdots.\]
-To see that the negative homology is zero, let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Then the elements of total degree $k$ belong to 
-\[(N_\bullet(b) \tensor \overline{N_\bullet(X)}^{\tensor q} \tensor \overline N_\bullet(a))_p\]
-where $k=-p-q$.
-Because $N_\bullet(b)$ and $N_\bullet(a)$ are concentrated in degree zero, and $\overline{N_0(X)} = 0$ by path-connectedness, any element in negative total degree must be zero. Thus we have a surjection 
+
+We claim that the negative homology of $D$ is zero. This is not \emph{a priori} obvious due to the second issue we mentioned earlier in this chapter, which said that terms in $\tot_{-1}(D)$ can be nonzero. let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Its internal tensor factors of $N_\bullet(X)$ are replaced by their reduced counterparts $\overline{N_\bullet(X)}$ by the same computation as in Proposition \ref{prop:twoside_reduction}. The elements of total degree $k$ belong to 
+\[(N_\bullet(b) \tensor \overline{N_\bullet(X)}^{\tensor q} \tensor \overline N_\bullet(a))_{-p}\]
+where $k=-p-q$. Filtering this by tensor length (which is exhaustive), we obtain a spectral sequence with 
+\[E^{1}_{p,q} = H_{-p}(N_\bullet(b)\tensor \overline{N_\bullet(X)}^{\tensor q} \tensor N_\bullet(a)) \cong H_{-p}(N_\bullet(b)) \tensor H_{-p}(\overline{N_\bullet(X)}^{\tensor q}) \tensor H_{-p}(N_\bullet(a)) \]
+by the K{\"u}nneth formula. Since $X$ is path-connected, $H_{k}(\overline{N_\bullet(X)}) = 0$ for $k \leq 0$. It follows that  $H_{k}(\overline{N_\bullet(X)}^{\tensor q}) = 0$ when $k<q$. Hence the $E^1$ page is zero under the diagonal, when $-p<q$. Thus when $k=-p-q<0$, the total complex has no homology in degree $k$. The same argument applies for the subcomplex $D^{>n}$. Continuing with our proof, we therefore have a surjection 
 \[H_0(D)\to H_0(D^{\leq n})\]
-whose kernel is $H_0(D^{>n})$, i.e. the $n$th filtered piece of $H_0(D)$. Thus $H_0(D) / F_nH_0(D) \cong H_0(D^{\leq n})$. By Proposition \ref{prop:phi_a_b}, we conclude 
+whose kernel is $H_0(D^{>n})$, i.e. the $n+1$th filtered piece of $H_0(D)$.Thus $H_0(D) / F_{n+1}H_0(D) \cong H_0(D^{\leq n})$. By Proposition \ref{prop:phi_a_b}, we conclude 
 \begin{equation}
 \begin{split}
 D^{\infty}_{-n,n} &\cong F_nH_0(D) / F_{n+1}H_0(D) \\
@@ -116,3 +116,7 @@ D^{\infty}_{-n,n} &\cong F_nH_0(D) / F_{n+1}H_0(D) \\
 \end{equation}
 which completes the proof.
 \end{proof}
+This proof addresses the second issue we encountered earlier. The terms of $\tot_0\Cobar$ containing an internal tensor factor of $C_0(X)$ (hence 2- or higher simplices) is sent to zero. This makes sense, since $\pi_1$ and $\pi_X(a,b)$ only contain information about the 1-simplicies.
+
+
+
