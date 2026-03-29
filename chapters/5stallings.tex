@@ -50,7 +50,7 @@ To address the first issue, we make some auxilliary constructions. Recall that t
 \end{defn}
 To be able to define multiplication in this category, we regard it as a sort of ''multiplicative subset'' of a ring as follows. 
 \begin{defn}
-For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free $R$-module on the set of all morphisms in $\mathcal{C}$. The addition on $\R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
+For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free $R$-module on the set of all morphisms in $\mathcal{C}$. The addition on $R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
 \end{defn}
 If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. In our case, let $X$ be a topological space, and first consider the full subcategory of the fundamental groupoid whose objects are just the zero simplicies of $X$, which we will denote by $\Pi_X^0$. Form the integral category algebra $\Z\Pi_X^0$ on this category. An element of $\Z\Pi_X^0$ is some $\Z$-linear combination of paths between zero simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise. By regarding $\Z\Pi(X)(a,b)$ as a subset of $\Z\Pi_X^0$, we can multiply its elements. Indeed, in the case with a single zero-simplex, the mutiplication reduces to path concatenation in the fundamental group ring.
 \begin{prop}\label{prop:phi_a_b}
@@ -60,7 +60,7 @@ If $\mathcal{C}$ has only finitely many objects, then the sum of all identity ob
     \[\varphi(1_b \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_a) = 1_b\cdot (\prod_{i=1}^q(1-\sigma_i))\cdot 1_a\]
     on generators consisting of 1-simplicies, and zero otherwise, descends to an isomorphism on zeroth homology. On the righthand side, the multiplication comes from the category algebra, where the element $1$ is the sum of the constant paths at $a, b$ and all endpoints of $\sigma_1, ..., \sigma_q$.
     \begin{proof}
-        We need to check that $\varphi_{a,b}$ factors through the subcomplex $\Cobar^{\leq n}$ and that it descends to homology. For the first point, clearly any element of tensor length $>n$ maps to an element of $\Z\pi_X(a,b)\mathcal{I}^{n+1}$. For the second, by definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(X)$, say $\Lambda$. Computing the two-sided cobar differential, we have 
+        We need to check that $\varphi_{a,b}$ factors through the subcomplex $\Cobar^{> n}$ and that it descends to homology. For the first point, clearly any element of tensor length $>n$ maps to an element of $\Z\pi_X(a,b)\mathcal{I}^{n+1}$. For the second, by definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(X)$, say $\Lambda$. Computing the two-sided cobar differential, we have 
         \begin{equation}
             \begin{split}  
             \varphi_{a,b}(\partial \Lambda) &= (1 - d_0\Lambda) - (1 - d_1\Lambda) + (1 - d_2\Lambda) \\
@@ -99,13 +99,13 @@ We assure the reader that the collection of maps $\varphi_{a,b}$ for $a,b \in X$
     First note that the short exact sequence $0 \to D^{>n} \to D \to D^{\leq n} \to 0$ induces a long exact sequence 
 \[\cdots \to H_0( D^{>n}) \to H_0(D) \to H_0(D^{\leq n}) \to H_{-1}(D^{>n})\to \cdots.\]
 
-We claim that the negative homology of $D$ is zero. This is not \emph{a priori} obvious due to the second issue we mentioned earlier in this chapter, which said that terms in $\tot_{-1}(D)$ can be nonzero. let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Its internal tensor factors of $N_\bullet(X)$ are replaced by their reduced counterparts $\overline{N_\bullet(X)}$ by the same computation as in Proposition \ref{prop:twoside_reduction}. The elements of total degree $k$ belong to 
+We claim that the homology groups of $D^{>n}$ and $D$ are zero in negative degree. While this is immediate for $E^{>n}$ and $E$, it is not \emph{a priori} obvious here due to the second issue we mentioned earlier in this section, which said that terms in $\tot_{-1}(D)$ can be nonzero. let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Its internal tensor factors of $N_\bullet(X)$ are replaced by their reduced counterparts $\overline{N_\bullet(X)}$ by the same computation as in Proposition \ref{prop:twoside_reduction}. The elements of total degree $k$ belong to 
 \[(N_\bullet(b) \tensor \overline{N_\bullet(X)}^{\tensor q} \tensor \overline N_\bullet(a))_{-p}\]
-where $k=-p-q$. Filtering this by tensor length (which is exhaustive), we obtain a spectral sequence with 
+where $k=-p-q$. Filtering this by tensor length (which is exhaustive), we. obtain a spectral sequence with 
 \[E^{1}_{p,q} = H_{-p}(N_\bullet(b)\tensor \overline{N_\bullet(X)}^{\tensor q} \tensor N_\bullet(a)) \cong H_{-p}(N_\bullet(b)) \tensor H_{-p}(\overline{N_\bullet(X)}^{\tensor q}) \tensor H_{-p}(N_\bullet(a)) \]
 by the K{\"u}nneth formula. Since $X$ is path-connected, $H_{k}(\overline{N_\bullet(X)}) = 0$ for $k \leq 0$. It follows that  $H_{k}(\overline{N_\bullet(X)}^{\tensor q}) = 0$ when $k<q$. Hence the $E^1$ page is zero under the diagonal, when $-p<q$. Thus when $k=-p-q<0$, the total complex has no homology in degree $k$. The same argument applies for the subcomplex $D^{>n}$. Continuing with our proof, we therefore have a surjection 
 \[H_0(D)\to H_0(D^{\leq n})\]
-whose kernel is $H_0(D^{>n})$, i.e. the $n+1$th filtered piece of $H_0(D)$.Thus $H_0(D) / F_{n+1}H_0(D) \cong H_0(D^{\leq n})$. By Proposition \ref{prop:phi_a_b}, we conclude 
+whose kernel is $H_0(D^{>n})$, i.e. the $(n+1)$th filtered piece of $H_0(D)$. Thus $H_0(D) / F_{n+1}H_0(D) \cong H_0(D^{\leq n})$. By Proposition \ref{prop:phi_a_b}, we conclude 
 \begin{equation}
 \begin{split}
 D^{\infty}_{-n,n} &\cong F_nH_0(D) / F_{n+1}H_0(D) \\

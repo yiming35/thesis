@@ -1,5 +1,5 @@
 \section{Adams' cobar construction}\label{chapter:adamscobar}
-In this chapter we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ purely algebraically from the the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and prove some useful factors about the underlying homological algebra.
+In this section we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ purely algebraically from the the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and prove some useful factors about the underlying homological algebra.
 
 \subsection{The cobar construction}
 Let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpotent $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar}. We follow the presentation given in \cite{Rivera2022}.
@@ -11,7 +11,7 @@ Let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpoten
     \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
-The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous chapter, as a chain complex, $\Cobar(C)$ has terms 
+The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous section, as a chain complex, $\Cobar(C)$ has terms 
 \begin{equation}\label{eqn:cobar_terms}
 \begin{split}
     \Cobar_k(C) &= (T(s^{-1}\overline{C}))_k \\
