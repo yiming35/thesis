@@ -1,5 +1,5 @@
 \section{Adams' cobar construction}\label{chapter:adamscobar}
-In this section we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ purely algebraically from the the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and prove some useful factors about the underlying homological algebra.
+In this section we define the cobar construction of a coalgebra and introduce Adams' remarkable 1956 theorem \cite{AdamsCobar}, which (roughly) says that given a based topological space $(X,x)$, one can recover the singular chains of the based loop space $\Omega_xX$ purely algebraically from the singular chains on $X$. We then extend the cobar construction to account for two basepoints by using comodules over a coalgebra, and prove some useful facts about the underlying homological algebra.
 
 \subsection{The cobar construction}
 Let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpotent $R$-coalgebra. The {cobar construction} is a functor from this category of coalgebras to the category of dg associative algebras. There are many references for the following definition, including Adams' original paper \cite{AdamsCobar}. We follow the presentation given in \cite{Rivera2022}.
@@ -7,8 +7,7 @@ Let $(C = \overline{C} \oplus R,\Delta)$ be a dg coaugmented counital conilpoten
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar construction} on $C$ is the dg $R$-algebra whose underlying algebra is the tensor algebra over the desuspension of the reduced coalgebra $C$:
     \[\Cobar(C) := T(s^{-1}\overline{C}) = R \oplus s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\oplus \cdots\]
     and whose differential is given by extending the linear map 
-    % should this be reduced coprod or what i have now
-    \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \Delta \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
+    \[-s^{-1}\circ \partial \circ s^{+1} + (s^{-1}\tensor s^{-1})\circ \overline{\Delta}  \circ s^{+1}: s^{-1}\overline{C} \to s^{-1}\overline{C} \oplus s^{-1}\overline{C}^{\tensor 2}\]
     to all of $T(s^{-1}\overline{C})$, which yields a linear map of degree $-1$ from $T(s^{-1}\overline{C})$ to itself.
 \end{defn}
 The definition of the differential here is valid owing to Lemma \ref{lem:maps_extend}, which says that it suffices to define the differential on the component $s^{-1}\overline{C} \subset T(s^{-1}\overline{C})$. Regardless, it will be helpful to be a little more explicit. By the discussion in the previous sections, as a chain complex, $\Cobar(C)$ has terms 
@@ -28,12 +27,12 @@ The purpose of introducing the dummy variable $p$ at the end of this tedious ind
     Let $(C, \Delta, \partial)$ be as above. The \emph{cobar bicomplex} is the bicomplex $\Cobar_{\bullet,\bullet}(C)$ with 
     \[\Cobar_{p,q} := \bigoplus_{m_1 + \cdots + m_q = -p} \overline{C}_{m_1} \tensor \cdots \tensor \overline{C}_{m_q} \]
     and differentials
-    \[d_H: \Cobar_{p,q}\to \Cobar_{p+1,q},\quad x_1 \tensor \cdots x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
+    \[d_H: \Cobar_{p,q}\to \Cobar_{p+1,q},\quad x_1 \tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
     \[d_V: \Cobar_{p,q}\to \Cobar_{p, q+1}, \quad x_1\tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_q\]
     where $\sigma(x_i)$ is the Koszul sign $\deg x_1 + \cdots + \deg x_{i-1}$.
 \end{defn}
 \begin{warn}
-    We have overloaded the notation $\Cobar$, first to refer to the functor from Definition \ref{def:cobar_algebra} sending a dg coalgebra to a dg algebra, and second to represent the functor from Definition \ref{def:cobar_bicomplex} sending a dg coalgebra to a bicomplex. We will distinguish these using  subscripts: using $\Cobar_\bullet$ for the first and $\Cobar_{\bullet,\bullet}$ for the second. But the next proposition shows that this distinction is not so important.
+    We have overloaded the notation $\Cobar$, first to refer to the functor from Definition \ref{def:cobar_algebra} sending a dg coalgebra to a dg algebra, and second to refer to the functor from Definition \ref{def:cobar_bicomplex} sending a dg coalgebra to a bicomplex. We will distinguish these using  subscripts: using $\Cobar_\bullet$ for the first and $\Cobar_{\bullet,\bullet}$ for the second. But the next proposition shows that this distinction is not so important.
 \end{warn}
 \begin{prop}\label{prop:cobar_bicomplex}
 The totalization of the bicomplex $\Cobar_{\bullet,\bullet}(C)$ given by 
@@ -69,7 +68,7 @@ Let $(C,\Delta)$ be a conilpotent $R$-coalgebra and let $(N,\Delta^L)$ and $(M,\
 with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
 \[d^i = \begin{cases}
     \Delta^R \tensor \id^{\tensor q-1} \tensor \id_N& i =0  \\
-    \id_M \tensor \id_C^{\tensor i-1} \tensor \Delta \tensor \id_C^{q-i-1} \tensor \id_N & i \in \{1, ..., q-1\} \\
+    \id_M \tensor \id_C^{\tensor i-1} \tensor \Delta \tensor \id_C^{\tensor     q-i-1} \tensor \id_N & i \in \{1, ..., q-1\} \\
     \id_M\tensor \id^{\tensor q-1}\tensor \Delta^L & i =q
 \end{cases}\]
 and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
@@ -79,12 +78,12 @@ where $\epsilon: C \to \Z$ is the counit.
 By the Dold--Kan correspondence we can also regard this as a chain complex of $R$-modules. If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following definition, generalizing the previous discussion of the cobar bicomplex:
 \begin{defn}
     Let $(C, \partial_C)$, $(N, \partial_N)$, and $(M, \partial_M)$ be as above. The \emph{two-sided cobar bicomplex} has underlying bigraded $R$-module 
-    \begin{equation}
+    \begin{equation*}
     \begin{split}
     \Cobar(N,C,M)_{p,q} &= (M\tensor C^{\tensor q} \tensor N)_p \\
     &= \bigoplus_{a + b_1 + \cdots + b_q + c = -p} M_a \tensor C_{b_1} \tensor \cdots \tensor C_{b_q}\tensor N_c
     \end{split}
-    \end{equation}
+    \end{equation*}
     with vertical differential given by the alternating sums of the coface maps 
     \[d_V: \Cobar(N,C,M)_{\bullet, q-1}\to \Cobar(N,C,M)_{\bullet, q},\quad d_V = \sum_{i=0}^q (-1)^i d^i \]
     and horizontal differential coming from the comodule and coalgebra differentials:
@@ -96,10 +95,10 @@ By the Dold--Kan correspondence we can also regard this as a chain complex of $R
     &+ (-1)^{|m|+ \sigma(c_q)} m \tensor c_1 \tensor \cdots \tensor c_q \tensor \partial_N(n)
     \end{split}
     \end{equation}
-    where $\sigma(x_k) = |x_1| + \cdots |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
+    where $\sigma(x_k) = |x_1| + \cdots + |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
 \end{defn} 
 
-This lives in the second quadrant. Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are refering to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
+This lives in the second quadrant. Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are referring to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
 \begin{lem}\label{lem:quasiiso_bicomplex}
     Let $f: D_{\bullet, \bullet} \to E_{\bullet, \bullet}$ be a map of second quadrant bicomplexes of abelian groups with differentials of bidegree $(+1, 0)$ and $(0,+1)$. Then 
     \begin{enumerate}
@@ -157,7 +156,7 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
 
 \begin{proof}
     Consider the bicomplex that is obtained by replacing each column of $\Cobar(R,C,R)$ with its normalized cochain complex:
-    \begin{equation}
+    \begin{equation*}
 	\begin{split}
 		N\Cobar_{p,q}(R,C,R) &\cong\bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
 		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
@@ -165,7 +164,7 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
 		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
         &= \Cobar_{p,q}(C).
 	\end{split}
-\end{equation}
+\end{equation*}
 Upon checking differentials, we conclude that the normalized two-sided cobar bicomplex $N\Cobar$ is isomorphic to the one-sided cobar bicomplex on $C$. By Lemma \ref{lem:quasiiso_bicomplex}, the map $\Cobar \to N\Cobar$ induces a quasi-isomorphism of total complexes, completing the proof.
 \end{proof}
 \end{prop}
@@ -188,9 +187,7 @@ If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}
     \[(g,f,h)_*: \tot\Cobar(N,C,M)\to \tot\Cobar(N',C', M')\]
     is a quasi-isomorphism.
     \begin{proof} 
-        We imitate the strategy of the proof of the analogous Proposition 2.4.1 in \cite{Loday2012}, which is over a field and done for the regular cobar construction. 
-
-        Define a weighting on the elements of $C, N, M$ via 
+        We imitate the strategy of the proof of the analogous Proposition 2.4.1 in \cite{Loday2012}, which is over a field and done for the regular cobar construction.  Define a weighting on the elements of $C, N, M$ via 
         \[|x| = \{\min r: x \in F_r\}\]
         where $F_r$ is the coradical filtration on the respective modules. Consider the filtration on the two-sided cobar construction given by 
         \[F_r\Cobar(N,C,M) := \{m \tensor c_1 \tensor \cdots \tensor c_q \tensor n: |m| + |c_1| + \cdots + |c_q| + |n| \leq r\}.\]
@@ -203,7 +200,7 @@ If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}
         Summing over $t$, each column of the $E^0$ page is therefore given by 
         \[E^0_{s,\bullet} =\Cobar(\gr N, \gr C, \gr M)^{(s)}\]
         where the superscript $(s)$ denotes the subcomplex of elements satisfying
-        \[ |n| + |c_1| + \tensor + |c_q| + m = s.\]
+        \[ |m| + |c_1| +\cdots  + |c_q| + |n| = s.\]
         In other words, the induced map 
         \[E^0(\Cobar(g,f,h)): E^0\Cobar(\gr N,\gr C,\gr M) \to E^0\Cobar(\gr N, \gr C', \gr M)\]
         is exactly the induced map $\Cobar([g],[f],[h])$. So it suffices to prove that the column-wise maps are quasi-isomorphisms in light of Lemma \ref{lem:quasiiso_bicomplex}.
@@ -217,7 +214,7 @@ If $[f]$ is a quasi-isomorphism, we say $f$ is a \emph{graded quasi-isomorphism}
         and consequently on the columns of the original bicomplex $E^0_{s,\bullet}$, completing the proof. 
     \end{proof}
 \end{lem}
-In practice, however, the notion of a graded quasi-isomorphism can be quite restrictive. Within the scope of this thesis, we will be working with a truncated version of the cobar construction, in which quasi-isomorphisms of coalgebras will always induce quasi-isomorphisms. Let us make this precise. Let $\Cobar^{>n}$ denote the subcomplex of $\Cobar$ obtained by setting all rows below $n$ to zero, and let $\Cobar^{\leq n}$ be the quotient bicompelex $\Cobar / \Cobar^{\leq n}$. Then $\Cobar^{\leq n}$ is a second quadrant bicomplex satisfying the assumptions of the second half of Lemma \ref{lem:graded_quism}. Therefore, we obtain the following corollary:
+In practice, however, the notion of a graded quasi-isomorphism can be quite restrictive. Within the scope of this thesis, we will be working with a truncated version of the cobar construction, in which quasi-isomorphisms of coalgebras will always induce quasi-isomorphisms. Let us make this precise. Let $\Cobar^{>n}$ denote the subcomplex of $\Cobar$ obtained by setting all rows below $n$ to zero, and let $\Cobar^{\leq n}$ be the quotient bicomplex $\Cobar / \Cobar^{>n}$. Then $\Cobar^{\leq n}$ is a second quadrant bicomplex satisfying the assumptions of the second half of Lemma \ref{lem:graded_quism}. Therefore, we obtain the following corollary:
 \begin{cor}\label{cor:truncated_quism}
 Let $R$ be a principal ideal domain. Let $N, M$ be left and right conilpotent dg $C$-comodules. Let $N', M'$ be left and right conilpotent dg $C'$-comodules. Suppose 
 \begin{enumerate}
@@ -234,4 +231,4 @@ By flatness and the K{\"u}nneth formula, the induced map on row $q$, given by
 is a quasi-isomorphism. Applying the second half of Lemma \ref{lem:quasiiso_bicomplex} completes the proof.
 \end{proof}
 \end{cor}
-The scenario in which this applies is if we want to use normalized singular chains instead of singular chains inside of the cobar construction. Note that this is different to what we did in \ref{prop:twoside_reduction}, where what we did was normalize each \emph{column} of the two-sided cobar complex, rather than replace the terms with their normalized counterparts.
+The scenario in which this applies is if we want to use normalized singular chains instead of singular chains inside of the cobar construction. Note that this is different to what we did in Proposition \ref{prop:twoside_reduction}, where we normalized each \emph{column} of the two-sided cobar complex, instead of replacing the inputs with their normalized counterparts.

@@ -36,7 +36,7 @@ Just as a unital associative $R$-algebra $A$ is one admitting a unital morphism 
 	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
 \end{tikzcd}.\]
 
-The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $\eta: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Beccause $\eta$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ \eta_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $\eta: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Because $\eta$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ \eta_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
 \[\overline{\Delta}(x) = \Delta(x) - 1\tensor x - x\tensor 1.\]
 
 \subsection{Conilpotency, cofreeness, and the tensor coalgebra}
@@ -45,12 +45,12 @@ Let $(C,\Delta)$ be a coaugmented coalgebra. Define the \emph{coradical} (someti
 Then we say $C$ is \emph{conilpotent} if this filtration is exhaustive. Conilpotency is fundamentally a finiteness condition; if we are continuing with the coproduct-as-decomposition analogy, it says that any element can only be decomposed finitely many times. It will turn out quite important in all that follows.
 
 \begin{defn}
-The \emph{cofree} coassociative $R$-coalgebra over a $R$-module $M$ is a conilpotent coassociative coalgebra $\mathcal{F}^cM$ equipped with an $R$-linear map $s: \mathcal{F}^cM\to M$ sending $1$ to $0$ and satisfying the following universal property: 
+The \emph{cofree} coassociative $R$-coalgebra over an $R$-module $M$ is a conilpotent coassociative coalgebra $\mathcal{F}^cM$ equipped with an $R$-linear map $s: \mathcal{F}^cM\to M$ sending $1$ to $0$ and satisfying the following universal property: 
 \quote{\textit{Any $R$-linear map $f: B\to M$ factors through $\mathcal{F}^cM$, i.e. there exists a unique map $\tilde{f}: B \to \mathcal{F}^cM$ such that $s\circ \tilde{f} = f$.}}
 \end{defn}
-As with other objects defined via universal properties, the cofree coalgebra is unique up to unique isomorphism. In the categorial language, this functor
+As with other objects defined via universal properties, the cofree coalgebra is unique up to unique isomorphism. In the categorcial language, this functor
 \[\mathcal{F}^c: \catname{Mod}_R\to \catname{conilCoalg}_R\]
-is a right adjoint to the forgetful function sending a conilpotent coalgebra to its underlying module. The reason we restrict ourselves to conilpotent coalgebras here is that the cofree objects are familiar, as we will soon see. In the general category of coalgebras they are large and unwieldy. 
+is a right adjoint to the forgetful functor sending a conilpotent coalgebra to its underlying module. The reason we restrict ourselves to conilpotent coalgebras here is that the cofree objects are familiar, as we will soon see. In the general category of coalgebras they are large and unwieldy. 
 
 \begin{defn} 
     Let $M$ be an $R$-module. The \emph{tensor coalgebra over} $M$, denoted $T^cM$, is the coalgebra whose underlying module is 
@@ -61,7 +61,7 @@ is a right adjoint to the forgetful function sending a conilpotent coalgebra to 
 \end{defn}
 For example, $x \in M$ gets mapped to $1\tensor x + x\tensor 1$. We leave it to the reader to check that $T^cM$ is coassociative, counital, and conilpotent, with the hint that the counit is the map $T^cM \to R$ which is the identity on $R$ and zero on higher summands.
 \begin{rem}
-For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\oplus \cdots$ also has an dg algebra structure given by tensor multiplication. We will often just denote $T^cM$ by $TM$. With this product it becomes the free associative $R$-algebra over $M$. In fact, the product and coproducts are compatible, bestowing $TM$ with even more strucrure (that of a \emph{Hopf algebra}).
+For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\oplus \cdots$ also has a dg algebra structure given by tensor multiplication. We will often just denote $T^cM$ by $TM$. With this product it becomes the free associative $R$-algebra over $M$. In fact, the product and coproducts are compatible, bestowing $TM$ with even more structure (that of a \emph{Hopf algebra}).
 \end{rem}
 
 \begin{prop}
@@ -76,24 +76,24 @@ In nature, coalgebras can often carry extra structure, just as rings or modules 
 \begin{defn}
 A \emph{differential graded} (often abbreviated to \emph{dg}) coalgebra is a coassociative coalgebra $(C, \Delta)$ with 
 \begin{enumerate}
-  \item a grading, i.e. $C = \oplus_{n \in \N} C_n$ such that the product sends $C_n$ to $\oplus_{i+j=n} C_i \tensor C_j$, and
+  \item a grading, i.e. $C = \oplus_{n \in \N} C_n$ such that the coproduct sends $C_n$ to $\oplus_{i+j=n} C_i \tensor C_j$, and
   \item a differential $d$ sending $C_i$ to $C_{i-1}$, satisfying the dual identity
   \[\Delta \circ d = (d\tensor \id + \id \tensor d) \circ \Delta.\]
 \end{enumerate}
 \end{defn}
-This last identity is the Leibniz rule; if a coalgebra endomorphism satisfies this, we call it a \emph{coderivation}. So all differentials are coderivations. One can check that these definitions imply that the coproduct is a morphism of chain complexes. So we can think of dga coalgebras as either (1) chain complexes with a compatible coproduct, or (2) coalgebras with compatible differential. 
+This last identity is the Leibniz rule; if a coalgebra endomorphism satisfies this, we call it a \emph{coderivation}. So all differentials are coderivations. One can check that these definitions imply that the coproduct is a morphism of chain complexes. So we can think of a dg coalgebra as either (1) a chain complex with a compatible coproduct, or (2) coalgebra with compatible differential. 
 Given a dg $R$-coalgebra $C=\oplus_{n \in \N} C_n$, we define its \emph{suspension} $sC$ to be $C$ shifted up a degree, i.e. $(sV)_i = V_{i-1}$, and its \emph{desuspension} $s^{-1}C$ to be $C$ shifted down a degree, i.e. $(s^{-1}C)_j = C_{j+1}$. Then any $x \in C_n$ determines an element $sx \in (sC)_{n+1}$ and $s^{-1}x \in (s^{-1}C)_{n-1}$. Defining these turns out to be helpful for degree bookkeeping reasons.
 
 The following lemma will help simplify many verifications. It tells us that to understand derivations of a free algebra, or coderivations of a cofree coalgebra, it suffices to understand them on one component. 
 \begin{lem}\label{lem:maps_extend}
-    Let $M$ be an $R$-module. Any linear map $M \to TM$ extends uniquely to a derivation $TM\to TM$. Dually, any coderivation $T^cM \to T^cM$ is uniquely determined by the projection $T^cM \to T^cM \to M$. 
+    Let $M$ be an $R$-module. Any linear map $M \to TM$ extends uniquely to a derivation $TM\to TM$. Dually, any coderivation $T^cM \to T^cM$ is uniquely determined by the projection $T^cM \to M$. 
     \begin{proof}
         These follow from the more general Proposition 1.1.8 and 1.2.9 in \cite{Loday2012}.
     \end{proof} 
 \end{lem}
 The cardinal example of a coalgebra in this thesis is the following:
 \begin{exmp}
-Consider the singular chains $C_\bullet(X; \Z)$ on a topological space $X$ with basepoint $x$. They form a coaugmented dg $\Z$-coalgebra. For the coproduct, notice that we always have a diagonal map $x \mapsto (x,x)$, which induces a chain map $C_\bullet(X) \to C_\bullet(X\times X)$. Now there a natural quasi-isomorphism $C_\bullet(X)\tensor C_\bullet(X)$, given by the decomposition of the topological simplices. Because decomposing a simplex reduces their dimension, $C_\bullet(X)$ is conilpotent. Finally, $C_\bullet(X)$ is counital with the map $\epsilon: C_\bullet(X) \to \Z$ given by sending all 0-simplicies to $1$ and has a coaugmentation $\eta: \Z\to C_\bullet(X)$ which sends $1$ to the 0-simplex at $x$. In Section \S\ref{chapter:cosimplicial}, we give an explicit definition of this coproduct (the \emph{Alexander--Whitney} map).
+Consider the singular chains $C_\bullet(X; \Z)$ on a topological space $X$ with basepoint $x$. They form a coaugmented dg $\Z$-coalgebra. For the coproduct, notice that we always have a diagonal map $x \mapsto (x,x)$, which induces a chain map $C_\bullet(X) \to C_\bullet(X\times X)$. Now there a natural quasi-isomorphism $C_\bullet(X)\tensor C_\bullet(X)$, given by the decomposition of the topological simplices. Because decomposing a simplex reduces their dimension, $C_\bullet(X)$ is conilpotent. Finally, $C_\bullet(X)$ is counital with the map $\epsilon: C_\bullet(X) \to \Z$ given by sending all 0-simplices to $1$ and has a coaugmentation $\eta: \Z\to C_\bullet(X)$ which sends $1$ to the 0-simplex at $x$. In Section \S\ref{chapter:cosimplicial}, we give an explicit definition of this coproduct (the \emph{Alexander--Whitney} map).
 \end{exmp}
 
 \subsection{Comodules} Continuing with our previous example of singular chains on a space $X$, the situation changes if we want to talk about two distinct basepoints $a, b \in X$. In this case there is no preferred choice of coaugmentation for the coalgebra $C_\bullet(X)$. To address this we need the notion of a comodule.
@@ -127,7 +127,7 @@ If a left and right comodule $M$ also satsifies the following compatibility cond
 	\arrow["{\id \tensor \Delta^R}", from=1-2, to=2-2]
 	\arrow["{\Delta^L\tensor \id}"', from=2-1, to=2-2]
 \end{tikzcd}\]
-then we call $M$ a \emph{co-bimodule}. The simplest example of a co-bimodule over a coalgebra $C$ is $C$ itself, where the left right actions are just given by the coproduct. Returning to the example of singular chains, let $C = C_\bullet(X)$ and let $a$ be a basepoint. Then $C_\bullet(\{a\})$ is a bi-comodule over $C_\bullet(X)$ via the left and right coactions
+then we call $M$ a \emph{co-bimodule}. The simplest example of a co-bimodule over a coalgebra $C$ is $C$ itself, where the left and right actions are just given by the coproduct. Returning to the example of singular chains, let $C = C_\bullet(X)$ and let $a$ be a basepoint. Then $C_\bullet(\{a\})$ is a bi-comodule over $C_\bullet(X)$ via the left and right coactions
 \[C_\bullet(\{a\})\xrightarrow{\Delta} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\iota_a \tensor \id } C_\bullet(X)\tensor C_\bullet(\{a\})\]
-\[C_\bullet(\{a\})\xrightarrow{\Delta} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a} C_\bullet(X)\tensor C_\bullet(\{a\}).\]
+\[C_\bullet(\{a\})\xrightarrow{\Delta} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a}  C_\bullet(\{a\}) \tensor C_\bullet(X).\]
 If $a\neq b$, we can take one of $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ to be a left comodule and the other to be a right comodule over $C_\bullet(X)$. The usefulness of these definitions will hopefully be clear as this thesis progresses.

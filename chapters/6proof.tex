@@ -1,34 +1,13 @@
 \section{Proof of main theorem}\label{chapter:finalproof}
-Here we present the proof of Theorem \ref{thm:looijenga}. Recall that $X$ is a path connected topological space with basepoints $a,b$. Our strategy will be to consider the other spectral sequence associated to the two-sided cobar construction. To do so, we will first build a spectral sequence starting from the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. We will show that it computesthe group $H_n(X^n, X(n)^a_b)$, and that it arises from the two-sided cobar construction. Then we will conclude by the previous discussion relating the cobar construction to the fundamental group. 
+Here we present the proof of Theorem \ref{thm:looijenga}. Recall that $X$ is a path-connected topological space with basepoints $a,b$. Our strategy will be to consider the other spectral sequence associated to the two-sided cobar construction. To do so, we will first build a spectral sequence starting from the cosimplicial path space $P_{a,b}^\bullet X$ of Example \ref{example:cosimplicial_path_space}. We will show that it computes the group $H_n(X^n, X(n)^a_b)$, and that it arises from the two-sided cobar construction. Then we will conclude by the previous discussion relating the cobar construction to the fundamental group. 
 
 \subsection{Building the spectral sequence} Denote $P_{a,b}^\bullet X$ by $P^\bullet$ for simplicity. Notice first that the union of the images of the coface maps $d^i: X^{n-1}\to X^n$ is exactly the subspace $X(n)^a_b$. This is a good sign. Now consider the bicomplex $\mathscr{C}_{\bullet,\bullet}$ which is obtained by applying singular chains to $P^\bullet$: 
 \[\mathscr{C}_{p,q} = C_{-p}(P^q)\]
-with ``horizontal'' differential $d^\mathscr{C}_H: C_p(P^q)\to C_{p+1}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d_V^\mathscr{C}: C_p(P^q) \to C_p(P^{q+1})$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
+with ``horizontal'' differential $d^\mathscr{C}_H: C_{-p}(P^q)\to C_{-(p+1)}(P^q)$ given by the singular boundary map, and ``vertical'' differential $d_V^\mathscr{C}: C_p(P^q) \to C_p(P^{q+1})$ given by the differential of the Moore complex of the cosimplicial abelian group $C_p(P^\bullet)$. 
 
-% \begin{prop}
-%  $C^\bullet_\bullet$ is a bicomplex.
-%  \begin{proof}
-%  That $d^\mathscr{C}_H$ and $d^V_\mathscr{C}$ both square to zero follows from the fact that each row is a chain complex and each row is a cochain complex. It remains to check commutativity of the squares: 
- 
-% \[\begin{tikzcd}[cramped]
-%     % https://q.uiver.app/#q=WzAsNxbMSwxLCJDX3AoWF5xKSJdLFsxLDAsIkNfcChYXntxKzF9KSJdLFswLDAsIkNfe3AtMX0oWF57cSsxfSkiXSxbMCwxLCJDX3twLTF9KFhee3F9KSJdLFswLDFdLFswLDNdLFszLDJdLFsxLDJdXQ==
-% 	{C_{p-1}(X^{q+1})} & {C_p(X^{q+1})} \\
-% 	{C_{p-1}(X^{q})} & {C_p(X^q)}
-% 	\arrow[from=1-2, to=1-1]
-% 	\arrow[from=2-1, to=1-1]
-% 	\arrow[from=2-2, to=1-2]
-% 	\arrow[from=2-2, to=2-1]
-% \end{tikzcd}\]
-% Starting with a map $f: \Delta^p \to X^q$, if we first go up then left, we get the map 
-% \[ \Delta^{p-1}\xrightarrow{([p]\to [p-1])^*}\Delta^p \xrightarrow{f} X^q \xrightarrow{\sum (-1)^id^i} X^{q+1}\]
-% and proceeding in the other direction gives the exact same map.
-% (This is really obvious, might not need to include).
-%  \end{proof}
-% \end{prop}
-
-Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_{p,\bullet}$, the Moore complex of $C_p(F^\bullet)$. Consider now the bicomplex $\mathscr{N}_{\bullet,\bullet}$ whose columns are instead the normalized cochain complexes of $C_p(F^\bullet)$. The map $\mathscr{C}\twoheadrightarrow \mathscr{N}$ is a quasi-isomorphism of bicomplexes by Dold--Kan and Lemma \ref{lem:quasiiso_bicomplex}. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
-\[\mathscr{N}_{p,q} = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C^p(X^n)) = C^p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
-Moreover, the vertical differential $\mathscr{N}_{p,q} \to \mathscr{N}_{p,q+1}$ is induced by the zeroth coface map $d^0$. Consider now the bicomplex obtained from $\mathscr{N}$ by setting all rows above $q=n$ to zero, which we will denote by $(\mathscr{N}^{\leq n})^\bullet_\bullet$.
+Each column $p$ of this bicomplex forms a cochain complex $\mathscr{C}_{p,\bullet}$, the Moore complex of $C_p(P^\bullet)$. Consider now the bicomplex $\mathscr{N}_{\bullet,\bullet}$ whose columns are instead the normalized cochain complexes of $C_p(P^\bullet)$. The map $\mathscr{C}\twoheadrightarrow \mathscr{N}$ is a quasi-isomorphism of bicomplexes by Dold--Kan and Lemma \ref{lem:quasiiso_bicomplex}. Let us spell out what the groups in $\mathscr{N}$ actually are. Following the definition, we have 
+\[\mathscr{N}_{p,q} = \coker\bigoplus_{i=1}^{n} ((d^i)_*: C_p(X^{n-1})\to C_p(X^n)) = C_p(X^n) / \lb \sum_{i=1}^n \im (d^i)_*\rb  = C_p(X^n, X(n)_b).\]
+Here $X(n)_b$ denotes the subspace of $X^n$ consisting of those $(x_1, ..., x_n)$ where $x_i = x_{i+1}$ for $i \in \{1, ..., n-1\}$ or $x_n = b$. Moreover, the vertical differential $\mathscr{N}_{p,q} \to \mathscr{N}_{p,q+1}$ is induced by the zeroth coface map $d^0$. Consider now the bicomplex obtained from $\mathscr{N}$ by quotienting out the rows above $q=n$, which we will denote by $(\mathscr{N}^{\leq n})^\bullet_\bullet$.
 \begin{prop}
     Filtering $\mathscr{N}^{\leq n}$ by the lower index, we obtain a second-quadrant spectral sequence collapsing on the second page with 
     \[E^2_{-n,n} = H_n(X^n, X(n)^a_b), \quad E^2_{0,0} = \begin{cases}
@@ -59,8 +38,7 @@ Moreover, the vertical differential $\mathscr{N}_{p,q} \to \mathscr{N}_{p,q+1}$ 
         \end{cases}\]
         as desired. 
 
-        At this point, because the only nonzero rows are $q=n$ and possibly $q=0$, the differentials on the pages $E^{\geq 2}$ are all zero, except possibly on page $E^{n+1}$, where we have a differential $d_{n+1}$ of bidegree $(n+1, -n)$ from $E^{n+1}_{-n-1, n} = H_{n+1}(X^n, X(n)^a_b)$ to $E^{n+1}_{0,0} = \Z$. To see that $d_{n+1} = 0$, consider the map of pairs $f: (X,x)\to (*,*)$. Repeating the constructions, we get a spectral sequence $D_{\bullet,\bullet}$ computing $H_n(*^n, *(n)^*_*) = 0$. By functoriality, $f$ induces a morphism of spectral sequences. Specializing to the $n+1$th page, we have a commutative square 
-		
+        At this point, because the only nonzero rows are $q=n$ and possibly $q=0$. The differentials on the pages $E^{\geq 2}$ are all zero, except possibly on page $E^{n+1}$, where we have a differential $d_{n+1}$ of bidegree $(n+1, -n)$ from $E^{n+1}_{-n-1, n} = H_{n+1}(X^n, X(n)^a_b)$ to $E^{n+1}_{0,0} = \Z$. To see that $d_{n+1} = 0$, consider the map of pairs $f: (X,x)\to (*,*)$. Repeating the constructions, we get a spectral sequence $D_{\bullet,\bullet}$ computing $H_n(*^n, *(n)^*_*) = 0$. By functoriality, $f$ induces a morphism of spectral sequences. Specializing to the $n+1$th page, we have a commutative square 
 		\[\begin{tikzcd}[cramped]
 			% https://q.uiver.app/#q=WzAsOCxbMSwwLCJFXntuKzF9X3tuKzEsbn0iXSxbMSwxLCJEXntuKzF9X3tuKzEsbn0iXSxbMiwwLCJFXntuKzF9X3swLDB9Il0sWzIsMSwiRF57bisxfV97MCwwfSJdLFswLDAsIkhfe24rMX0oWF5uLFgobileeF94KSJdLFszLDAsIlxcWiJdLFswLDEsIkhfe24rMX0oKiwqKT0wIl0sWzMsMSwiXFxaIl0sWzAsMSwiZl8qIiwyXSxbMCwyLCJkXkVfe24rMX0iXSxbMSwzLCJkXkRfe24rMX0iLDJdLFsyLDMsImZfKiJdLFs0LDAsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDcsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 			{H_{n+1}(X^n,X(n)^x_x)} & {E^{n+1}_{-n-1,n}} & {E^{n+1}_{0,0}} & \Z \\
@@ -74,7 +52,7 @@ Moreover, the vertical differential $\mathscr{N}_{p,q} \to \mathscr{N}_{p,q+1}$ 
 			\arrow["{d^D_{n+1}}"', from=2-2, to=2-3]
 			\arrow[equal, from=2-3, to=2-4]
 		\end{tikzcd}\]
-		But now the $f_*: \Z\to\Z$ is the identity since it is the induced map $H_0(X,x)\to H_0(*,*)$, forcing $d^E_{n+1} = 0$, so $E^2 = E^{\infty}$ as desired.
+		But now $f_*: \Z\to\Z$ is the identity since it is the induced map $H_0(X,x)\to H_0(*,*)$, forcing $d^E_{n+1} = 0$, so $E^2 = E^{\infty}$ as desired.
     \end{proof}
 \end{prop}
 \begin{cor}\label{cor:spectral_convergence}
@@ -89,10 +67,10 @@ whose kernel is $\Z$ if $a=b$, and trivial otherwise.
 It remains to compute $H_0$ of this totalization. For this we will return to our original bicomplex $\mathscr{C}$ and show that its truncated totalization is quasi-isomorphic to the totalization of the two-sided cobar bicomplex. Instead of normalizing the columns, let us first consider the rows $\mathscr{C}_{\bullet,q}$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}_{-\bullet,q} = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
 to obtain a new bicomplex, which we will call $\mathscr{D}$. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
-\begin{equation}
+\begin{equation*}
 \mathscr{D}_{-p,q} = (C_\bullet(X)^{\tensor q})_p = \bigoplus_{n_1 + \cdots + n_q = p} C_{n_1}(X) \tensor \cdots \tensor C_{n_q}(X).
-\end{equation}
-Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtained from $\mathscr{C}$ and $\mathscr{D}$ by setting all rows of above $q=n$ to zero. 
+\end{equation*}
+Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtained from $\mathscr{C}$ and $\mathscr{D}$ by quotienting all rows above $q=n$.
 
 \begin{lem}\label{lem:quasi_iso_CtoD}
 	The map $\mathscr{C}^{\leq n} \to \mathscr{D}^{\leq n}$ induced by Alexander--Whitney is a quasi-isomorphism of bicomplexes, with inverse quasi-isomorphism induced by the Eilenberg--Zilber map.
@@ -125,12 +103,12 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
 		\[\psi_a: N_\bullet(\{a\}) \tensor N_\bullet(X) \to N_\bullet(X)\]
 		\[\psi_b: N_\bullet(X) \tensor N_\bullet(\{b\}) \to N_\bullet(X)\]
 		which combine to give a natural isomorphism $\phi:= \psi_a \tensor \id^{\tensor \bullet}\tensor \psi_b$:
-		\begin{equation}
+		\begin{equation*}
 			\begin{split}
 			\phi: N\Cobar_{-p,q} &=  \bigoplus_{n + b_1 + \cdots + b_q + m = p} N_n(\{a\}) \tensor N_{b_1}(X) \tensor \cdots \tensor N_{b_q}(X)\tensor N_m(\{b\}) \\
 			&\to \bigoplus_{b_1 + \cdots + b_q = p}  N_{b_1}(X) \tensor \cdots \tensor N_{b_q}(X) =: N\mathscr{D}_{-p,q}.
 			\end{split}
-		\end{equation}
+		\end{equation*}
 		on the bigraded pieces. We now check that the differentials on $N\Cobar$ and $N\mathscr{D}$ are compatible with $\phi$. Because all differentials of $N_\bullet(\{a\})$ and $N_\bullet(\{b\})$ are zero, the horizontal cobar differential formula \ref{eqn: twoside_cobar_differential} yields 
 		\begin{equation*}
 		\begin{split}
@@ -172,13 +150,14 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
     &= d^0_{N\mathscr{D}}(\phi(m \tensor c_1\tensor \cdots \tensor c_q \tensor n))
 \end{split}
 \end{equation*}
-		The proof for $d^1, ..., d^q$ are analogous. Hence the restriction of $\phi$ to the truncated bicomplexes yields a quasi-isomorphism $N\Cobar^{\leq n} \to N\mathscr{D}^{\leq n} $, completing the proof.
+		The proofs for $d^1, ..., d^q$ are analogous. Hence the restriction of $\phi$ to the truncated bicomplexes yields a quasi-isomorphism $N\Cobar^{\leq n} \to N\mathscr{D}^{\leq n} $, completing the proof.
 	\end{proof}
 \end{thm}
 \begin{rem}
 We have not really used Adams' theorem. But what we have proven should suggest that the theorem is sort of true for the following reason. We have exhibited a quasi-isomorphism between truncations of the two-sided cobar construction on $C_\bullet(X)$ and the totalization of the truncated $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space. So if we can somehow commute ``chains on a totalization'' and ``totalization of chains,'' and take the limit of these truncations, we would have a version of Adams' theorem. 
 \end{rem}
-We now have all the requisite maps for the proof of the main theorem. Before we proceed, just a quick reminder of all the steps involved. 
+We now have all the requisite maps for the proof of the main theorem. Before we proceed, just a quick recapitulation of all the steps involved. At the core of the argument is the cosimplicial path space $P^{\bullet}_{a,b}X$. Taking singular chains on it, we obtain a bicomplex, which is the same bicomplex underlying the two-sided cobar construction on $(b,X,a)$. In \S\ref{chapter:stallings} we see that filtering this bicomplex in one direction gives rise to the fundamental group ring, and here we see that in the other direction we find the homology groups $H_n(X^n, X(n)^a_b)$.
+
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]
 	By Theorem \ref{thm:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subsection, we have a quasi-isomorphism 
 	\[\tot(\Cobar^{\leq n}) \xrightarrow{\ref{thm:two_sided_cobar_D}} \tot(\mathscr{D}^{\leq n}) \xrightarrow{\ref{lem:quasi_iso_CtoD}} \tot(\mathscr{C}^{\leq n}) \xrightarrow{} \tot(\mathscr{N}^{\leq n}).\]
@@ -191,6 +170,6 @@ We now have all the requisite maps for the proof of the main theorem. Before we 
 		 \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1} \to H_0\tot\Cobar^{\leq n}
 	\end{equation}
     Combining Equations \ref{eqn:cobar_iso_N}, \ref{eqn:N_and_fundamental_gp} and applying Corollary \ref{cor:spectral_convergence}, we obtain a surjection
-    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar^{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^x_x)\]
+    \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0\tot\Cobar^{\leq n} \xrightarrow{\cong} H_0\tot_\bullet(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^a_b)\]
     whose kernel is isomorphic to $\Z$ if $a=b$ and trivial otherwise. 
 \end{proof}

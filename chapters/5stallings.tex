@@ -6,9 +6,9 @@ Adams' theorem allows one to use homology and the cobar construction to approxim
 \end{thm}
 \noindent A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The setting in which this is relevant for us is when $Y = \Sing(X)$ for $X$ a topological space. The goal of this section will be to prove a version of this theorem for the two-sided cobar construction, which we will do in the setting of simplicial sets. 
 
-Recall that the two-sided cobar functor takes in as input a dg conilpotent coalgebra and two dg comodules over it. In particular, if we begin with a simplicial set $Y$, its normalized simplicial chain complex $N_\bullet(Y)$ is a conilpotent dg algebra, and under this correspondence any subsimplicial set $Y' \subset Y$ becomes a bicomodule over $N_\bullet(Y)$. 
+Recall that the two-sided cobar functor takes in as input a dg conilpotent coalgebra and two dg comodules over it. In particular, if we begin with a simplicial set $Y$, its normalized simplicial chain complex $N_\bullet(Y)$ is a conilpotent dg algebra, and under this correspondence any simplicial subset $Y' \subset Y$ becomes a bicomodule over $N_\bullet(Y)$. 
 
-Let $Y$ be a fibrant simplicial set. The notion of a fundamental groupoid of a simplicial set still makes sense. It is the category $\pi_Y$ whose object set is $Y_0$ and whose morphisms from a 0-simplex $a$ to another $b$ is a homotopy class of 1-simplicies $\omega$ such that $\omega \circ d_1 = a$ and $\omega \circ d_0 = b$. The morphism set $\pi_Y(a,b)$ is a right $\pi_1(Y, a)$-torsor as follows. For $\omega \in \pi_Y(a,b)$ and $\sigma \in \pi_1(Y,a)$, we get a horn $\Lambda^2_1\to Y$ whose zeroth and second faces are $\omega$ and $\sigma$. Then the fill-in has first face an element of $\pi_Y(a,b)$. As with the topological case, this makes the free $R$-module $R\pi_Y(a,b)$ into a right $R\pi_1(Y,a)$-module.
+Let $Y$ be a fibrant simplicial set. The notion of a fundamental groupoid of a simplicial set still makes sense. It is the category $\pi_Y$ whose object set is $Y_0$ and whose morphisms from a 0-simplex $a$ to another $b$ are homotopy classes of 1-simplices $\omega$ such that $\omega \circ d_1 = a$ and $\omega \circ d_0 = b$. The morphism set $\pi_Y(a,b)$ is a right $\pi_1(Y, a)$-torsor as follows. For $\omega \in \pi_Y(a,b)$ and $\sigma \in \pi_1(Y,a)$, we get a horn $\Lambda^2_1\to Y$ whose zeroth and second faces are $\omega$ and $\sigma$. Then the fill-in has first face an element of $\pi_Y(a,b)$. As with the topological case, this makes the free $R$-module $R\pi_Y(a,b)$ into a right $R\pi_1(Y,a)$-module.
 
 \begin{thm}\label{thm:stallings_generalization}
     Let $Y$ be a simplicial set with $\pi_0(Y) = \{*\}$, and choose $a,b \in Y_0$. Let $N_*(Y)$ be the normalized chain complex associated to $Y$, and let $N_*(a), N_*(b)$ be the normalized chain complexes associated to the constant subsimplicial sets at $a$ and $b$ respectively. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R\pi_1(Y,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
@@ -18,11 +18,11 @@ Let $Y$ be a fibrant simplicial set. The notion of a fundamental groupoid of a s
 \end{thm}
 More precisely, we will construct a collection of maps 
 \[H_0(\Cobar^{\leq n}(b,Y,a)) \to \Z\pi_Y(a,b)/\Z\pi_Y(a,b)\mathcal{I}^{p+1} \]
-for any $a,b \in X_0$ which assemble into a natural transformation of the corresponding functors. We will imitate Stallings' strategy. He relies on the following result of Brown:
+for any $a,b \in Y_0$, which assemble into a natural transformation of the corresponding functors. We will imitate Stallings' strategy. He relies on the following result of Brown:
 \begin{thm}[Theorem 10.2, \cite{Brown1959}]
     Let $A$ be a dga $R$-algebra. Suppose $A_0  = R$ and $H_1(A) = 0$. Then there is a chain equivalence $\Cobar(\Barr(A)) \to A$. \hfill \qed
 \end{thm}
- This is an intermediate step and we don't discuss the bar construction again, so we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}. In our case we specialize to the case where $G$ is a group and $A$ is the chain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. Then the bar construction on $\Z G$ is isomorphic to singular chains on the classifiyng space $BG$.
+ This is an intermediate step, and because we don't discuss the bar construction again, we refer the reader to sources such as \cite{Milgram1967}, Chapter 16 of \cite{Brown1982}, or Chapter 1.5 of \cite{May1999-tb}. In our case we specialize to the case where $G$ is a group and $A$ is the chain complex consisting of the integral group ring $\Z G$ concentrated in degree zero. Then the bar construction on $\Z G$ is isomorphic to singular chains on the classifying space $BG$.
 \begin{prop}\label{prop:cobar_zg}
     Let $G$ be a group and $BG$ its classifying space. There is a chain equivalence 
     \[\Cobar(C_\bullet(BG)) \to \Z G\]
@@ -44,29 +44,29 @@ so one could, for example, have elements in $\tot_0(\Cobar(b,Y,a))$ coming from
 \[C_0(b) \tensor C_0(Y)\tensor C_2(Y)\tensor C_0(a),\]
 in which case it is unclear how Stallings' map generalizes, since we have only defined it on 1-chains. The following definitions and constructions will help address these issues.
 \begin{defn}
-    Let $\Z\Pi^0(Y)$ denote the category whose objects are 0-simplicies of $Y$ and morphisms are the free abelian group on homotopy classes of paths.
+    Let $\Z\Pi^0(Y)$ denote the category whose objects are 0-simplices of $Y$ and morphisms are the free abelian group on homotopy classes of paths.
 \end{defn}
-To be able to define multiplication in this category, we regard it as a sort of ''multiplicative subset'' of a ring as follows. 
+To be able to define multiplication in this category, we regard it as a sort of ``multiplicative subset'' of a ring as follows. 
 \begin{defn}
 For any small category $\mathcal{C}$ and ring $R$, the \emph{category algebra} $R\mathcal{C}$ is the ring (possibly without multiplicative identity) whose underlying set is the free $R$-module on the set of all morphisms in $\mathcal{C}$. The addition on $R\mathcal{C}$ is given by the free module addition, and the multiplication of two morphisms is given by their composition, if they are composable, and zero otherwise. 
 \end{defn}
-If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. In our case, let $Y$ be our simplicial set, and first consider the full subcategory of the fundamental groupoid $\Pi_Y$ whose objects are just the 0-simplicies of $Y$, which we will denote by $\Pi_Y^0$. Form the integral category algebra $\Z\Pi_Y^0$ on this category. An element of $\Z\Pi_Y^0$ is some $\Z$-linear combination of paths between 0-simplicies, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise. By regarding $\Z\Pi(Y)(a,b)$ as a subset of $\Z\Pi_Y^0$, we can multiply its elements. Indeed, in the case with a single 0-simplex, the mutiplication reduces to path concatenation in the fundamental group ring.
+If $\mathcal{C}$ has only finitely many objects, then the sum of all identity objects serves as the multiplicative identity. This also makes $R\mathcal{C}$ into an $R$-algebra. In our case, let $Y$ be our simplicial set, and first consider the full subcategory of the fundamental groupoid $\Pi_Y$ whose objects are just the 0-simplices of $Y$, which we will denote by $\Pi_Y^0$. Form the integral category algebra $\Z\Pi_Y^0$ on this category. An element of $\Z\Pi_Y^0$ is some $\Z$-linear combination of paths between 0-simplices, and multiplication of two homotopy classes of paths $\sigma$ and $\tau$ is given by concatenation if the endpoint of $\sigma$ is equal to the starting point of $\tau$, and zero otherwise. By regarding $\Z\Pi(Y)(a,b)$ as a subset of $\Z\Pi_Y^0$, we can multiply its elements. Indeed, in the case with a single 0-simplex, the multiplication reduces to path concatenation in the fundamental group ring.
 \begin{prop}\label{prop:phi_a_b}
     For $a,b \in Y_0$, the map 
     \[\varphi_{a,b}: \tot_0\Cobar^{\leq n}(b, Y ,a) \to \Z\pi_Y(a,b)/\Z\pi_Y(a,b)\mathcal{I}^{n+1}\]
     defined by
-    \[\varphi(1_b \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_a) = 1_b\cdot (\prod_{i=1}^q(1-\sigma_i))\cdot 1_a\]
-    on such generators consisting of 1-simplicies, and defined by zero otherwise, descends to an isomorphism on zeroth homology. On the righthand side, the multiplication comes from the category algebra, where the element $1$ is the sum of the constant paths at $a, b$ and all endpoints $d_i\sigma_j$ for $i\in \{0,1\}, j \in \{1, ..., q\}$.
+    \[\varphi_{a,b}(1_b \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_a) = 1_b\cdot (\prod_{i=1}^q(1-\sigma_i))\cdot 1_a\]
+    on such generators consisting of 1-simplices, and defined by zero otherwise, descends to an isomorphism on zeroth homology. On the right-hand side, the multiplication comes from the category algebra, where the element $1$ is the sum of the constant paths at $a, b$ and all endpoints $d_i\sigma_j$ for $i\in \{0,1\}, j \in \{1, ..., q\}$.
     \begin{proof}
         We need to check that $\varphi_{a,b}$ factors through the subcomplex $\Cobar^{> n}$ and that it descends to homology. For the first point, clearly any element of tensor length $>n$ maps to an element of $\Z\pi_Y(a,b)\mathcal{I}^{n+1}$. For the second, by definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(Y)$, say $\Gamma$. Computing the two-sided cobar differential, we have 
-        \begin{equation}
+        \begin{equation*}
             \begin{split}  
             \varphi_{a,b}(\partial \Gamma) &= (1 - d_0\Gamma) - (1 - d_1\Gamma) + (1 - d_2\Gamma) \\
             &= 1 - d_0\Gamma + d_1\Gamma - d_2\Gamma \\
             \varphi_{a,b}(\overline{\Delta}\Gamma) &= (1 - d_2\Gamma)(1 - d_0\Gamma) \\
             &= 1 - d_0\Gamma - d_2\Gamma + d_2\Gamma * d_0\Gamma\\
             \end{split}
-        \end{equation}
+        \end{equation*}
         so that 
         \[\varphi_{a,b}\circ \partial_{\Cobar}(1_a\tensor \Gamma \tensor 1_b) = \varphi_{a,b}(\partial\Gamma-\overline{\Delta}(\Gamma))=[d_1\Lambda] -[d_2\Gamma * d_0\Gamma] = 0\]
         since $d_2\Gamma * d_0\Gamma$ is homotopic to $d_1\Gamma$. Thus $\varphi_{a,b}$ descends to a well defined map on zeroth homology.
@@ -92,32 +92,32 @@ If $\mathcal{C}$ has only finitely many objects, then the sum of all identity ob
         By the previous discussion, the top arrow is an isomorphism. The right arrow is an isomorphism by Stallings' theorem. The bottom isomorphism is the concatenation of a loop 1-simplex $\Delta^1 \to Y$ at $a$ with the element of $\Z\pi_Y(a,b)$. Because $T$ is a maximal tree this is an isomorphism. Since $\varphi_{a,b}$ commutes with these maps, we are done.
     \end{proof}
 \end{prop}
-We assure the reader that the collection of maps $\varphi_{a,b}$ for $a,b \in Y$ are natural in the category of fibrant simplicial sets with two specified 0-simplices.
+We assure the reader that the collection of maps $\varphi_{a,b}$ for $a,b \in Y_0$ are natural in the category of fibrant simplicial sets with two specified 0-simplices.
 \begin{proof}[Proof of Theorem \ref{thm:stallings_generalization}]
     First note that the short exact sequence $0 \to D^{>n} \to D \to D^{\leq n} \to 0$ induces a long exact sequence 
 \[\cdots \to H_0( D^{>n}) \to H_0(D) \to H_0(D^{\leq n}) \to H_{-1}(D^{>n})\to \cdots.\]
 
-We claim that the homology groups of $D^{>n}$ and $D$ are zero in negative degree. While this is immediate for $E^{>n}$ and $E$, it is not \emph{a priori} obvious here due to the second issue we mentioned earlier in this section, which said that terms in $\tot_{-1}(D)$ can be nonzero. let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Its internal tensor factors of $N_\bullet(Y)$ are replaced by their reduced counterparts $\overline{N_\bullet(X)}$ by the same computation as in Proposition \ref{prop:twoside_reduction}. The elements of total degree $k$ therefore belong to
+We claim that the homology groups of $D^{>n}$ and $D$ are zero in negative degree. While this is immediate for $E^{>n}$ and $E$, it is not \emph{a priori} obvious here due to the second issue we mentioned earlier in this section, which said that terms in $\tot_{-1}(D)$ can be nonzero. Let us work with the normalized two-sided cobar construction, which is quasi-isomorphic to $D$. Its internal tensor factors of $N_\bullet(Y)$ are replaced by their reduced counterparts $\overline{N_\bullet(X)}$ by the same computation as in Proposition \ref{prop:twoside_reduction}. The elements of total degree $k$ therefore belong to
 \[(N_\bullet(b) \tensor \overline{N_\bullet(Y)}^{\tensor q} \tensor N_\bullet(a))_{-p}\]
 where $k=-p-q$. Filtering this by tensor length (which is exhaustive), we obtain a spectral sequence 
 \[E^{1}_{p,q} = H_{-p}(N_\bullet(b)\tensor \overline{N_\bullet(X)}^{\tensor q} \tensor N_\bullet(a)) \cong H_{-p}(N_\bullet(b)) \tensor H_{-p}(\overline{N_\bullet(Y)}^{\tensor q}) \tensor H_{-p}(N_\bullet(a)) \]
-by the K{\"u}nneth formula. Since $\pi_0(Y) = 0$ is path-connected, $H_{k}(\overline{N_\bullet(Y)}) = 0$ for $k \leq 0$. It follows that  $H_{k}(\overline{N_\bullet(Y)}^{\tensor q}) = 0$ when $k<q$. Hence the $E^1$ page is zero under the diagonal, when $-p<q$. Thus when $k=-p-q<0$, the total complex has no homology in degree $k$. The same argument applies for the subcomplex $D^{>n}$. Continuing with our proof, we get a surjection 
+by the K{\"u}nneth formula. Since $\pi_0(Y) = \{*\}$, we obtain $H_{k}(\overline{N_\bullet(Y)}) = 0$ for $k \leq 0$. It follows that  $H_{k}(\overline{N_\bullet(Y)}^{\tensor q}) = 0$ when $k<q$. Hence the $E^1$ page is zero under the diagonal, when $-p<q$. Thus when $k=-p-q<0$, the total complex has no homology in degree $k$. The same argument applies for the subcomplex $D^{>n}$. Continuing with our proof, we get a surjection 
 \[H_0(D)\to H_0(D^{\leq n})\]
-whose kernel is $H_0(D^{>n})$, i.e. the $(n+1)$th filtered piece of $H_0(D)$. Thus $H_0(D) / F_{n+1}H_0(D) \cong H_0(D^{\leq n})$. We conclude 
-\begin{equation}
+whose kernel is $H_0(D^{>n})$, i.e. the $(n+1)$th filtered piece of $H_0(D)$. Thus $H_0(D) / F_{n+1}H_0(D) \cong H_0(D^{\leq n})$. We conclude on the $\infty$-page of the spectral sequence associated to $D$ that
+\begin{equation*}
 \begin{split}
 D^{\infty}_{-n,n} &\cong F_nH_0(D) / F_{n+1}H_0(D) \\
 &\cong \ker(H_0(D^{\leq n}) \to H_0(D^{\leq n-1})) \\
-&\cong \ker(\Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1} \to \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n}) \\
-&=\Z\pi_X(a,b)\mathcal{I}^{n} / \Z\pi_X(a,b)\mathcal{I}^{n+1}
+&\cong \ker(\Z\pi_Y(a,b)/\Z\pi_Y(a,b)\mathcal{I}^{n+1} \to \Z\pi_Y(a,b)/\Z\pi_Y(a,b)\mathcal{I}^{n}) \\
+&=\Z\pi_Y(a,b)\mathcal{I}^{n} / \Z\pi_Y(a,b)\mathcal{I}^{n+1}
 \end{split}
-\end{equation}
+\end{equation*}
 where the third isomorphism is by Proposition \ref{prop:phi_a_b}, completing the proof.
 \end{proof}
-This proof addresses the second issue we encountered earlier. The terms of $\tot_0\Cobar$ containing an internal tensor factor of $C_0(X)$ (hence 2- or higher simplices) is sent to zero. This makes sense, since $\pi_1$ and $\pi_X(a,b)$ only contain information about the 1-simplicies. Let us take a moment to translate this back into the language of topological spaces.
+This proof addresses the second issue we encountered earlier. The terms of $\tot_0\Cobar$ containing an internal tensor factor of $C_0(Y)$ get sent to zero. This makes sense, since $\pi_1$ and $\pi_X(a,b)$ only contain information about the 1-simplices. Let us conclude by translating these two results back into the language of topological spaces for later.
 \begin{cor}\label{cor:phi_ab}
 Let $X$ be a path-connected topological space with two basepoints $a,b$. Then there are isomorphisms
-\[H_0\Cobar^{\leq n}(N_\bullet(b), N_\bullet(X), N_\bullet(a)) \to \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1}\] 
+\[H_0\Cobar^{\leq n}(N_\bullet(b), N_\bullet(X), N_\bullet(a)) \to \Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^{n+1},\] 
 \[E^{\infty}_{-p,p} \to \Z\pi_X(a,b)\mathcal{I}^{p}/\Z\pi_X(a,b)\mathcal{I}^{p+1}\]
 where $E$ is the spectral sequence associated to $\Cobar(N_\bullet(b), N_\bullet(X), N_\bullet(a))$ with the tensor-length filtration.
 \begin{proof}
