@@ -20,6 +20,15 @@
 \usepackage{epigraph}
 \setlength\epigraphrule{0pt}
 
+\usepackage{etoolbox}
+
+% Make \section Large and bold, centered
+\patchcmd{\section}{\scshape}{\Large \scshape}{}{}
+% Changes the word "Contents" to "Table of Contents" and makes it Large
+\renewcommand{\contentsname}{\Large Table of Contents}
+
+
+
 \usetikzlibrary{decorations.pathreplacing, calc}
 \tikzcdset{
   diagrams={>={Straight Barb[scale=0.5]}}
