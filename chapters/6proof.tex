@@ -159,7 +159,7 @@ We have not really used Adams' theorem. But what we have proven should suggest t
 We now have all the requisite maps for the proof of the main theorem. Before we proceed, just a quick recapitulation of all the steps involved. At the core of the argument is the cosimplicial path space $P^{\bullet}_{a,b}X$. Taking singular chains on it, we obtain a bicomplex, which is the same bicomplex underlying the two-sided cobar construction on $(b,X,a)$. In \S\ref{chapter:stallings} we see that filtering this bicomplex in one direction gives rise to the fundamental group ring, and here we see that in the other direction we find the homology groups $H_n(X^n, X(n)^a_b)$.
 
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]
-	By Theorem \ref{thm:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subsection, we have a quasi-isomorphism 
+	By Theorem \ref{thm:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subsection, we have series quasi-isomorphisms 
 	\[\tot(\Cobar^{\leq n}) \xrightarrow{\ref{thm:two_sided_cobar_D}} \tot(\mathscr{D}^{\leq n}) \xrightarrow{\ref{lem:quasi_iso_CtoD}} \tot(\mathscr{C}^{\leq n}) \xrightarrow{} \tot(\mathscr{N}^{\leq n}).\]
 	Therefore, on zeroth homology we have an isomorphism 
     \begin{equation}\label{eqn:cobar_iso_N}
@@ -174,6 +174,9 @@ We now have all the requisite maps for the proof of the main theorem. Before we 
     whose kernel is isomorphic to $\Z$ if $a=b$ and trivial otherwise. 
 \end{proof}
 
-The point is that we want a motivic interpretation 
+\subsection{Looking forward} Let us conclude with a few words about why the authors from the introduction might have been interested in Theorem \ref{thm:looijenga}. This discussion will be very imprecise. Let $X$ be a connected complex algebraic variety, i.e. something that ``locally' looks like the zero-locus of a collection of homogenous polynomials in complex projective space. Then the rational cohomology of $X$ has more structure than just that of a $\Q$-vector space; they also gain so-called \emph{mixed Hodge structures}, as proven by Deligne. Using our theorem (or rather its rational dual), one can transfer these structures onto the groups $\Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^n \tensor \Q$. For example, fixing $x \in X$, path concatenation induces a bilinear map 
+\[\mathcal{I}/\mathcal{I}^{n+1} \times \mathcal{I}/\mathcal{I}^{n+1} \to \mathcal{I}^2/\mathcal{I}^{n+2}.\]
+By Theorem \ref{thm:looijenga}, this corresponds to a bilinear map 
+\[H_n(X^n, X(n)^x_x)\times H_n(X^n, X(n)^x_x) \to H_{n+1}(X^{n+1}, X(n+1)^x_a).\]
+For more examples, how this correspondence is geometrically implemented, we refer the reader to \cite{Looijenga2025}, in which Looijenga gives a formula for the map $\Z\pi_X(a,b)\to H_n(X^n, X(n)^a_b)$ implementing this correspondence. As the theorem appears in \cite{DELIGNE2005}, it is a stepping stone toward the theory of \emph{motives}, which is far beyond the scope of both this thesis and our understanding, signaling that it is time to stop and rest.
 
-Given a functor from spaces to ab groups, we want to interpret it in terms of homology... mixed hodge structures 
