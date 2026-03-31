@@ -132,7 +132,7 @@ This lives in the second quadrant. Once again we are overloading the notation $\
             \arrow[two heads, from=2-3, to=2-4]
             \arrow[from=2-4, to=2-5]
         \end{tikzcd}\]
-        we conclude that $f_*$ is a quasi-isomorphism. Now $D$ is a filtered colimit of the $D^{\leq m}$, and homology and totalization commute with filtered colimits, so we conclude that $f_*$ is a quasi-isomorphism $\tot(D) \to \tot(E)$.
+        we conclude that $f_*$ is a quasi-isomorphism $\tot(D^{\leq m}) \to \tot(E^{\leq m})$. Since $D$ is a filtered colimit of the $D^{\leq m}$, and homology and totalization commute with filtered colimits, we conclude that $f_*$ is a quasi-isomorphism $\tot(D) \to \tot(E)$.
         \item We equip $\tot D$ with a filtration inherited from the descending filtration on rows of $D$ and $E$:
         \[F^r \tot_k D = \bigoplus_{p+q = -k, q\geq r} D_{p,q}\]
         and likewise for $E$. By assumption, this filtration is exhaustive and bounded below, so its associated spectral sequence converges to the homology of the totalization. The first page of the spectral sequence is given by the horizontal homology
@@ -169,7 +169,7 @@ Upon checking differentials, we conclude that the normalized two-sided cobar bic
 \end{proof}
 \end{prop}
 
-We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dg coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. There are two remedies: (1) we can impose a stronger condition on the quasi-isomorphism of coalgebras, or (2) in view of the second half of Lemma \ref{lem:quasiiso_bicomplex}, we can ask whether the induced map on a truncated finite version of cobar is a quasi-isomorphism.
+We hope for the two-sided cobar construction to be functorial enough, i.e. it should send most quasi-isomorphisms of dg coalgebras to quasi–isomorphisms of bicomplexes. As stated, this is not always true, not even for the single-sided cobar construction. An example may be found in Proposition 2.4.3, \cite{Loday2012}. There are two remedies: (1) we can impose a stronger condition on the quasi-isomorphism of coalgebras, or (2) in view of the second half of Lemma \ref{lem:quasiiso_bicomplex}, we can ask whether the induced map on a truncated version of cobar is a quasi-isomorphism.
 
 For (1), let $C, C'$ be dg conilpotent $R$-coalgebras equipped with the coradical filtration $F_\bullet$, and let $f: C\to C'$ be a morphism of dg conilpotent $R$-coalgebras. Since the maps and differentials respect the coradical filtration, $f$ descends to a map $[f]: \gr_\bullet C\to \gr_\bullet C'$ of associated gradeds, where $\gr_r C = F_rC/F_{r-1}C$.
 \begin{defn}
