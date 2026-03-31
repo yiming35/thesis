@@ -13,7 +13,8 @@
 \usepackage{graphicx}
 \usepackage{float, caption}
 \usepackage{enumerate}
-\usepackage{hyperref}  % 1. hyperref MUST be loaded before cleveref
+\usepackage{hyperref} 
+\usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 \usepackage{quiver}
 \usepackage{anyfontsize}
@@ -25,8 +26,16 @@
 % Make \section Large and bold, centered
 \patchcmd{\section}{\scshape}{\Large \scshape}{}{}
 % Changes the word "Contents" to "Table of Contents" and makes it Large
-\renewcommand{\contentsname}{\Large Table of Contents}
+\renewcommand{\contentsname}{\Large Contents}
 
+
+\makeatletter
+% Section: level 1, 0pt vertical space, 0pt indent, bold
+\renewcommand{\l@section}{\@tocline{1}{0pt}{0pt}{}{\bfseries }}
+
+% Subsection: level 2, 0pt vertical space, 2.5pc indent, normal font
+\renewcommand{\l@subsection}{\@tocline{2}{0pt}{2.5pc}{}{\normalfont}}
+\makeatother
 
 
 \usetikzlibrary{decorations.pathreplacing, calc}
@@ -66,13 +75,9 @@
 
 \hypersetup{%
   bookmarksnumbered=true,%
-  colorlinks=true,%
-  linkcolor=blue,%
-  citecolor=blue,%
-  filecolor=blue,%
-  menucolor=blue,%
-  urlcolor=blue
-}   
+  colorlinks=true,
+  allcolors= RoyalPurple
+}
 
 % 2. cleveref MUST be loaded after hyperref, but before \newtheorems
 \usepackage[capitalize,nameinlink]{cleveref} 
