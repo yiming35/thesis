@@ -1,4 +1,4 @@
-\section{Coalgebra crash course}\label{chapter:coalgebras} \noindent As the name suggests, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the fact that coalgebraic multiplication has its direction ``reversed'' can be somewhat mystifying on first sight. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions. We will not attempt to give detailed proofs in this section, for there is much exposition of this material in the literature. We have primarily drawn from the first chapter of \cite{Loday2012}.
+\section{Coalgebra crash course}\label{chapter:coalgebras} \noindent As the name suggests, a \emph{coalgebra} is the dual notion to that of an algebra. We could leave it at that, but they are much more unfamiliar objects; the fact that coalgebraic multiplication has its direction reversed can be somewhat mystifying on first sight. Moreover, the two objects are not dual on the nose: while the dual of every coalgebra is an algebra, the converse is not true without some finiteness assumptions. We will not attempt to give detailed proofs in this section, for there is much exposition of this material in the literature. We have primarily drawn from the first chapter of \cite{Loday2012}.
 \begin{defn}
     A \emph{coassociative $R$-coalgebra} is an $R$-module $C$ with an $R$-linear map $\Delta: C\to C\tensor C$, called the \emph{coproduct}, such that the following diagram commutes:
 \[\begin{tikzcd}
@@ -15,11 +15,11 @@ One way to think about the coproduct is that it tells one how to decompose a giv
 \begin{exmp}[\cite{Joni1979}, \S 2]
     Let $C= R[x]$, the ring of polynomials over $R$. Define a coproduct on a basis element $x^n$ via 
     \[\Delta(x^n) = \sum_{k=0}^n {\binom{n}{k}} x^k \tensor x^{n-k}.\]
-    This looks awfully like the binomial formula. Indeed this coproduct tells us all the ways to decompose a set of size $n$ into two subsets. 
+    This looks awfully similar to the binomial formula. Indeed, this coproduct tells us all the ways one can decompose a set of size $n$ into two subsets. 
 \end{exmp}
-The author learned of this example from this MathOverflow comment of Qiaochu Yuan \cite{Qiaochu_Coalgebra}. Though this example is combinatorial in nature, the notion of coproduct as decomposition will come up again, when we discuss how the subdivision of topological simplices induces a coproduct on singular chains.
+The author learned of this example from this MathOverflow comment of Qiaochu Yuan \cite{Qiaochu_Coalgebra}. Though it is combinatorial in nature, the way of thinking about coproducts as some sort of decomposition operator will come up again, when we discuss how the subdivision of topological simplices induces a coproduct on singular chains.
 
-Given an associative algebra $A$ it is intuitive how to compose the product to obtain a map $A^{\tensor n} \to A$. With a coassociative coalgebra $(C,\Delta)$ there is an analogous notion. Define the \emph{iterated coproduct} $\Delta^n: C\to C^{\tensor n+1}$ inductively with $\Delta^0 = \id, \Delta^1 = \Delta$, and 
+Given an associative algebra $A$, it is intuitive how to compose the product to obtain a map $A^{\tensor n} \to A$. With a coassociative coalgebra $(C,\Delta)$ there is an analogous notion. Define the \emph{iterated coproduct} $\Delta^n: C\to C^{\tensor n+1}$ inductively with $\Delta^0 = \id, \Delta^1 = \Delta$, and 
 \[\Delta^n = \underbrace{\Delta \tensor \id \tensor \cdots \tensor \id}_{\text{$n$ operations}} \circ \Delta^{n-1}.\]
 Coassociativity says that we could have inserted the coproduct anywhere within the above tensor product of operations.
 A \textit{morphism of coassociative coalgebras} $f: C\to D$ is an $R$-linear map commuting with the coproduct, i.e. 
@@ -35,22 +35,21 @@ Just as a unital associative $R$-algebra $A$ is one admitting a unital morphism 
 	\arrow["{\epsilon\tensor \id}", from=2-2, to=2-1]
 	\arrow["{\id\tensor \epsilon}"', from=2-2, to=2-3]
 \end{tikzcd}.\]
-
-The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $\eta: R\to C$ a \textit{coaugmentation}, and in this case say that $C$ is \textit{coaugmented}. Because $\eta$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ \eta_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a coproduct $\overline{\Delta}$ given by 
+The simplest example of a counital coassociative $R$-coalgebra is $R$ itself, with the coproduct given by $1 \mapsto 1\tensor 1$ and the counit given by $1\mapsto 1$. We call a morphism $\eta: R\to C$ a \textit{coaugmentation}, and if it exists, say that $C$ is \textit{coaugmented}. Because $\eta$ is a morphism of coalgebras, it must commute with the counit maps, so we obtain that $\epsilon_C\circ \eta_C= \epsilon_R = \id_R$. It then follows that $C \cong \ker \epsilon \oplus R$, and we denote this kernel by $\overline{C}$ and call it the \emph{reduced coalgebra}. We can think of $\overline{C}$ as either a submodule or a quotient of $C$. The reduced coalgebra also has a \emph{reduced coproduct} $\overline{\Delta}$ given by 
 \[\overline{\Delta}(x) = \Delta(x) - 1\tensor x - x\tensor 1.\]
 
 \subsection{Conilpotency, cofreeness, and the tensor coalgebra}
-Let $(C,\Delta)$ be a coaugmented coalgebra. Define the \emph{coradical} (sometimes also called \emph{canonical}) filtration on $C$ as follows: 
+Let $(C,\Delta)$ be a coaugmented coalgebra. Define the \emph{coradical} (sometimes also called \emph{canonical}) filtration on $C$ by:
 \[F_0C = R,\quad F_rC = R\oplus \{x\in \overline{C}: \overline{\Delta}^n(x) = 0\text{ for $n\geq r$}\}\text{ for $r\geq 1$}.\]
-Then we say $C$ is \emph{conilpotent} if this filtration is exhaustive. Conilpotency is fundamentally a finiteness condition; if we are continuing with the coproduct-as-decomposition analogy, it says that any element can only be decomposed finitely many times. It will turn out quite important in all that follows.
+Then we say $C$ is \emph{conilpotent} if this filtration is exhaustive. Conilpotency is fundamentally a finiteness condition; if we are continuing with the coproduct-as-decomposition analogy, it says that any element can only be decomposed finitely many times. It will turn out quite important in all which follows.
 
 \begin{defn}
 The \emph{cofree} coassociative $R$-coalgebra over an $R$-module $M$ is a conilpotent coassociative coalgebra $\mathcal{F}^cM$ equipped with an $R$-linear map $s: \mathcal{F}^cM\to M$ sending $1$ to $0$ and satisfying the following universal property: 
 \quote{\textit{Let $B$ be a conilpotent coalgebra. Then any $R$-linear map $f: B\to M$ factors through $\mathcal{F}^cM$, i.e. there exists a unique coalgebra morphism $\tilde{f}: B \to \mathcal{F}^cM$ such that $s\circ \tilde{f} = f$.}}
 \end{defn}
-As with other objects defined via universal properties, the cofree coalgebra is unique up to unique isomorphism. In the categorical language, this functor
+As with other objects defined via universal properties, the cofree coalgebra is unique up to unique isomorphism. In categorical language, this functor
 \[\mathcal{F}^c: \catname{Mod}_R\to \catname{conilCoalg}_R\]
-is a right adjoint to the forgetful functor sending a conilpotent coalgebra to its underlying module. The reason we restrict ourselves to conilpotent coalgebras here is that the cofree objects are familiar, as we will soon see. In the general category of coalgebras they are large and unwieldy. 
+is right adjoint to the forgetful functor sending a conilpotent coalgebra to its underlying module. The reason we restrict ourselves to conilpotent coalgebras here is that the cofree objects are quite familiar, as we will soon see. In the general category of coalgebras they are large and unwieldy. 
 
 \begin{defn} 
     Let $M$ be an $R$-module. The \emph{tensor coalgebra over} $M$, denoted $T^cM$, is the coalgebra whose underlying module is 
@@ -67,21 +66,21 @@ For an $R$-module $M$, the same tensor module $R\oplus M\oplus M^{\tensor 2}\opl
 \begin{prop}
     $T^cM$ is the cofree conilpotent coalgebra over $M$.
     \begin{proof}
-        See Proposition 1.2.7, \cite{Loday2012}.
+        It is easy to prove the universal property, see Proposition 1.2.7, \cite{Loday2012}.
     \end{proof}
 \end{prop}
 
 \subsection{Differential graded coalgebras}
 In nature, coalgebras can often carry extra structure, just as rings or modules come with gradings. 
 \begin{defn}
-A \emph{differential graded} (often abbreviated to \emph{dg}) coalgebra is a coassociative coalgebra $(C, \Delta)$ with 
+A \emph{differential graded} (abbreviated \emph{dg}) coalgebra is a coalgebra $(C, \Delta)$ with 
 \begin{enumerate}
-  \item a grading, i.e. $C = \oplus_{n \in \N} C_n$ such that the coproduct sends $C_n$ to $\oplus_{i+j=n} C_i \tensor C_j$, and
-  \item a differential $d$ sending $C_i$ to $C_{i-1}$, satisfying the dual identity
+  \item a \emph{grading}, i.e. a decomposition $C = \oplus_{n \in \N} C_n$ such that $\Delta(C_n)\subset \oplus_{i+j=n} C_i \tensor C_j$, and
+  \item a \emph{differential} $d$ sending $C_i$ to $C_{i-1}$, satisfying the dual identity
   \[\Delta \circ d = (d\tensor \id + \id \tensor d) \circ \Delta.\]
 \end{enumerate}
 \end{defn}
-This last identity is the \emph{Leibniz rule}; if a coalgebra endomorphism satisfies this, we call it a \emph{coderivation}. So all differentials are coderivations. One can check that these definitions imply that the coproduct is a morphism of chain complexes. So we can think of a dg coalgebra as either (1) a chain complex with a compatible coproduct, or (2) coalgebra with compatible differential. 
+This last identity is the \emph{Leibniz rule}; coalgebra endomorphisms satisfying it are called \emph{coderivations}. So all differentials are coderivations. One can check that these definitions imply that the coproduct is a morphism of chain complexes. So we can think of a dg coalgebra as either (1) a chain complex with a compatible coproduct, or (2) coalgebra with compatible differential. 
 Given a dg $R$-coalgebra $C=\oplus_{n \in \N} C_n$, we define its \emph{suspension} $sC$ to be $C$ shifted up a degree, i.e. $(sC)_i = C_{i-1}$, and its \emph{desuspension} $s^{-1}C$ to be $C$ shifted down a degree, i.e. $(s^{-1}C)_j = C_{j+1}$. Then any $x \in C_n$ determines an element $sx \in (sC)_{n+1}$ and $s^{-1}x \in (s^{-1}C)_{n-1}$. Defining these turns out to be helpful for degree bookkeeping reasons.
 
 The following lemma will help simplify many verifications. It tells us that to understand derivations of a free algebra, or coderivations of a cofree coalgebra, it suffices to understand them on one component. 
@@ -127,7 +126,9 @@ If a left and right comodule $M$ also satisfies the following compatibility cond
 	\arrow["{\id \tensor \Delta^R}", from=1-2, to=2-2]
 	\arrow["{\Delta^L\tensor \id}"', from=2-1, to=2-2]
 \end{tikzcd}\]
-then we call $M$ a \emph{co-bimodule}. The simplest example of a co-bimodule over a coalgebra $C$ is $C$ itself, where the left and right actions are just given by the coproduct. Returning to the example of singular chains, let $C = C_\bullet(X)$ and let $a$ be a basepoint. Then $C_\bullet(\{a\})$ is a bi-comodule over $C_\bullet(X)$ via the left and right coactions
+then we call $M$ a \emph{co-bimodule}. 
+
+The simplest example of a co-bimodule over a coalgebra $C$ is $C$ itself, where the left and right actions are just given by the coproduct. Returning to the example of singular chains, let $C = C_\bullet(X)$ and let $a$ be a basepoint. Then $C_\bullet(\{a\})$ is a bi-comodule over $C_\bullet(X)$ via the left and right coactions
 \[C_\bullet(\{a\})\xrightarrow{\Delta} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\iota_a \tensor \id } C_\bullet(X)\tensor C_\bullet(\{a\})\]
 \[C_\bullet(\{a\})\xrightarrow{\Delta} C_\bullet(\{a\})\tensor C_\bullet(\{a\}) \xrightarrow{\id \tensor \iota_a}  C_\bullet(\{a\}) \tensor C_\bullet(X).\]
 If $a\neq b$, we can take one of $C_\bullet(\{a\})$ and $C_\bullet(\{b\})$ to be a left comodule and the other to be a right comodule over $C_\bullet(X)$. The usefulness of these definitions will hopefully be clear as this thesis progresses.

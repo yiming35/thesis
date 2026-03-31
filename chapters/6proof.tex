@@ -61,7 +61,7 @@ whose kernel is $\Z$ if $a=b$, and trivial otherwise.
     Follows from convergence of the spectral sequence in Proposition \ref{prop:sseq_N}.
 \end{proof}
 \end{cor}
-\subsection{Computing $H_0\tot \mathscr{N}^{\leq n}$}
+\subsection{Four bicomplexes}
 It remains to compute $H_0$ of this totalization. For this we will return to our original bicomplex $\mathscr{C}$ and show that its truncated totalization is quasi-isomorphic to the totalization of the two-sided cobar bicomplex. Instead of normalizing the columns, let us now consider the rows $\mathscr{C}_{\bullet,q}$, which are the singular chain complexes $C_\bullet(X^q)$. Then we can apply the topological Alexander--Whitney map on each row:
 \[\mathscr{C}_{-\bullet,q} = C_\bullet(X^q) \to C_\bullet(X)^{\tensor q}\]
 to obtain a new bicomplex, which we will call $\mathscr{D}$. By definition of tensor product of chain complexes, $\mathscr{D}$ has a bigrading given by
@@ -149,12 +149,12 @@ Let $\mathscr{C}^{\leq n}$ and $\mathscr{D}^{\leq n}$ be the bicomplexes obtaine
 \begin{rem}
 We have not really used Adams' theorem. But what we have proven should suggest that the theorem is sort of true for the following reason. We have exhibited a quasi-isomorphism between the totalizations of the truncations of the two-sided cobar construction on $C_\bullet(X)$ and the totalization of the truncated $\mathscr{C}$, which is itself the bicomplex constructed by taking singular chains on the cosimplicial path space. So if we can somehow commute ``chains on a totalization'' and ``totalization of chains,'' and take the limit of these truncations, we would have a version of Adams' theorem. 
 \end{rem}
-We now have all the requisite maps for the proof of the main theorem. Before we proceed, just a quick recapitulation of all the steps involved. At the core of the argument is the cosimplicial path space $P^{\bullet}_{a,b}X$. Taking singular chains on it, we obtain a bicomplex, which is the same (up to truncating) bicomplex underlying the two-sided cobar construction on $(b,X,a)$. In \S\ref{chapter:stallings} we see that filtering this bicomplex in one direction gives rise to the fundamental group ring, and here we see that in the other direction we find the homology groups $H_n(X^n, X(n)^a_b)$.
+We now have all the requisite maps for the proof of the main theorem. Before we proceed, just a quick recapitulation of all the steps involved. At the core of the argument is the cosimplicial path space $P^{\bullet}_{a,b}X$. Taking singular chains on each cosimplex, we obtain a bicomplex, which is the same (up to truncating) to the bicomplex underlying the two-sided cobar construction on $(b,X,a)$. In \S\ref{chapter:stallings} we see that filtering this bicomplex in one direction gives rise to the fundamental group ring, and here we see that in the other direction we find the homology groups $H_n(X^n, X(n)^a_b)$.
 
 \begin{proof}[Proof of Theorem \ref{thm:looijenga}]
 	By Lemma \ref{lem:two_sided_cobar_D}, Lemma \ref{lem:quasi_iso_CtoD}, and the discussion in the first subsection, we have series of isomorphisms
 	\[H_\bullet(\Cobar^{\leq n}) \xrightarrow{\ref{lem:two_sided_cobar_D}} H_\bullet(\mathscr{D}^{\leq n}) \xrightarrow{\ref{lem:quasi_iso_CtoD}} H_\bullet(\mathscr{C}^{\leq n}) \xrightarrow{} H_\bullet(\mathscr{N}^{\leq n}).\]
-	and consequently an isomorphism 
+	and consequently an isomorphism in degree zero
     \begin{equation}\label{eqn:cobar_iso_N}
 		H_0(\Cobar^{\leq n})\to H_0(\mathscr{N}^{\leq n}).
 	\end{equation}
@@ -164,7 +164,7 @@ We now have all the requisite maps for the proof of the main theorem. Before we 
 	\end{equation}
     Combining Equations \ref{eqn:cobar_iso_N}, \ref{eqn:N_and_fundamental_gp} and applying Corollary \ref{cor:spectral_convergence}, we obtain a surjection
     \[\Z\pi_X(a,b)/ \Z\pi_X(a,b)\mathcal{I}^{n+1} \xrightarrow{\cong} H_0(\Cobar^{\leq n})\xrightarrow{\cong} H_0(\mathscr{N}^{\leq n})\twoheadrightarrow H_n(X^n, X(n)^a_b)\]
-    whose kernel is isomorphic to $\Z$ if $a=b$ and trivial otherwise. 
+    whose kernel is isomorphic to $\Z$ if $a=b$ and trivial otherwise, completing our journey.
 \end{proof}
 
 \subsection{Looking forward} Let us conclude with a few words about why the authors from the introduction might have been interested in Theorem \ref{thm:looijenga}. This discussion will be very imprecise. Let $X$ be a connected complex algebraic variety, i.e. something that locally looks like the zero-locus of a collection of homogenous polynomials in complex projective space. Then the rational cohomology of $X$ has more structure than just that of a $\Q$-vector space; they also gain so-called \emph{mixed Hodge structures}, as proven by Deligne. Using our theorem (or rather its rational dual), one can transfer these structures onto the groups $\Z\pi_X(a,b)/\Z\pi_X(a,b)\mathcal{I}^n \tensor \Q$. For example, fixing $x \in X$, path concatenation induces a bilinear map 
