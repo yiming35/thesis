@@ -29,7 +29,7 @@ The purpose of introducing the dummy variable $p$ at the end of this tedious ind
     and differentials
     \[d_H: \Cobar_{p,q}\to \Cobar_{p+1,q},\quad x_1 \tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \partial(x_i)\tensor \cdots \tensor x_q\]
     \[d_V: \Cobar_{p,q}\to \Cobar_{p, q+1}, \quad x_1\tensor \cdots \tensor x_q \mapsto \sum_{i=1}^q(-1)^{\sigma(x_i)} x_1 \tensor \cdots \tensor \overline{\Delta}(x_i)\tensor \cdots \tensor x_q\]
-    where $\sigma(x_i)$ is the Koszul sign $\deg x_1 + \cdots + \deg x_{i-1}$.
+    where $\sigma(x_i) =\deg x_1 + \cdots + \deg x_{i-1}$.
 \end{defn}
 \begin{warn}
     We have overloaded the notation $\Cobar$, first to refer to the functor from Definition \ref{def:cobar_algebra} sending a dg coalgebra to a dg algebra, and second to refer to the functor from Definition \ref{def:cobar_bicomplex} sending a dg coalgebra to a bicomplex. We will distinguish these using  subscripts: using $\Cobar_\bullet$ for the first and $\Cobar_{\bullet,\bullet}$ for the second. But the next proposition shows that this distinction is not so important.
@@ -72,7 +72,7 @@ with cofaces $d^i: \Cobar^{q-1}\to \Cobar^q$ given by
     \id_M\tensor \id^{\tensor q-1}\tensor \Delta^L & i =q
 \end{cases}\]
 and codegeneracies $s^i: \Cobar^{q+1}\to \Cobar^q$ given by 
-\[s^i = \id_M\tensor  \id^{\tensor i-1} \tensor \epsilon \tensor \id^{\tensor q-i+1} \tensor \id_N, \quad i \in \{1, ..., q+1\}\]
+\[s^i = \id_M\tensor  \id^{\tensor i-1} \tensor \epsilon \tensor \id^{\tensor q-i+2} \tensor \id_N, \quad i \in \{0, ..., q\}\]
 where $\epsilon: C \to \Z$ is the counit.
 \end{defn}
 By the Dold--Kan correspondence we can also regard this as a chain complex of $R$-modules. If $C$ is additionally differential graded, and $N, M$ are dg comodules over $C$, then then we also get an internal differential on $\Cobar(N,C,M)$ in addition to the differential coming from the coalgebra and comodule maps. Taking these new differentials into account, we obtain the following definition, generalizing the previous discussion of the cobar bicomplex:
@@ -92,10 +92,10 @@ By the Dold--Kan correspondence we can also regard this as a chain complex of $R
     \begin{split}
     d_H(m\tensor c_1 \tensor \cdots \tensor c_q \tensor n) &= \hspace{2pt} \partial_M(m) \tensor c_1 \tensor \cdots \tensor c_q \tensor n \\
     &+\sum_{i=1}^q (-1)^{|m| + \sigma(c_i)} m \tensor c_1 \tensor \cdots \tensor \partial_C(c_i) \tensor \cdots \tensor c_q \tensor n \\
-    &+ (-1)^{|m|+ \sigma(c_q)} m \tensor c_1 \tensor \cdots \tensor c_q \tensor \partial_N(n)
+    &+ (-1)^{|m|+ \sigma(c_q) + |c_q|} m \tensor c_1 \tensor \cdots \tensor c_q \tensor \partial_N(n)
     \end{split}
     \end{equation}
-    where $\sigma(x_k) = |x_1| + \cdots + |x_{k-1}|$ is the Koszul sign. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
+    where $\sigma(x_k) = |x_1| + \cdots + |x_{k-1}|$. Then totalizing with total degree $-p-q$ and differential $d_H + (-1)^pd_V$ on $\Cobar(N,C,M)_{\bullet, q}$ yields a dg algebra, the \emph{two-sided cobar construction} of $(N,C,M)$. 
 \end{defn} 
 
 This lives in the second quadrant. Once again we are overloading the notation $\Cobar$, but having multiple arguments in $\Cobar(-)$ indicates that we are referring to the two-sided version. Of course, this two-sided construction reduces to the one in the previous subsection, which we will sometimes refer to by the \emph{single-sided} cobar construction. To prove this fact, we need a few lemmas and definitions.
@@ -158,10 +158,10 @@ and likewise for the right action. Then $\tot_\bullet\Cobar(R,C,R)$ as above is 
     Consider the bicomplex that is obtained by replacing each column of $\Cobar(R,C,R)$ with its normalized cochain complex:
     \begin{equation*}
 	\begin{split}
-		N\Cobar_{p,q}(R,C,R) &\cong\bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1}) \\
+		N\Cobar_{p,q}(R,C,R) &\cong\bigcap_{i=0}^{q-1}\ker(s^i: \Cobar_{p,q}\to \Cobar_{p,q-1})_{-p} \\
 		&= \bigcap_{i=0}^{q-1}\ker(\id^i\tensor \epsilon \tensor \id^{\tensor q-i-1})_p \\
-		&=  (\ker(\epsilon)^{\tensor q})_p \\
-		&= \bigoplus_{m_1 + \cdots + m_q = p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
+		&=  (\ker(\epsilon)^{\tensor q})_{-p} \\
+		&= \bigoplus_{m_1 + \cdots + m_q = -p} \overline{C_{n_1}} \tensor \cdots \tensor \overline{C_{n_q}} \\
         &= \Cobar_{p,q}(C).
 	\end{split}
 \end{equation*}

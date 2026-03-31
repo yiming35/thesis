@@ -9,14 +9,18 @@ One can use homology and the cobar construction to approximate the fundamental g
 \end{thm}
 \noindent A dual version of this theorem with cohomology and the bar construction can be found in \cite{gadish_letterbraiding}, Theorem 1.2(3). The setting in which this is relevant for us is when $Y = \Sing(X)$ for $X$ a topological space. The goal of this section will be to prove a version of this theorem for the two-sided cobar construction, which we will do in the setting of simplicial sets. 
 
-Recall that the two-sided cobar functor takes in as input a dg conilpotent coalgebra and two dg comodules over it. In particular, if we begin with a simplicial set $Y$, its normalized simplicial chain complex $N_\bullet(Y)$ is a conilpotent dg algebra, and under this correspondence any simplicial subset $Y' \subset Y$ becomes a bicomodule over $N_\bullet(Y)$. Let us briefly recall/define for our purposes what the fundamental group and groupoid of $Y$ are. To avoid technicalities about simplicial sets, we simply define them to be the corresponding notions of fundamental group(oid) for the geometric realization $|Y|$. For all purposes this is enough. \footnote{The technical simplicial set definition of fundamental groupoid $\pi_Y$ is category-equivalent to what we define here.} Recall that $Y$ is \emph{connected} if $\pi_0(Y) = \{*\}$, i.e. between for any two 0-simplices there exist a sequences of contiguous 1-simplices connecting them. Equivalently, the geometric realization $|Y|$ is connected/path-connected.
+Recall that the two-sided cobar functor takes in as input a dg conilpotent coalgebra and two dg comodules over it. In particular, if we begin with a simplicial set $Y$, its normalized simplicial chain complex $N_\bullet(Y)$ is a conilpotent dg algebra, and under this correspondence any simplicial subset $Y' \subset Y$ becomes a bicomodule over $N_\bullet(Y)$. Let us briefly recall/define for our purposes what the fundamental group and groupoid of $Y$ are. To avoid technicalities about simplicial sets, we simply define them to be the corresponding notions of fundamental group(oid) for the geometric realization $|Y|$. For all purposes this is enough. \footnote{The technical simplicial set definition of fundamental groupoid $\pi_Y$ is category-equivalent to what we define here.} Recall that $Y$ is \emph{connected} if $\pi_0(Y) = \{*\}$, i.e. between any two 0-simplices there exist a sequences of contiguous 1-simplices connecting them. Equivalently, the geometric realization $|Y|$ is connected/path-connected.
 
 \begin{defn}
 The \emph{fundamental groupoid} of a connected simplicial set $Y$ is the full subcategory $\pi_Y$ of $\pi_{|Y|}$ whose objects are the zero simplices. For a given 0-simplex $y \in Y_0$, the \emph{fundamental group} of $(Y,y)$ is the group of morphisms $\pi_1(Y,y):=\pi_Y(y,y) = \pi_{|Y|}(y,y)$.
 \end{defn}
 
+Now regard $N_\bullet(\{a\})$ as a right $N_\bullet(Y)$-comodule via the right comodule action 
+	\[\Delta^R: N_\bullet(a)\xrightarrow{\AW} N_\bullet(a)\tensor N_\bullet(a) \xrightarrow{\id \tensor \iota_a} N_\bullet(a) \tensor N_\bullet(Y)\]
+	and likewise for $N_\bullet(\{b\})$ as a left $N_\bullet(X)$-comodule.
+
 \begin{thm}\label{thm:stallings_generalization}
-    Let $Y$ be a connected simplicial set and choose $a,b \in Y_0$. Let $N_*(Y)$ be the normalized chain complex associated to $Y$, and let $N_*(a), N_*(b)$ be the normalized chain complexes associated to the constant subsimplicial sets at $a$ and $b$ respectively. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R\pi_1(Y,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
+    Let $Y$ be a connected simplicial set and choose $a,b \in Y_0$. Let $N_\bullet(Y)$ be the normalized chain complex associated to $Y$, and let $N_\bullet(a), N_\bullet(b)$ be the normalized chain complexes associated to the constant subsimplicial sets at $a$ and $b$ respectively. Let $\mathcal{I}$ be the augmentation ideal of the group ring $R\pi_1(Y,a)$. Let $E$ be the spectral sequence associated to the two-sided cobar construction 
     \[\Cobar(b,Y,a):= \Cobar(N_\bullet(b), N_\bullet(Y), N_\bullet(a))\]
     where the filtration is given by tensor length. Then there is an isomorphism
     \[E^\infty_{-p,p}\to \Z\pi_Y(a,b)\mathcal{I}^p/\Z\pi_Y(a,b)\mathcal{I}^{p+1}.\]
@@ -70,11 +74,11 @@ which is an element of $\Z\pi_1(Y,a)$, and $T(\sigma_i)$ to be the unique homoto
         We need to check that $\varphi_{a,b}$ factors through the subcomplex $\Cobar^{> n}$ and that it descends to homology. For the first point, take an element $\sigma= 1_b \tensor \sigma_1 \tensor \cdots\tensor \sigma_q \tensor 1_a \in \tot_0\Cobar(b,Y,a)$. Note first that by rewriting $\sigma_i$ as $t_{d_0\sigma_i, a} \cdot T_a(\sigma_i) \cdot t_{a, d_1\sigma_i}$, we get 
         \begin{equation*}
         \begin{split}
-        T(\sigma_i)-\sigma_i &= t_{d_0\sigma_i, d_1\sigma_i} - t_{d_0\sigma_i, a} \cdot T_a(\sigma_i) \cdot t_{a, d_1\sigma} \\
+        T(\sigma_i)-\sigma_i &= t_{d_0\sigma_i, d_1\sigma_i} - t_{d_0\sigma_i, a} \cdot T_a(\sigma_i) \cdot t_{a, d_1\sigma_i} \\
         &= t_{d_0\sigma_i, a}\cdot (1_a - T_a(\sigma_i))\cdot t_{a, d_1\sigma_i} \\
         \end{split}
         \end{equation*}
-        and now this middle factor belongs to $\mathcal{I} \subset \Z\pi_1(Y,a)$. We may now assume the $\sigma_i$ assemble into a contiguous path from $a$ to $b$, for otherwise they vanish on $\varphi_{a,b}$ under the multiplication in the category algebra. We then obtain:
+        and now this middle factor belongs to $\mathcal{I} \subset \Z\pi_1(Y,a)$. We may now assume the $\sigma_i$ assemble into a contiguous path between $a$ and $b$, for otherwise they vanish on $\varphi_{a,b}$ under the multiplication in the category algebra. We then obtain:
         \begin{equation*}
         \begin{split}
         \varphi_{a,b}(\sigma) &= 1_b\cdot (\prod_{i=1}^q T(\sigma_i) - \sigma_i)\cdot 1_a \\
@@ -82,7 +86,7 @@ which is an element of $\Z\pi_1(Y,a)$, and $T(\sigma_i)$ to be the unique homoto
         &= t_{b,a} \cdot \prod_{i=1}^q(1_a - T_a(\sigma_i)) \in \Z\pi_Y(a,b)\mathcal{I}^q.
         \end{split}
         \end{equation*}
-        Hence $\phi_{a,b}$ factors through $\Cobar^{> n}$. 
+        Hence $\varphi_{a,b}$ factors through $\Cobar^{> n}$. 
         
         For the second point, by definition, $\tot_1\Cobar$ necessarily contains a tensor factor coming from $N_2(Y)$, say $\Gamma$. Computing the two-sided cobar differential, we have 
         \begin{equation*}
@@ -94,7 +98,7 @@ which is an element of $\Z\pi_1(Y,a)$, and $T(\sigma_i)$ to be the unique homoto
             \end{split}
         \end{equation*}
         so that 
-        \[\varphi_{a,b}\circ \partial_{\Cobar}(1_a\tensor \Gamma \tensor 1_b) = \varphi_{a,b}(\partial\Gamma-\overline{\Delta}(\Gamma))=[d_1\Lambda] -[d_2\Gamma * d_0\Gamma] = 0\]
+        \[\varphi_{a,b}\circ \partial_{\Cobar}(1_a\tensor \Gamma \tensor 1_b) = \varphi_{a,b}(\partial\Gamma-\overline{\Delta}(\Gamma))=[d_1\Gamma] -[d_2\Gamma * d_0\Gamma] = 0\]
         since $d_2\Gamma * d_0\Gamma$ is homotopic to $d_1\Gamma$. Thus $\varphi_{a,b}$ descends to a well defined map on zeroth homology.
             
         The remainder of the proof relies on the aforementioned comparison with Stallings' theorem. The quotient of the tree induces  a quasi-isomorphism
@@ -114,14 +118,14 @@ which is an element of $\Z\pi_1(Y,a)$, and $T(\sigma_i)$ to be the unique homoto
             \arrow["{\ref{thm:stallings}}", from=1-2, to=2-2]
             \arrow["{q_*}"', from=2-1, to=2-2]
         \end{tikzcd}\]
-        By the previous discussion, the top arrow is an isomorphism. The right arrow is an isomorphism by Stallings' theorem; his map is just $\phi_{\tilde{a},\tilde{a}}$. The bottom map is left concatenation with the element $t_{a,b}$, the pasing to the quotient. Because $T$ is a maximal tree this is an isomorphism. It remains to show that $\varphi_{a,b}$ commutes with these maps. We have 
-        \[q_*\circ\phi_{a,b}(\sigma) = q_*(t_{b,a}\cdot \prod_{i=1}^q(1_a - T_a(\sigma_i))) = 1_{\tilde{a}} \cdot \prod_{i=1}^1(1_{\tilde{a}} - q_*T_a(\sigma_i)).\]
+        By the previous discussion, the top arrow is an isomorphism. The right arrow is an isomorphism by Stallings' theorem; his map is just $\varphi_{\tilde{a},\tilde{a}}$. The bottom map is left concatenation with the element $t_{a,b}$, the pasing to the quotient. Because $T$ is a maximal tree this is an isomorphism. It remains to show that $\varphi_{a,b}$ commutes with these maps. We have 
+        \[q_*\circ\varphi_{a,b}(\sigma) = q_*(t_{b,a}\cdot \prod_{i=1}^q(1_a - T_a(\sigma_i))) = 1_{\tilde{a}} \cdot \prod_{i=1}^q(1_{\tilde{a}} - q_*T_a(\sigma_i)).\]
         On the other hand, since $q_*$ collapses any path in $T$, we have 
         \[q_*\sigma_i = q_*(t_{d_0\sigma_i, a} \cdot T_a(\sigma_i) \cdot t_{a, d_1\sigma_i}) = q_*T_a(\sigma_i),\]
         so that 
         \begin{equation*}
         \begin{split}
-        \phi_{\tilde{a},\tilde{a}}\circ q_*(\sigma) &= 1_{\tilde{a}} \cdot (\prod_{i=1}^q T(q_*\sigma_i) - q_*\sigma_i) \cdot 1_{\tilde{a}} \\
+        \varphi_{\tilde{a},\tilde{a}}\circ q_*(\sigma) &= 1_{\tilde{a}} \cdot (\prod_{i=1}^q T(q_*\sigma_i) - q_*\sigma_i) \cdot 1_{\tilde{a}} \\
         &= 1_{\tilde{a}} \cdot  (\prod_{i=1}^q 1_{\tilde{a}} - q_*T_a(\sigma_i)) \cdot 1_{\tilde{a}}  \\
         &= 1_{\tilde{a}} \cdot  (\prod_{i=1}^q 1_{\tilde{a}} - q_*T_a(\sigma_i))
         \end{split}
